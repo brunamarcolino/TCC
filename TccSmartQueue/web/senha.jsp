@@ -12,22 +12,19 @@
         <title>Senha</title>
     </head>
     <body>    
-        <%@include file="WEB-INF/jspf/cabecalho.jspf"%>
-
-        <c:if test="${empty login}">
-
-            <jsp:forward page="index.jsp"/>  
-
-        </c:if>
 
         <c:choose>  
             <c:when test="${empty senha}">
                 <p>Nenhuma senha!</p>
             </c:when>
             <c:otherwise>
+                <label>${senha.id_sequencia}</label>
                 <label>${senha.id_senha}</label>
-                
+                <label>${senha.data_senha}</label>
             </c:otherwise>
         </c:choose>
+    
+       <input type="button" value="Gerar Senha" onClick="window.location.href='GeraSenhaServlet'">
+    
     </body>
 </html>

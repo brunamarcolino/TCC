@@ -12,6 +12,7 @@ import java.sql.Date;
  * @author brunacm
  */
 public class Senha {
+    private int id_sequencia;
     private int id_senha;    
     private Date data_senha;
     private int cpf_cliente;
@@ -22,6 +23,14 @@ public class Senha {
     private Date data_atendimento_fim;
     private int id_usuario_atendente;
 
+     public int getId_sequencia() {
+        return id_sequencia;
+    }
+
+    public void setId_sequencia(int id_sequencia) {
+        this.id_sequencia = id_sequencia;
+    }
+    
     public int getId_senha() {
         return id_senha;
     }

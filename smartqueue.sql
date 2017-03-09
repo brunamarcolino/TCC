@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 04-Mar-2017 às 01:31
+-- Generation Time: 09-Mar-2017 às 02:52
 -- Versão do servidor: 10.1.19-MariaDB
 -- PHP Version: 7.0.13
 
@@ -71,26 +71,39 @@ INSERT INTO `tab_parametros` (`id_parametro`, `desc_parametro`, `valor_parametro
 --
 
 CREATE TABLE `tab_senhas` (
+  `id_sequencia` int(11) NOT NULL,
   `id_senha` int(4) NOT NULL COMMENT 'Senha ',
   `data_senha` date NOT NULL COMMENT 'Data de geração ',
   `cpf_cliente` int(11) NOT NULL COMMENT 'CPF do cliente ',
   `nm_cliente` varchar(50) NOT NULL COMMENT 'Nome do Cliente ',
   `senha_cliente` varchar(6) NOT NULL COMMENT 'Senha do Cliente ',
   `status_atendimento` varchar(15) NOT NULL COMMENT 'Status: Ativo | Em atendimento | Cancelado | Atendido | Chamando | Não compareceu | Segunda Chance ',
-  `data_atendimento_ini` datetime NOT NULL COMMENT 'Data do início do atendimento ',
-  `data_atendimento_fim` datetime NOT NULL COMMENT 'Data do final do atendimento ',
-  `id_usuario` int(4) NOT NULL COMMENT 'Código do atendente '
+  `data_atendimento_ini` datetime DEFAULT NULL COMMENT 'Data do início do atendimento ',
+  `data_atendimento_fim` datetime DEFAULT NULL COMMENT 'Data do final do atendimento ',
+  `id_usuario` int(4) DEFAULT NULL COMMENT 'Código do atendente '
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Tabela de senhas (senha que manda pros clientes + cadastro)';
 
 --
 -- Extraindo dados da tabela `tab_senhas`
 --
 
-INSERT INTO `tab_senhas` (`id_senha`, `data_senha`, `cpf_cliente`, `nm_cliente`, `senha_cliente`, `status_atendimento`, `data_atendimento_ini`, `data_atendimento_fim`, `id_usuario`) VALUES
-(1, '2017-03-03', 123, 'nome', '123', 'status', '2017-03-03 18:47:23', '2017-03-03 18:47:23', 52),
-(2, '2017-03-03', 123, 'nome', '123', 'status', '2017-03-03 18:47:43', '2017-03-03 18:47:43', 52),
-(3, '2017-03-03', 123, 'nome', '123', 'status', '2017-03-03 18:47:54', '2017-03-03 18:47:54', 52),
-(4, '2017-03-03', 123, 'nome', '123', 'status', '2017-03-03 18:48:04', '2017-03-03 18:48:04', 52);
+INSERT INTO `tab_senhas` (`id_sequencia`, `id_senha`, `data_senha`, `cpf_cliente`, `nm_cliente`, `senha_cliente`, `status_atendimento`, `data_atendimento_ini`, `data_atendimento_fim`, `id_usuario`) VALUES
+(1, 1, '2017-03-07', 122, 'nome', 'senha', 'Ativo', NULL, NULL, NULL),
+(2, 2, '2017-03-07', 122, 'nome', 'senha', 'Ativo', NULL, NULL, NULL),
+(3, 1, '2017-03-08', 122, 'nome', 'senha', 'Ativo', NULL, NULL, NULL),
+(5, 2, '2017-03-08', 122, 'nome', 'senha', 'Ativo', NULL, NULL, NULL),
+(6, 3, '2017-03-08', 122, 'nome', 'senha', 'Ativo', NULL, NULL, NULL),
+(7, 4, '2017-03-08', 122, 'nome', 'senha', 'Ativo', NULL, NULL, NULL),
+(8, 5, '2017-03-08', 122, 'nome', 'senha', 'Ativo', NULL, NULL, NULL),
+(9, 6, '2017-03-08', 122, 'nome', 'senha', 'Ativo', NULL, NULL, NULL),
+(10, 7, '2017-03-08', 122, 'nome', 'senha', 'Ativo', NULL, NULL, NULL),
+(11, 8, '2017-03-08', 122, 'nome', 'senha', 'Ativo', NULL, NULL, NULL),
+(12, 9, '2017-03-08', 122, 'nome', 'senha', 'Ativo', NULL, NULL, NULL),
+(13, 10, '2017-03-08', 122, 'nome', 'senha', 'Ativo', NULL, NULL, NULL),
+(14, 11, '2017-03-08', 122, 'nome', 'senha', 'Ativo', NULL, NULL, NULL),
+(15, 12, '2017-03-08', 122, 'nome', 'senha', 'Ativo', NULL, NULL, NULL),
+(16, 13, '2017-03-08', 122, 'nome', 'senha', 'Ativo', NULL, NULL, NULL),
+(17, 14, '2017-03-08', 122, 'nome', 'senha', 'Ativo', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -139,7 +152,8 @@ ALTER TABLE `tab_parametros`
 -- Indexes for table `tab_senhas`
 --
 ALTER TABLE `tab_senhas`
-  ADD PRIMARY KEY (`id_senha`,`data_senha`),
+  ADD PRIMARY KEY (`id_sequencia`),
+  ADD UNIQUE KEY `id_senha` (`id_senha`,`data_senha`),
   ADD KEY `id_usuario` (`id_usuario`);
 
 --
@@ -159,10 +173,25 @@ ALTER TABLE `tab_usuarios`
 ALTER TABLE `tab_parametros`
   MODIFY `id_parametro` int(2) NOT NULL AUTO_INCREMENT COMMENT 'Código do parâmetro', AUTO_INCREMENT=7;
 --
+-- AUTO_INCREMENT for table `tab_senhas`
+--
+ALTER TABLE `tab_senhas`
+  MODIFY `id_sequencia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+--
 -- AUTO_INCREMENT for table `tab_usuarios`
 --
 ALTER TABLE `tab_usuarios`
   MODIFY `id_usuario` int(4) NOT NULL AUTO_INCREMENT COMMENT 'Código do usuário ', AUTO_INCREMENT=605;
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Limitadores para a tabela `tab_senhas`
+--
+ALTER TABLE `tab_senhas`
+  ADD CONSTRAINT `tab_senhas_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `gerenciador`.`tab_usuarios` (`id_usuario`) ON DELETE NO ACTION ON UPDATE CASCADE;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
