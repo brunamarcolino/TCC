@@ -24,7 +24,7 @@ RA: 1510027287
         <%@include file="WEB-INF/jspf/cabecalho.jspf" %>
 
         <%@include file="WEB-INF/jspf/mensagem.jspf" %>
-
+        
         <div class="main">
             <c:if test="${not empty login}">  
                 <c:if test="${login.tipo_usuario=='Administrador'}">
@@ -39,7 +39,9 @@ RA: 1510027287
                     <h1>Perfil Cliente</h1>
                     
                 </c:if>     
-            </c:if>        
+            </c:if>  
+                    
+            <a href="ListaSenhaServlet">Chama Servlet</a>
         </div>
         
         <%@include file="WEB-INF/jspf/rodape.jspf" %>
