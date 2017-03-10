@@ -1,55 +1,47 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-         pageEncoding="ISO-8859-1"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!-- 
+NOME: Página inicial
 
-<!DOCTYPE html>
-<html>
+RA: 1510027287
+    1510016735
+-->
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-        <title>Login</title>
-        <link rel="stylesheet" type="text/css" href="estilos/estilo.css"/>
+        <meta charset="UTF-8">
+        <meta name="description" content="Gerenciador de filas">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <title>Smartqueue - Home</title>
+        <link rel="stylesheet" type="text/css" href="css/estilo.css" />
+        <link rel="stylesheet" type="text/css" href="css/unsemantic-responsive.css" />
     </head>
-    <body>  
+    <body class="<c:if test='${empty login}'>nao-logado</c:if>">  
         <%@include file="WEB-INF/jspf/cabecalho.jspf" %>
 
         <%@include file="WEB-INF/jspf/mensagem.jspf" %>
 
-        <c:if test="${not empty login}">  
-            <c:if test="${login.tipo_usuario=='Administrador'}">
-                <ul>
-                    <li>
-                        <a href="ListaParametrosServlet">Gerenciar atendentes</a>
-                    </li>         
-                </ul>
-                <ul>
-                    <li>
-                        <a href="ListaParametrosServlet">Gerar Relatórios</a>
-                    </li>         
-                </ul>
-                <ul>
-                    <li>
-                        <a href="ListaParametrosServlet">Parametros do Sistemas</a>
-                    </li>         
-                </ul>
-                </form> 
+        <div class="main">
+            <c:if test="${not empty login}">  
+                <c:if test="${login.tipo_usuario=='Administrador'}">
+                    <h1>Perfil Admin</h1>
+                    
+                </c:if>        
+                <c:if test="${login.tipo_usuario=='Atendente'}">
+                    <h1>Perfil Atendente</h1>
+                    
+                </c:if>   
+                <c:if test="${login.tipo_usuario=='Cliente'}">
+                    <h1>Perfil Cliente</h1>
+                    
+                </c:if>     
             </c:if>        
-            <c:if test="${login.tipo_usuario=='Atendente'}">
-                <ul>
-                    <li>
-                        <a href="">Abrir Fila</a>
-                    </li>         
-                </ul>
-                </form> 
-            </c:if>   
-            <c:if test="${login.tipo_usuario=='Cliente'}">
-                <ul>
-                    <li>
-                        <a href="ListaSenhaServlet">Gerar Senha</a>
-                    </li>         
-                </ul>
-                </form> 
-            </c:if>     
-</c:if>                
-                
+        </div>
+        
+        <%@include file="WEB-INF/jspf/rodape.jspf" %>
     </body>
 </html>

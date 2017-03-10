@@ -1,37 +1,83 @@
 <!--
-RA: 1510027287
+NOME: Cabeçalho (logado e deslogado)
 
-PÃGINA DE LOGIN
+RA: 1510027287
+    1510016735
 -->
 
 <%-- any content can be specified here e.g.: --%>
-<%@ page pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
-<div>
-    <h1>
-      SmartQueue
-    </h1>
-    <c:choose>
-        <c:when test="${empty login}">
-            <form action="LoginServlet" method="post">
-                <fieldset>
-                    <p>
-                        <label for="login">Login</label>
-                        <br/>
-                        <input type="text" name="login" value="${param.login}"/>
-                    </p>
-                    <p>
-                        <label for="senha">Senha</label>
-                        <br/>
-                        <input type="password" name="senha" value="${param.senha}"/>
-                    </p>
-                    <input type="submit" value="Login"/>
-                </fieldset>
-            </form>
-        </c:when>
-        <c:otherwise>
-            <p>OlÃ¡, ${login.nm_usuario}. <a href="LogoutServlet">(sair)</a></p>         
-        </c:otherwise>        
-    </c:choose>
-</div>
+    
+<c:choose>
+    <c:when test="${empty login}">
+        <section class="grid-30 mobile-grid-100 login">
+            <div class="grid-100 mobile-grid-100">
+                <img src="../../imagens/logo.png" width="368px" height="151px" />
+                <h1>Seja bem-vindo ao SmartQueue!</h1>
+                <h3>Filas nunca mais!</h3>
+            </div>
+            <div class="grid-100 mobile-grid-100">
+                <form action="LoginServlet" method="post">
+                    <ul>
+                        <li>
+                            <label for="login">Login</label>
+                            <input type="text" name="login" value="${param.login}"/>
+                        </li>
+                        <li>
+                            <label for="senha">Senha</label>
+                            <input type="password" name="senha" value="${param.senha}"/>
+                        </li>
+                        <input type="submit" value="Login" class="btn-outline" />
+                    </ul>
+                </form>
+            </div>
+        </section>
+    </c:when>
+    <c:otherwise>
+        <header>
+            <div class="grid-50 pull-left">
+                <c:if test="${not empty login}">  
+                    <c:if test="${login.tipo_usuario=='Administrador'}">
+                        <nav>
+                            <ul>
+                                <li>
+                                    <a href="ListaParametrosServlet">Gerenciar atendentes</a>
+                                </li>
+                                <li>
+                                    <a href="ListaParametrosServlet">Gerar Relatórios</a>
+                                </li>
+                                <li>
+                                    <a href="ListaParametrosServlet">Parametros do Sistemas</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </c:if>        
+                    <c:if test="${login.tipo_usuario=='Atendente'}">
+                        <nav>
+                            <ul>
+                                <li>
+                                    <a href="">Abrir Fila</a>
+                                </li>         
+                            </ul>
+                        </nav>
+                    </c:if>   
+                    <c:if test="${login.tipo_usuario=='Cliente'}">
+                        <nav>
+                            <ul>
+                                <li>
+                                    <a href="ListaSenhaServlet">Gerar Senha</a>
+                                </li>         
+                            </ul>
+                        </nav>
+                    </c:if>     
+                </c:if>        
+                <h1>Smartqueue</h1>
+            </div>
+            <div class="grid-50 pull-right">
+                <p>Olá, ${login.nm_usuario}</p>
+                <a href="LogoutServlet">(sair)</a>                       
+            </div>   
+        </header>
+    </c:otherwise>        
+</c:choose>
