@@ -1,9 +1,3 @@
-<!-- 
-NOME: Página inicial
-
-RA: 1510027287
-    1510016735
--->
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <?xml version='1.0' encoding='UTF-8' ?>
@@ -16,34 +10,35 @@ RA: 1510027287
         <meta name="description" content="Gerenciador de filas">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
-        <title>Smartqueue - Home</title>
-        <link rel="stylesheet" type="text/css" href="css/estilo.css" />
-        <link rel="stylesheet" type="text/css" href="css/unsemantic-responsive.css" />
+        <title>Smartqueue</title>
+        <link rel="stylesheet" type="text/css" href="estilos/estilo.css" />
+        <link rel="stylesheet" type="text/css" href="estilos/unsemantic-responsive.css" />
     </head>
-    <body class="<c:if test='${empty login}'>nao-logado</c:if>">  
+    <body class="<c:if test='${empty login}'>nao-logado</c:if>">
         <%@include file="WEB-INF/jspf/cabecalho.jspf" %>
 
         <%@include file="WEB-INF/jspf/mensagem.jspf" %>
-        
         <div class="main">
-            <c:if test="${not empty login}">  
-                <c:if test="${login.tipo_usuario=='Administrador'}">
-                    <h1>Perfil Admin</h1>
-                    
-                </c:if>        
-                <c:if test="${login.tipo_usuario=='Atendente'}">
-                    <h1>Perfil Atendente</h1>
-                    
-                </c:if>   
-                <c:if test="${login.tipo_usuario=='Cliente'}">
-                    <h1>Perfil Cliente</h1>
-                    
-                </c:if>     
-            </c:if>  
-                    
-            <a href="ListaSenhaServlet">Chama Servlet</a>
+            <div class="grid-100 mobile-grid-100">
+                <c:if test="${not empty login}">  
+                    <c:if test="${login.tipo_usuario=='Administrador'}">
+                        <h1>Perfil Admin</h1>
+
+                    </c:if>        
+                    <c:if test="${login.tipo_usuario=='Atendente'}">
+                        <h1>Perfil Atendente</h1>
+
+                    </c:if>   
+                    <c:if test="${login.tipo_usuario=='Cliente'}">
+                        <h1>Perfil Cliente</h1>
+
+                    </c:if>
+                    <!--<div class="grid-25">
+                    <a href="ListaSenhaServlet" class="btn btn-outline">Chama Servlet</a>
+                    </div>-->
+                </c:if>          
+            </div>
         </div>
-        
         <%@include file="WEB-INF/jspf/rodape.jspf" %>
     </body>
 </html>

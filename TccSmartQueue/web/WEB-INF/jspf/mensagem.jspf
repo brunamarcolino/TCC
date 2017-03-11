@@ -5,12 +5,12 @@
 <c:choose>
   <c:when test="${not empty mensagemErro}">
     <div class="mensagemErro">
-        ${mensagemErro}
-    </div>
+		  ${mensagemErro}
+		</div>
   </c:when>
   <c:when test="${not empty mensagemSucesso}">
     <div class="mensagemSucesso">
-        ${mensagemSucesso}
-    </div>
+		  ${mensagemSucesso}
+		</div>
   </c:when>  
 </c:choose>  
