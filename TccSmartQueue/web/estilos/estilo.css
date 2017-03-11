@@ -1,0 +1,194 @@
+@font-face {
+  font-family: 'Lato-Hairline';
+  src: url('../fontes/Lato-Hairline.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Lato-Thin';
+  src: url('../fontes/Lato-Thin.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Lato-Regular';
+  src: url('../fontes/Lato-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Lato-Light';
+  src: url('../fontes/Lato-Light.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Lato-Bold';
+  src: url('../fontes/Lato-Bold.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Lato-Black';
+  src: url('../fontes/Lato-Black.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Lato-Semibold';
+  src: url('../fontes/Lato-Semibold.ttf') format('truetype');
+}
+*,
+html,
+body{
+    font-family: 'Lato-Regular', sans-serif;
+    padding: 0;
+    margin: 0;
+    
+}
+*:focus{
+    outline: none;
+}
+li{
+    list-style: none;
+}
+a{
+    font-size: .9em;
+    text-decoration: none;
+    vertical-align: top;
+}
+form li{
+    margin-bottom: 1.5em;
+}
+label{
+    margin-bottom: .5em;
+    display: block;
+    font-size: .75em;
+    text-transform: uppercase;
+}
+input[type="text"],
+input[type="email"],
+input[type="password"],
+select,
+textarea{
+    border: solid 1px #ccc;
+    padding: .5em 1em;
+    border-radius: 40px;
+    float: none !important;
+    display: block;
+    font-size: 1em;
+    width: 100%;
+    box-sizing: border-box;
+    background: #FFF;
+    color: #999;
+}
+body.nao-logado{
+    background: url('')
+}
+.login {
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 15%;
+    bottom: 0;
+    margin: auto;
+}
+.login img{
+    margin-bottom: 1.5em;
+}
+.login h1{
+    text-transform: uppercase;
+    font-family: 'Lato-Semibold', sans-serif;
+    color: #FF8500;
+    font-weight: lighter;
+    line-height: 1em;
+}
+.login h3{
+    margin-bottom: 1.5em;
+    font-family: 'Lato-Light', sans-serif;
+    font-weight: lighter;
+    color: #888;
+}
+.login input[type="submit"]{
+    border-color: #84bd00;
+    color: #84bd00;
+}
+h1{
+    font-family: 'Lato-Light', sans-serif;
+    font-weight: lighter;
+    color: #999;
+}
+.btn,
+input[type="submit"],
+input[type="button"]{
+    border: solid 1px #777;
+    padding: .5em 0;
+    text-transform: uppercase;
+    border-radius: 40px;
+    font-weight: lighter;
+    cursor: pointer;
+    float: none !important;
+    margin: 2em auto 0;
+    display: block;
+    text-align: center;
+    font-size: 1em;
+    width: 50%;
+    color: #777;
+    opacity: .7;
+    transition: all .3s ease-out;
+}
+.btn:hover,
+input[type="submit"]:hover,
+input[type="button"]:hover{
+    opacity: 1;
+}
+.btn-outline{
+    background: transparent;
+}
+
+header{
+    padding: 1em 2em;
+    background-color: #FF8500;
+}
+nav{
+    border-left: solid 1px #CC6A00;
+    padding-left: .5em;
+}
+nav li{
+    display: inline-block;
+    margin: 0 1em;
+}
+nav li a{
+    color: #FFF;
+    font-family: 'Lato-Semibold', sans-serif;
+    transition: all .3s ease-out;
+    display: table;
+    vertical-align: top;
+}
+.main{
+    padding: 1em .5em;
+}
+footer{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 1em 2em;
+    box-sizing: border-box;
+    background-color: #EEE;
+}
+
+.perfil{
+    color: #FFF;
+}
+.perfil a{
+   color: #7F5526;
+}
+
+.main > div{
+    float: none;
+    margin: 0 auto;
+}
+.main .gera-senha{
+    margin-top: 10%;
+    text-align: center;
+}
+.main .gera-senha h1{
+    font-size: 5em;
+}
+
+table th{
+    text-align: left;
+    padding: 1em;
+}
+table td{
+    padding: 1em;
+}
