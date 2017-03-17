@@ -188,10 +188,10 @@ input[type="button"]:hover{
     </c:when>
     <c:otherwise>
         <header class="grid-100 mobile-grid-100">
-            <div class="grid-10">
+            <div class="grid-10 mobile-grid-50">
                  <h3>Smartqueue</h3>
             </div>
-            <div class="grid-80 pull-left">
+            <div class="grid-80 pull-left hide-on-mobile">
                 <c:if test="${not empty login}">  
                     <c:if test="${login.tipo_usuario=='Administrador'}">
                         <nav>

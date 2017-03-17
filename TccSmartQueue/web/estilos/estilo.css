@@ -219,3 +219,12 @@ table td{
     color: #FF4C4C;
 }
 
+@media (max-width: 450px) {
+    .info{
+        border: none;
+    }
+    .info > div{
+        margin: 0 0 1em 0;
+    }
+}
+
