@@ -1,7 +1,7 @@
 <%-- 
-    Document   : senha
-    Created on : 03/03/2017, 19:20:03
-    Author     : brunacm
+    Document   : gerar_senha
+    Created on : 17/03/2017, 17:44:23
+    Author     : Thiago Quintanilha
 --%>
 
 <?xml version='1.0' encoding='UTF-8' ?>
@@ -24,29 +24,21 @@
         <div class="main">
             <div class="grid-25 gera-senha">
             <c:choose>  
-                <c:when test="${empty dadossenha}">
-                    <p>Nenhum dado!</p>
+                <c:when test="${empty senha}">
+                    <p>Nenhuma senha!</p>
                 </c:when>
                 <c:otherwise>
-                    <label>Tempo médio de atendimento</label>
-                    <h1>${dadossenha.tempo_medio}</h1>
-                    
-                    <!--<label>Ultima Senha Chamada</label>
-                    <h2>{dadossenha.ultima_senha_atendida}</h2>
-                    
-                    <label>Ultima Senha Gerada</label>
-                    <h2>{dadossenha.ultima_senha_gerada}</h2>                
-                    -->
-                    <label>Quantidade de pessoas na Fila</label>
-                    <h1>${dadossenha.quantidade_pessoas}</h1>
+                    <label>Sua Senha é: </label>
+                    <h1>${senha.id_senha}</h1>
                                       
                 </c:otherwise>
             </c:choose>
             <div class="grid-100">
-                <input type="button" value="Gerar Senha" onClick="window.location.href='GeraSenhaServlet'">
+                <input type="button" value="Cancelar Senha" onClick="window.location.href='CancelarSenhaServlet?id_senha=${senha.id_senha}'">
             </div>
             </div>
         </div>
        <%@include file="WEB-INF/jspf/rodape.jspf"%>
     </body>
 </html>
+

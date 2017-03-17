@@ -24,11 +24,11 @@ public class GeraSenhaServlet extends HttpServlet{
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
         SenhaDao senhaDao = new SenhaDao();
-        Senha senha = senhaDao.geraSenha();
+        int id_sequencia = senhaDao.geraSenha();
+        Senha senha = senhaDao.retornaSenha(id_sequencia);
         request.setAttribute("senha", senha);
-        //request.setAttribute("tma", tma);
         
-        getServletContext().getRequestDispatcher("/senha.jsp").forward(request, response);
+        getServletContext().getRequestDispatcher("/gerar_senha.jsp").forward(request, response);
     }
 
 }
