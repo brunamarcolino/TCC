@@ -22,28 +22,53 @@
         <%@include file="WEB-INF/jspf/cabecalho.jspf"%>
         
         <div class="main">
-            <div class="grid-25 gera-senha">
+            <div class="grid-75 gera-senha">
             <c:choose>  
                 <c:when test="${empty dadossenha}">
                     <p>Nenhum dado!</p>
                 </c:when>
                 <c:otherwise>
-                    <label>Tempo médio de atendimento</label>
-                    <h1>${dadossenha.tempo_medio}</h1>
-                    
-                    <!--<label>Ultima Senha Chamada</label>
-                    <h2>{dadossenha.ultima_senha_atendida}</h2>
-                    
-                    <label>Ultima Senha Gerada</label>
-                    <h2>{dadossenha.ultima_senha_gerada}</h2>                
-                    -->
-                    <label>Quantidade de pessoas na Fila</label>
-                    <h1>${dadossenha.quantidade_pessoas}</h1>
-                                      
+                    <div class="grid-parent grid-50 info">
+                        <div class="grid-100">
+                            <p>Tempo médio de atendimento</p>
+                            <h2>
+                                <c:choose>
+                                    <c:when test="${empty dadossenha.tempo_medio}">
+                                        --
+                                    </c:when>
+                                    <c:otherwise>
+                                        ${dadossenha.tempo_medio}
+                                    </c:otherwise>
+                                </c:choose>
+                            </h2>
+                        </div>
+                        <!--<label>Ultima Senha Chamada</label>
+                        <h2>{dadossenha.ultima_senha_atendida}</h2>
+
+                        <label>Ultima Senha Gerada</label>
+                        <h2>{dadossenha.ultima_senha_gerada}</h2>                
+                        -->
+                        <div class="grid-100">
+                            <p>Quantidade de pessoas na Fila</p>
+                            <h2>
+                                <c:choose>
+                                    <c:when test="${empty dadossenha.quantidade_pessoas}">
+                                        --
+                                    </c:when>
+                                    <c:otherwise>
+                                        ${dadossenha.quantidade_pessoas}
+                                    </c:otherwise>
+                                </c:choose>
+                            </h2>
+                        </div>
+                    </div>
                 </c:otherwise>
             </c:choose>
-            <div class="grid-100">
-                <input type="button" value="Gerar Senha" onClick="window.location.href='GeraSenhaServlet'">
+            <div class="grid-parent grid-50">
+                <div class="grid-100">
+                    <p>Clique abaixo para gerar a sua senha:</p>
+                    <input type="button" value="Gerar Senha" onClick="window.location.href='GeraSenhaServlet'">
+                </div>
             </div>
             </div>
         </div>

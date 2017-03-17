@@ -22,20 +22,53 @@
         <%@include file="WEB-INF/jspf/cabecalho.jspf"%>
         
         <div class="main">
-            <div class="grid-25 gera-senha">
+            <div class="grid-75 gera-senha">
             <c:choose>  
                 <c:when test="${empty senha}">
                     <p>Nenhuma senha!</p>
                 </c:when>
                 <c:otherwise>
-                    <label>Sua Senha é: </label>
-                    <h1>${senha.id_senha}</h1>
-                                      
+                    <div class="grid-parent grid-50 info">
+                        <div class="grid-100">
+                            <p>Tempo médio de atendimento</p>
+                            <h2>
+                                <c:choose>
+                                    <c:when test="${empty dadossenha.tempo_medio}">
+                                        --
+                                    </c:when>
+                                    <c:otherwise>
+                                        ${dadossenha.tempo_medio}
+                                    </c:otherwise>
+                                </c:choose>
+                            </h2>
+                        </div>
+                        <!--<label>Ultima Senha Chamada</label>
+                        <h2>{dadossenha.ultima_senha_atendida}</h2>
+
+                        <label>Ultima Senha Gerada</label>
+                        <h2>{dadossenha.ultima_senha_gerada}</h2>                
+                        -->
+                        <div class="grid-100">
+                            <p>Quantidade de pessoas na Fila</p>
+                            <h2>
+                                <c:choose>
+                                    <c:when test="${empty dadossenha.quantidade_pessoas}">
+                                        --
+                                    </c:when>
+                                    <c:otherwise>
+                                        ${dadossenha.quantidade_pessoas}
+                                    </c:otherwise>
+                                </c:choose>
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="grid-parent grid-50">
+                        <p>Sua Senha é: </p>
+                        <h1>${senha.id_senha}</h1>
+                        <input type="button" value="Cancelar Senha" class="cancelar" onClick="window.location.href='CancelarSenhaServlet?id_senha=${senha.id_senha}'">
+                    </div>                                    
                 </c:otherwise>
             </c:choose>
-            <div class="grid-100">
-                <input type="button" value="Cancelar Senha" onClick="window.location.href='CancelarSenhaServlet?id_senha=${senha.id_senha}'">
-            </div>
             </div>
         </div>
        <%@include file="WEB-INF/jspf/rodape.jspf"%>
