@@ -23,7 +23,7 @@ public class DadosSenhaDao extends Dao{
         try {
             conn = getConnection();
 
-            String sql = "SELECT (SELECT TIME_FORMAT(AVG(TIMEDIFF(data_atendimento_fim,data_atendimento_ini)),'%T') FROM `tab_senhas` WHERE `data_senha` = CURDATE() and data_atendimento_fim is not null) TEMPO_MEDIO, (SELECT IFNULL(max(id_senha),0) id_senha FROM tab_senhas WHERE data_senha = CURDATE()) ULTIMA_SENHA_GERADA, (SELECT IFNULL(max(id_senha),0) id_senha FROM tab_senhas WHERE data_senha = CURDATE() and data_atendimento_ini is not null) ULTIMA_SENHA_CHAMADA FROM dual";
+            String sql = "SELECT (SELECT TIME_FORMAT(AVG(TIMEDIFF(data_atendimento_fim,data_atendimento_ini)),'%T') FROM `tab_senhas` WHERE `data_senha` = CURDATE() and data_atendimento_fim is not null) TEMPO_MEDIO, (SELECT IFNULL(max(id_senha),0) id_senha FROM tab_senhas WHERE data_senha = CURDATE()) ULTIMA_SENHA_GERADA, (SELECT IFNULL(max(id_senha),0) id_senha FROM tab_senhas WHERE data_senha = CURDATE() and data_atendimento_ini is not null) ULTIMA_SENHA_CHAMADA, (SELECT count(1) qtde_pessoas FROM `tab_senhas` WHERE data_senha = curdate() and data_atendimento_fim is null and status_atendimento = 'Ativo') QTDE_PESSOAS FROM dual";
 
             PreparedStatement stmt = conn.prepareStatement(sql);
             ResultSet result = stmt.executeQuery();
@@ -34,8 +34,9 @@ public class DadosSenhaDao extends Dao{
                 Time tempo_medio = result.getTime(1);                
                 int ultima_senha_gerada = result.getInt(2);
                 int ultima_senha_atendida = result.getInt(3);
-                int quantidade_pessoas = ultima_senha_gerada - ultima_senha_atendida;
-                        
+                int quantidade_pessoas = result.getInt(4);
+                   
+                System.out.println(quantidade_pessoas);
                 //Double previsao_atendimento = (quantidade_pessoas * tm);
                 
                 dadosSenha.setTempo_medio(tempo_medio);
