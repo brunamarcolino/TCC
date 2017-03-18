@@ -159,6 +159,19 @@ input[type="button"]:hover{
     font-weight: bold;
     font-family: 'Lato-Bold', sans-serif;
 }
+
+@media (max-width: 450px) {
+    .mobile-grid-100{
+        width: 100%;
+    }
+    .login{
+        top: 10%;
+        float: left;
+        padding-left: 30px;
+        padding-right: 30px;
+        box-sizing: border-box;
+    }
+}
 </style>
 
 <c:choose>
