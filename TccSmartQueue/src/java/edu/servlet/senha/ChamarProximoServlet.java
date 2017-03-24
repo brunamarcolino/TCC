@@ -17,8 +17,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-import edu.dao.FilaDao;
-import edu.vo.Fila;
+import edu.dao.SenhaDao;
+import edu.vo.Senha;
 
 
 /**
@@ -26,30 +26,30 @@ import edu.vo.Fila;
  */
 @WebServlet("/ChamarProximoServlet")
 public class ChamarProximoServlet extends HttpServlet {
-
+    
     private static final long serialVersionUID = 1L;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //RECEBE PARAMETROS DA REQUEST
-        String status_fila;
-        status_fila = new String("Aberta");
-        int mesa = Integer.parseInt(request.getParameter("mesa"));
-        int id_usuario = 402;
-
-
+       int ultimaSenha = 0;
+       int proximaSenha = ultimaSenha +1;
+       ultimaSenha = proximaSenha;
+       String nm_cliente;
+       nm_cliente = new String("felipe");
 
         //VERIFICA SE É NULO OU VAZIO
-        if (mesa == 0) {
+        /*if (false) {
             //em caso de erro, grava mensagem de erro na requisi��o e retorna para p�gina inicial
             String mensagem = "Numero da mesa nulo!";
             request.setAttribute("mensagemErro", mensagem);
             getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
-        } else {
-            FilaDao filaDao = new FilaDao();
+        } else {*/
+            SenhaDao senhaDao = new SenhaDao();
             
-            boolean fila = filaDao.setFila(id_usuario,mesa,status_fila);
-            if (fila) {
-                request.getSession().setAttribute("mesa", fila);
+            int senha = senhaDao.chamaProximaSenha(proximaSenha);
+            if (senha>0) {
+                request.getSession().setAttribute("nome_cliente", nm_cliente);
+                request.getSession().setAttribute("senha", senha);
                 getServletContext().getRequestDispatcher("/chamar_proximo.jsp").forward(request, response);
             } else {
                 String mensagem = "deu ruim";
@@ -58,4 +58,4 @@ public class ChamarProximoServlet extends HttpServlet {
             }
         }
     }
-}
+

@@ -201,4 +201,105 @@ public class SenhaDao extends Dao {
             }
         }
     }
+    public int chamaProximaSenha(int id_senha) {
+        Connection conn = null;
+        
+        try {
+            //obtem conexao com o banco de dados
+            conn = getConnection();
+            conn.setAutoCommit(false);
+            //antes de gerar senha chama metodo cadastro cliente 
+            //define SQL para inser��o
+            String sql = "UPDATE tab_senhas set status_atendimento = 'Em Atendimento',data_atendimento_ini=CURRENT_TIMESTAMP WHERE id_senha = ?";    
+            //instance Prepared statement especificando os par�metros do SQL
+            PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);            
+            stmt.setInt(1, id_senha);
+            System.out.println(id_senha);
+            //executa a opera��o no banco de dados
+            int affectedRows = stmt.executeUpdate();
+            //verifica se deu certo. Se sim, obtem a chave id_senha gerada 
+            if (affectedRows > 0) {
+                conn.commit();
+                return id_senha;
+            } else {
+                //cancela as modifica��es no banco de dados
+                
+                conn.rollback();
+                return 0;
+            }
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return 0;
+        } finally {
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (Exception closeEx) {
+                    //do nothing
+                }
+            }
+        }
+    }
+    public int getClienteSenha() {
+        Connection conn = null;
+
+        try {
+            conn = getConnection();
+
+            String sql = "SELECT IFNULL(max(id_senha+1),1) id_senha FROM tab_senhas WHERE data_senha = CURDATE()";
+
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            ResultSet result = stmt.executeQuery();
+
+            if (result.next()) {
+                int id_senha = result.getInt("id_senha");
+                return id_senha;
+            } else {
+                return 0;
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return 0;
+        } finally {
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (Exception closeEx) {
+                    //do nothing
+                }
+            }
+        }
+    }
+    public String getNomeCliente(int id_senha) {
+        Connection conn = null;
+
+        try {
+            conn = getConnection();
+
+            String sql = "SELECT nm_cliente FROM tab_senhas WHERE id_senha =?";
+
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, id_senha);
+            ResultSet result = stmt.executeQuery();
+
+            if (result.next()) {
+                String nm_cliente = result.getString("nm_cliente");
+                return nm_cliente;
+            } else {
+                return null;
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return null;
+        } finally {
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (Exception closeEx) {
+                    //do nothing
+                }
+            }
+        }
+    }
 }

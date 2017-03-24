@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="edu.dao.SenhaDao" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -13,8 +14,10 @@
     </head>
     <body>
         <form action="ChamarProximoServlet" method="post">
-            <input type="text" name="nome_cliente" id="nome_cliente" value="${tab_senhas.nm_cliente}">
-            <input type="text" name="senha" id="senha" value="${tab_senhas.id_senha}">
+            <%SenhaDao senha = new SenhaDao();%> 
+            <% int senha1  = senha.getClienteSenha();%>
+            <input type="text" name="nome_cliente" id="nome_cliente" value="<%=senha.getNomeCliente(senha1)%>">
+            <input type="text" name="senha" id="senha" value="1">
             <input type="submit" value="Confirmar Presença" class="btn-outline" />
             <input type="submit" value="Não Confirmar Presença" class="btn-outline" />
 

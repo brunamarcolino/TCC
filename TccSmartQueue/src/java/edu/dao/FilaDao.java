@@ -20,11 +20,8 @@ public class FilaDao extends Dao {
            // PreparedStatement stmt = conn.prepareStatement(sql);
             PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);            
             stmt.setInt(1, id_usuario);
-            System.out.println(id_usuario);
             stmt.setInt(2, mesa_usuario);
-            System.out.println(mesa_usuario);
             stmt.setString(3, status_fila);
-            System.out.println(status_fila);
             
             int affectedRows = stmt.executeUpdate();
             
