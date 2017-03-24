@@ -7,6 +7,9 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <head>
         <meta charset="UTF-8">
+        <meta http-equiv = "Content-Language" content = "en"/>
+        <meta http-equiv = "Content-Type" content="text/html; charset=utf-8">
+        <meta http-equiv = "Content-Type" content="text/css; charset=utf-8">
         <meta name="description" content="Gerenciador de filas">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
