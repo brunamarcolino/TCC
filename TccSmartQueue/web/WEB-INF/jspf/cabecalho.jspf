@@ -225,8 +225,11 @@ input[type="button"]:hover{
                         <nav>
                             <ul>
                                 <li>
-                                    <a href="">Abrir Fila</a>
-                                </li>         
+                                    <a href="abrir_fila.jsp">Abrir Fila</a>
+                                </li>  
+                                <li>
+                                    <a href="fechar_fila.jsp">Fechar Fila</a>
+                                </li>
                             </ul>
                         </nav>
                     </c:if>   

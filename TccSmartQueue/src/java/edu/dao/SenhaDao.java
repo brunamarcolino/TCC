@@ -16,8 +16,9 @@ import java.sql.Statement;
  * @author brunacm
  */
 public class SenhaDao extends Dao {
-    
-    public int geraSenha() {
+  
+     public int geraSenha(String cliente, String cpf, String senha) {
+
         Connection conn = null;
         int id_sequencia = 0;
         
@@ -25,36 +26,54 @@ public class SenhaDao extends Dao {
             //obtem conexao com o banco de dados
             conn = getConnection();
             conn.setAutoCommit(false);
-            //antes de gerar senha chama metodo cadastro cliente 
-            //define SQL para inser��o
-            String sql = "INSERT INTO tab_senhas(id_senha, data_senha, cpf_cliente, nm_cliente, senha_cliente, status_atendimento) VALUES (? , curdate(), ?, ?, ?, 'Ativo'); ";    
-            //instance Prepared statement especificando os par�metros do SQL
-            PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);            
-            stmt.setInt(1, getProximaSenha());
-            stmt.setInt(2, 122); //informar CPF digitado pelo usuário
-            stmt.setString(3, "nome"); //informar nome digitado pelo usuário
-            stmt.setString(4, "senha"); //informar senha digitado pelo usuário                      
-
-            //executa a opera��o no banco de dados
-            int affectedRows = stmt.executeUpdate();
-            //verifica se deu certo. Se sim, obtem a chave id_senha gerada 
-            if (affectedRows > 0) {
-                ResultSet rs = stmt.getGeneratedKeys();
-                if (rs.next()){
-                    id_sequencia = rs.getInt(1);
-                    System.out.println("if senha: " + id_sequencia);
+            
+            //VERIFICA SE ESSE CLIENTE JÁ POSSUI SENHA ATIVA PARA A DATA ATUAL
+            String select_sql = "SELECT id_sequencia, senha_cliente senha FROM tab_senhas WHERE data_senha = curdate() and status_atendimento = 'Ativo' and cpf_cliente = ?";
+            PreparedStatement stmt = conn.prepareStatement(select_sql);
+            stmt.setInt(1, Integer.parseInt(cpf));
+            ResultSet result = stmt.executeQuery();
+            
+            //SE SIM
+            if (result.next()) {
+                //RECUPERA AS INFORMAÇÕES DO CLIENTE
+                id_sequencia = result.getInt(1);
+                String senha_banco = result.getString(2);
+                
+                //VERIFICA SE SENHA ESTÁ CORRETA
+                if (senha.equals(senha_banco)){
+                   return id_sequencia;
                 }else {
-                    System.out.println("erro"); 
-                }
-            } else {
-                //cancela as modifica��es no banco de dados
-                conn.rollback();
-                return 0;
+                    return -1; //CLIENTE ATIVO, MAS ERRO A SENHA
+                }                                
             }
+            //SE NÃO
+            else {  
+                //INSERE NOVA SENHA
+                String sql = "INSERT INTO tab_senhas(id_senha, data_senha, cpf_cliente, nm_cliente, senha_cliente, status_atendimento) VALUES (? , curdate(), ?, ?, SHA1(?), 'Ativo'); ";                    
+                stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);            
+                stmt.setInt(1, getProximaSenha());
+                stmt.setInt(2, Integer.parseInt(cpf)); //informar CPF digitado pelo usuário
+                stmt.setString(3, cliente); //informar nome digitado pelo usuário
+                stmt.setString(4, senha); //informar senha digitado pelo usuário                                      
+                int affectedRows = stmt.executeUpdate();
+                
+                //verifica se deu certo. Se sim, obtem a chave id_sequancia gerada 
+                 if (affectedRows > 0) {
+                    ResultSet rs = stmt.getGeneratedKeys();
+                    if (rs.next()){
+                        id_sequencia = rs.getInt(1);                       
+                    }else {
+                        System.out.println("erro"); 
+                    }
+                } else {
+                //cancela as modifica��es no banco de dados
+                    conn.rollback();
+                    return 0;
+                }
                 //confirma as modifica��es no banco de dados
                 conn.commit();
                 return id_sequencia;
-
+            }                    
         } catch (Exception ex) {
             ex.printStackTrace();
             return 0;
@@ -67,8 +86,8 @@ public class SenhaDao extends Dao {
                 }
             }
         }
-    }    
-    
+    }
+     
     public int getProximaSenha() {
         Connection conn = null;
 
@@ -172,6 +191,107 @@ public class SenhaDao extends Dao {
         } catch (Exception ex) {
             ex.printStackTrace();
             return false;
+        } finally {
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (Exception closeEx) {
+                    //do nothing
+                }
+            }
+        }
+    }
+    public int chamaProximaSenha(int id_senha) {
+        Connection conn = null;
+        
+        try {
+            //obtem conexao com o banco de dados
+            conn = getConnection();
+            conn.setAutoCommit(false);
+            //antes de gerar senha chama metodo cadastro cliente 
+            //define SQL para inser��o
+            String sql = "UPDATE tab_senhas set status_atendimento = 'Em Atendimento',data_atendimento_ini=CURRENT_TIMESTAMP WHERE id_senha = ?";    
+            //instance Prepared statement especificando os par�metros do SQL
+            PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);            
+            stmt.setInt(1, id_senha);
+            System.out.println(id_senha);
+            //executa a opera��o no banco de dados
+            int affectedRows = stmt.executeUpdate();
+            //verifica se deu certo. Se sim, obtem a chave id_senha gerada 
+            if (affectedRows > 0) {
+                conn.commit();
+                return id_senha;
+            } else {
+                //cancela as modifica��es no banco de dados
+                
+                conn.rollback();
+                return 0;
+            }
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return 0;
+        } finally {
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (Exception closeEx) {
+                    //do nothing
+                }
+            }
+        }
+    }
+    public int getClienteSenha() {
+        Connection conn = null;
+
+        try {
+            conn = getConnection();
+
+            String sql = "SELECT IFNULL(max(id_senha+1),1) id_senha FROM tab_senhas WHERE data_senha = CURDATE()";
+
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            ResultSet result = stmt.executeQuery();
+
+            if (result.next()) {
+                int id_senha = result.getInt("id_senha");
+                return id_senha;
+            } else {
+                return 0;
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return 0;
+        } finally {
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (Exception closeEx) {
+                    //do nothing
+                }
+            }
+        }
+    }
+    public String getNomeCliente(int id_senha) {
+        Connection conn = null;
+
+        try {
+            conn = getConnection();
+
+            String sql = "SELECT nm_cliente FROM tab_senhas WHERE id_senha =?";
+
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, id_senha);
+            ResultSet result = stmt.executeQuery();
+
+            if (result.next()) {
+                String nm_cliente = result.getString("nm_cliente");
+                return nm_cliente;
+            } else {
+                return null;
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return null;
         } finally {
             if (conn != null) {
                 try {
