@@ -37,8 +37,7 @@
             <c:otherwise>
                     <form id="usuarios" action="EditarUsuarioServlet" method="get">
                     <p>
-                        <label for="Id">Id : </label>
-                        <input type="text" name="id" value="${usuario.id_usuario}" readonly="readonly"/>
+                        <input type="hidden" name="id" value="${usuario.id_usuario}" readonly="readonly"/>
                     </p>    
                     <p>
                         <label for="Nome">Nome : </label>
@@ -59,14 +58,7 @@
                             <option value="Atendente">Atendente</option>
                             <option value="Administrador">Administrador</option>
                         </select>
-                    </p>
-                    <p>
-                        <label for="Status">Status : </label>
-                        <select name="status">
-                            <option value="Ativo">Ativo</option>
-                            <option value="Inativo">Inativo</option>
-                        </select>
-                    </p>                    
+                    </p>                
                     <p>
                         <input type="submit"/>
                     </p>

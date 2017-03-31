@@ -37,14 +37,12 @@ public class EditarUsuarioServlet extends HttpServlet {
         String cpf_str = request.getParameter("cpf");
         int cpf = Integer.parseInt(cpf_str);
         String tipo = request.getParameter("tipo");
-        String status = request.getParameter("status");
         
         Usuario usuario = new Usuario();
         usuario.setId_usuario(id);
         usuario.setNm_usuario(nome);
         usuario.setCpf_usuario(cpf);
         usuario.setEmail_usuario(email);
-        usuario.setStatus_usuario(status);
         usuario.setTipo_usuario(tipo);
         
         UsuarioDao usuarioDao = new UsuarioDao();

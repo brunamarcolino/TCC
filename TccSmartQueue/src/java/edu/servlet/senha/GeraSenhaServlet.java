@@ -35,7 +35,7 @@ public class GeraSenhaServlet extends HttpServlet{
         
         if (id_sequencia > 0){        
             Senha senha = senhaDao.retornaSenha(id_sequencia);
-            mensagem = "<span>Sua mensagem foi gerada com sucesso!</span>";
+            mensagem = "<span>Sua senha foi gerada com sucesso!</span>";
             request.setAttribute("mensagemSucesso", mensagem);
             request.setAttribute("senha", senha);
             getServletContext().getRequestDispatcher("/gerar_senha.jsp").forward(request, response);
@@ -48,6 +48,9 @@ public class GeraSenhaServlet extends HttpServlet{
             }
             if(cpfcliente.isEmpty()){
                 mensagem = mensagem + "<span>Seu CPF não está preenchido! </span>";
+            }
+            if (id_sequencia == -1){
+                mensagem = mensagem + "<span>Senha Inválida para CPF Ativo! </span>";
             }
             request.setAttribute("mensagemErro", mensagem);
             getServletContext().getRequestDispatcher("/login_cliente.jsp").forward(request, response);
