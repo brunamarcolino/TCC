@@ -52,7 +52,7 @@ public class FecharFilaServlet extends HttpServlet {
             } else {
                 mensagem = "<span>Ops! Ocorreu algum erro, tente novamente ;(</span>";
                 request.setAttribute("mensagemErro", mensagem);
-                getServletContext().getRequestDispatcher("/abrir_fila.jsp").forward(request, response);
+                getServletContext().getRequestDispatcher("/fechar_fila.jsp").forward(request, response);
             }
         }
     }

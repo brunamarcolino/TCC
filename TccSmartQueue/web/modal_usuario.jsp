@@ -16,6 +16,8 @@
         <title>Smartqueue</title>
         <link rel="stylesheet" type="text/css" href="estilos/estilo.css" />
         <link rel="stylesheet" type="text/css" href="estilos/unsemantic-responsive.css" />
+        <script type="text/javascript" src="script/jquery-3.2.0.min.js"></script>
+        <script type="text/javascript" src="script/general.js"></script>
     </head>
     <body>    
         <%@include file="WEB-INF/jspf/cabecalho.jspf"%>

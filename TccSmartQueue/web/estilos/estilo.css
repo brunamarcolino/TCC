@@ -70,6 +70,20 @@ textarea{
     background: #FFF;
     color: #999;
 }
+.mensagem{
+    width: 100%;
+    text-align: center;
+    padding: 1em 0;
+    color: #FFF;
+    font-weight: bold;
+    font-family: 'Lato-Bold', sans-serif;}
+.mensagemErro{
+    background-color: #FF4C4C;
+}
+.mensagemSucesso{
+    background-color: #3EB27D;
+}
+
 body.nao-logado{
     background: url('')
 }
@@ -79,7 +93,7 @@ body.nao-logado{
     position: absolute;
     left: 0;
     right: 0;
-    top: 15%;
+    top: 20%;
     bottom: 0;
     margin: auto;
 }
@@ -89,6 +103,7 @@ body.nao-logado{
 .center p{
     color: #888;
     font-size: 1em;
+    margin-bottom: 1em;
 }
 .login h1,
 .center h1{
