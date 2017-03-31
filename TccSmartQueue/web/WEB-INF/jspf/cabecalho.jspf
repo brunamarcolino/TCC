@@ -210,7 +210,7 @@ input[type="button"]:hover{
                         <nav>
                             <ul>
                                 <li>
-                                    <a href="ListaParametrosServlet">Gerenciar atendentes</a>
+                                    <a href="ListaUsuarioServlet">Gerenciar atendentes</a>
                                 </li>
                                 <li>
                                     <a href="ListaParametrosServlet">Gerar Relatórios</a>

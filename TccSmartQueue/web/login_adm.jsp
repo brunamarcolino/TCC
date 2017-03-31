@@ -18,7 +18,7 @@
             <c:if test="${login.tipo_usuario=='Administrador'}">
                 <ul>
                     <li>
-                        <a href="ListaParametrosServlet">Gerenciar atendentes</a>
+                        <a href="ListaUsuarioServlet">Gerenciar atendentes</a>
                     </li>         
                 </ul>
                 <ul>

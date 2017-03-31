@@ -37,8 +37,9 @@ public class SenhaDao extends Dao {
             if (result.next()) {
                 //RECUPERA AS INFORMAÇÕES DO CLIENTE
                 id_sequencia = result.getInt(1);
-                String senha_banco = result.getString(2);
-                
+                String senha_banco = result.getString(2);                
+                System.out.println(senha);
+                System.out.println(senha_banco);
                 //VERIFICA SE SENHA ESTÁ CORRETA
                 if (senha.equals(senha_banco)){
                    return id_sequencia;
@@ -49,7 +50,7 @@ public class SenhaDao extends Dao {
             //SE NÃO
             else {  
                 //INSERE NOVA SENHA
-                String sql = "INSERT INTO tab_senhas(id_senha, data_senha, cpf_cliente, nm_cliente, senha_cliente, status_atendimento) VALUES (? , curdate(), ?, ?, SHA1(?), 'Ativo'); ";                    
+                String sql = "INSERT INTO tab_senhas(id_senha, data_senha, cpf_cliente, nm_cliente, senha_cliente, status_atendimento) VALUES (? , curdate(), ?, ?, ?, 'Ativo'); ";                    
                 stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);            
                 stmt.setInt(1, getProximaSenha());
                 stmt.setInt(2, Integer.parseInt(cpf)); //informar CPF digitado pelo usuário
@@ -88,6 +89,20 @@ public class SenhaDao extends Dao {
         }
     }
      
+/*public String criptoSenha(String senha_descripto){
+    String senha = "";
+	try {
+            MessageDigest criptografar = MessageDigest.getInstance("SHA-1");
+            criptografar.digest(senha_descripto.getBytes());
+            BASE64Encoder encoder = new BASE64Encoder ();  
+            senha = encoder.encode(criptografar.digest());
+            return senha;
+            } catch (NoSuchAlgorithmException e1) {
+		e1.printStackTrace();
+                return "Erro";
+            }             
+}*/
+
     public int getProximaSenha() {
         Connection conn = null;
 

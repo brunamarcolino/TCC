@@ -22,7 +22,7 @@
             <div class="grid-100 mobile-grid-100">
                 <c:if test="${not empty login}">  
                     <c:if test="${login.tipo_usuario=='Administrador'}">
-                        <h1>Perfil Admin</h1>
+                        <h1>Perfil Admin</h1> 
 
                     </c:if>        
                     <c:if test="${login.tipo_usuario=='Atendente'}">
