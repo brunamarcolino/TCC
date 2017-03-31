@@ -22,7 +22,8 @@
     </head>
     <body>
         <%@include file="WEB-INF/jspf/cabecalho.jspf"%>
-        
+         <%@include file="WEB-INF/jspf/mensagem.jspf"%>
+         
         <div class="main">
             <div class="grid-75 gera-senha">
             <c:choose>  

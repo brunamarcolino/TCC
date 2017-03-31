@@ -14,15 +14,15 @@ import edu.vo.Usuario;
 /**
  * Servlet implementation class AlunoServlet
  */
-@WebServlet("/ModalEditarUsuarioServlet")
-public class ModalEditarUsuarioServlet extends HttpServlet {
+@WebServlet("/ExcluirUsuarioServlet")
+public class ExcluirUsuarioServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ModalEditarUsuarioServlet() {
+    public ExcluirUsuarioServlet() {
         super();
         // TODO Auto-generated constructor stub
     }

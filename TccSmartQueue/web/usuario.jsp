@@ -44,7 +44,6 @@
                         <th>Email</th>
                         <th>CPF</th>
                         <th>Tipo</th>
-                        <th>Status</th>
                         <th>Ações</th>
                     </tr>
 
@@ -61,13 +60,11 @@
                             </td>    
                             <td>      
                                 ${usuario.tipo_usuario}
-                            </td>              
-                            <td>      
-                                ${usuario.status_usuario}
-                            </td>                            
+                            </td>                                        
                             
                             <td>  
-                                <a href="ModalEditarUsuarioServlet?id_usuario=${usuario.id_usuario}">Editar</a>                            
+                                <a href="ModalEditarUsuarioServlet?id_usuario=${usuario.id_usuario}">Editar</a> 
+                                <a href="ExcluirUsuarioServlet?id_usuario=${usuario.id_usuario}">Excluir</a>
                             </td>
                         </tr>
                             

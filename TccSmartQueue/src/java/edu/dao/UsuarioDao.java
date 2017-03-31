@@ -94,7 +94,7 @@ public class UsuarioDao extends Dao {
         try {
             conn = getConnection();
 
-            String sql = "SELECT id_usuario, nm_usuario, email_usuario, cpf_usuario, tipo_usuario, status_usuario FROM tab_usuarios ";
+            String sql = "SELECT id_usuario, nm_usuario, email_usuario, cpf_usuario, tipo_usuario FROM tab_usuarios where status_usuario = 'Ativo'";
 
             PreparedStatement stmt = conn.prepareStatement(sql);
             ResultSet result = stmt.executeQuery();
@@ -107,7 +107,6 @@ public class UsuarioDao extends Dao {
                 usuario.setEmail_usuario(result.getString("email_usuario"));                
                 usuario.setCpf_usuario(result.getInt("cpf_usuario"));
                 usuario.setTipo_usuario(result.getString("tipo_usuario"));
-                usuario.setStatus_usuario(result.getString("status_usuario"));
                 
 
                 usuarios.add(usuario);
