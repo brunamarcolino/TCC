@@ -15,10 +15,10 @@
 
         <%@include file="WEB-INF/jspf/mensagem.jspf" %>
         <div class="grid-25 mobile-grid-100 center">
-            <h1>Login Cliente</h1>
-            <p>Para que possamos garantir a segurança da sua senha, por favor preencha o formulário abaixo:</p>
-            <br/>
-            <br/>
+            <div class="box">
+                <h1>Login Cliente</h1>
+                <p>Para que possamos garantir a segurança da sua senha, por favor preencha o formulário abaixo:</p>
+            </div>
             <form action="GeraSenhaServlet" method="post">
                 <ul>
                     <li>

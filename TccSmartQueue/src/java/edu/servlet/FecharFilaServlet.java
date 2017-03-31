@@ -32,11 +32,12 @@ public class FecharFilaServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //RECEBE PARAMETROS DA REQUEST
         int id_fila = Integer.parseInt(request.getParameter("id_fila"));
-
+        String mensagem = "";
+        
         //VERIFICA SE É NULO OU VAZIO
         if (id_fila == 0) {
             //em caso de erro, grava mensagem de erro na requisi��o e retorna para p�gina inicial
-            String mensagem = "Número da Fila Inexistente!";
+            mensagem = "<span>Número da Fila Inexistente!</span>";
             request.setAttribute("mensagemErro", mensagem);
             getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
         } else {
@@ -44,12 +45,14 @@ public class FecharFilaServlet extends HttpServlet {
             
             boolean fila = filaDao.setFilaOff(id_fila);
             if (fila) {
+                mensagem = "<span>Fila fechada com sucesso</span>";
+                request.setAttribute("mensagemSucesso", mensagem);
                 request.getSession().setAttribute("id_fila", fila);
                 getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
             } else {
-                String mensagem = "deu ruim";
+                mensagem = "<span>Ops! Ocorreu algum erro, tente novamente ;(</span>";
                 request.setAttribute("mensagemErro", mensagem);
-                getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+                getServletContext().getRequestDispatcher("/abrir_fila.jsp").forward(request, response);
             }
         }
     }

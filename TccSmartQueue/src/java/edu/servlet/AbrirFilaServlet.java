@@ -41,20 +41,23 @@ public class AbrirFilaServlet extends HttpServlet {
         //VERIFICA SE É NULO OU VAZIO
         if (mesa == 0) {
             //em caso de erro, grava mensagem de erro na requisi��o e retorna para p�gina inicial
-            String mensagem = "Numero da mesa nulo!";
+            String mensagem = "<span>O número da mesa está nulo!</span>";
             request.setAttribute("mensagemErro", mensagem);
             getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
         } else {
             FilaDao filaDao = new FilaDao();
             
             boolean fila = filaDao.setFila(id_usuario,mesa,status_fila);
+            String mensagem = "";
             if (fila) {
+                mensagem = "<span>Fila aberta com sucesso</span>";
+                request.setAttribute("mensagemSucesso", mensagem);
                 request.getSession().setAttribute("mesa", fila);
                 getServletContext().getRequestDispatcher("/chamar_proximo.jsp").forward(request, response);
             } else {
-                String mensagem = "deu ruim";
+                mensagem = "<span>Ops! Ocorreu algum erro, tente novamente ;(</span>";
                 request.setAttribute("mensagemErro", mensagem);
-                getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+                getServletContext().getRequestDispatcher("/abrir_fila.jsp").forward(request, response);
             }
         }
     }
