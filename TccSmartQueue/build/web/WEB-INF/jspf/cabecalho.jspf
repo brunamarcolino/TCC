@@ -9,7 +9,7 @@ RA: 1510027287
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<style type="text/css">
+<!--<style type="text/css">
 @font-face {
   font-family: 'Lato-Hairline';
   src: url('../fontes/Lato-Hairline.ttf') format('truetype');
@@ -159,7 +159,20 @@ input[type="button"]:hover{
     font-weight: bold;
     font-family: 'Lato-Bold', sans-serif;
 }
-</style>
+
+@media (max-width: 450px) {
+    .mobile-grid-100{
+        width: 100%;
+    }
+    .login{
+        top: 10%;
+        float: left;
+        padding-left: 30px;
+        padding-right: 30px;
+        box-sizing: border-box;
+    }
+}
+</style> -->
 
 <c:choose>
     <c:when test="${empty login}">
@@ -188,10 +201,10 @@ input[type="button"]:hover{
     </c:when>
     <c:otherwise>
         <header class="grid-100 mobile-grid-100">
-            <div class="grid-10">
+            <div class="grid-10 mobile-grid-50">
                  <h3>Smartqueue</h3>
             </div>
-            <div class="grid-80 pull-left">
+            <div class="grid-80 pull-left hide-on-mobile">
                 <c:if test="${not empty login}">  
                     <c:if test="${login.tipo_usuario=='Administrador'}">
                         <nav>

@@ -87,16 +87,23 @@ body.nao-logado{
 }
 .login h1{
     text-transform: uppercase;
-    font-family: 'Lato-Semibold', sans-serif;
+    font-family: 'Lato-Thin', sans-serif;
     color: #FF8500;
     font-weight: lighter;
-    line-height: 1em;
+    line-height: 1.2em;
+    text-align: center;
+}
+.login h1 strong{
+    font-size: 1.4em;
+    font-family: 'Lato-Bold', sans-serif;
+    font-weight: bold;
 }
 .login h3{
     margin-bottom: 1.5em;
-    font-family: 'Lato-Light', sans-serif;
+    font-family: 'Lato-Thin', sans-serif;
     font-weight: lighter;
     color: #888;
+    text-align: center;
 }
 .login input[type="submit"]{
     border-color: #84bd00;
@@ -217,5 +224,14 @@ table td{
 .gera-senha input[type="button"].cancelar{
     border-color: #FF4C4C;
     color: #FF4C4C;
+}
+
+@media (max-width: 450px) {
+    .info{
+        border: none;
+    }
+    .info > div{
+        margin: 0 0 1em 0;
+    }
 }
 

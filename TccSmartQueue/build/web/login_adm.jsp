@@ -18,15 +18,11 @@
             <c:if test="${login.tipo_usuario=='Administrador'}">
                 <ul>
                     <li>
-                        <a href="ListaParametrosServlet">Gerenciar atendentes</a>
+                        <a href="ListaUsuarioServlet">Gerenciar atendentes</a>
                     </li>         
-                </ul>
-                <ul>
                     <li>
                         <a href="ListaParametrosServlet">Gerar Relatórios</a>
-                    </li>         
-                </ul>
-                <ul>
+                    </li>
                     <li>
                         <a href="ListaParametrosServlet">Parametros do Sistemas</a>
                     </li>         
@@ -41,7 +37,8 @@
                 </ul>
                 </form> 
             </c:if>                   
-</c:if>                
-                
+        </c:if>                
+              
+        <%@include file="WEB-INF/jspf/rodape.jspf" %>
     </body>
 </html>

@@ -31,11 +31,12 @@ public class LoginServlet extends HttpServlet {
         //RECEBE PARAMETROS DA REQUEST
         String login = request.getParameter("login");
         String senha = request.getParameter("senha");
-
+        String mensagem = "";
+        
         //VERIFICA SE É NULO OU VAZIO
         if (login == null || login.isEmpty() || senha == null || senha.isEmpty()) {
             //em caso de erro, grava mensagem de erro na requisi��o e retorna para p�gina inicial
-            String mensagem = "Login ou senha nulos!";
+            mensagem = "<span>Login ou senha nulos!</span>";
             request.setAttribute("mensagemErro", mensagem);
             getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
         } else {
@@ -45,7 +46,7 @@ public class LoginServlet extends HttpServlet {
                 request.getSession().setAttribute("login", usuario);
                 getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
             } else {
-                String mensagem = "Login ou senha inválidos!";
+                mensagem = "<span>Login ou senha inválidos!</span>";
                 request.setAttribute("mensagemErro", mensagem);
                 getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
             }
