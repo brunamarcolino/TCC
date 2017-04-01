@@ -31,11 +31,11 @@
                 <div class="box">
                     <h1>Fechar fila</h1>
                 </div>
-                <form action="FecharFilaServlet" method="post">
+                <form action="FecharFilaServlet?login_usuario=${login.id_usuario}" method="post">
                     <ul>
                         <li> 
-                            <label>Informe a fila que deseja fechar:</label>
-                            <input type="text" name="id_fila" value="${param.id_fila}"/>
+                            <label>Certeza que deseja fechar sua fila?</label>
+              
                         </li>
                         <li>
                             <input type="submit" value="Fechar Fila" class="btn-outline" />

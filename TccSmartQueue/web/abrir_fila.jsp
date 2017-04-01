@@ -31,7 +31,7 @@
                 <div class="box">
                     <h1>Abrir fila</h1>
                 </div>
-                <form action="AbrirFilaServlet" method="post">
+                <form action="AbrirFilaServlet?login_usuario=${login.id_usuario}" method="post">
                     <ul>
                         <li>
                             <label>Insira o número da fila:</label>

@@ -33,8 +33,10 @@ public class AbrirFilaServlet extends HttpServlet {
         //RECEBE PARAMETROS DA REQUEST
         String status_fila;
         status_fila = new String("Aberta");
+        String login_usuario_str = request.getParameter("login_usuario");
+        int login_usuario = Integer.parseInt(login_usuario_str);
         int mesa = Integer.parseInt(request.getParameter("mesa"));
-        int id_usuario = 402;
+    
 
 
 
@@ -47,7 +49,7 @@ public class AbrirFilaServlet extends HttpServlet {
         } else {
             FilaDao filaDao = new FilaDao();
             
-            boolean fila = filaDao.setFila(id_usuario,mesa,status_fila);
+            boolean fila = filaDao.setFila(login_usuario,mesa,status_fila);
             String mensagem = "";
             if (fila) {
                 mensagem = "<span>Fila aberta com sucesso</span>";
