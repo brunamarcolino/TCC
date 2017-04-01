@@ -7,30 +7,28 @@ import java.sql.Statement;
 
 public class FilaDao extends Dao {
 
-    public boolean setFila( int id_usuario, int mesa_usuario, String status_fila) {
+    public boolean setFila( int login_usuario, int mesa_usuario, String status_fila) {
         Connection conn = null;
 
         try {
             conn = getConnection();
             conn.setAutoCommit(false);
-
-            String sql = "INSERT INTO tab_fila (id_usuario,mesa_usuario,status_fila) VALUES (?,?,?);";
-
             
-           // PreparedStatement stmt = conn.prepareStatement(sql);
-            PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);            
-            stmt.setInt(1, id_usuario);
+            String sql = "INSERT INTO tab_fila (id_usuario,mesa_usuario,status_fila) VALUES (?,?,?)";
+
+                         
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, login_usuario);
             stmt.setInt(2, mesa_usuario);
             stmt.setString(3, status_fila);
-            
+
             int affectedRows = stmt.executeUpdate();
-            
-            if (affectedRows > 0) {
-                 conn.commit(); 
+           if (affectedRows > 0) {
+                conn.commit();
                 return true;
             } else {
-                conn.rollback();
-                return false;
+               conn.rollback();
+               return false;
             }
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -45,19 +43,19 @@ public class FilaDao extends Dao {
             }
         }
     }
-    public boolean setFilaOff(int id_fila) {
+    public boolean setFilaOff(int login_usuario) {
         Connection conn = null;
 
         try {
             conn = getConnection();
             conn.setAutoCommit(false);
 
-            String sql = "UPDATE tab_fila SET status_fila= 'Fechada' WHERE id_fila = ?;";
+            String sql = "UPDATE tab_fila SET status_fila= 'Fechada' WHERE id_usuario = ?;";
 
             
            // PreparedStatement stmt = conn.prepareStatement(sql);
             PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);            
-            stmt.setInt(1, id_fila);
+            stmt.setInt(1, login_usuario);
 
             
             int affectedRows = stmt.executeUpdate();

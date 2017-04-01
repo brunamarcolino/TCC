@@ -70,13 +70,22 @@ textarea{
     background: #FFF;
     color: #999;
 }
+.mensagem.ocultar {
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+}
 .mensagem{
     width: 100%;
     text-align: center;
     padding: 1em 0;
     color: #FFF;
     font-weight: bold;
-    font-family: 'Lato-Bold', sans-serif;}
+    font-family: 'Lato-Bold', sans-serif;
+    transition: all .3s ease-out;
+}
 .mensagemErro{
     background-color: #FF4C4C;
 }
@@ -259,4 +268,3 @@ table td{
         margin: 0 0 1em 0;
     }
 }
-

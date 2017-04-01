@@ -31,29 +31,29 @@ public class FecharFilaServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //RECEBE PARAMETROS DA REQUEST
-        int id_fila = Integer.parseInt(request.getParameter("id_fila"));
-        String mensagem = "";
         
+        String mensagem = "";
+        String login_usuario_str = request.getParameter("login_usuario");
+        int login_usuario = Integer.parseInt(login_usuario_str);
         //VERIFICA SE É NULO OU VAZIO
-        if (id_fila == 0) {
-            //em caso de erro, grava mensagem de erro na requisi��o e retorna para p�gina inicial
-            mensagem = "<span>Número da Fila Inexistente!</span>";
-            request.setAttribute("mensagemErro", mensagem);
-            getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
-        } else {
+       try{
+           
             FilaDao filaDao = new FilaDao();
             
-            boolean fila = filaDao.setFilaOff(id_fila);
+            boolean fila = filaDao.setFilaOff(login_usuario);
             if (fila) {
                 mensagem = "<span>Fila fechada com sucesso</span>";
                 request.setAttribute("mensagemSucesso", mensagem);
-                request.getSession().setAttribute("id_fila", fila);
+                request.getSession().setAttribute("login_usuario", fila);
                 getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
             } else {
                 mensagem = "<span>Ops! Ocorreu algum erro, tente novamente ;(</span>";
                 request.setAttribute("mensagemErro", mensagem);
                 getServletContext().getRequestDispatcher("/fechar_fila.jsp").forward(request, response);
             }
+        }catch(Exception closeEx){
+           
+                    //do nothing
         }
     }
 }
