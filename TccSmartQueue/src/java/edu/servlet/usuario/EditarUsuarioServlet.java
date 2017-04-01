@@ -52,7 +52,7 @@ public class EditarUsuarioServlet extends HttpServlet {
             //requisi��o foi bem sucedida, vamos finaliza-la e redirecionar o usuario para outro servlet
             response.sendRedirect(getServletContext().getContextPath() + "/ListaUsuarioServlet");
         } else {
-            request.setAttribute("mensagemErro", "Não foi possível salvar dados do aluno.");
+            request.setAttribute("mensagemErro", "Não foi possível salvar dados do usuário.");
             getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
         }        
         

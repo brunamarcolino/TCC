@@ -16,7 +16,7 @@ public class UsuarioDao extends Dao {
         try {
             conn = getConnection();
 
-            String sql = "SELECT id_usuario, nm_usuario, email_usuario, status_usuario, tipo_usuario FROM tab_usuarios " + "where nm_usuario=? AND senha_usuario=SHA1(?)";
+            String sql = "SELECT id_usuario, nm_usuario, email_usuario, status_usuario, tipo_usuario FROM tab_usuarios " + "where nm_usuario=? AND senha_usuario=SHA1(?) and status_usuario='Ativo'";
             
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setString(1, nm_usuario);
@@ -137,16 +137,15 @@ public class UsuarioDao extends Dao {
             conn.setAutoCommit(false);
 
             //define SQL para atualiza��o
-            String sql = "UPDATE tab_usuarios SET nm_usuario = ?, email_usuario = ?, cpf_usuario = ?, status_usuario = ?, tipo_usuario = ?  WHERE id_usuario = ?";
+            String sql = "UPDATE tab_usuarios SET nm_usuario = ?, email_usuario = ?, cpf_usuario = ?, tipo_usuario = ?  WHERE id_usuario = ?";
 
             //instance Prepared statement especificando os par�metros do SQL
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setString(1, usuario.getNm_usuario());
             stmt.setString(2, usuario.getEmail_usuario());
             stmt.setInt(3, usuario.getCpf_usuario());
-            stmt.setString(4, usuario.getStatus_usuario());
-            stmt.setString(5, usuario.getTipo_usuario());
-            stmt.setInt(6, usuario.getId_usuario());
+            stmt.setString(4, usuario.getTipo_usuario());
+            stmt.setInt(5, usuario.getId_usuario());
 
             //executa a opera��o no banco de dados
             int affectedRows = stmt.executeUpdate();
