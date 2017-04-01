@@ -34,10 +34,11 @@
                 <form action="FecharFilaServlet?login_usuario=${login.id_usuario}" method="post">
                     <ul>
                         <li> 
-                            <label>Certeza que deseja fechar sua fila?</label>
+                            <label>Tem certeza que deseja fechar sua fila?</label>
               
                         </li>
                         <li>
+                            <a href="" class="btn btn-outline">Não fechar</a>
                             <input type="submit" value="Fechar Fila" class="btn-outline" />
                         </li>
                     </ul>

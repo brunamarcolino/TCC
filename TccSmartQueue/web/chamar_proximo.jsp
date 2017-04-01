@@ -27,14 +27,45 @@
 
         <%@include file="WEB-INF/jspf/mensagem.jspf" %>
         <div class="main">
-            <div class="grid-25 mobile-grid-100 center">
-                <form action="ChamarProximoServlet" method="post">
-                    <h2>Carlos Henrique</h2>
-                    <h3>1</h3>
-                    
-                    <input type="submit" value="Confirmar Presença" class="btn-outline" />
-                    <input type="submit" value="Não Confirmar Presença" class="btn-outline" />
-                </form>
+            <div class="grid-parent grid-50 mobile-grid-100 center">
+                <div class="grid-parent grid-100 box-atendente">
+                    <div class="grid-30 mobile-grid-100">
+                        <ul>
+                            <li>
+                                <label>Atendente:</label>
+                                <h2>Thiago Quintanilha</h2>
+                            </li>
+                            <li>
+                                <label>Mesa:</label>
+                                <h2>03</h2>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="grid-70 mobile-grid-100">
+                        <a href="" class="btn btn-outline">Chamar próximo cliente</a>
+                    </div>
+                </div>
+                <div class="grid-parent grid-100 box-cliente">
+                    <div class="grid-70 mobile-grid-100">
+                        <form action="ChamarProximoServlet" method="post">
+                            <ul>
+                                <li>
+                                    <label>Cliente:</label>
+                                    <h2>Carlos Henrique</h2>
+                                </li>
+                                <li>
+                                    <label>Senha:</label>
+                                    <h2>1</h2>
+                                </li>
+                            </ul>
+                        </form>
+                    </div>
+                    <div class="grid-30 mobile-grid-100 presenca">
+                        <p>O cliente está presente?</p>
+                        <a href="" class="btn btn-outline verde">Sim</a>
+                        <a href="" class="btn btn-outline vermelho">Não</a>                   
+                    </div>
+                </div>
             </div>
         </div>
         <%@include file="WEB-INF/jspf/rodape.jspf" %>

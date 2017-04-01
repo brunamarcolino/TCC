@@ -45,7 +45,8 @@ a{
     text-decoration: none;
     vertical-align: top;
 }
-form li{
+form li,
+div.box-atendente li{
     margin-bottom: 1.5em;
 }
 label{
@@ -259,7 +260,39 @@ table td{
     border-color: #FF4C4C;
     color: #FF4C4C;
 }
-
+div.box-atendente,
+div.box-cliente{
+    margin-bottom: 2em;
+    padding: 1em 1em 2em;
+    border-bottom: solid 1px #DDD;
+}
+div.box-atendente .btn{
+    float: right !important;
+    color: dodgerblue;
+    border-color: dodgerblue;
+}
+div.box-cliente{
+    padding-bottom: 0;
+    margin-bottom: 0;
+    border-bottom: none;
+}
+div.box-cliente .btn{
+    width: 30%;
+    display: inline-block;
+    margin-top: .5em;
+    margin-right: .5em;
+}
+.btn.verde{
+    border-color: #84bd00;
+    color: #84bd00;
+}
+.btn.vermelho{
+    border-color: #FF4C4C;
+    color: #FF4C4C;
+}
+div.box-cliente .btn:last-child{
+    margin-right: 0;
+}
 @media (max-width: 450px) {
     .info{
         border: none;
