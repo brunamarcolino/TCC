@@ -7,7 +7,7 @@
 $(document).ready(function(){
     setTimeout(function(){
         $('.mensagem').addClass('ocultar');
-        $('.mensagem').hide();
+        //$('.mensagem').hide();
     }, 2000);
     
     //$('#cpf').mask('000.000.000-00', {reverse: true});
