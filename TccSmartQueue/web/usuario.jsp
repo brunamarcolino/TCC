@@ -21,7 +21,7 @@
     </head>
     <body>    
         <%@include file="WEB-INF/jspf/cabecalho.jspf"%>
-
+        <%@include file="WEB-INF/jspf/mensagem.jspf"%>
         <c:if test="${empty login}">
 
             <jsp:forward page="index.jsp"/>  
@@ -64,7 +64,7 @@
                             
                             <td>  
                                 <a href="ModalEditarUsuarioServlet?id_usuario=${usuario.id_usuario}">Editar</a> 
-                                <a href="ExcluirUsuarioServlet?id_usuario=${usuario.id_usuario}">Excluir</a>
+                                <a href="ExcluirUsuarioServlet?id_usuario=${usuario.id_usuario}&login_usuario=${login.id_usuario}">Excluir</a>
                             </td>
                         </tr>
                             
