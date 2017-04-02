@@ -21,7 +21,7 @@
     </head>
     <body>    
         <%@include file="WEB-INF/jspf/cabecalho.jspf"%>
-
+        <%@include file="WEB-INF/jspf/mensagem.jspf"%>
         <c:if test="${empty login}">
 
             <jsp:forward page="index.jsp"/>  
@@ -34,9 +34,36 @@
             <div class="grid-50 mobile-grid-100">
               <c:choose>
             <c:when test="${empty usuario}">
-                <p>Nenhum usuario cadastrado!</p>
+                <h1>INCLUIR USUÁRIO</h1>
+                    <form id="iusuario" action="IncluirUsuarioServlet" method="get">
+                    <p>
+                        <label for="Nome">Nome : </label>
+                        <input type="text" name="inome" value="${param.nm_usuario}"/>
+                    </p>
+                    <p>
+                        <label for="Email">Email : </label>
+                        <input type="text" name="iemail" value="${param.email_usuario}"/>
+                    </p>
+                    <p>
+                        <label for="CPF">CPF : </label>
+                        <input type="text" name="icpf" value="${param.cpf_usuario}"/>
+                    </p>
+                   
+                    <p>
+                        <label for="Tipo">Tipo : </label>
+                        <select name="itipo">
+                            <option value="Atendente">Atendente</option>
+                            <option value="Administrador">Administrador</option>
+                        </select>
+                    </p>                
+                    <p>
+                        <input type="submit"/>
+                    </p>
+                    
+                </form>   
             </c:when>
             <c:otherwise>
+                <h1>EDITAR USUÁRIO</h1>
                     <form id="usuarios" action="EditarUsuarioServlet" method="get">
                     <p>
                         <input type="hidden" name="id" value="${usuario.id_usuario}" readonly="readonly"/>

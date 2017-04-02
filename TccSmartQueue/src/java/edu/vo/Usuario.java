@@ -2,8 +2,8 @@ package edu.vo;
 
 public class Usuario {
     
-    private int id_usuario, cpf_usuario;
-    private String nm_usuario, email_usuario, senha_usuario, tipo_usuario, status_usuario;
+    private int id_usuario;
+    private String nm_usuario, email_usuario, cpf_usuario, senha_usuario, tipo_usuario, status_usuario;
 
     public int getId_usuario() {
         return id_usuario;
@@ -13,11 +13,11 @@ public class Usuario {
         this.id_usuario = id_usuario;
     }
 
-    public int getCpf_usuario() {
+    public String getCpf_usuario() {
         return cpf_usuario;
     }
 
-    public void setCpf_usuario(int cpf_usuario) {
+    public void setCpf_usuario(String cpf_usuario) {
         this.cpf_usuario = cpf_usuario;
     }
 

@@ -70,7 +70,8 @@
                             
                     </c:forEach>
                 </table>  
- 
+                </br></br></br>
+                    <a href="ModalEditarUsuarioServlet?id_usuario=0">Incluir novo usuario</a> 
             </c:otherwise>
         </c:choose>                             
             </div>

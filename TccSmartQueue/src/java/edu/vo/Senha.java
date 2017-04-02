@@ -15,7 +15,7 @@ public class Senha {
     private int id_sequencia;
     private int id_senha;    
     private Date data_senha;
-    private int cpf_cliente;
+    private String cpf_cliente;
     private String nome_cliente;
     private String senha_cliente;
     private String status_atendimento;
@@ -47,11 +47,11 @@ public class Senha {
         this.data_senha = data_senha;
     }
 
-    public int getCpf_cliente() {
+    public String getCpf_cliente() {
         return cpf_cliente;
     }
 
-    public void setCpf_cliente(int cpf_cliente) {
+    public void setCpf_cliente(String cpf_cliente) {
         this.cpf_cliente = cpf_cliente;
     }
 

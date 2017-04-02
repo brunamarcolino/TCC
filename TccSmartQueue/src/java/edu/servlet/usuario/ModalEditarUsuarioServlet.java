@@ -30,19 +30,21 @@ public class ModalEditarUsuarioServlet extends HttpServlet {
             protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
             try {
-            String id_usuario = request.getParameter("id_usuario");
+            String id_usuario_str = request.getParameter("id_usuario");
+            int id_usuario = Integer.parseInt(id_usuario_str);
             
+            //SE USUÁRIO = 0 ENTÃO INCLUIR, SE > 0 ENTÃO EDITAR
+            if (id_usuario > 0) {
             UsuarioDao usuarioDao = new UsuarioDao();  
             Usuario usuario = usuarioDao.getEditarUsuario(id_usuario);
-            
             request.setAttribute("usuario", usuario);
+            }
             getServletContext().getRequestDispatcher("/modal_usuario.jsp").forward(request, response);
-            
             
 
           
         } catch (Exception e) {
-           // System.out.println("Erro " + e);
+            System.out.println("Erro " + e);
             request.setAttribute("mensagemErro", "Informações inválidas.");
             getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
         }

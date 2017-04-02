@@ -30,7 +30,7 @@ public class SenhaDao extends Dao {
             //VERIFICA SE ESSE CLIENTE JÁ POSSUI SENHA ATIVA PARA A DATA ATUAL
             String select_sql = "SELECT id_sequencia, senha_cliente senha FROM tab_senhas WHERE data_senha = curdate() and status_atendimento = 'Ativo' and cpf_cliente = ?";
             PreparedStatement stmt = conn.prepareStatement(select_sql);
-            stmt.setInt(1, Integer.parseInt(cpf));
+            stmt.setString(1, cpf);
             ResultSet result = stmt.executeQuery();
             
             //SE SIM
@@ -53,7 +53,7 @@ public class SenhaDao extends Dao {
                 String sql = "INSERT INTO tab_senhas(id_senha, data_senha, cpf_cliente, nm_cliente, senha_cliente, status_atendimento) VALUES (? , curdate(), ?, ?, ?, 'Ativo'); ";                    
                 stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);            
                 stmt.setInt(1, getProximaSenha());
-                stmt.setInt(2, Integer.parseInt(cpf)); //informar CPF digitado pelo usuário
+                stmt.setString(2, cpf); //informar CPF digitado pelo usuário
                 stmt.setString(3, cliente); //informar nome digitado pelo usuário
                 stmt.setString(4, senha); //informar senha digitado pelo usuário                                      
                 int affectedRows = stmt.executeUpdate();
@@ -152,7 +152,7 @@ public class SenhaDao extends Dao {
                 senha.setId_sequencia(result.getInt(1));
                 senha.setId_senha(result.getInt(2));
                 senha.setData_senha(result.getDate(3));
-                senha.setCpf_cliente(result.getInt(4));
+                senha.setCpf_cliente(result.getString(4));
                 senha.setNome_cliente(result.getString(5));
                 senha.setSenha_cliente(result.getString(6));
                 senha.setStatus_atendimento(result.getString(7));
