@@ -1,4 +1,4 @@
-package edu.servlet;
+package edu.servlet.Parametro;
 
 import java.io.IOException;
 
@@ -8,21 +8,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import edu.dao.UsuarioDao;
-import edu.vo.Usuario;
+import edu.dao.ParametroDao;
+import edu.vo.Parametro;
 
 /**
  * Servlet implementation class AlunoServlet
  */
-@WebServlet("/EditarUsuarioServlet")
-public class EditarUsuarioServlet extends HttpServlet {
+@WebServlet("/EditarParametroServlet")
+public class EditarParametroServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public EditarUsuarioServlet() {
+    public EditarParametroServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,12 +32,12 @@ public class EditarUsuarioServlet extends HttpServlet {
         try {
             String id_str = request.getParameter("id");
             int id = Integer.parseInt(id_str);
-            String nome = request.getParameter("nome");
-            String email = request.getParameter("email");
-            String cpf = request.getParameter("cpf");
-            String tipo = request.getParameter("tipo");
+            String descricao = request.getParameter("descricao");
+            String valor = request.getParameter("valor");
             String mensagem = "";
             
+            System.out.println(id + descricao+valor);
+            /*
             Usuario usuario = new Usuario();
             usuario.setId_usuario(id);
             usuario.setNm_usuario(nome);
@@ -130,7 +130,7 @@ public class EditarUsuarioServlet extends HttpServlet {
                             
                 }
             }
-      
+      */
         
         
         } catch (Exception e) {

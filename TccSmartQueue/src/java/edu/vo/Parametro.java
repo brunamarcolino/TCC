@@ -13,7 +13,7 @@ import java.sql.Date;
  */
 public class Parametro {
     private int id_parametro,usuario_alteracao;
-    private String desc_parametro, valor_parametro;
+    private String descricao_parametro, valor_parametro;
     private Date data_alteracao;
 
     public int getId_parametro() {
@@ -32,12 +32,12 @@ public class Parametro {
         this.usuario_alteracao = usuario_alteracao;
     }
 
-    public String getDesc_parametro() {
-        return desc_parametro;
+    public String getDescricao_parametro() {
+        return descricao_parametro;
     }
-
-    public void setDesc_parametro(String desc_parametro) {
-        this.desc_parametro = desc_parametro;
+    
+    public void setDescricao_parametro(String descricao_parametro) {
+        this.descricao_parametro = descricao_parametro;
     }
 
     public String getValor_parametro() {

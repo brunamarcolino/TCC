@@ -284,6 +284,47 @@ public class UsuarioDao extends Dao {
         }
     }
     
+    
+    public String verificaCpfUsuarioEditar(String cpf_usuario, int id) {
+        Connection conn = null;
+        boolean validaCpf = isCPF(cpf_usuario);
+        
+        try {
+        if (validaCpf){
+
+            conn = getConnection();
+
+            String sql = "SELECT nm_usuario FROM tab_usuarios " + "where cpf_usuario=? and id_usuario <> ?";
+
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setString(1, cpf_usuario);
+            stmt.setInt(2, id);
+            ResultSet result = stmt.executeQuery();
+
+            if (result.next()) {
+                String nm_usuario = result.getString("nm_usuario");
+                return nm_usuario; //CPF já cadastrado para outro usuario
+            } else {
+                return "ok"; //CPF OK - NÃO CADASTRADO ou NÃO ALTERADO 
+            }
+        }
+        else {
+            return "invalido"; //CPF INVÁLIDO
+        }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return null;
+        } finally {
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (Exception closeEx) {
+                    //do nothing
+                }
+            }
+        }
+    }    
+    
      public boolean verificaLoginUsuario(String nome_usuario) {
         Connection conn = null;
         
@@ -317,6 +358,41 @@ public class UsuarioDao extends Dao {
             }
         }
     }
+     
+    public boolean verificaLoginUsuarioEditar(String nome_usuario, int id) {
+        Connection conn = null;
+        
+        try {
+            conn = getConnection();
+
+            String sql = "SELECT 1 FROM tab_usuarios " + "where nm_usuario=? and id_usuario <> ?";
+
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setString(1, nome_usuario);
+            stmt.setInt(2, id);
+            ResultSet result = stmt.executeQuery();
+
+            if (result.next()) {
+                //USUARIO EXISTE
+                return false;
+            } else {
+                //USUARIO OK - NÃO CADASTRADO 
+                return true; 
+            }
+        }
+        catch (Exception ex) {
+            ex.printStackTrace();
+            return false;
+        } finally {
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (Exception closeEx) {
+                    //do nothing
+                }
+            }
+        }
+    }     
      
     public static boolean verificaEmailUsuario(String email)
     {

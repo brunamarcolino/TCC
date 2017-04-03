@@ -3,7 +3,6 @@ package edu.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +16,7 @@ public class ParametroDao extends Dao {
         try {
             conn = getConnection();
 
-            String sql = "SELECT id_parametro, desc_parametro, valor_parametro, usuario_alteracao, data_alteraca FROM tab_parametros WHERE id_parametro = ?";
+            String sql = "SELECT id_parametro, desc_parametro, valor_parametro, usuario_alteracao, data_alteracao FROM tab_parametros WHERE id_parametro = ?";
 
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setInt(1, id_parametro);
@@ -27,9 +26,9 @@ public class ParametroDao extends Dao {
                 Parametro parametro = new Parametro();
                 parametro.setId_parametro(result.getInt("id_parametro"));
                 parametro.setUsuario_alteracao(result.getInt("usuario_alteracao"));
-                parametro.setDesc_parametro(result.getString("desc_parametro"));
+                parametro.setDescricao_parametro(result.getString("desc_parametro"));
                 parametro.setValor_parametro(result.getString("valor_parametro"));
-                parametro.setData_alteracao(result.getDate("data_alteraca"));
+                parametro.setData_alteracao(result.getDate("data_alteracao"));
 
                 return parametro;
             } else {
@@ -66,7 +65,7 @@ public class ParametroDao extends Dao {
                 
                 parametro.setId_parametro(result.getInt("id_parametro"));
                 parametro.setUsuario_alteracao(result.getInt("usuario_alteracao"));
-                parametro.setDesc_parametro(result.getString("desc_parametro"));
+                parametro.setDescricao_parametro(result.getString("desc_parametro"));
                 parametro.setValor_parametro(result.getString("valor_parametro"));
                 //parametro.setData_alteracao(result.getDate("data_alteraca"));
 
@@ -118,36 +117,6 @@ public class ParametroDao extends Dao {
                 return false;
             }            
 
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            return false;
-        } finally {
-            if (conn != null) {
-                try {
-                    conn.close();
-                } catch (Exception closeEx) {
-                    //do nothing
-                }
-            }
-        }
-    }
-
-    public boolean deleteParametro(int id_parametro) {
-        Connection conn = null;
-
-        try {
-            //obtem conexao com o banco de dados
-            conn = getConnection();
-
-            //define SQL para atualiza��o
-            String sql = "DELETE FROM tab_parametros WHERE id_parametro = ?";
-
-            //instance Prepared statement especificando os par�metros do SQL
-            PreparedStatement stmt = conn.prepareStatement(sql);
-            stmt.setInt(1, id_parametro);
-
-            //executa a opera��o no banco de dados
-            return stmt.executeUpdate() > 0;
         } catch (Exception ex) {
             ex.printStackTrace();
             return false;

@@ -51,11 +51,10 @@
                                 ${parametro.desc_parametro}
                             </td>
                             <td>      
-                                <input type="text" name="valor_parametro2" value="${parametro.valor_parametro}"/>
+                                ${parametro.valor_parametro}
                             </td>
-                            <!--document.getElementById('valor_parametro2').value-->
                             <td>  
-                                <a href="ParametroServlet?id_parametro=+${parametro.id_parametro}&valor_parametro=+${parametro.valor_parametro}">Editar</a>   
+                                <a href="ModalEditarParametroServlet?id_parametro=${parametro.id_parametro}">Editar</a> 
                             </td>
                         </tr>
                     </c:forEach>

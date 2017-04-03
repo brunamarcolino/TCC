@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import edu.dao.UsuarioDao;
+import edu.vo.Usuario;
 
 /**
  * Servlet implementation class AlunoServlet
@@ -36,7 +37,15 @@ public class IncluirUsuarioServlet extends HttpServlet {
             String tipo = request.getParameter("itipo");
             String mensagem = "";
             
-            //VERIFICA SE OS CAMPOS NÃO ESTÃO NULOS
+            Usuario usuario = new Usuario();
+            usuario.setId_usuario(0);
+            usuario.setNm_usuario(nome);
+            usuario.setCpf_usuario(cpf);
+            usuario.setEmail_usuario(email);
+            usuario.setTipo_usuario(tipo);            
+            
+            request.setAttribute("usuario", usuario);
+          //VERIFICA SE OS CAMPOS NÃO ESTÃO NULOS
             if(nome.isEmpty()){
                 mensagem = mensagem + "<span>Você esqueceu de inserir o nome! </span>";
             }

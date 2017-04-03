@@ -64,7 +64,7 @@
                             
                             <td>  
                                 <a href="ModalEditarUsuarioServlet?id_usuario=${usuario.id_usuario}">Editar</a> 
-                                <a href="ExcluirUsuarioServlet?id_usuario=${usuario.id_usuario}&login_usuario=${login.id_usuario}">Excluir</a>
+                                <a href="ExcluirUsuarioServlet?id_usuario=${usuario.id_usuario}&login_usuario=${login.id_usuario}" onclick="confirma()">Excluir</a>
                             </td>
                         </tr>
                             
