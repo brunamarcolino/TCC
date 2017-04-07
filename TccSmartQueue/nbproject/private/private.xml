@@ -3,15 +3,22 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Thiago%20Quintanilha/Desktop/projeto-tcc/TCC/TccSmartQueue/web/estilos/estilo.css</file>
-            <file>file:/C:/Users/Thiago%20Quintanilha/Desktop/projeto-tcc/TCC/TccSmartQueue/web/parametros.jsp</file>
-            <file>file:/C:/Users/Thiago%20Quintanilha/Desktop/projeto-tcc/TCC/TccSmartQueue/web/gerar_senha.jsp</file>
-            <file>file:/C:/Users/Thiago%20Quintanilha/Desktop/projeto-tcc/TCC/TccSmartQueue/web/login_adm.jsp</file>
-            <file>file:/C:/Users/Thiago%20Quintanilha/Desktop/projeto-tcc/TCC/TccSmartQueue/web/WEB-INF/web.xml</file>
-            <file>file:/C:/Users/Thiago%20Quintanilha/Desktop/projeto-tcc/TCC/TccSmartQueue/web/WEB-INF/jspf/cabecalho.jspf</file>
-            <file>file:/C:/Users/Thiago%20Quintanilha/Desktop/projeto-tcc/TCC/TccSmartQueue/web/estilos/unsemantic-responsive.css</file>
-            <file>file:/C:/Users/Thiago%20Quintanilha/Desktop/projeto-tcc/TCC/TccSmartQueue/web/senha.jsp</file>
-            <file>file:/C:/Users/Thiago%20Quintanilha/Desktop/projeto-tcc/TCC/TccSmartQueue/web/index.jsp</file>
+            <file>file:/C:/Users/brunacm/Documents/GITTCC/TCC/TccSmartQueue/src/java/edu/servlet/Parametro/EditarParametroServlet.java</file>
+            <file>file:/C:/Users/brunacm/Documents/GITTCC/TCC/TccSmartQueue/src/java/edu/dao/ParametroDao.java</file>
+            <file>file:/C:/Users/brunacm/Documents/GITTCC/TCC/TccSmartQueue/web/usuario.jsp</file>
+            <file>file:/C:/Users/brunacm/Documents/GITTCC/TCC/TccSmartQueue/src/java/edu/servlet/Parametro/ModalEditarParametroServlet.java</file>
+            <file>file:/C:/Users/brunacm/Documents/GITTCC/TCC/TccSmartQueue/src/java/edu/servlet/usuario/IncluirUsuarioServlet.java</file>
+            <file>file:/C:/Users/brunacm/Documents/GITTCC/TCC/TccSmartQueue/src/java/edu/vo/Usuario.java</file>
+            <file>file:/C:/Users/brunacm/Documents/GITTCC/TCC/TccSmartQueue/web/script/general.js</file>
+            <file>file:/C:/Users/brunacm/Documents/GITTCC/TCC/TccSmartQueue/web/modal_parametro.jsp</file>
+            <file>file:/C:/Users/brunacm/Documents/GITTCC/TCC/TccSmartQueue/src/java/edu/dao/SenhaDao.java</file>
+            <file>file:/C:/Users/brunacm/Documents/GITTCC/TCC/TccSmartQueue/src/java/edu/vo/Parametro.java</file>
+            <file>file:/C:/Users/brunacm/Documents/GITTCC/TCC/TccSmartQueue/src/java/edu/vo/Senha.java</file>
+            <file>file:/C:/Users/brunacm/Documents/GITTCC/TCC/TccSmartQueue/web/modal_usuario.jsp</file>
+            <file>file:/C:/Users/brunacm/Documents/GITTCC/TCC/TccSmartQueue/src/java/edu/dao/UsuarioDao.java</file>
+            <file>file:/C:/Users/brunacm/Documents/GITTCC/TCC/TccSmartQueue/src/java/edu/servlet/usuario/ExcluirUsuarioServlet.java</file>
+            <file>file:/C:/Users/brunacm/Documents/GITTCC/TCC/TccSmartQueue/src/java/edu/servlet/senha/GeraSenhaServlet.java</file>
+            <file>file:/C:/Users/brunacm/Documents/GITTCC/TCC/TccSmartQueue/web/parametros.jsp</file>
         </group>
     </open-files>
 </project-private>

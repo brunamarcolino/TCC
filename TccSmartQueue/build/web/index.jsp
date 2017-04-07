@@ -16,6 +16,8 @@
         <title>Smartqueue</title>
         <link rel="stylesheet" type="text/css" href="estilos/estilo.css" />
         <link rel="stylesheet" type="text/css" href="estilos/unsemantic-responsive.css" />
+        <script type="text/javascript" src="script/jquery-3.2.0.min.js"></script>
+        <script type="text/javascript" src="script/general.js"></script>
     </head>
     <body class="<c:if test='${empty login}'>nao-logado</c:if>">
         <%@include file="WEB-INF/jspf/cabecalho.jspf" %>
@@ -25,7 +27,7 @@
             <div class="grid-100 mobile-grid-100">
                 <c:if test="${not empty login}">  
                     <c:if test="${login.tipo_usuario=='Administrador'}">
-                        <h1>Perfil Admin</h1>
+                        <h1>Perfil Admin</h1> 
 
                     </c:if>        
                     <c:if test="${login.tipo_usuario=='Atendente'}">

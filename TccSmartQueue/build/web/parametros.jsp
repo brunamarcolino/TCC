@@ -16,6 +16,8 @@
         <title>Smartqueue</title>
         <link rel="stylesheet" type="text/css" href="estilos/estilo.css" />
         <link rel="stylesheet" type="text/css" href="estilos/unsemantic-responsive.css" />
+        <script type="text/javascript" src="script/jquery-3.2.0.min.js"></script>
+        <script type="text/javascript" src="script/general.js"></script>
     </head>
     <body>    
         <%@include file="WEB-INF/jspf/cabecalho.jspf"%>
@@ -48,12 +50,19 @@
                             <td>      
                                 ${parametro.desc_parametro}
                             </td>
-                            <td>      
-                                <input type="text" name="valor_parametro2" value="${parametro.valor_parametro}"/>
+                            <td> 
+                                <c:choose>
+                                    <c:when test="${parametro.parametro_habilitado=='0'}">
+                                        Desabilitado
+                                    </c:when>
+                                    <c:otherwise>                                    
+                                        ${parametro.valor_parametro}    
+                                    </c:otherwise>
+                                </c:choose>
+                                
                             </td>
-                            <!--document.getElementById('valor_parametro2').value-->
                             <td>  
-                                <a href="ParametroServlet?id_parametro=+${parametro.id_parametro}&valor_parametro=+${parametro.valor_parametro}">Editar</a>   
+                                <a href="ModalEditarParametroServlet?id_parametro=${parametro.id_parametro}">Editar</a> 
                             </td>
                         </tr>
                     </c:forEach>

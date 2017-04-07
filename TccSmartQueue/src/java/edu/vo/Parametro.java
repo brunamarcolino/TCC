@@ -13,8 +13,17 @@ import java.sql.Date;
  */
 public class Parametro {
     private int id_parametro,usuario_alteracao;
-    private String descricao_parametro, valor_parametro;
+    private String desc_parametro, valor_parametro;
     private Date data_alteracao;
+    private int parametro_habilitado;
+
+    public int getParametro_habilitado() {
+        return parametro_habilitado;
+    }
+
+    public void setParametro_habilitado(int parametro_habilitado) {
+        this.parametro_habilitado = parametro_habilitado;
+    }
 
     public int getId_parametro() {
         return id_parametro;
@@ -32,12 +41,12 @@ public class Parametro {
         this.usuario_alteracao = usuario_alteracao;
     }
 
-    public String getDescricao_parametro() {
-        return descricao_parametro;
+    public String getDesc_parametro() {
+        return desc_parametro;
     }
     
-    public void setDescricao_parametro(String descricao_parametro) {
-        this.descricao_parametro = descricao_parametro;
+    public void setDesc_parametro(String desc_parametro) {
+        this.desc_parametro = desc_parametro;
     }
 
     public String getValor_parametro() {

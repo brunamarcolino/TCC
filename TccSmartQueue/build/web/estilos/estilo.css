@@ -45,7 +45,8 @@ a{
     text-decoration: none;
     vertical-align: top;
 }
-form li{
+form li,
+div.box-atendente li{
     margin-bottom: 1.5em;
 }
 label{
@@ -70,28 +71,61 @@ textarea{
     background: #FFF;
     color: #999;
 }
+.mensagem.ocultar {
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+}
+.mensagem{
+    width: 100%;
+    text-align: center;
+    padding: 1em 0;
+    color: #FFF;
+    font-weight: bold;
+    font-family: 'Lato-Bold', sans-serif;
+    transition: all .3s ease-out;
+}
+.mensagemErro{
+    background-color: #FF4C4C;
+}
+.mensagemSucesso{
+    background-color: #3EB27D;
+}
+
 body.nao-logado{
     background: url('')
 }
-.login {
+.login,
+.center{
     display: block;
     position: absolute;
     left: 0;
     right: 0;
-    top: 15%;
+    top: 20%;
     bottom: 0;
     margin: auto;
 }
 .login img{
     margin-bottom: 1.5em;
 }
-.login h1{
+.center p{
+    color: #888;
+    font-size: 1em;
+    margin-bottom: 1em;
+}
+.login h1,
+.center h1{
     text-transform: uppercase;
     font-family: 'Lato-Thin', sans-serif;
     color: #FF8500;
     font-weight: lighter;
     line-height: 1.2em;
     text-align: center;
+}
+.center h1{
+    text-align: left;
 }
 .login h1 strong{
     font-size: 1.4em;
@@ -105,7 +139,8 @@ body.nao-logado{
     color: #888;
     text-align: center;
 }
-.login input[type="submit"]{
+.login input[type="submit"],
+.center input[type="submit"]{
     border-color: #84bd00;
     color: #84bd00;
 }
@@ -225,7 +260,39 @@ table td{
     border-color: #FF4C4C;
     color: #FF4C4C;
 }
-
+div.box-atendente,
+div.box-cliente{
+    margin-bottom: 2em;
+    padding: 1em 1em 2em;
+    border-bottom: solid 1px #DDD;
+}
+div.box-atendente .btn{
+    float: right !important;
+    color: dodgerblue;
+    border-color: dodgerblue;
+}
+div.box-cliente{
+    padding-bottom: 0;
+    margin-bottom: 0;
+    border-bottom: none;
+}
+div.box-cliente .btn{
+    width: 30%;
+    display: inline-block;
+    margin-top: .5em;
+    margin-right: .5em;
+}
+.btn.verde{
+    border-color: #84bd00;
+    color: #84bd00;
+}
+.btn.vermelho{
+    border-color: #FF4C4C;
+    color: #FF4C4C;
+}
+div.box-cliente .btn:last-child{
+    margin-right: 0;
+}
 @media (max-width: 450px) {
     .info{
         border: none;
@@ -234,4 +301,3 @@ table td{
         margin: 0 0 1em 0;
     }
 }
-

@@ -17,6 +17,8 @@
         <title>Smartqueue</title>
         <link rel="stylesheet" type="text/css" href="estilos/estilo.css" />
         <link rel="stylesheet" type="text/css" href="estilos/unsemantic-responsive.css" />
+        <script type="text/javascript" src="script/jquery-3.2.0.min.js"></script>
+        <script type="text/javascript" src="script/general.js"></script>
     </head>
     <body>
         <%@include file="WEB-INF/jspf/cabecalho.jspf"%>
@@ -67,7 +69,7 @@
             <div class="grid-parent grid-50">
                 <div class="grid-100">
                     <p>Clique abaixo para gerar a sua senha:</p>
-                    <input type="button" value="Gerar Senha" onClick="window.location.href='GeraSenhaServlet'">
+                    <input type="button" value="Gerar Senha" onClick="window.location.href='login_cliente.jsp'">
                 </div>
             </div>
             </div>

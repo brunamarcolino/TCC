@@ -16,7 +16,7 @@ public class ParametroDao extends Dao {
         try {
             conn = getConnection();
 
-            String sql = "SELECT id_parametro, desc_parametro, valor_parametro, usuario_alteracao, data_alteracao FROM tab_parametros WHERE id_parametro = ?";
+            String sql = "SELECT id_parametro, desc_parametro, valor_parametro, parametro_habilitado, usuario_alteracao, data_alteracao FROM tab_parametros WHERE id_parametro = ?";
 
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setInt(1, id_parametro);
@@ -26,7 +26,8 @@ public class ParametroDao extends Dao {
                 Parametro parametro = new Parametro();
                 parametro.setId_parametro(result.getInt("id_parametro"));
                 parametro.setUsuario_alteracao(result.getInt("usuario_alteracao"));
-                parametro.setDescricao_parametro(result.getString("desc_parametro"));
+                parametro.setDesc_parametro(result.getString("desc_parametro"));
+                parametro.setParametro_habilitado(result.getInt("parametro_habilitado"));
                 parametro.setValor_parametro(result.getString("valor_parametro"));
                 parametro.setData_alteracao(result.getDate("data_alteracao"));
 
@@ -55,7 +56,7 @@ public class ParametroDao extends Dao {
         try {
             conn = getConnection();
 
-            String sql = "SELECT id_parametro, desc_parametro, valor_parametro, usuario_alteracao FROM tab_parametros";
+            String sql = "SELECT id_parametro, desc_parametro, valor_parametro, parametro_habilitado, usuario_alteracao FROM tab_parametros";
 
             PreparedStatement stmt = conn.prepareStatement(sql);
             ResultSet result = stmt.executeQuery();
@@ -65,8 +66,9 @@ public class ParametroDao extends Dao {
                 
                 parametro.setId_parametro(result.getInt("id_parametro"));
                 parametro.setUsuario_alteracao(result.getInt("usuario_alteracao"));
-                parametro.setDescricao_parametro(result.getString("desc_parametro"));
+                parametro.setDesc_parametro(result.getString("desc_parametro"));
                 parametro.setValor_parametro(result.getString("valor_parametro"));
+                parametro.setParametro_habilitado(result.getInt("parametro_habilitado"));
                 //parametro.setData_alteracao(result.getDate("data_alteraca"));
 
                 parametros.add(parametro);

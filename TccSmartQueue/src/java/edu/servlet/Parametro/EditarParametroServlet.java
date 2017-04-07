@@ -33,10 +33,23 @@ public class EditarParametroServlet extends HttpServlet {
             String id_str = request.getParameter("id");
             int id = Integer.parseInt(id_str);
             String descricao = request.getParameter("descricao");
-            String valor = request.getParameter("valor");
+            String valor = "";
+            switch(id)
+            {
+                case 4: valor = request.getParameter("valor_4");
+                        break;
+                case 5: valor = request.getParameter("valor_5");
+                        break;
+                case 6: valor = request.getParameter("valor_6");
+                        break;
+                default: valor = request.getParameter("valor_1");        
+                        break;
+            }
             String mensagem = "";
             
             System.out.println(id + descricao+valor);
+            
+            
             /*
             Usuario usuario = new Usuario();
             usuario.setId_usuario(id);

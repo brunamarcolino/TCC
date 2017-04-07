@@ -50,8 +50,16 @@
                             <td>      
                                 ${parametro.desc_parametro}
                             </td>
-                            <td>      
-                                ${parametro.valor_parametro}
+                            <td> 
+                                <c:choose>
+                                    <c:when test="${parametro.parametro_habilitado=='0'}">
+                                        Desabilitado
+                                    </c:when>
+                                    <c:otherwise>                                    
+                                        ${parametro.valor_parametro}    
+                                    </c:otherwise>
+                                </c:choose>
+                                
                             </td>
                             <td>  
                                 <a href="ModalEditarParametroServlet?id_parametro=${parametro.id_parametro}">Editar</a> 
