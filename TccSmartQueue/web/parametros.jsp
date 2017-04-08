@@ -63,6 +63,7 @@
                             </td>
                             <td>  
                                 <a href="ModalEditarParametroServlet?id_parametro=${parametro.id_parametro}">Editar</a> 
+                                <a href="HabilitaParametroServlet?id_parametro=${parametro.id_parametro}&parametro_habilitado=${parametro.parametro_habilitado}">${parametro.parametro_habilitado=='0' ? "Habilitar"  : "Desabilitar"}</a> 
                             </td>
                         </tr>
                     </c:forEach>

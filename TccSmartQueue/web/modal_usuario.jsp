@@ -78,7 +78,7 @@
                     </p>
                     <p>
                         <label for="CPF">CPF : </label>
-                        <input type="text" name="cpf" value="${usuario.cpf_usuario}"/>
+                        <input type="number" name="cpf" value="${usuario.cpf_usuario}"/>
                     </p>
                    
                     <p>

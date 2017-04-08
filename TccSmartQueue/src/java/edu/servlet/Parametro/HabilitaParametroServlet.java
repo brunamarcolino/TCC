@@ -9,19 +9,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import edu.dao.ParametroDao;
+import edu.vo.Parametro;
 
 /**
  * Servlet implementation class AlunoServlet
  */
-@WebServlet("/EditarParametroServlet")
-public class EditarParametroServlet extends HttpServlet {
+@WebServlet("/HabilitaParametroServlet")
+public class HabilitaParametroServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public EditarParametroServlet() {
+    public HabilitaParametroServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,27 +30,32 @@ public class EditarParametroServlet extends HttpServlet {
         protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
         try {
-            String id_str = request.getParameter("id");
+            //RECUPERA PARAMETROS
+            String id_str = request.getParameter("id_parametro");
             int id = Integer.parseInt(id_str);
-            String valor;
-            switch(id)
-            {
-                case 4: valor = request.getParameter("valor_4");
-                        break;
-                case 5: valor = request.getParameter("valor_5");
-                        break;
-                case 6: valor = request.getParameter("valor_6");
-                        break;
-                default: valor = request.getParameter("valor_1");        
-                        break;
-            }
+            String habilitado_str = request.getParameter("parametro_habilitado");
+            int habilitado = Integer.parseInt(habilitado_str);
             String mensagem;
-                 
+            
             ParametroDao parametroDao = new ParametroDao();
-                
+            boolean sucesso; 
+            
+            if (id != 4 && id != 5){
+                if(habilitado == 0){
+                    sucesso = parametroDao.habilitaParametro(id, 1);  
+                    mensagem = "<span>Parametro habilitado com sucesso</span>"; 
+                }
+                else
+                {
+                    sucesso = parametroDao.habilitaParametro(id, 0);  
+                    mensagem = "<span>Parametro desabilitado com sucesso</span>";  
+                }
+            } else {
+                sucesso = true;
+                mensagem = "<span>Esse parametro não pode ser dasabilitado</span>"; 
+            }
+            
             //editar usuario
-            boolean sucesso = parametroDao.updateParametro(id, valor);  
-            mensagem = "<span>Parametro alterado com sucesso</span>";
             
             if (sucesso) {
                 request.setAttribute("mensagemSucesso", mensagem);
@@ -66,3 +72,4 @@ public class EditarParametroServlet extends HttpServlet {
         }
         }
     }
+

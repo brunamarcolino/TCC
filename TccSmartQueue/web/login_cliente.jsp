@@ -30,7 +30,7 @@
                     </li>
                     <li>
                         <label for="cpfcliente">CPF : </label>
-                        <input type="text" name="cpf" id="cpf" value="${param.cpf}"/>
+                        <input type="number" name="cpf" id="cpf" value="${param.cpf}"/>
                     </li>
                     <li>
                         <label for="senha">Senha :</label>

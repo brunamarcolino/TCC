@@ -89,7 +89,7 @@ public class ParametroDao extends Dao {
         }
     }
 
-    public boolean updateParametro(Parametro parametro) {
+    public boolean updateParametro(int id, String valor) {
         Connection conn = null;
 
         try {
@@ -102,8 +102,8 @@ public class ParametroDao extends Dao {
 
             //instance Prepared statement especificando os par�metros do SQL
             PreparedStatement stmt = conn.prepareStatement(sql);
-            stmt.setString(1, parametro.getValor_parametro());
-            stmt.setInt(2, parametro.getId_parametro());
+            stmt.setString(1, valor);
+            stmt.setInt(2, id);
 
             //executa a opera��o no banco de dados
             int affectedRows = stmt.executeUpdate();
@@ -133,4 +133,48 @@ public class ParametroDao extends Dao {
         }
     }
 
+    public boolean habilitaParametro(int id, int habilitado) {
+        Connection conn = null;
+
+        try {
+            //obtem conexao com o banco de dados
+            conn = getConnection();
+            conn.setAutoCommit(false);
+
+            //define SQL para atualiza��o
+            String sql = "UPDATE tab_parametros SET parametro_habilitado = ? WHERE id_parametro = ?";
+
+            //instance Prepared statement especificando os par�metros do SQL
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1,habilitado);
+            stmt.setInt(2,id);
+
+            //executa a opera��o no banco de dados
+            int affectedRows = stmt.executeUpdate();
+
+            //verifica se deu certo. Se sim, atualiza a nota 
+            if (affectedRows > 0) {
+                  //confirma as modifica��es no banco de dados
+                conn.commit();
+                return true;
+            } else {
+                //cancela as modifica��es no banco de dados
+                conn.rollback();
+                return false;
+            }            
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return false;
+        } finally {
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (Exception closeEx) {
+                    //do nothing
+                }
+            }
+        }
+    }    
+    
 }

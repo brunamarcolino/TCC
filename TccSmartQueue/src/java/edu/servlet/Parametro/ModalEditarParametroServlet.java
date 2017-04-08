@@ -28,7 +28,6 @@ public class ModalEditarParametroServlet extends HttpServlet {
     }
     
             protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-                System.out.println("Erro 1" );
             try {
             String id_parametro_str = request.getParameter("id_parametro");
             int id_parametro = Integer.parseInt(id_parametro_str);
