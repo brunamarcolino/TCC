@@ -6,7 +6,7 @@ CLASSE: LOGIN SERVLET
 OBJETIVO: 
 VALIDAR SE LOGIN E SENHA ESTÃO CORRETOS!
 */
-package edu.servlet;
+package edu.servelt.fila;
 
 import java.io.IOException;
 

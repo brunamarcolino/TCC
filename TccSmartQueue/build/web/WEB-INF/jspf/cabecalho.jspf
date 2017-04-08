@@ -213,7 +213,7 @@ input[type="button"]:hover{
                                     <a href="ListaUsuarioServlet">Gerenciar atendentes</a>
                                 </li>
                                 <li>
-                                    <a href="ListaParametrosServlet">Gerar Relatórios</a>
+                                    <a href="GoogMatrixRequest">Gerar Relatórios</a>
                                 </li>
                                 <li>
                                     <a href="ListaParametrosServlet">Parametros do Sistemas</a>

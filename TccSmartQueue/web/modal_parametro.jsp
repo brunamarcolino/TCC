@@ -49,21 +49,27 @@
                     <p>
                         <label for="Valor">Valor : </label>
                         <c:choose>
-                            <c:when test="${parametro.id_parametro=='4'}">
-                                <select name="valor_4">
+                            <c:when test="${parametro.id_parametro=='1'}">
+                                <select name="valor_1">
+                                    <option value="24H">24H</option>
+                                    <option value="DETERMINADO">DETERMINADO</option>
+                                </select>    
+                            </c:when>
+                            <c:when test="${parametro.id_parametro=='5'}">
+                                <select name="valor_5">
                                     <option value="SIM">SIM</option>
                                     <option value="NAO">NAO</option>
                                 </select>    
                             </c:when>
-                            <c:when test="${parametro.id_parametro=='5'}">
-                                <input type="number" name="valor_5" value="${parametro.valor_parametro}"/>
-                            </c:when>    
                             <c:when test="${parametro.id_parametro=='6'}">
                                 <input type="number" name="valor_6" value="${parametro.valor_parametro}"/>
+                            </c:when>    
+                            <c:when test="${parametro.id_parametro=='7'}">
+                                <input type="number" name="valor_7" value="${parametro.valor_parametro}"/>
                             </c:when>
                             <c:otherwise>
                                 <!--FORMATA HORA-->
-                                <select name="valor_1">
+                                <select name="valor_2">
                                     <option value="00:00">00:00</option>
                                     <option value="01:00">01:00</option>
                                     <option value="02:00">02:00</option>

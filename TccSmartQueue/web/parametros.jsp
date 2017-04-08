@@ -45,7 +45,7 @@
                         <th>Ação</th>
                     </tr>
 
-                    <c:forEach var="parametro" items="${parametros}">    
+                    <c:forEach var="parametro" items="${parametros}">   
                         <tr>
                             <td>      
                                 ${parametro.desc_parametro}
@@ -58,14 +58,15 @@
                                     <c:otherwise>                                    
                                         ${parametro.valor_parametro}    
                                     </c:otherwise>
-                                </c:choose>
-                                
+                                </c:choose> 
                             </td>
                             <td>  
                                 <a href="ModalEditarParametroServlet?id_parametro=${parametro.id_parametro}">Editar</a> 
-                                <a href="HabilitaParametroServlet?id_parametro=${parametro.id_parametro}&parametro_habilitado=${parametro.parametro_habilitado}">${parametro.parametro_habilitado=='0' ? "Habilitar"  : "Desabilitar"}</a> 
+                                <c:if test="${parametro.id_parametro=='7'}">
+                                    <a href="HabilitaParametroServlet?id_parametro=${parametro.id_parametro}&parametro_habilitado=${parametro.parametro_habilitado}">${parametro.parametro_habilitado=='0' ? "Habilitar"  : "Desabilitar"}</a>  
+                                </c:if>    
                             </td>
-                        </tr>
+                        </tr>   
                     </c:forEach>
                 </table>  
             </c:otherwise>

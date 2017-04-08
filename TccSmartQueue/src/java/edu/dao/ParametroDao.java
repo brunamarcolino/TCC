@@ -55,11 +55,26 @@ public class ParametroDao extends Dao {
 
         try {
             conn = getConnection();
-
-            String sql = "SELECT id_parametro, desc_parametro, valor_parametro, parametro_habilitado, usuario_alteracao FROM tab_parametros";
-
+            String sql = "SELECT valor_parametro FROM tab_parametros WHERE id_parametro = 1";
+            
             PreparedStatement stmt = conn.prepareStatement(sql);
             ResultSet result = stmt.executeQuery();
+            
+            if (result.next()) {
+                String valor_parametro = result.getString("valor_parametro");
+                if ("24H".equals(valor_parametro)){
+                    sql = "SELECT id_parametro, desc_parametro, valor_parametro, parametro_habilitado, usuario_alteracao FROM tab_parametros WHERE id_parametro not in (2,3,4)";
+                } 
+                else
+                {
+                    sql = "SELECT id_parametro, desc_parametro, valor_parametro, parametro_habilitado, usuario_alteracao FROM tab_parametros";
+                }    
+            } else {
+                return null;
+            }
+
+            stmt = conn.prepareStatement(sql);
+            result = stmt.executeQuery();
 
             while (result.next()) {
                 Parametro parametro = new Parametro();
@@ -110,9 +125,10 @@ public class ParametroDao extends Dao {
 
             //verifica se deu certo. Se sim, atualiza a nota 
             if (affectedRows > 0) {
-                  //confirma as modifica��es no banco de dados
+                //confirma as modifica��es no banco de dados
                 conn.commit();
                 return true;
+                
             } else {
                 //cancela as modifica��es no banco de dados
                 conn.rollback();
@@ -131,6 +147,85 @@ public class ParametroDao extends Dao {
                 }
             }
         }
+    }
+    
+    public int verificaFila(int qtd_mesas)
+    {
+        Connection conn = null;
+
+        try {
+            conn = getConnection();
+            conn.setAutoCommit(false);
+            
+            String sql = "SELECT max(mesa_usuario) mesa_usuario FROM tab_fila";
+            
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            ResultSet result = stmt.executeQuery();
+            
+            System.out.println("1 - " + qtd_mesas);
+            
+            if (result.next()) {
+                int max_fila = result.getInt("mesa_usuario");
+                System.out.println("2 - " + max_fila);
+                int affectedRows = 0;
+                if (qtd_mesas>max_fila)
+                {
+                    for(int i=max_fila+1; i<= qtd_mesas; i++)
+                    {
+                        System.out.println("3 - " + i);
+                        sql = "INSERT INTO tab_fila(id_fila, mesa_usuario, status_fila) VALUES (?,?,'FECHADA')";
+                        stmt = conn.prepareStatement(sql);
+                        stmt.setInt(1, i);
+                        stmt.setInt(2, i);  
+                        //executa a opera��o no banco de dados
+                        affectedRows = stmt.executeUpdate();
+                    }                    
+                }
+                else
+                {
+                        sql = "SELECT 1 filas_abertas FROM tab_fila WHERE mesa_usuario > ? and status_fila = 'ABERTA'";
+                        
+                        stmt = conn.prepareStatement(sql);
+                        stmt.setInt(1, qtd_mesas);
+                        ResultSet result2 = stmt.executeQuery();
+            
+                        if (result2.next()) {
+                            conn.rollback();
+                            return 3; //não é possivel excluir filas abetas
+                        }
+                        else{
+                            for(int i=max_fila; i> qtd_mesas; i--){
+                                sql = "DELETE FROM tab_fila WHERE mesa_usuario > ?";
+                                stmt = conn.prepareStatement(sql);
+                                stmt.setInt(1, qtd_mesas);
+                                affectedRows = stmt.executeUpdate();
+                            }
+                        }
+                        
+                }              
+                if (affectedRows > 0) {
+                    conn.commit();
+                    return 1; //sucesso
+                } else 
+                {
+                    //cancela as modifica��es no banco de dados
+                    conn.rollback();
+                    return 2; //erro generivco
+                } 
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return 2;
+        } finally {
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (Exception closeEx) {
+                    //do nothing
+                }
+            }
+        } 
+        return 1;
     }
 
     public boolean habilitaParametro(int id, int habilitado) {
