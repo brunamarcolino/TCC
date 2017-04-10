@@ -32,6 +32,7 @@
                 <c:otherwise>
                     <div class="grid-parent grid-50 info">
                         <div class="grid-100">
+                            <p id="demo"></p>
                             <p>Tempo médio de atendimento</p>
                             <h2>
                                 <c:choose>
@@ -68,8 +69,20 @@
             </c:choose>
             <div class="grid-parent grid-50">
                 <div class="grid-100">
-                    <p>Clique abaixo para gerar a sua senha:</p>
-                    <input type="button" value="Gerar Senha" onClick="window.location.href='login_cliente.jsp'">
+                    <c:choose>
+                        <c:when test="${dadossenha.distancia}">
+                            <p> Você está dentro da distancia permitida</p>
+                            </br></br>
+                            <p>Clique abaixo para gerar a sua senha:</p>
+                            <input type="button" value="Gerar Senha" onClick="window.location.href='login_cliente.jsp'">                            
+                        </c:when>
+                        <c:otherwise>
+                            <p> Você está FORA da distancia permitida</p>
+                            </br></br>
+                            <p><i>Para que o botão GERAR SENHA fique disponível, é necessário se aproximar mais do local de atendimento</i></p>                            
+                        </c:otherwise>
+                    </c:choose> 
+                            
                 </div>
             </div>
             </div>

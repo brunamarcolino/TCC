@@ -23,9 +23,15 @@ public class ListaSenhaServlet extends HttpServlet{
     
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        
+        String distancia_str = request.getParameter("distancia");
+        boolean distancia = Boolean.parseBoolean(distancia_str);
+        
+        System.out.println("distancia " + distancia);
+        
         DadosSenhaDao dadosSenhaDao = new DadosSenhaDao();
         DadosSenha dadosSenha = dadosSenhaDao.getDados();
+        dadosSenha.setDistancia(distancia);
         
         request.setAttribute("dadossenha", dadosSenha);
         

@@ -18,6 +18,15 @@ public class DadosSenha {
     private int ultima_senha_gerada;
     private Time previsao_atendimento;
     private int quantidade_pessoas;
+    private boolean distancia;
+
+    public boolean isDistancia() {
+        return distancia;
+    }
+
+    public void setDistancia(boolean distancia) {
+        this.distancia = distancia;
+    }
 
     public int getQuantidade_pessoas() {
         return quantidade_pessoas;

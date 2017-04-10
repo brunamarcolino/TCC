@@ -36,7 +36,7 @@
                     </c:if>   
                     <c:if test="${login.tipo_usuario=='Cliente'}">
                         <h1>Perfil Cliente</h1>
-
+                        
                     </c:if>
                     <!--<div class="grid-25">
                     <a href="ListaSenhaServlet" class="btn btn-outline">Chama Servlet</a>

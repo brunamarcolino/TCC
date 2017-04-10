@@ -67,6 +67,9 @@
                             <c:when test="${parametro.id_parametro=='7'}">
                                 <input type="number" name="valor_7" value="${parametro.valor_parametro}"/>
                             </c:when>
+                            <c:when test="${parametro.id_parametro=='8'}">
+                                <input type="text" name="valor_8" value="${parametro.valor_parametro}"/>
+                            </c:when>    
                             <c:otherwise>
                                 <!--FORMATA HORA-->
                                 <select name="valor_2">

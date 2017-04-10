@@ -55,6 +55,9 @@ public class ParametroDao extends Dao {
 
         try {
             conn = getConnection();
+            boolean param1=false;
+            boolean param7=false;
+            
             String sql = "SELECT valor_parametro FROM tab_parametros WHERE id_parametro = 1";
             
             PreparedStatement stmt = conn.prepareStatement(sql);
@@ -63,16 +66,36 @@ public class ParametroDao extends Dao {
             if (result.next()) {
                 String valor_parametro = result.getString("valor_parametro");
                 if ("24H".equals(valor_parametro)){
-                    sql = "SELECT id_parametro, desc_parametro, valor_parametro, parametro_habilitado, usuario_alteracao FROM tab_parametros WHERE id_parametro not in (2,3,4)";
-                } 
-                else
-                {
-                    sql = "SELECT id_parametro, desc_parametro, valor_parametro, parametro_habilitado, usuario_alteracao FROM tab_parametros";
+                    param1 = true;                  
+                }   
+            } else {
+                return null;
+            }
+            
+            sql = "SELECT parametro_habilitado FROM tab_parametros WHERE id_parametro = 7";
+            
+            stmt = conn.prepareStatement(sql);
+            result = stmt.executeQuery();
+            
+            if (result.next()) {
+                int parametro_habilitado = result.getInt("parametro_habilitado");
+                if (parametro_habilitado == 0){
+                    param7 = true;                    
                 }    
             } else {
                 return null;
             }
-
+            
+            if (param1 && param7){
+                sql = "SELECT id_parametro, desc_parametro, valor_parametro, parametro_habilitado, usuario_alteracao FROM tab_parametros WHERE id_parametro not in (2,3,4,8)";
+            }else if (param1){
+                sql = "SELECT id_parametro, desc_parametro, valor_parametro, parametro_habilitado, usuario_alteracao FROM tab_parametros WHERE id_parametro not in (2,3,4)";
+            }else if (param7){
+                sql = "SELECT id_parametro, desc_parametro, valor_parametro, parametro_habilitado, usuario_alteracao FROM tab_parametros WHERE id_parametro not in (8)";
+            } else{
+                sql = "SELECT id_parametro, desc_parametro, valor_parametro, parametro_habilitado, usuario_alteracao FROM tab_parametros";
+            }
+         
             stmt = conn.prepareStatement(sql);
             result = stmt.executeQuery();
 

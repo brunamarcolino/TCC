@@ -45,7 +45,9 @@ public class EditarParametroServlet extends HttpServlet {
                         v = parametroDao.verificaFila(Integer.parseInt(valor));                        
                         break;
                 case 7: valor = request.getParameter("valor_7");
-                        break;        
+                        break;
+                case 8: valor = request.getParameter("valor_8");
+                        break;              
                 default: valor = request.getParameter("valor_2");        
                         break;
             }
