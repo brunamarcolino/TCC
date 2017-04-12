@@ -5,7 +5,7 @@
  */
 
 
-var x=document.getElementById("field")
+var x=document.getElementById("field1");
 function getLocation()
   {
       

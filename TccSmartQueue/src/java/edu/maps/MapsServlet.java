@@ -45,9 +45,12 @@ public class MapsServlet extends HttpServlet {
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
         try {
-            String field = request.getParameter("field2");
+            //BUSCA PARAMETROS DO JSP
+            String localizacao = request.getParameter("localizacao");
+            String tipo_atendimento = request.getParameter("tipo_atendimento");
             
-            System.out.println("field" + field);
+            System.out.println("localizacao " + localizacao);
+            System.out.println("tipo_atendimento " + tipo_atendimento);
             
             //instancia um parametro
             ParametroDao parametroDao = new ParametroDao();
@@ -56,7 +59,7 @@ public class MapsServlet extends HttpServlet {
             //verifica se distancia está habilitada
             parametro = parametroDao.getParametro(7);
             int parametro_habilitado = parametro.getParametro_habilitado();
-            int raio_permitido = Integer.parseInt(parametro.getValor_parametro())*10000;
+            int raio_permitido = Integer.parseInt(parametro.getValor_parametro())*1000;
         
             //se sim, calcula se está dentro da distancia permitida
             if (parametro_habilitado == 1){
@@ -65,7 +68,7 @@ public class MapsServlet extends HttpServlet {
                 String API_KEY = "AIzaSyA2V07AOszVncA9R5zZQ5O3U5Y8BClg7_E";
         
                 //LOCAL DE ORIGEM (USUÁRIO)
-                String origem = "-22.908785,-47.0781327";
+                String origem = localizacao;
         
                 //LOCAL DESTINO (ATENDIMENTO) - PARAMETRIZADO    
                 parametro = parametroDao.getParametro(8);

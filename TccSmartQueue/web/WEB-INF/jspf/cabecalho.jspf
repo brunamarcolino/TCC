@@ -236,48 +236,7 @@ input[type="button"]:hover{
                         <nav>
                             <ul>
                                 <li>
-                                    <a href="MapsServlet" onclick="getLocation()">Gerar Senha</a> <input type="text" name="field" id="field" value="field"></input>
-                                    <!--
-                                    <button onclick="getLocation()">Clique Aqui</button>
-                        
-                                    -->
-                                    <script>
-                                        var x=document.getElementById("field")
-                                        function getLocation()
-                                        {
-      
-  if (navigator.geolocation)
-    {
-    navigator.geolocation.getCurrentPosition(showPosition,showError);
-    }
-  else{x.value="Seu browser não suporta Geolocalização.";}
-  }
-  
-  function showPosition(position)
-  {
-  x.value=position.coords.latitude +
-  "," + position.coords.longitude; 
-  }
-  
-function showError(error)
-  {
-  switch(error.code)
-    {
-    case error.PERMISSION_DENIED:
-      x.value="Usuário rejeitou a solicitação de Geolocalização.";
-      break;
-    case error.POSITION_UNAVAILABLE:
-      x.value="Localização indisponível.";
-      break;
-    case error.TIMEOUT:
-      x.value="A requisição expirou.";
-      break;
-    case error.UNKNOWN_ERROR:
-      x.value="Algum erro desconhecido aconteceu.";
-      break;
-    }
-  }
-                                        </script>
+                                    <a href="localizacao.jsp">Gerar Senha</a>                              
                                 </li>         
                             </ul>
                         </nav>
@@ -289,6 +248,7 @@ function showError(error)
                 <span>Olá, <strong>${login.nm_usuario}</strong></span>
                 <a href="LogoutServlet"><strong>(sair)</strong></a>                       
             </div>   
+                
         </header>
     </c:otherwise>        
 </c:choose>
