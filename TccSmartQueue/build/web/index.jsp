@@ -18,8 +18,9 @@
         <link rel="stylesheet" type="text/css" href="estilos/unsemantic-responsive.css" />
         <script type="text/javascript" src="script/jquery-3.2.0.min.js"></script>
         <script type="text/javascript" src="script/general.js"></script>
+        <script type="text/javascript" src="script/localizacao.js"></script>
     </head>
-    <body class="<c:if test='${empty login}'>nao-logado</c:if>">
+    <body class="<c:if test='${empty login}'>nao-logado</c:if>">        
         <%@include file="WEB-INF/jspf/cabecalho.jspf" %>
 
         <%@include file="WEB-INF/jspf/mensagem.jspf" %>
@@ -36,7 +37,45 @@
                     </c:if>   
                     <c:if test="${login.tipo_usuario=='Cliente'}">
                         <h1>Perfil Cliente</h1>
-                        
+                        <p id="demo">Clique no botão para receber as coordenadas:</p>
+                        <button onclick="getLocation()">Clique Aqui</button>
+                        <script>
+var x=document.getElementById("demo");
+function getLocation()
+  {
+      
+  if (navigator.geolocation)
+    {
+    navigator.geolocation.getCurrentPosition(showPosition,showError);
+    }
+  else{x.innerHTML="Seu browser não suporta Geolocalização.";}
+  }
+  
+  function showPosition(position)
+  {
+  x.innerHTML="Latitude: " + position.coords.latitude +
+  "<br>Longitude: " + position.coords.longitude; 
+  }
+  
+function showError(error)
+  {
+  switch(error.code)
+    {
+    case error.PERMISSION_DENIED:
+      x.innerHTML="Usuário rejeitou a solicitação de Geolocalização.";
+      break;
+    case error.POSITION_UNAVAILABLE:
+      x.innerHTML="Localização indisponível.";
+      break;
+    case error.TIMEOUT:
+      x.innerHTML="A requisição expirou.";
+      break;
+    case error.UNKNOWN_ERROR:
+      x.innerHTML="Algum erro desconhecido aconteceu.";
+      break;
+    }
+  }
+                        </script>
                     </c:if>
                     <!--<div class="grid-25">
                     <a href="ListaSenhaServlet" class="btn btn-outline">Chama Servlet</a>

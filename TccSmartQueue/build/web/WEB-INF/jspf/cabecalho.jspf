@@ -237,7 +237,7 @@ input[type="button"]:hover{
                         <nav>
                             <ul>
                                 <li>
-                                    <a href="MapsServlet" onclick="getLocation()">Gerar Senha</a>
+                                    <a href="MapsServlet">Gerar Senha</a>
                                 </li>         
                             </ul>
                         </nav>
