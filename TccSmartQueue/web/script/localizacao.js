@@ -5,7 +5,7 @@
  */
 
 
-var x=document.getElementById("demo");
+var x=document.getElementById("field")
 function getLocation()
   {
       
@@ -13,13 +13,13 @@ function getLocation()
     {
     navigator.geolocation.getCurrentPosition(showPosition,showError);
     }
-  else{x.innerHTML="Seu browser não suporta Geolocalização.";}
+  else{x.value="Seu browser não suporta Geolocalização.";}
   }
   
   function showPosition(position)
   {
-  x.innerHTML="Latitude: " + position.coords.latitude +
-  "<br>Longitude: " + position.coords.longitude; 
+  x.value=position.coords.latitude +
+  "," + position.coords.longitude; 
   }
   
 function showError(error)
@@ -27,16 +27,16 @@ function showError(error)
   switch(error.code)
     {
     case error.PERMISSION_DENIED:
-      x.innerHTML="Usuário rejeitou a solicitação de Geolocalização.";
+      x.value="Usuário rejeitou a solicitação de Geolocalização.";
       break;
     case error.POSITION_UNAVAILABLE:
-      x.innerHTML="Localização indisponível.";
+      x.value="Localização indisponível.";
       break;
     case error.TIMEOUT:
-      x.innerHTML="A requisição expirou.";
+      x.value="A requisição expirou.";
       break;
     case error.UNKNOWN_ERROR:
-      x.innerHTML="Algum erro desconhecido aconteceu.";
+      x.value="Algum erro desconhecido aconteceu.";
       break;
     }
   }
