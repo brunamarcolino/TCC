@@ -1,13 +1,15 @@
-<%-- 
+    <%-- 
     Document   : chamar_proximo
     Created on : 20/03/2017, 14:38:26
     Author     : Felipe
 --%>
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
     <head>
         <meta charset="UTF-8">
         <meta http-equiv = "Content-Language" content = "en"/>
@@ -23,6 +25,7 @@
         <script type="text/javascript" src="script/general.js"></script>
     </head>
     <body>
+       
         <%@include file="WEB-INF/jspf/cabecalho.jspf" %>
 
         <%@include file="WEB-INF/jspf/mensagem.jspf" %>
@@ -30,10 +33,11 @@
             <div class="grid-parent grid-50 mobile-grid-100 center">
                 <div class="grid-parent grid-100 box-atendente">
                     <div class="grid-30 mobile-grid-100">
+                         
                         <ul>
                             <li>
                                 <label>Atendente:</label>
-                                <h2>Thiago Quintanilha</h2>
+                                <h2>${login.nm_usuario}</h2>
                             </li>
                             <li>
                                 <label>Mesa:</label>
@@ -42,29 +46,31 @@
                         </ul>
                     </div>
                     <div class="grid-70 mobile-grid-100">
-                        <a href="" class="btn btn-outline">Chamar próximo cliente</a>
+                        <a href="BuscarNomeESenhaServlet" class="btn btn-outline">Chamar próximo cliente</a>
                     </div>
                 </div>
                 <div class="grid-parent grid-100 box-cliente">
                     <div class="grid-70 mobile-grid-100">
-                        <form action="ChamarProximoServlet" method="post">
+                       
+                        
                             <ul>
                                 <li>
                                     <label>Cliente:</label>
-                                    <h2>Carlos Henrique</h2>
+                                    <h2>${nome_cliente}</h2>
                                 </li>
                                 <li>
                                     <label>Senha:</label>
-                                    <h2>1</h2>
+                                    <h2>${senha}</h2>
                                 </li>
                             </ul>
-                        </form>
+                        
                     </div>
                     <div class="grid-30 mobile-grid-100 presenca">
                         <p>O cliente está presente?</p>
-                        <a href="" class="btn btn-outline verde">Sim</a>
-                        <a href="" class="btn btn-outline vermelho">Não</a>                   
+                        <a href="ConfirmarPresencaServlet" class="btn btn-outline verde">Sim</a>
+                        <a href="NaoConfirmarPresencaServlet" class="btn btn-outline vermelho">Não</a>                   
                     </div>
+                        <a href="FinalizarAtendimentoServlet" class="btn btn-outline" >Finalizar Atendimento</a>
                 </div>
             </div>
         </div>
