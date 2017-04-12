@@ -45,7 +45,7 @@ public class MapsServlet extends HttpServlet {
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
         try {
-            String field = request.getParameter("field");
+            String field = request.getParameter("field2");
             
             System.out.println("field" + field);
             
