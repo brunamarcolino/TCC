@@ -74,7 +74,7 @@
                             <p> Você está dentro da distancia permitida</p>
                             </br></br>
                             <p>Clique abaixo para gerar a sua senha:</p>
-                            <input type="button" value="Gerar Senha" onClick="window.location.href='login_cliente.jsp'">                            
+                            <input type="button" value="Gerar Senha" onClick="window.location.href='login_cliente.jsp?tipo_atendimento=${dadossenha.tipo_atendimento}'">                            
                         </c:when>
                         <c:otherwise>
                             <p> Você está FORA da distancia permitida</p>

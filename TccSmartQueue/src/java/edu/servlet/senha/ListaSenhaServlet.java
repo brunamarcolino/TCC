@@ -26,13 +26,14 @@ public class ListaSenhaServlet extends HttpServlet{
         
         String distancia_str = request.getParameter("distancia");
         boolean distancia = Boolean.parseBoolean(distancia_str);
-        
-        System.out.println("distancia " + distancia);
+        String tipo_atendimento = request.getParameter("tipo_atendimento");
+        System.out.println("distancia " + distancia + " tipo_atendimento " + tipo_atendimento);
         
         DadosSenhaDao dadosSenhaDao = new DadosSenhaDao();
-        DadosSenha dadosSenha = dadosSenhaDao.getDados();
+        DadosSenha dadosSenha = dadosSenhaDao.getDados(tipo_atendimento);
         dadosSenha.setDistancia(distancia);
-        
+        dadosSenha.setTipo_atendimento(tipo_atendimento);
+                
         request.setAttribute("dadossenha", dadosSenha);
         
         getServletContext().getRequestDispatcher("/senha.jsp").forward(request, response);

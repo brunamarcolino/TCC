@@ -73,6 +73,7 @@ public class MapsServlet extends HttpServlet {
                 //LOCAL DESTINO (ATENDIMENTO) - PARAMETRIZADO    
                 parametro = parametroDao.getParametro(8);
                 String destino = parametro.getValor_parametro();
+                destino = destino.replace(" ", "+");
                 System.out.println(destino); 
                 //String destino = "-22.8629682,-47.1498136";
         
@@ -120,22 +121,24 @@ public class MapsServlet extends HttpServlet {
                     else{
                         //redireciona para sucesso
                         
-                        getServletContext().getRequestDispatcher("/ListaSenhaServlet?distancia=true").forward(request, response);
+                        getServletContext().getRequestDispatcher("/ListaSenhaServlet?distancia=true&tipo_atendimento="+tipo_atendimento).forward(request, response);
                     }   
                 } else {
                     request.setAttribute("mensagemErro", "Erro ao retornar JSON.");
-                    getServletContext().getRequestDispatcher("/ListaSenhaServlet").forward(request, response);
+                    getServletContext().getRequestDispatcher("/ListaSenhaServlet?distancia=false").forward(request, response);
                 }
                 
             }
             //se não redireciona para gerar senha
             else
             {
-                getServletContext().getRequestDispatcher("/ListaSenhaServlet").forward(request, response);
+                getServletContext().getRequestDispatcher("/ListaSenhaServlet?distancia=true&tipo_atendimento="+tipo_atendimento).forward(request, response);
             }        
             //getServletContext().getRequestDispatcher("/json.jsp").forward(request, response);
         } catch (Exception ex) {
             ex.printStackTrace();
+            request.setAttribute("mensagemErro", "Erro na localização.");
+            getServletContext().getRequestDispatcher("/localizacao.jsp").forward(request, response);            
 	}
              
     }

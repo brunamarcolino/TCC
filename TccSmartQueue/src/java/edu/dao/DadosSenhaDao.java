@@ -17,14 +17,17 @@ import java.sql.Time;
  */
 public class DadosSenhaDao extends Dao{
 
-    public DadosSenha getDados() {
+    public DadosSenha getDados(String tipo_atendimento) {
         Connection conn = null;
 
         try {
             conn = getConnection();
-
-            String sql = "SELECT (SELECT TIME_FORMAT(AVG(TIMEDIFF(data_atendimento_fim,data_atendimento_ini)),'%T') FROM `tab_senhas` WHERE `data_senha` = CURDATE() and data_atendimento_fim is not null) TEMPO_MEDIO, (SELECT IFNULL(max(id_senha),0) id_senha FROM tab_senhas WHERE data_senha = CURDATE()) ULTIMA_SENHA_GERADA, (SELECT IFNULL(max(id_senha),0) id_senha FROM tab_senhas WHERE data_senha = CURDATE() and data_atendimento_ini is not null) ULTIMA_SENHA_CHAMADA, (SELECT count(1) qtde_pessoas FROM `tab_senhas` WHERE data_senha = curdate() and data_atendimento_fim is null and status_atendimento = 'Ativo') QTDE_PESSOAS FROM dual";
-
+            String sql;
+            if (tipo_atendimento.equals("Preferencial")){
+                sql = "SELECT (SELECT TIME_FORMAT(AVG(TIMEDIFF(data_atendimento_fim,data_atendimento_ini)),'%T') FROM `tab_senhas` WHERE `data_senha` = CURDATE() and data_atendimento_fim is not null and tipo_atendimento = 'Preferencial') TEMPO_MEDIO, (SELECT IFNULL(max(id_senha),0) id_senha FROM tab_senhas WHERE data_senha = CURDATE() and tipo_atendimento = 'Preferencial') ULTIMA_SENHA_GERADA, (SELECT IFNULL(max(id_senha),0) id_senha FROM tab_senhas WHERE data_senha = CURDATE() and data_atendimento_ini is not null and tipo_atendimento = 'Preferencial') ULTIMA_SENHA_CHAMADA, (SELECT count(1) qtde_pessoas FROM `tab_senhas` WHERE data_senha = curdate() and data_atendimento_fim is null and status_atendimento = 'Ativo' and tipo_atendimento = 'Preferencial') QTDE_PESSOAS FROM dual";
+            } else {
+                sql = "SELECT (SELECT TIME_FORMAT(AVG(TIMEDIFF(data_atendimento_fim,data_atendimento_ini)),'%T') FROM `tab_senhas` WHERE `data_senha` = CURDATE() and data_atendimento_fim is not null) TEMPO_MEDIO, (SELECT IFNULL(max(id_senha),0) id_senha FROM tab_senhas WHERE data_senha = CURDATE()) ULTIMA_SENHA_GERADA, (SELECT IFNULL(max(id_senha),0) id_senha FROM tab_senhas WHERE data_senha = CURDATE() and data_atendimento_ini is not null) ULTIMA_SENHA_CHAMADA, (SELECT count(1) qtde_pessoas FROM `tab_senhas` WHERE data_senha = curdate() and data_atendimento_fim is null and status_atendimento = 'Ativo') QTDE_PESSOAS FROM dual";
+            }
             PreparedStatement stmt = conn.prepareStatement(sql);
             ResultSet result = stmt.executeQuery();
 

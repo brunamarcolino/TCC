@@ -27,7 +27,9 @@ public class GeraSenhaServlet extends HttpServlet{
         String logincliente = request.getParameter("cliente");
         String senhacliente = request.getParameter("senhacliente");
         String cpfcliente = request.getParameter("cpf");   
+        String tipo_atendimento = request.getParameter("tipo_atendimento");   
         String mensagem = "";
+        
         
         //VERIFICA AUSENCIA DE PREENCHIMENTO DOS CAMPOS 
         if(logincliente.isEmpty()){
@@ -52,7 +54,7 @@ public class GeraSenhaServlet extends HttpServlet{
                 request.setAttribute("mensagemErro", "CPF invalido");
                 getServletContext().getRequestDispatcher("/login_cliente.jsp").forward(request, response); 
             }
-            int id_sequencia = senhaDao.geraSenha(logincliente,cpfcliente,senhacliente);
+            int id_sequencia = senhaDao.geraSenha(logincliente,cpfcliente,senhacliente,tipo_atendimento);
             
             //SENHA GERADA COM SUCESSO
             if (id_sequencia > 0){        

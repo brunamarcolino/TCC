@@ -34,8 +34,8 @@
             <form id="local" action="MapsServlet" method="get">
                 <input type="hidden" name="localizacao" id="field1" value="teste"/>
                 <select name="tipo_atendimento">
-                    <option value="Preferencial">Preferencial</option>
                     <option value="Normal">Normal</option>
+                    <option value="Preferencial">Preferencial</option>
                 </select>                        
             <input type="submit" value="Clique aqui para proceguir!"/>
             </form>

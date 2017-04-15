@@ -6,11 +6,14 @@
 package edu.dao;
 
 import edu.vo.Senha;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.InputMismatchException;
+import sun.misc.BASE64Encoder;
 
 /**
  *
@@ -18,7 +21,7 @@ import java.util.InputMismatchException;
  */
 public class SenhaDao extends Dao {
   
-     public int geraSenha(String cliente, String cpf, String senha) {
+     public int geraSenha(String cliente, String cpf, String senha, String tipo_atendimento) {
         
         Connection conn = null;
         int id_sequencia = 0;
@@ -38,7 +41,8 @@ public class SenhaDao extends Dao {
             if (result.next()) {
                 //RECUPERA AS INFORMAÇÕES DO CLIENTE
                 id_sequencia = result.getInt(1);
-                String senha_banco = result.getString(2);                
+                String senha_banco = result.getString(2);   
+                senha = criptoSenha(senha);
                 System.out.println(senha);
                 System.out.println(senha_banco);
                 //VERIFICA SE SENHA ESTÁ CORRETA
@@ -51,12 +55,13 @@ public class SenhaDao extends Dao {
             //SE NÃO
             else {  
                 //INSERE NOVA SENHA
-                String sql = "INSERT INTO tab_senhas(id_senha, data_senha, cpf_cliente, nm_cliente, senha_cliente, status_atendimento) VALUES (? , curdate(), ?, ?, ?, 'Ativo'); ";                    
+                String sql = "INSERT INTO tab_senhas(id_senha, data_senha, cpf_cliente, nm_cliente, senha_cliente, status_atendimento, tipo_atendimento) VALUES (? , curdate(), ?, ?, ?, 'Ativo', ?); ";                    
                 stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);            
                 stmt.setInt(1, getProximaSenha());
                 stmt.setString(2, cpf); //informar CPF digitado pelo usuário
                 stmt.setString(3, cliente); //informar nome digitado pelo usuário
-                stmt.setString(4, senha); //informar senha digitado pelo usuário                                      
+                stmt.setString(4, criptoSenha(senha)); //informar senha digitado pelo usuário                                      
+                stmt.setString(5, tipo_atendimento); //informar tipo atendimento informado pelo usuário
                 int affectedRows = stmt.executeUpdate();
                 
                 //verifica se deu certo. Se sim, obtem a chave id_sequancia gerada 
@@ -152,11 +157,11 @@ public class SenhaDao extends Dao {
         }
     }
      
-/*public String criptoSenha(String senha_descripto){
+public String criptoSenha(String senha_cripto){
     String senha = "";
 	try {
             MessageDigest criptografar = MessageDigest.getInstance("SHA-1");
-            criptografar.digest(senha_descripto.getBytes());
+            criptografar.digest(senha_cripto.getBytes());
             BASE64Encoder encoder = new BASE64Encoder ();  
             senha = encoder.encode(criptografar.digest());
             return senha;
@@ -164,7 +169,7 @@ public class SenhaDao extends Dao {
 		e1.printStackTrace();
                 return "Erro";
             }             
-}*/
+}
 
     public int getProximaSenha() {
         Connection conn = null;

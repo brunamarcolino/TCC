@@ -22,7 +22,7 @@
                 <h1>Login Cliente</h1>
                 <p>Para que possamos garantir a segurança da sua senha, por favor preencha o formulário abaixo:</p>
             </div>
-            <form action="GeraSenhaServlet" method="post">
+            <form action="GeraSenhaServlet?tipo_atendimento=${param.tipo_atendimento}" method="post">
                 <ul>
                     <li>
                         <label for="nomecliente">Nome : </label>
