@@ -146,6 +146,19 @@ textarea{
     border-color: #84bd00;
     color: #84bd00;
 }
+h1.title-home{
+    font-size: 4em;
+    margin-bottom: 0;
+    font-family: 'Lato-Hairline', sans-serif;
+    font-weight: 500;
+    color: #FFF;
+    letter-spacing: -4px;
+}
+h2.subtitle-home{
+    margin-top: 0 !important;
+    font-family: 'Lato-Thin', sans-serif !important;
+    font-weight: bold !important;
+}
 h1{
     font-family: 'Lato-Light', sans-serif;
     font-weight: lighter;
@@ -182,7 +195,7 @@ input[type="button"]:hover{
     z-index: 0;
     top: 0;
     left: 0;
-    background: linear-gradient( rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.75) ),url('../imagens/inicio.jpg') no-repeat 0 0;
+    background: linear-gradient(to right, rgba(52,148,230, 0.9), rgba(236,110,173, 0.75) ),url('../imagens/inicio2.jpg') no-repeat 0 0;
     background-size: cover;
 }
 .btn-outline{
@@ -359,17 +372,26 @@ div.box-cliente{
     margin-bottom: 2em;
     border-bottom: none;
 }
-.btn.verde{
+.verde{
     border-color: #84bd00;
     color: #84bd00;
 }
-.btn.vermelho{
+.vermelho{
     border-color: #FF4C4C;
     color: #FF4C4C;
 }
-.btn.azul{
+.azul{
     border-color: dodgerblue;
     color: dodgerblue;
+}
+.laranja{
+    border-color: #FF8235;
+    color: #FF8235;
+}
+.branco{
+    border-color: #FFF;
+    color: #FFF;
+    margin-top: 2.5em;
 }
 .btn-group .btn{
     display: inline-block;
