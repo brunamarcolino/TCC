@@ -237,8 +237,6 @@ ALTER TABLE `tab_usuarios`
 --
 -- Limitadores para a tabela `tab_senhas`
 --
-ALTER TABLE `tab_senhas`
-  ADD CONSTRAINT `tab_senhas_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `gerenciador`.`tab_usuarios` (`id_usuario`) ON DELETE NO ACTION ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
