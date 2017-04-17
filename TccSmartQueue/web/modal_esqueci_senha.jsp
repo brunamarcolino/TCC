@@ -16,25 +16,25 @@
     </head>
     <body>    
         <div class="main">
-            <div class="grid-100 mobile-grid-100">
+            <div class="grid-30 mobile-grid-100">
                 <h1>Esqueci minha senha</h1>
+                <h3>Informe os dados abaixo</h3>
             </div>
-            <div class="grid-50 mobile-grid-100">
-                <p>Informe os dados abaixo</p>
-                </br>
-                    <form id="usuarios" action="EsqueciSenhaServlet" method="post">                    
-                    <p>
-                        <label for="Login">Login : </label>
-                        <input type="text" name="login" value="${usuario.nm_usuario}"/>
-                    </p>
-                    <p>
-                        <label for="Email">Email cadastrado: </label>
-                        <input type="text" name="email" value="${usuario.email_usuario}"/>
-                    </p>                                   
-                    <p>
-                        <input type="submit"/>
-                    </p>
-                    
+            <div class="grid-30 mobile-grid-100">
+                <form id="usuarios" action="EsqueciSenhaServlet" method="post">
+                    <ul>
+                        <li>
+                            <label for="Login">Login : </label>
+                            <input type="text" name="login" value="${usuario.nm_usuario}"/>
+                        </li>
+                        <li>
+                            <label for="Email">Email cadastrado: </label>
+                            <input type="text" name="email" value="${usuario.email_usuario}"/>
+                        </li>                                   
+                        <li>
+                            <input type="submit" class="btn btn-outline verde"/>
+                        </li>
+                    </ul>
                 </form>       
             </div>
         </div>
