@@ -38,17 +38,17 @@ public class LoginServlet extends HttpServlet {
             //em caso de erro, grava mensagem de erro na requisi��o e retorna para p�gina inicial
             mensagem = "<span>Login ou senha nulos!</span>";
             request.setAttribute("mensagemErro", mensagem);
-            getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+            getServletContext().getRequestDispatcher("/login_adm.jsp").forward(request, response);
         } else {
             UsuarioDao usuarioDao = new UsuarioDao();
             Usuario usuario = usuarioDao.getUsuario(login, senha);
             if (usuario != null) {
                 request.getSession().setAttribute("login", usuario);
-                getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+                getServletContext().getRequestDispatcher("/login_adm.jsp").forward(request, response);
             } else {
                 mensagem = "<span>Login ou senha inválidos!</span>";
                 request.setAttribute("mensagemErro", mensagem);
-                getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+                getServletContext().getRequestDispatcher("/login_adm.jsp").forward(request, response);
             }
         }
     }
