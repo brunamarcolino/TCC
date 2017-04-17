@@ -115,7 +115,8 @@ textarea{
     margin-bottom: 1em;
 }
 .login h1,
-.center h1{
+.center h1,
+.main h1{
     text-transform: uppercase;
     font-family: 'Lato-Thin', sans-serif;
     color: #FF8500;
@@ -123,6 +124,9 @@ textarea{
     line-height: 1.2em;
     text-align: left;
     margin: 0;
+}
+.main h1{
+    margin:1em 0 .5em;
 }
 .center h1{
     text-align: left;
@@ -196,6 +200,7 @@ input[type="button"]:hover{
     top: 0;
     left: 0;
     background: linear-gradient(to right, rgba(52,148,230, 0.9), rgba(236,110,173, 0.75) ),url('../imagens/inicio2.jpg') no-repeat 0 0;
+    /*background: linear-gradient(to right, rgba(194,21,0, 0.9), rgba(255,197,0, 0.75) ),url('../imagens/inicio2.jpg') no-repeat 0 0;*/
     background-size: cover;
 }
 .btn-outline{
@@ -233,7 +238,7 @@ nav li a:hover{
     padding: 1em .5em;
 }
 footer{
-    position: absolute;
+    position: relative;
     bottom: 0;
     width: 100%;
     padding: 1em 2em;
@@ -299,13 +304,45 @@ footer{
     font-weight: bolder;
     color: #3EB27D;
 }
-
+table{
+    border: solid 1px #DDD;
+    border-bottom: none;
+    margin-bottom: 2.5em;
+}
 table th{
     text-align: left;
     padding: 1em;
+    font-family: 'Lato-Regular', sans-serif;
+    color: #777;
+    background-color: #EEE;
+    font-weight: 700;
+}
+table tr:nth-child(even){
+    background-color: #FCFCFC;
 }
 table td{
     padding: 1em;
+    font-family: 'Lato-Light', sans-serif;
+    font-weight: lighter;
+    color: #AAA;
+    border-bottom: solid 1px #DDD;
+}
+table td a {
+    margin: 0 2em 0 0;
+    display: inline-block;
+}
+table td a:last-child {
+    margin: 0;
+}
+table td a.switch{
+    text-transform: uppercase;
+    font-size: .75em;
+    border: solid 1px;
+    border-radius: 3px;
+    padding: .25em;
+}
+table + .section-center{
+    margin-top: 0;
 }
 .info{
     border-right: solid 1px #CCC;

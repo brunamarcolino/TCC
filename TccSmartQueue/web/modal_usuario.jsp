@@ -20,9 +20,7 @@
         <%@include file="WEB-INF/jspf/cabecalho.jspf"%>
         <%@include file="WEB-INF/jspf/mensagem.jspf"%>
         <c:if test="${empty login}">
-
             <jsp:forward page="index.jsp"/>  
-
         </c:if>
         <div class="main">
             <div class="grid-100 mobile-grid-100">
@@ -30,7 +28,7 @@
             </div>
             <div class="grid-50 mobile-grid-100">
               <c:choose>
-            <c:when test="${empty usuario}">
+                <c:when test="${empty usuario}">
                 <h1>INCLUIR USUÁRIO</h1>
                     <form id="iusuario" action="IncluirUsuarioServlet" method="get">
                     <p>
