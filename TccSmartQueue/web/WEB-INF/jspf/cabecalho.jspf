@@ -195,6 +195,7 @@ input[type="button"]:hover{
                         <input type="submit" value="Login" class="btn-outline" />
                     </ul>
                 </form>
+                        <a href="modal_esqueci_senha.jsp">Esqueci minha senha</a>
             </div>
         </section>
     </c:when>

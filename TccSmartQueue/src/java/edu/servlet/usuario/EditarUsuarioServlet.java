@@ -1,4 +1,4 @@
-package edu.servlet;
+package edu.servlet.usuario;
 
 import java.io.IOException;
 

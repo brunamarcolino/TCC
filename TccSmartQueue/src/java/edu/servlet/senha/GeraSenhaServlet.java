@@ -49,11 +49,19 @@ public class GeraSenhaServlet extends HttpServlet{
             //TODOS OS CAMPOS FORAM PREENCHIDOS
             
             SenhaDao senhaDao = new SenhaDao();
+            boolean valida_senha = senhaDao.verificaSenhaForte(senhacliente);
+            if (!valida_senha){
+                request.setAttribute("mensagemErro", "Senha fora da politica de segurança");
+                getServletContext().getRequestDispatcher("/login_cliente.jsp").forward(request, response); 
+            }
+            
             boolean valida_cpf = senhaDao.isCPF(cpfcliente);
             if (!valida_cpf){
                 request.setAttribute("mensagemErro", "CPF invalido");
                 getServletContext().getRequestDispatcher("/login_cliente.jsp").forward(request, response); 
             }
+            
+            
             int id_sequencia = senhaDao.geraSenha(logincliente,cpfcliente,senhacliente,tipo_atendimento);
             
             //SENHA GERADA COM SUCESSO

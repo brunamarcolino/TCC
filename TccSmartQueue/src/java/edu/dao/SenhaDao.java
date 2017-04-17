@@ -13,6 +13,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.InputMismatchException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import sun.misc.BASE64Encoder;
 
 /**
@@ -94,6 +96,22 @@ public class SenhaDao extends Dao {
             }
         }
     }
+     
+    public static boolean verificaSenhaForte(String senha)
+    {
+        boolean isSenhaIdValid = false;
+        if (senha != null && senha.length() > 0) {
+            String expression = "(?=.{6}).*([A-Za-z][0-9]|[0-9][A-Za-z]).*";
+            Pattern pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE);
+            Matcher matcher = pattern.matcher(senha);
+            if (matcher.matches()) {
+                isSenhaIdValid = true;
+            }
+        }
+        return isSenhaIdValid;
+        
+    }      
+     
      
     public static boolean isCPF(String CPF) {
         // remover formatações
