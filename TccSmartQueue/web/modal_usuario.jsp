@@ -23,75 +23,71 @@
             <jsp:forward page="index.jsp"/>  
         </c:if>
         <div class="main">
-            <div class="grid-100 mobile-grid-100">
-                <h1>Manter Usuarios</h1>
-            </div>
-            <div class="grid-50 mobile-grid-100">
-              <c:choose>
-                <c:when test="${empty usuario}">
-                <h1>INCLUIR USUÁRIO</h1>
-                    <form id="iusuario" action="IncluirUsuarioServlet" method="get">
-                    <p>
-                        <label for="Nome">Nome : </label>
-                        <input type="text" name="inome" value="${param.nm_usuario}"/>
-                    </p>
-                    <p>
-                        <label for="Email">Email : </label>
-                        <input type="text" name="iemail" value="${param.email_usuario}"/>
-                    </p>
-                    <p>
-                        <label for="CPF">CPF : </label>
-                        <input type="text" name="icpf" value="${param.cpf_usuario}"/>
-                    </p>
-                   
-                    <p>
-                        <label for="Tipo">Tipo : </label>
-                        <select name="itipo">
-                            <option value="Atendente">Atendente</option>
-                            <option value="Administrador">Administrador</option>
-                        </select>
-                    </p>                
-                    <p>
-                        <input type="submit"/>
-                    </p>
-                    
-                </form>   
-            </c:when>
-            <c:otherwise>
-                <h1>EDITAR USUÁRIO</h1>
-                    <form id="usuarios" action="EditarUsuarioServlet" method="get">
-                    <p>
-                        <input type="hidden" name="id" value="${usuario.id_usuario}" readonly="readonly"/>
-                    </p>    
-                    <p>
-                        <label for="Nome">Nome : </label>
-                        <input type="text" name="nome" value="${usuario.nm_usuario}"/>
-                    </p>
-                    <p>
-                        <label for="Email">Email : </label>
-                        <input type="text" name="email" value="${usuario.email_usuario}"/>
-                    </p>
-                    <p>
-                        <label for="CPF">CPF : </label>
-                        <input type="number" name="cpf" value="${usuario.cpf_usuario}"/>
-                    </p>
-                   
-                    <p>
-                        <label for="Tipo">Tipo : </label>
-                        <select name="tipo">
-                            <option value="Atendente">Atendente</option>
-                            <option value="Administrador">Administrador</option>
-                        </select>
-                    </p>                
-                    <p>
-                        <input type="submit"/>
-                    </p>
-                    
-                </form>   
-            </c:otherwise>
-        </c:choose>                               
-        
-               
+            <div class="grid-30 mobile-grid-100">
+                <c:choose>
+                    <c:when test="${empty usuario}">
+                        <h1>INCLUIR USUÁRIO</h1>
+                        <form id="iusuario" action="IncluirUsuarioServlet" method="get">
+                            <ul>
+                                <li>
+                                    <label for="Nome">Nome : </label>
+                                    <input type="text" name="inome" value="${param.nm_usuario}"/>
+                                </li>
+                                <li>
+                                    <label for="Email">Email : </label>
+                                    <input type="text" name="iemail" value="${param.email_usuario}"/>
+                                </li>
+                                <li class="grid-parent grid-50">
+                                    <label for="CPF">CPF : </label>
+                                    <input type="text" name="icpf" value="${param.cpf_usuario}"/>
+                                </li>
+
+                                <li class="grid-50">
+                                    <label for="Tipo">Tipo : </label>
+                                    <select name="itipo">
+                                        <option value="Atendente">Atendente</option>
+                                        <option value="Administrador">Administrador</option>
+                                    </select>
+                                </li>                
+                                <li>
+                                    <input type="submit" class="btn btn-outline verde"/>
+                                </li>
+                            </ul>
+                        </form>   
+                    </c:when>
+                    <c:otherwise>
+                    <h1>EDITAR USUÁRIO</h1>
+                        <form id="usuarios" action="EditarUsuarioServlet" method="get">
+                            <ul>
+                                <li>
+                                    <input type="hidden" name="id" value="${usuario.id_usuario}" readonly="readonly"/>
+                                </li>                
+                                <li>
+                                    <label for="Nome">Nome : </label>
+                                    <input type="text" name="nome" value="${usuario.nm_usuario}"/>
+                                </li>                
+                                <li>
+                                    <label for="Email">Email : </label>
+                                    <input type="text" name="email" value="${usuario.email_usuario}"/>
+                                </li>                
+                                <li class="grid-parent grid-50">
+                                    <label for="CPF">CPF : </label>
+                                    <input type="number" name="cpf" value="${usuario.cpf_usuario}"/>
+                                </li>                
+                                <li class="grid-50">
+                                    <label for="Tipo">Tipo : </label>
+                                    <select name="tipo">
+                                        <option value="Atendente">Atendente</option>
+                                        <option value="Administrador">Administrador</option>
+                                    </select>
+                                </li>                
+                                <li>
+                                    <input type="submit" class="btn btn-outline verde"/>
+                                </li>
+                            </ul>
+                        </form>   
+                    </c:otherwise>
+                </c:choose>  
             </div>
         </div>
         <%@include file="WEB-INF/jspf/rodape.jspf"%>

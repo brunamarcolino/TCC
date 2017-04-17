@@ -409,23 +409,25 @@ div.box-cliente{
     margin-bottom: 2em;
     border-bottom: none;
 }
-.verde{
+.btn.verde,
+.switch.verde{
     border-color: #84bd00;
     color: #84bd00;
 }
-.vermelho{
+.btn.vermelho,
+.switch.vermelho{
     border-color: #FF4C4C;
     color: #FF4C4C;
 }
-.azul{
+.btn.azul{
     border-color: dodgerblue;
     color: dodgerblue;
 }
-.laranja{
+.btn.laranja{
     border-color: #FF8235;
     color: #FF8235;
 }
-.branco{
+.btn.branco{
     border-color: #FFF;
     color: #FFF;
     margin-top: 2.5em;
