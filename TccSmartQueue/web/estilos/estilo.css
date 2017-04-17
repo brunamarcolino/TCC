@@ -123,11 +123,13 @@ textarea{
     font-weight: bold;
     line-height: 1.2em;
     text-align: left;
-    margin-bottom: 0 !important;
     margin: 0;
 }
 .main h1{
     margin:1em 0 .5em;
+}
+.box h1{
+    margin-bottom: 0;
 }
 .center h1{
     text-align: left;
@@ -208,7 +210,21 @@ input[type="button"]:hover{
 .btn-outline{
     background: transparent;
 }
-
+.btn-back {
+    float: left;
+    padding: .5em 1em;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #ffda44;
+    margin: 1.5em 0 0;
+}
+.btn-back img{
+    vertical-align: middle;
+    margin: 0 1em 0 0;
+}
+.btn-back + .btn{
+    float: right !important;
+}
 header{
     padding: 1em 2em;
     background-color: #FF8500;
@@ -256,16 +272,17 @@ footer{
 .perfil a{
    color: #7F5526;
 }
-.pass{
+.forgot-pass{
     text-align: center;
     display: block;
-    margin: 3em 0;
+    padding: 3em 0;
     color: dodgerblue;
     font-size: 1em;
     opacity: .5;
+    clear: both;
     transition: all .2s ease-out;
 }
-.pass:hover{
+.forgot-pass:hover{
     opacity: 1;
 }
 .main > div,
@@ -436,7 +453,7 @@ div.box-cliente{
 }
 .btn-group .btn{
     display: inline-block;
-    width: 30%;
+    width: 40%;
     margin: 0 1em 0 0;
     padding: .5em 0;
 }

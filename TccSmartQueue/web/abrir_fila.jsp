@@ -36,12 +36,14 @@
                             <input type="text" name="mesa" value="${param.mesa}"/>
                         </li>
                         <li>
-                            <input type="submit" value="Abrir Fila" class="btn-outline" />
+                            <a href="" class="btn-back"><img src="imagens/back.png" />Voltar</a>
+                            <input type="submit" value="Abrir Fila" class="btn btn-outline" />
                         </li>
                     </ul>
                 </form>    
             </div>
-        </div>                        
+        </div>
+                        
         <%@include file="WEB-INF/jspf/rodape.jspf" %>
     </body>
 </html>

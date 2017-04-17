@@ -14,7 +14,7 @@ RA: 1510027287
          <h3>Smartqueue</h3>
     </div>
     <div class="grid-75 pull-left hide-on-mobile">
-        <c:if test="${not empty login}">  
+        <c:if test="${not empty login}">
             <c:if test="${login.tipo_usuario=='Administrador'}">
                 <nav>
                     <ul>

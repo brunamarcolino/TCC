@@ -40,10 +40,13 @@
                                     <label for="senha">Senha</label>
                                     <input type="password" name="senha" value="${param.senha}"/>
                                 </li>
-                                <input type="submit" value="Login" class="btn-outline" />
+                                <li>
+                                    <a href="" class="btn-back"><img src="imagens/back.png" />Voltar</a>
+                                    <input type="submit" value="Login" class="btn btn-outline" />
+                                </li>
                             </ul>
                         </form>
-                        <a href="modal_esqueci_senha.jsp" class="pass">Esqueci minha senha</a>
+                        <a href="modal_esqueci_senha.jsp" class="forgot-pass">Esqueci minha senha</a>
                     </div>
                 </section>
             </c:when>

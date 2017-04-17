@@ -24,7 +24,7 @@
 
         <%@include file="WEB-INF/jspf/mensagem.jspf" %>
         <div class="main">
-            <div class="grid-35 mobile-grid-100 center">
+            <div class="grid-25 mobile-grid-100 center">
                 <div class="box">
                     <h1>Fechar fila</h1>
                 </div>

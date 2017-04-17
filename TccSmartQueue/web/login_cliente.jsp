@@ -33,8 +33,10 @@
                         <label for="senha">Senha :</label>
                         <input type="password" name="senhacliente" value="${param.senhacliente}"/>
                     </li>
-
-                    <input type="submit" value="Entrar" class="btn-outline" />
+                    <li>
+                        <a href="" class="btn-back"><img src="imagens/back.png" />Voltar</a>
+                        <input type="submit" value="Entrar" class="btn btn-outline" />
+                    </li>
                 </ul>
             </form>
         </div>

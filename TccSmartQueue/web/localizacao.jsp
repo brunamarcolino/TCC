@@ -28,12 +28,19 @@
                     <h3>Escolha o seu tipo de atendimento:</h3>
                 </div>
                 <form id="local" action="MapsServlet" method="get">
-                    <input type="hidden" name="localizacao" id="field1" value="teste"/>
-                    <select name="tipo_atendimento">
-                        <option value="Normal">Normal</option>
-                        <option value="Preferencial">Preferencial</option>
-                    </select>                        
-                    <input type="submit" value="Continuar" class="btn btn-outline azul"/>
+                    <ul>
+                        <li>
+                            <input type="hidden" name="localizacao" id="field1" value="teste"/>
+                            <select name="tipo_atendimento">
+                                <option value="Normal">Normal</option>
+                                <option value="Preferencial">Preferencial</option>
+                            </select>
+                        </li>
+                        <li>
+                            <a href="" class="btn-back"><img src="imagens/back.png" />Voltar</a>
+                            <input type="submit" value="Continuar" class="btn btn-outline azul"/>
+                        </li>
+                    </ul>
                 </form>
             </div>
         </div>
