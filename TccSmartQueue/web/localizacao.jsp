@@ -22,13 +22,9 @@
        
     </head>
     <body onload="getLocation()">    
-        <%@include file="WEB-INF/jspf/cabecalho.jspf"%>
+        
         <%@include file="WEB-INF/jspf/mensagem.jspf"%>
-        <c:if test="${empty login}">
 
-            <jsp:forward page="index.jsp"/>  
-
-        </c:if>
         <div class="main">
             <div class="grid-100 mobile-grid-100">
             <form id="local" action="MapsServlet" method="get">

@@ -27,7 +27,7 @@
 
         <%@include file="WEB-INF/jspf/mensagem.jspf" %>
         <div class="main">
-            <div class="grid-25 mobile-grid-100 center">
+            <div class="grid-35 mobile-grid-100 center">
                 <div class="box">
                     <h1>Fechar fila</h1>
                 </div>
@@ -37,9 +37,9 @@
                             <label>Tem certeza que deseja fechar sua fila?</label>
               
                         </li>
-                        <li>
-                            <a href="" class="btn btn-outline">Não fechar</a>
-                            <input type="submit" value="Fechar Fila" class="btn-outline" />
+                        <li class="btn-group">
+                            <a href="" class="btn btn-outline vermelho">Não fechar</a>
+                            <input type="submit" value="Fechar Fila" class="btn btn-outline" />
                         </li>
                     </ul>
                 </form>

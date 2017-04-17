@@ -50,7 +50,7 @@
                     </div>
                 </div>
                 <div class="grid-parent grid-100 box-cliente">
-                    <div class="grid-70 mobile-grid-100">
+                    <div class="grid-60 mobile-grid-100">
                        
                         
                             <ul>
@@ -65,12 +65,15 @@
                             </ul>
                         
                     </div>
-                    <div class="grid-30 mobile-grid-100 presenca">
+                    <div class="grid-40 mobile-grid-100 btn-group">
                         <p>O cliente está presente?</p>
                         <a href="ConfirmarPresencaServlet" class="btn btn-outline verde">Sim</a>
                         <a href="NaoConfirmarPresencaServlet" class="btn btn-outline vermelho">Não</a>                   
                     </div>
-                        <a href="FinalizarAtendimentoServlet" class="btn btn-outline" >Finalizar Atendimento</a>
+                    
+                </div>
+                <div class="grid-100 mobile-grid-100">
+                    <a href="FinalizarAtendimentoServlet" class="btn btn-outline" >Finalizar Atendimento</a>
                 </div>
             </div>
         </div>
