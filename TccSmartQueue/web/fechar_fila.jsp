@@ -17,10 +17,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         <title>Smartqueue</title>
-        <link rel="stylesheet" type="text/css" href="estilos/estilo.css" />
-        <link rel="stylesheet" type="text/css" href="estilos/unsemantic-responsive.css" />
-        <script type="text/javascript" src="script/jquery-3.2.0.min.js"></script>
-        <script type="text/javascript" src="script/general.js"></script>
+        <%@include file="WEB-INF/jspf/chamadas.jspf"%>
     </head>
     <body>
         <%@include file="WEB-INF/jspf/cabecalho.jspf" %>
@@ -34,12 +31,11 @@
                 <form action="FecharFilaServlet?login_usuario=${login.id_usuario}" method="post">
                     <ul>
                         <li> 
-                            <label>Tem certeza que deseja fechar sua fila?</label>
-              
+                            <h3>Tem certeza que deseja fechar sua fila?</h3>              
                         </li>
                         <li class="btn-group">
-                            <a href="" class="btn btn-outline vermelho">Não fechar</a>
-                            <input type="submit" value="Fechar Fila" class="btn btn-outline" />
+                            <a href="" class="btn btn-outline vermelho">Não</a>
+                            <input type="submit" value="Sim" class="btn btn-outline" />
                         </li>
                     </ul>
                 </form>

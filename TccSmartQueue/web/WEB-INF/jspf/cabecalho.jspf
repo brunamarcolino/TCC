@@ -63,6 +63,5 @@ RA: 1510027287
             </c:otherwise>        
         </c:choose>
         <a href="LogoutServlet"><strong>(sair)</strong></a>                       
-    </div>   
-
+    </div>
 </header>

@@ -14,11 +14,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         <title>Smartqueue</title>
-        <link rel="stylesheet" type="text/css" href="estilos/estilo.css" />
-        <link rel="stylesheet" type="text/css" href="estilos/unsemantic-responsive.css" />
-        
-        <script type="text/javascript" src="script/jquery-3.2.0.min.js"></script>
-        <script type="text/javascript" src="script/general.js"></script>
+        <%@include file="WEB-INF/jspf/chamadas.jspf"%>
        
     </head>
     <body onload="getLocation()">    
@@ -26,15 +22,19 @@
         <%@include file="WEB-INF/jspf/mensagem.jspf"%>
 
         <div class="main">
-            <div class="grid-100 mobile-grid-100">
-            <form id="local" action="MapsServlet" method="get">
-                <input type="hidden" name="localizacao" id="field1" value="teste"/>
-                <select name="tipo_atendimento">
-                    <option value="Normal">Normal</option>
-                    <option value="Preferencial">Preferencial</option>
-                </select>                        
-            <input type="submit" value="Clique aqui para proceguir!"/>
-            </form>
+            <div class="grid-25 mobile-grid-100 center">
+                <div class="grid-100 mobile-grid-100">
+                    <h1>COMO QUER SER ATENDIDO?</h1>
+                    <h3>Escolha o seu tipo de atendimento:</h3>
+                </div>
+                <form id="local" action="MapsServlet" method="get">
+                    <input type="hidden" name="localizacao" id="field1" value="teste"/>
+                    <select name="tipo_atendimento">
+                        <option value="Normal">Normal</option>
+                        <option value="Preferencial">Preferencial</option>
+                    </select>                        
+                    <input type="submit" value="Continuar" class="btn btn-outline azul"/>
+                </form>
             </div>
         </div>
         <script type="text/javascript" src="script/localizacao.js"></script>
