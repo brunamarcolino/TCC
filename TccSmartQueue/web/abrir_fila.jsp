@@ -35,7 +35,14 @@
                     <ul>
                         <li>
                             <label>Insira o número da fila:</label>
-                            <input type="text" name="mesa" value="${param.mesa}"/>
+                            <input type="select" name="mesa" value="${param.mesa}"/>
+                            <select>
+                            <option value="mesa1">${param.qtd_mesas}</option>
+                            <option value="mesa2">mesa 2</option>
+                            <option value="mesa3">mesa 3</option>
+                            <option value="mesa1">mesa 4</option>
+                            <option value="mesa1">mesa 5</option>
+                            </select>
                         </li>
                         <li>
                             <input type="submit" value="Abrir Fila" class="btn-outline" />

@@ -18,7 +18,10 @@ import javax.servlet.http.HttpServletResponse;
 
 
 import edu.dao.FilaDao;
+import edu.dao.ParametroDao;
 import edu.vo.Fila;
+import edu.vo.Parametro;
+import java.util.List;
 
 
 /**
@@ -31,24 +34,22 @@ public class AbrirFilaServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //RECEBE PARAMETROS DA REQUEST
+        FilaDao filaDao = new FilaDao();
         String status_fila;
         status_fila = new String("Aberta");
         String login_usuario_str = request.getParameter("login_usuario");
         int login_usuario = Integer.parseInt(login_usuario_str);
         int mesa = Integer.parseInt(request.getParameter("mesa"));
-    
-
-
-
+        List<Fila> qtdMesas = filaDao.getMesas();
+        //System.out.println(qtdMesas);
+        request.setAttribute("qtd_mesas",qtdMesas);
         //VERIFICA SE É NULO OU VAZIO
-        if (mesa == 0) {
+        if (qtdMesas == null) {
             //em caso de erro, grava mensagem de erro na requisi��o e retorna para p�gina inicial
-            String mensagem = "<span>O número da mesa está nulo!</span>";
+            String mensagem = "<span>Não Existem Mesas Disponíveis!</span>";
             request.setAttribute("mensagemErro", mensagem);
             getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
         } else {
-            FilaDao filaDao = new FilaDao();
-            
             boolean fila = filaDao.setFila(login_usuario,mesa,status_fila);
             String mensagem = "";
             if (fila) {

@@ -1,9 +1,14 @@
 package edu.dao;
 
+import edu.vo.Fila;
+import edu.vo.Parametro;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 public class FilaDao extends Dao {
 
@@ -14,7 +19,7 @@ public class FilaDao extends Dao {
             conn = getConnection();
             conn.setAutoCommit(false);
             
-            String sql = "INSERT INTO tab_fila (id_usuario,mesa_usuario,status_fila) VALUES (?,?,?)";
+            String sql = "UPDATE tab_fila set id_usuario = ? ,mesa_usuario = ?,status_fila = ?";
 
                          
             PreparedStatement stmt = conn.prepareStatement(sql);
@@ -80,6 +85,40 @@ public class FilaDao extends Dao {
             }
         }
     }
+    public List<Fila> getMesas() {
+        Connection conn = null;
+        List<Fila> mesas = new ArrayList<Fila>();
+        Fila mesa = new Fila();
+         try{
+            conn = getConnection();
+            String sql = "SELECT id_fila from tab_fila";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            ResultSet result = stmt.executeQuery();
+            if(result.next()){
+                while (result.next()) {
+                 mesa.setId_fila(result.getInt("id_fila"));
+                 mesas.add(mesa);
+                 System.out.println(mesas);
+                 return mesas;
+                }
+                
+            }else{
+                 return null;
+             }
+         }catch (Exception ex) {
+            ex.printStackTrace();
+            return null;
+        }finally {
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (Exception closeEx) {
+                    //do nothing
+                }
+            }
+       }return mesas; 
+    }
+                
 }
 /*
  * To change this license header, choose License Headers in Project Properties.
