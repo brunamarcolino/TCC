@@ -21,6 +21,7 @@ import edu.dao.FilaDao;
 import edu.dao.ParametroDao;
 import edu.vo.Fila;
 import edu.vo.Parametro;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -40,7 +41,8 @@ public class AbrirFilaServlet extends HttpServlet {
         String login_usuario_str = request.getParameter("login_usuario");
         int login_usuario = Integer.parseInt(login_usuario_str);
         int mesa = Integer.parseInt(request.getParameter("mesa"));
-        List<Fila> qtdMesas = filaDao.getMesas();
+        List qtdMesas = new ArrayList();
+        qtdMesas = filaDao.getMesas();
         //System.out.println(qtdMesas);
         request.setAttribute("qtd_mesas",qtdMesas);
         //VERIFICA SE É NULO OU VAZIO
