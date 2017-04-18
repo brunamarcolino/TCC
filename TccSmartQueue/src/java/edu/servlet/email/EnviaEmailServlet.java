@@ -39,10 +39,11 @@ public class EnviaEmailServlet extends HttpServlet {
             HtmlEmail email = new HtmlEmail();
             String authuser = "equipesmartqueue@gmail.com";
             String authpwd = "Metrocamp@2017";
-            email.setSmtpPort(587);
+            email.setSmtpPort(465);
             email.setAuthenticator(new DefaultAuthenticator(authuser, authpwd));
             email.setDebug(true);
-            email.setSSL(true);
+            email.setSSL(false);
+            email.setTLS(false);
             email.setStartTLSEnabled(true);
             email.setHostName("smtp.gmail.com");
             email.addTo(destinatario, destinatario);
