@@ -17,10 +17,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         <title>Smartqueue</title>
-        <link rel="stylesheet" type="text/css" href="estilos/estilo.css" />
-        <link rel="stylesheet" type="text/css" href="estilos/unsemantic-responsive.css" />
-        <script type="text/javascript" src="script/jquery-3.2.0.min.js"></script>
-        <script type="text/javascript" src="script/general.js"></script>
+        <%@include file="WEB-INF/jspf/chamadas.jspf"%>
     </head>
     <body>
         <%@include file="WEB-INF/jspf/cabecalho.jspf" %>
@@ -30,6 +27,7 @@
             <div class="grid-25 mobile-grid-100 center">
                 <div class="box">
                     <h1>Abrir fila</h1>
+                    <h3>Inicie suas atividades abrindo a fila!</h3>
                 </div>
                 <form action="AbrirFilaServlet?login_usuario=${login.id_usuario}" method="post">
                     <ul>
@@ -45,12 +43,14 @@
                             </select>
                         </li>
                         <li>
-                            <input type="submit" value="Abrir Fila" class="btn-outline" />
+                            <a href="" class="btn-back"><img src="imagens/back.png" />Voltar</a>
+                            <input type="submit" value="Abrir Fila" class="btn btn-outline" />
                         </li>
                     </ul>
                 </form>    
             </div>
-        </div>                        
+        </div>
+                        
         <%@include file="WEB-INF/jspf/rodape.jspf" %>
     </body>
 </html>

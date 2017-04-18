@@ -195,6 +195,7 @@ input[type="button"]:hover{
                         <input type="submit" value="Login" class="btn-outline" />
                     </ul>
                 </form>
+                        <a href="modal_esqueci_senha.jsp">Esqueci minha senha</a>
             </div>
         </section>
     </c:when>
@@ -236,8 +237,7 @@ input[type="button"]:hover{
                         <nav>
                             <ul>
                                 <li>
-                                    <a href="MapsServlet">Gerar Senha</a>
-                                     
+                                    <a href="localizacao.jsp">Gerar Senha</a>                              
                                 </li>         
                             </ul>
                         </nav>
@@ -249,6 +249,7 @@ input[type="button"]:hover{
                 <span>Olá, <strong>${login.nm_usuario}</strong></span>
                 <a href="LogoutServlet"><strong>(sair)</strong></a>                       
             </div>   
+                
         </header>
     </c:otherwise>        
 </c:choose>

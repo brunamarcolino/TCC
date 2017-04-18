@@ -19,10 +19,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         <title>Smartqueue</title>
-        <link rel="stylesheet" type="text/css" href="estilos/estilo.css" />
-        <link rel="stylesheet" type="text/css" href="estilos/unsemantic-responsive.css" />
-        <script type="text/javascript" src="script/jquery-3.2.0.min.js"></script>
-        <script type="text/javascript" src="script/general.js"></script>
+        <%@include file="WEB-INF/jspf/chamadas.jspf"%>
     </head>
     <body>
        
@@ -50,7 +47,7 @@
                     </div>
                 </div>
                 <div class="grid-parent grid-100 box-cliente">
-                    <div class="grid-70 mobile-grid-100">
+                    <div class="grid-60 mobile-grid-100">
                        
                         
                             <ul>
@@ -65,12 +62,15 @@
                             </ul>
                         
                     </div>
-                    <div class="grid-30 mobile-grid-100 presenca">
+                    <div class="grid-40 mobile-grid-100 btn-group">
                         <p>O cliente está presente?</p>
                         <a href="ConfirmarPresencaServlet" class="btn btn-outline verde">Sim</a>
                         <a href="NaoConfirmarPresencaServlet" class="btn btn-outline vermelho">Não</a>                   
                     </div>
-                        <a href="FinalizarAtendimentoServlet" class="btn btn-outline" >Finalizar Atendimento</a>
+                    
+                </div>
+                <div class="grid-100 mobile-grid-100">
+                    <a href="FinalizarAtendimentoServlet" class="btn btn-outline" >Finalizar Atendimento</a>
                 </div>
             </div>
         </div>

@@ -15,10 +15,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         <title>Smartqueue</title>
-        <link rel="stylesheet" type="text/css" href="estilos/estilo.css" />
-        <link rel="stylesheet" type="text/css" href="estilos/unsemantic-responsive.css" />
-        <script type="text/javascript" src="script/jquery-3.2.0.min.js"></script>
-        <script type="text/javascript" src="script/general.js"></script>
+        <%@include file="WEB-INF/jspf/chamadas.jspf"%>
     </head>
     <body>
         <%@include file="WEB-INF/jspf/cabecalho.jspf"%>
@@ -71,15 +68,13 @@
                 <div class="grid-100">
                     <c:choose>
                         <c:when test="${dadossenha.distancia}">
-                            <p> Você está dentro da distancia permitida</p>
-                            </br></br>
+                            <p class="location location-ok"><img src="imagens/success.png"/>Você está dentro da distancia permitida</p>
                             <p>Clique abaixo para gerar a sua senha:</p>
-                            <input type="button" value="Gerar Senha" onClick="window.location.href='login_cliente.jsp'">                            
+                            <input type="button" value="Gerar Senha" onClick="window.location.href='login_cliente.jsp?tipo_atendimento=${dadossenha.tipo_atendimento}'">                            
                         </c:when>
                         <c:otherwise>
-                            <p> Você está FORA da distancia permitida</p>
-                            </br></br>
-                            <p><i>Para que o botão GERAR SENHA fique disponível, é necessário se aproximar mais do local de atendimento</i></p>                            
+                            <p class="location location-wrong"><img src="imagens/error.png"/>Você está FORA da distancia permitida</p>
+                            <p class="alert"><i>Para que o botão GERAR SENHA fique disponível, é necessário se aproximar mais do local de atendimento</i></p>                            
                         </c:otherwise>
                     </c:choose> 
                             

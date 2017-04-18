@@ -5,10 +5,7 @@
  */
 package edu.servlet.senha;
 
-import edu.dao.DadosSenhaDao;
 import edu.dao.SenhaDao;
-import edu.vo.DadosSenha;
-import edu.vo.Senha;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -32,16 +29,13 @@ public class CancelarSenhaServlet extends HttpServlet{
         boolean senha = senhaDao.cancelaSenha(id_senha);
         
         if (senha) {
-        DadosSenhaDao dadosSenhaDao = new DadosSenhaDao();
-        DadosSenha dadosSenha = dadosSenhaDao.getDados();
-        
-        request.setAttribute("dadossenha", dadosSenha);
-        
-        getServletContext().getRequestDispatcher("/senha.jsp").forward(request, response);
+            request.setAttribute("mensagem", "Senha Cancelada com sucesso");
+            getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
         }
         else
         {
-        getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+            request.setAttribute("mensagemErro", "Ocorreu um erro ao Cancelar a senha.");
+            getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
         }
         
     }

@@ -14,10 +14,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         <title>Smartqueue</title>
-        <link rel="stylesheet" type="text/css" href="estilos/estilo.css" />
-        <link rel="stylesheet" type="text/css" href="estilos/unsemantic-responsive.css" />
-        <script type="text/javascript" src="script/jquery-3.2.0.min.js"></script>
-        <script type="text/javascript" src="script/general.js"></script>
+        <%@include file="WEB-INF/jspf/chamadas.jspf"%>
     </head>
     <body>    
         <%@include file="WEB-INF/jspf/cabecalho.jspf"%>
@@ -28,16 +25,15 @@
 
         </c:if>
         <div class="main">
-            <div class="grid-100 mobile-grid-100">
+            <div class="grid-75 mobile-grid-100">
                 <h1>Manter Usuarios</h1>
             </div>
-            <div class="grid-50 mobile-grid-100">
-        <c:choose>
-            <c:when test="${empty usuarios}">
-                <p>Nenhum usuario cadastrado!</p>
-            </c:when>
-            <c:otherwise>
-                
+            <div class="grid-75 mobile-grid-100">
+            <c:choose>
+                <c:when test="${empty usuarios}">
+                    <p>Nenhum usuario cadastrado!</p>
+                </c:when>
+                <c:otherwise>
                 <table border="0" cellpadding="0" cellspacing="0" width="100%">
                     <tr>
                         <th>Nome</th>
@@ -46,7 +42,6 @@
                         <th>Tipo</th>
                         <th>Ações</th>
                     </tr>
-
                     <c:forEach var="usuario" items="${usuarios}">    
                         <tr>
                             <td>      
@@ -61,17 +56,16 @@
                             <td>      
                                 ${usuario.tipo_usuario}
                             </td>                                        
-                            
                             <td>  
-                                <a href="ModalEditarUsuarioServlet?id_usuario=${usuario.id_usuario}">Editar</a> 
-                                <a href="ExcluirUsuarioServlet?id_usuario=${usuario.id_usuario}&login_usuario=${login.id_usuario}" onclick="confirma()">Excluir</a>
+                                <a href="ModalEditarUsuarioServlet?id_usuario=${usuario.id_usuario}" title="Editar"><img src="imagens/editar.png" /></a> 
+                                <a href="ExcluirUsuarioServlet?id_usuario=${usuario.id_usuario}&login_usuario=${login.id_usuario}" title="Deletar" onclick="confirma()"><img src="imagens/deletar.png" /></a>
                             </td>
-                        </tr>
-                            
+                        </tr>      
                     </c:forEach>
-                </table>  
-                </br></br></br>
-                    <a href="ModalEditarUsuarioServlet?id_usuario=0">Incluir novo usuario</a> 
+                </table>
+                <div class="grid-50 mobile-grid-100 section-center">
+                    <a href="ModalEditarUsuarioServlet?id_usuario=0" class="btn btn-outline azul">Incluir novo usuario</a> 
+                </div>
             </c:otherwise>
         </c:choose>                             
             </div>

@@ -12,77 +12,89 @@
         <meta http-equiv = "Content-Type" content="text/css; charset=utf-8">
         <meta name="description" content="Gerenciador de filas">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Smartqueue - Bem-vindo</title>
         
-        <title>Smartqueue</title>
-        <link rel="stylesheet" type="text/css" href="estilos/estilo.css" />
-        <link rel="stylesheet" type="text/css" href="estilos/unsemantic-responsive.css" />
-        <script type="text/javascript" src="script/jquery-3.2.0.min.js"></script>
-        <script type="text/javascript" src="script/general.js"></script>
-        <script type="text/javascript" src="script/localizacao.js"></script>
+        <%@include file="WEB-INF/jspf/chamadas.jspf"%>
     </head>
-    <body class="<c:if test='${empty login}'>nao-logado</c:if>">        
-        <%@include file="WEB-INF/jspf/cabecalho.jspf" %>
+    <body>
+         <c:choose>
+            <c:when test="${empty login}">
+                <div class="image"></div> 
+                <section class="grid-75 mobile-grid-100 section-center">
+                    <div class="grid-100 mobile-grid-100">
+                        <h1 class="title-home">SMARTQUEUE</h1>
+                        <h2 class="subtitle-home">Seja bem-vindo!</h2>
+                    </div>
+                </section>
+                <section class="grid-75 mobile-grid-100 section-center">
+                    <div class="grid-50 mobile-grid-100 border">
+                        <img src="imagens/cliente.png" />
+                        <h2>Sou cliente</h2>
+                        <p>Clique abaixo para escolher a sua senha e entrar na fila o quanto antes!</p>
+                        <a href="localizacao.jsp" class="btn btn-outline branco">Quero tirar minha senha</a>
+                    </div>
+                    <div class="grid-50 mobile-grid-100">
+                        <img src="imagens/admin.png" />
+                        <h2>Sou administrador ou atendente</h2>
+                        <p>Gerenciamento de filas, parâmetros, atendimentos, entre outros, clique abaixo!</p>
+                        <a href="login_adm.jsp" class="btn btn-outline branco">Entrar no painel</a>
+                    </div>
+                </section>
+            </c:when>
+            <c:otherwise>
+                <header class="grid-100 mobile-grid-100">
+                    <div class="grid-10 mobile-grid-50">
+                         <h3>Smartqueue</h3>
+                    </div>
+                    <div class="grid-80 pull-left hide-on-mobile">
+                        <c:if test="${not empty login}">  
+                            <c:if test="${login.tipo_usuario=='Administrador'}">
+                                <nav>
+                                    <ul>
+                                        <li>
+                                            <a href="ListaUsuarioServlet">Gerenciar atendentes</a>
+                                        </li>
+                                        <li>
+                                            <a href="MapsServlet">Gerar Relatórios</a>
+                                        </li>
+                                        <li>
+                                            <a href="ListaParametrosServlet">Parametros do Sistemas</a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </c:if>        
+                            <c:if test="${login.tipo_usuario=='Atendente'}">
+                                <nav>
+                                    <ul>
+                                        <li>
+                                            <a href="abrir_fila.jsp">Abrir Fila</a>
+                                        </li>  
+                                        <li>
+                                            <a href="fechar_fila.jsp">Fechar Fila</a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </c:if>   
+                            <c:if test="${login.tipo_usuario=='Cliente'}">
+                                <nav>
+                                    <ul>
+                                        <li>
+                                            <a href="localizacao.jsp">Gerar Senha</a>                              
+                                        </li>         
+                                    </ul>
+                                </nav>
+                            </c:if>     
+                        </c:if>        
 
-        <%@include file="WEB-INF/jspf/mensagem.jspf" %>
-        <div class="main">
-            <div class="grid-100 mobile-grid-100">
-                <c:if test="${not empty login}">  
-                    <c:if test="${login.tipo_usuario=='Administrador'}">
-                        <h1>Perfil Admin</h1> 
+                    </div>
+                    <div class="grid-10 pull-right perfil">
+                        <span>Olá, <strong>${login.nm_usuario}</strong></span>
+                        <a href="LogoutServlet"><strong>(sair)</strong></a>                       
+                    </div>   
 
-                    </c:if>        
-                    <c:if test="${login.tipo_usuario=='Atendente'}">
-                        <h1>Perfil Atendente</h1>
-
-                    </c:if>   
-                    <c:if test="${login.tipo_usuario=='Cliente'}">
-                        <h1>Perfil Cliente</h1>
-                       <button onclick="getLocation()">Clique Aqui</button>
-                        <input type="text" id="field"></input>
-                        <script>
-var x=document.getElementById("field")
-function getLocation()
-  {
-      
-  if (navigator.geolocation)
-    {
-    navigator.geolocation.getCurrentPosition(showPosition,showError);
-    }
-  else{x.value="Seu browser não suporta Geolocalização.";}
-  }
-  
-  function showPosition(position)
-  {
-  x.value=position.coords.latitude +
-  "," + position.coords.longitude; 
-  }
-  
-function showError(error)
-  {
-  switch(error.code)
-    {
-    case error.PERMISSION_DENIED:
-      x.value="Usuário rejeitou a solicitação de Geolocalização.";
-      break;
-    case error.POSITION_UNAVAILABLE:
-      x.value="Localização indisponível.";
-      break;
-    case error.TIMEOUT:
-      x.value="A requisição expirou.";
-      break;
-    case error.UNKNOWN_ERROR:
-      x.value="Algum erro desconhecido aconteceu.";
-      break;
-    }
-  }
-                        </script> 
-                    </c:if>
-                    <!--<div class="grid-25">
-                    <a href="ListaSenhaServlet" class="btn btn-outline">Chama Servlet</a>
-                    </div>-->
-                </c:if>          
-            </div>
-        </div>
-        <%@include file="WEB-INF/jspf/rodape.jspf" %>
+                </header>
+            </c:otherwise>        
+        </c:choose>
     </body>
 </html>

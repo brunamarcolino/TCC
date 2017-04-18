@@ -8,6 +8,7 @@ import edu.vo.Usuario;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
+import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -89,6 +90,45 @@ public class UsuarioDao extends Dao {
             }
         }
     }
+    
+    public Usuario getUsuarioToken(String token) {
+        Connection conn = null;
+
+        try {
+            conn = getConnection();
+
+            String sql = "SELECT id_usuario, nm_usuario, email_usuario, cpf_usuario, status_usuario, tipo_usuario FROM tab_usuarios " + "where token_senha=?";
+
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setString(1, token);
+            ResultSet result = stmt.executeQuery();
+
+            if (result.next()) {
+                Usuario usuario = new Usuario();
+                usuario.setId_usuario(result.getInt("id_usuario"));
+                usuario.setNm_usuario(result.getString("nm_usuario"));
+                usuario.setEmail_usuario(result.getString("email_usuario"));
+                usuario.setCpf_usuario(result.getString("cpf_usuario"));
+                usuario.setTipo_usuario(result.getString("tipo_usuario"));
+                usuario.setStatus_usuario(result.getString("status_usuario"));
+
+                return usuario;
+            } else {
+                return null;
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return null;
+        } finally {
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (Exception closeEx) {
+                    //do nothing
+                }
+            }
+        }
+    }    
 
     public List<Usuario> getUsuarios() {
         Connection conn = null;
@@ -175,6 +215,50 @@ public class UsuarioDao extends Dao {
             }
         }
     }
+    
+    public boolean updateSenhaUsuario(int id, String senha) {
+        Connection conn = null;
+
+        try {
+            //obtem conexao com o banco de dados
+            conn = getConnection();
+            conn.setAutoCommit(false);
+
+            //define SQL para atualiza��o
+            String sql = "UPDATE tab_usuarios SET token_senha = null, senha_usuario = SHA1(?) WHERE id_usuario = ?";
+
+            //instance Prepared statement especificando os par�metros do SQL
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setString(1, senha);
+            stmt.setInt(2, id);
+
+            //executa a opera��o no banco de dados
+            int affectedRows = stmt.executeUpdate();
+
+            //verifica se deu certo. Se sim, atualiza a nota 
+            if (affectedRows > 0) {
+                //confirma as modifica��es no banco de dados
+                conn.commit();
+                return true;
+            } else {
+                //cancela as modifica��es no banco de dados
+                conn.rollback();
+                return false;
+            }
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return false;
+        } finally {
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (Exception closeEx) {
+                    //do nothing
+                }
+            }
+        }
+    }    
 
     public static boolean isCPF(String CPF) {
         // remover formatações
@@ -412,19 +496,25 @@ public class UsuarioDao extends Dao {
         Connection conn = null;
 
         try {
+            //gera token para alteração de senhas
+            Random rand = new Random();
+            String token = Long.toHexString(rand.nextLong()) + Long.toHexString(rand.nextLong());
+            
+            System.out.println(token);
+
             //obtem conexao com o banco de dados
             conn = getConnection();
             conn.setAutoCommit(false);
-
+            
             //define SQL para atualiza��o
-            String sql = "INSERT INTO tab_usuarios (nm_usuario, email_usuario, cpf_usuario, senha_usuario, tipo_usuario, status_usuario) VALUES (?, ?, ?, SHA1(?), ?, 'Ativo')";
+            String sql = "INSERT INTO tab_usuarios (nm_usuario, email_usuario, cpf_usuario, token_senha, tipo_usuario, status_usuario) VALUES (?, ?, ?, SHA1(?), ?, 'Ativo')";
 
             //instance Prepared statement especificando os par�metros do SQL
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setString(1, nome);
             stmt.setString(2, email);
-            stmt.setString(3, cpf);
-            stmt.setString(4, "1");
+            stmt.setString(3, cpf);            
+            stmt.setString(4, token);
             stmt.setString(5, tipo);
 
             //executa a opera��o no banco de dados
@@ -454,6 +544,56 @@ public class UsuarioDao extends Dao {
             }
         }
     }
+    
+    public String updateEsqueciSenhaUsuario(String login, String email) {
+        Connection conn = null;
+
+        try {
+            //gera token para alteração de senhas
+            Random rand = new Random();
+            String token = Long.toHexString(rand.nextLong()) + Long.toHexString(rand.nextLong());
+            
+            //obtem conexao com o banco de dados
+            conn = getConnection();
+            conn.setAutoCommit(false);
+
+            //define SQL para atualiza��o
+            String sql = "UPDATE tab_usuarios SET token_senha = ? WHERE nm_usuario = ? and email_usuario = ?";
+
+            //instance Prepared statement especificando os par�metros do SQL
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setString(1, token);
+            stmt.setString(2, login);
+            stmt.setString(3, email);
+            
+            //executa a opera��o no banco de dados
+            int affectedRows = stmt.executeUpdate();
+
+            //verifica se deu certo. Se sim, atualiza a nota 
+            if (affectedRows > 0) {
+                //confirma as modifica��es no banco de dados
+                conn.commit();
+                return token;
+            } else {
+                //cancela as modifica��es no banco de dados
+                conn.rollback();
+                return "Erro";
+            }
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return "Erro";
+        } finally {
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (Exception closeEx) {
+                    //do nothing
+                }
+            }
+        }
+    }    
+
 
     public boolean deleteUsuario(int id_usuario) {
         Connection conn = null;
@@ -497,5 +637,20 @@ public class UsuarioDao extends Dao {
             }
         }
     }
+    
+    public static boolean verificaSenhaForte(String senha)
+    {
+        boolean isSenhaIdValid = false;
+        if (senha != null && senha.length() > 0) {
+            String expression = "(?=.{6}).*([A-Za-z][0-9]|[0-9][A-Za-z]).*";
+            Pattern pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE);
+            Matcher matcher = pattern.matcher(senha);
+            if (matcher.matches()) {
+                isSenhaIdValid = true;
+            }
+        }
+        return isSenhaIdValid;
+        
+    }       
 
 }

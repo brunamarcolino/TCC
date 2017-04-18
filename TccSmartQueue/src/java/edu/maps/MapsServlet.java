@@ -45,9 +45,12 @@ public class MapsServlet extends HttpServlet {
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
         try {
-            String field = request.getParameter("field");
+            //BUSCA PARAMETROS DO JSP
+            String localizacao = request.getParameter("localizacao");
+            String tipo_atendimento = request.getParameter("tipo_atendimento");
             
-            System.out.println("field" + field);
+            System.out.println("localizacao " + localizacao);
+            System.out.println("tipo_atendimento " + tipo_atendimento);
             
             //instancia um parametro
             ParametroDao parametroDao = new ParametroDao();
@@ -56,7 +59,7 @@ public class MapsServlet extends HttpServlet {
             //verifica se distancia está habilitada
             parametro = parametroDao.getParametro(7);
             int parametro_habilitado = parametro.getParametro_habilitado();
-            int raio_permitido = Integer.parseInt(parametro.getValor_parametro())*10000;
+            int raio_permitido = Integer.parseInt(parametro.getValor_parametro())*1000;
         
             //se sim, calcula se está dentro da distancia permitida
             if (parametro_habilitado == 1){
@@ -65,11 +68,12 @@ public class MapsServlet extends HttpServlet {
                 String API_KEY = "AIzaSyA2V07AOszVncA9R5zZQ5O3U5Y8BClg7_E";
         
                 //LOCAL DE ORIGEM (USUÁRIO)
-                String origem = "-22.908785,-47.0781327";
+                String origem = localizacao;
         
                 //LOCAL DESTINO (ATENDIMENTO) - PARAMETRIZADO    
                 parametro = parametroDao.getParametro(8);
                 String destino = parametro.getValor_parametro();
+                destino = destino.replace(" ", "+");
                 System.out.println(destino); 
                 //String destino = "-22.8629682,-47.1498136";
         
@@ -117,22 +121,24 @@ public class MapsServlet extends HttpServlet {
                     else{
                         //redireciona para sucesso
                         
-                        getServletContext().getRequestDispatcher("/ListaSenhaServlet?distancia=true").forward(request, response);
+                        getServletContext().getRequestDispatcher("/ListaSenhaServlet?distancia=true&tipo_atendimento="+tipo_atendimento).forward(request, response);
                     }   
                 } else {
                     request.setAttribute("mensagemErro", "Erro ao retornar JSON.");
-                    getServletContext().getRequestDispatcher("/ListaSenhaServlet").forward(request, response);
+                    getServletContext().getRequestDispatcher("/ListaSenhaServlet?distancia=false").forward(request, response);
                 }
                 
             }
             //se não redireciona para gerar senha
             else
             {
-                getServletContext().getRequestDispatcher("/ListaSenhaServlet").forward(request, response);
+                getServletContext().getRequestDispatcher("/ListaSenhaServlet?distancia=true&tipo_atendimento="+tipo_atendimento).forward(request, response);
             }        
             //getServletContext().getRequestDispatcher("/json.jsp").forward(request, response);
         } catch (Exception ex) {
             ex.printStackTrace();
+            request.setAttribute("mensagemErro", "Erro na localização.");
+            getServletContext().getRequestDispatcher("/localizacao.jsp").forward(request, response);            
 	}
              
     }

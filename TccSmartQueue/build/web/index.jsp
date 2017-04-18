@@ -37,45 +37,6 @@
                     </c:if>   
                     <c:if test="${login.tipo_usuario=='Cliente'}">
                         <h1>Perfil Cliente</h1>
-                       <button onclick="getLocation()">Clique Aqui</button>
-                        <input type="text" id="field"></input>
-                        <script>
-var x=document.getElementById("field")
-function getLocation()
-  {
-      
-  if (navigator.geolocation)
-    {
-    navigator.geolocation.getCurrentPosition(showPosition,showError);
-    }
-  else{x.value="Seu browser não suporta Geolocalização.";}
-  }
-  
-  function showPosition(position)
-  {
-  x.value=position.coords.latitude +
-  "," + position.coords.longitude; 
-  }
-  
-function showError(error)
-  {
-  switch(error.code)
-    {
-    case error.PERMISSION_DENIED:
-      x.value="Usuário rejeitou a solicitação de Geolocalização.";
-      break;
-    case error.POSITION_UNAVAILABLE:
-      x.value="Localização indisponível.";
-      break;
-    case error.TIMEOUT:
-      x.value="A requisição expirou.";
-      break;
-    case error.UNKNOWN_ERROR:
-      x.value="Algum erro desconhecido aconteceu.";
-      break;
-    }
-  }
-                        </script> 
                     </c:if>
                     <!--<div class="grid-25">
                     <a href="ListaSenhaServlet" class="btn btn-outline">Chama Servlet</a>

@@ -7,11 +7,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
         <title>Login</title>
-        <link rel="stylesheet" type="text/css" href="estilos/estilo.css"/>
-        <link rel="stylesheet" type="text/css" href="estilos/unsemantic-responsive.css" />
-        <script type="text/javascript" src="script/jquery-3.2.0.min.js"></script>
-        <script type="text/javascript" src="script/general.js"></script>
-        <script type="text/javascript" src="script/jquery.mask.js"></script>
+        
+        <%@include file="WEB-INF/jspf/chamadas.jspf"%>
     </head>
     <body>  
         <%@include file="WEB-INF/jspf/cabecalho.jspf" %>
@@ -22,7 +19,7 @@
                 <h1>Login Cliente</h1>
                 <p>Para que possamos garantir a segurança da sua senha, por favor preencha o formulário abaixo:</p>
             </div>
-            <form action="GeraSenhaServlet" method="post">
+            <form action="GeraSenhaServlet?tipo_atendimento=${param.tipo_atendimento}" method="post">
                 <ul>
                     <li>
                         <label for="nomecliente">Nome : </label>
@@ -36,8 +33,10 @@
                         <label for="senha">Senha :</label>
                         <input type="password" name="senhacliente" value="${param.senhacliente}"/>
                     </li>
-
-                    <input type="submit" value="Entrar" class="btn-outline" />
+                    <li>
+                        <a href="" class="btn-back"><img src="imagens/back.png" />Voltar</a>
+                        <input type="submit" value="Entrar" class="btn btn-outline" />
+                    </li>
                 </ul>
             </form>
         </div>
