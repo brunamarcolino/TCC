@@ -18,23 +18,22 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author casa
  */
-@WebServlet("/ConfirmarPresencaServlet")
-public class ConfirmarPresencaServlet extends HttpServlet {
+@WebServlet("/BuscarNomeESenhaServlet")
+public class BuscarNomeESenhaServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
     SenhaDao senhaDao = new SenhaDao();
     int senha = senhaDao.getClienteSenha();
-    int confirma = senhaDao.chamaProximaSenha(senha);
     String nome_cliente = senhaDao.getNomeCliente(senha);
     String mensagem = "";
-    if (confirma > 0){
+    
+    if (senha > 0){
                 request.setAttribute("senha",senha);
                 request.setAttribute("nome_cliente",nome_cliente);
-                mensagem = "<span>Atendimento iniciado!</span>";
                 request.setAttribute("mensagemSucesso", mensagem);
                 getServletContext().getRequestDispatcher("/chamar_proximo.jsp").forward(request, response);
             }else{
-                mensagem = "Nenhum cliente foi chamado!";
+                mensagem = "Não há clientes na fila";
                 request.setAttribute("mensagemErro", mensagem);
                 getServletContext().getRequestDispatcher("/chamar_proximo.jsp").forward(request, response);
     }
