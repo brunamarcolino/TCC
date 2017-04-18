@@ -51,7 +51,7 @@ public class EsqueciSenhaServlet extends HttpServlet {
                 
                 //SENHA INVÁLIDA
                 if (token.equals("Erro")){
-                    request.setAttribute("mensagemErro", "CPF Não encontrado");
+                    request.setAttribute("mensagemErro", "Login / Email não encontrado");
                     getServletContext().getRequestDispatcher("/model_esqueci_senha.jsp").forward(request, response);
                 }
                 else {
@@ -60,13 +60,12 @@ public class EsqueciSenhaServlet extends HttpServlet {
                     String assunto = "Redefinição da senha no SmartQueue";
                     String corpo = ("<p>Olá,"+login+"  </p>" +
                                         "<p>Nós recebemos uma solicitação de mudança de senha da sua conta no Smrtqueue. </p>" +
-                                        "<p>Você pode redefinir a sua senha <a href=\"https://http://localhost:8080/TccSmartQueue/RecuperarDadosToken?token="+token+"\">aqui</a>. A sua nova senha deve:</p>" +
+                                        "<p>Você pode redefinir a sua senha <a href=\"http://localhost:8080/TccSmartQueue/RecuperarDadosToken?token="+token+"\">aqui</a>. A sua nova senha deve:</p>" +
                                         "<ul>" +
                                         "<li>Ter mais que 6 caracteres</li>" +
                                         "<li>Ter pelo menos uma letra e um número</li>" +
-                                        "</ul>");  
-                    request.setAttribute("Destinatario",email);
-                    request.setAttribute("mensagem", "<span>Você receberá um email com as instruções para alteração de senha</span>");
+                                        "</ul>" +
+                                        "Ignore este e-mail se você não quiser redefinir a sua senha.");                      
                     getServletContext().getRequestDispatcher("/EnviaEmailServlet?destinatario="+destinatario+"&assunto="+assunto+"&corpo="+corpo).forward(request, response);   
                 }     
             }

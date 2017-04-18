@@ -39,15 +39,19 @@ public class EnviaEmailServlet extends HttpServlet {
             HtmlEmail email = new HtmlEmail();
             String authuser = "equipesmartqueue@gmail.com";
             String authpwd = "Metrocamp@2017";
-            email.setSmtpPort(465);
-            email.setAuthenticator(new DefaultAuthenticator(authuser, authpwd));
+            
             email.setDebug(true);
-            email.setSSL(false);
-            email.setTLS(false);
-            email.setStartTLSEnabled(true);
             email.setHostName("smtp.gmail.com");
-            email.addTo(destinatario, destinatario);
+            email.setSmtpPort(587);
+            
+            //email.setSSL(false);
+            //email.setTLS(false);
+            email.setStartTLSEnabled(true);            
+            
+            email.setAuthenticator(new DefaultAuthenticator(authuser, authpwd));
+
             email.setFrom("equipesmartqueue@gmail.com", "Equipe SmartQueue");
+            email.addTo(destinatario, destinatario);
             email.setSubject(assunto);
  
             // adiciona uma imagem ao corpo da mensagem e retorna seu id
@@ -58,7 +62,7 @@ public class EnviaEmailServlet extends HttpServlet {
             email.setHtmlMsg("<html>"
                     + "<img src=\"cid:"+cid+"\">"
                     + corpo        
-                    + "<p> Ignore este e-mail se você não quiser redefinir a sua senha. Esta é uma mensagem automática. Por favor, não responda a esta mensagem. </p>"
+                    + "<p>Esta é uma mensagem automática. Por favor, não responda a esta mensagem. </p>"
                     + "<p>Muito obrigado.</p>"
                     + "<p>Equipe SmartQueue</p>"        
                     + "</html>");
@@ -68,7 +72,9 @@ public class EnviaEmailServlet extends HttpServlet {
  
             // envia o e-mail
             email.send();
-             
+            
+            request.setAttribute("mensagem", "<span>Você receberá um email com as instruções para alteração de senha</span>");
+            getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
         }catch (Exception e) {
             System.out.println("Erro " + e);
             request.setAttribute("mensagemErro", "Informações inválidas.");

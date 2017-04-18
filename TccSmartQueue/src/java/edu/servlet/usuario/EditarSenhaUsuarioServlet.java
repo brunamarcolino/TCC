@@ -35,6 +35,8 @@ public class EditarSenhaUsuarioServlet extends HttpServlet {
             String nome = request.getParameter("nome");
             String senha = request.getParameter("senha");
             
+            System.out.println("senha nova "+ senha);
+            
             String mensagem = "";
             
             Usuario usuario = new Usuario();
@@ -65,15 +67,13 @@ public class EditarSenhaUsuarioServlet extends HttpServlet {
                     sucesso = usuarioDao.updateSenhaUsuario(id,senha);  
                     if (sucesso){
                         request.setAttribute("mensagem", "<span>Usuário alterado com sucesso</span>");
-                        getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+                        getServletContext().getRequestDispatcher("/login_adm.jsp").forward(request, response);
                     } else {
                         request.setAttribute("mensagemErro", "Erro Gernerico");
                         getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
                     }
-                    
                 }     
-            }
-      
+            }  
         }catch (Exception e) {
            // System.out.println("Erro " + e);
             request.setAttribute("mensagemErro", "Informações inválidas.");
