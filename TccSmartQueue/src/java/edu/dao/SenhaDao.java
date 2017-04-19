@@ -96,7 +96,55 @@ public class SenhaDao extends Dao {
             }
         }
     }
-     
+     public int geraSenhaLocal(String cliente,String tipo_atendimento) {
+        
+        Connection conn = null;
+        int id_sequencia = 0;
+        
+            
+            
+                //INSERE NOVA SENHA
+                String sql = "INSERT INTO tab_senhas(id_senha, data_senha,  nm_cliente, status_atendimento, tipo_atendimento) VALUES (? , curdate(), ?,'Ativo',?); ";                    
+                try{
+                    //obtem conexao com o banco de dados
+                         conn = getConnection();
+                         conn.setAutoCommit(false);
+                PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);            
+                stmt.setInt(1, getProximaSenha());
+                stmt.setString(2, cliente); //informar nome digitado pelo usuário                      
+                stmt.setString(3, tipo_atendimento); //informar tipo atendimento informado 
+                int affectedRows = stmt.executeUpdate();
+                
+                //verifica se deu certo. Se sim, obtem a chave id_sequancia gerada 
+                 if (affectedRows > 0) {
+                    ResultSet rs = stmt.getGeneratedKeys();
+                    if (rs.next()){
+                        id_sequencia = rs.getInt(1);                       
+                    }else {
+                        System.out.println("erro"); 
+                    }
+                } else {
+                //cancela as modifica��es no banco de dados
+                    conn.rollback();
+                    return 0;
+                }
+                //confirma as modifica��es no banco de dados
+                conn.commit();
+                return id_sequencia;
+            }                    
+         catch (Exception ex) {
+            ex.printStackTrace();
+            return 0;
+        } finally {
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (Exception closeEx) {
+                    //do nothing
+                }
+            }
+        }
+    }
     public static boolean verificaSenhaForte(String senha)
     {
         boolean isSenhaIdValid = false;
@@ -316,7 +364,7 @@ public String criptoSenha(String senha_cripto){
             }
         }
     }
-    public int chamaProximaSenha(int id_senha) {
+    public int chamaProximaSenha(int id_senha,int id_usuario) {
         Connection conn = null;
                    
 
@@ -326,11 +374,12 @@ public String criptoSenha(String senha_cripto){
             conn.setAutoCommit(false);
             //antes de gerar senha chama metodo cadastro cliente 
             //define SQL para inser��o
-            String sql = "UPDATE tab_senhas set status_atendimento = 'Em Atendimento',data_atendimento_ini=CURRENT_TIMESTAMP WHERE id_senha = ?";    
+            String sql = "UPDATE tab_senhas set status_atendimento = 'Em Atendimento',data_atendimento_ini=CURRENT_TIMESTAMP,id_usuario=? WHERE id_senha = ?";    
             //instance Prepared statement especificando os par�metros do SQL
             PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);            
-            stmt.setInt(1, id_senha);
-
+            stmt.setInt(1, id_usuario);
+            stmt.setInt(2, id_senha);
+            System.out.println(id_usuario);
             //executa a opera��o no banco de dados
             int affectedRows = stmt.executeUpdate();
             //verifica se deu certo. Se sim, obtem a chave id_senha gerada 
@@ -367,7 +416,7 @@ public String criptoSenha(String senha_cripto){
             conn.setAutoCommit(false);
             //antes de gerar senha chama metodo cadastro cliente 
             //define SQL para inser��o
-            String sql = "UPDATE tab_senhas set status_atendimento = 'Ausente',data_atendimento_fim=CURRENT_TIMESTAMP WHERE id_senha = ?";    
+            String sql = "UPDATE tab_senhas set status_atendimento = 'Atendido',data_atendimento_fim=CURRENT_TIMESTAMP WHERE id_senha = ?";    
             //instance Prepared statement especificando os par�metros do SQL
             PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);            
             stmt.setInt(1, id_senha);
@@ -404,7 +453,7 @@ public String criptoSenha(String senha_cripto){
         try {
             conn = getConnection();
 
-            String sql = "SELECT min(id_senha) FROM tab_senhas" + " WHERE status_atendimento ='Ativo' AND data_senha = CURRENT_DATE ";
+            String sql = "SELECT min(id_senha) FROM tab_senhas WHERE status_atendimento ='Ativo' AND data_senha = CURRENT_DATE ";
 
             PreparedStatement stmt = conn.prepareStatement(sql);
             ResultSet result = stmt.executeQuery();

@@ -23,8 +23,10 @@ public class ConfirmarPresencaServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
     SenhaDao senhaDao = new SenhaDao();
+    String login_usuario_str = request.getParameter("login_usuario");
+    int login_usuario = Integer.parseInt(login_usuario_str);
     int senha = senhaDao.getClienteSenha();
-    int confirma = senhaDao.chamaProximaSenha(senha);
+    int confirma = senhaDao.chamaProximaSenha(senha,login_usuario);
     String nome_cliente = senhaDao.getNomeCliente(senha);
     String mensagem = "";
     if (confirma > 0){

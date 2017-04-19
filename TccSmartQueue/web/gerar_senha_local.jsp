@@ -1,8 +1,9 @@
 <%-- 
-    Document   : fechar_fila
-    Created on : 20/03/2017, 15:12:24
-    Author     : Felipe
+    Document   : gerar_senha_local
+    Created on : 19/04/2017, 09:22:50
+    Author     : casa
 --%>
+
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
@@ -26,22 +27,29 @@
         <div class="main">
             <div class="grid-25 mobile-grid-100 center">
                 <div class="box">
-                    <h1>Fechar fila</h1>
+                    <h1>Gerar Proxima Senha</h1>
+                    <h3></h3>
                 </div>
-                <form action="FecharFilaServlet?login_usuario=${login.id_usuario}" method="post">
+                <form action="GerarSenhaLocalServlet" method="post">
                     <ul>
-                        <li> 
-                            <h3>Tem certeza que deseja fechar sua fila?</h3>              
-                        </li>
-                        <li class="btn-group">
-                            <a href="javascript:void(0);" onclick="window.history.back();" class="btn btn-outline vermelho">Não</a>
-                            <input type="submit" value="Sim" class="btn btn-outline" />
+                        <li>
+                            <label>Informe o Nome do cliente</label>
+                            <input type="text" name="nome_cliente" value="${param.nome_cliente}"/>
+                            <label>Informe o Tipo de Atendimento</label>
+                            <select name="tipo_atendimento">
+                                <option></option>
+                                <option value="Normal">Atendimento Normal</option>
+                                <option value="Preferencial">Atendimento Preferencial</option>
+                            </select> 
+                        <li>
+                            <a href="" class="btn-back"><img src="imagens/back.png" />Voltar</a>
+                            <input type="submit" value="Gerar Senha" class="btn btn-outline" />
                         </li>
                     </ul>
-                </form>
+                </form>    
             </div>
         </div>
+                        
         <%@include file="WEB-INF/jspf/rodape.jspf" %>
     </body>
 </html>
-

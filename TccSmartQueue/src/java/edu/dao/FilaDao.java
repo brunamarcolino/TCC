@@ -85,19 +85,20 @@ public class FilaDao extends Dao {
             }
         }
     }
-    public List getMesas() {
+    public List<Fila> getMesas() {
         Connection conn = null;
-        List mesas = new ArrayList();
+        List<Fila> mesas = new ArrayList<Fila>();
         Fila mesa = new Fila();
          try{
             conn = getConnection();
-            String sql = "SELECT id_fila from tab_fila where status_fila = 'Fechada'";
+            String sql = "SELECT id_fila from tab_fila";
             PreparedStatement stmt = conn.prepareStatement(sql);
             ResultSet result = stmt.executeQuery();
             if(result.next()){
                 while (result.next()) {
-                 mesas.add(result.getInt("id_fila"));
-                 System.out.println(mesas);
+                 mesa.setId_fila(result.getInt("id_fila"));
+                 mesas.add(mesa);
+          
                  return mesas;
                 }
                 

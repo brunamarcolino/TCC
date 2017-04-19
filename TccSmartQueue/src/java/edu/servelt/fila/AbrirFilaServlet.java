@@ -41,8 +41,11 @@ public class AbrirFilaServlet extends HttpServlet {
         String login_usuario_str = request.getParameter("login_usuario");
         int login_usuario = Integer.parseInt(login_usuario_str);
         int mesa = Integer.parseInt(request.getParameter("mesa"));
-        List qtdMesas = new ArrayList();
+        List<Fila> qtdMesas = new ArrayList();
+        
         qtdMesas = filaDao.getMesas();
+        qtdMesas.toString();
+        System.out.println(qtdMesas);
         //System.out.println(qtdMesas);
         request.setAttribute("qtd_mesas",qtdMesas);
         //VERIFICA SE É NULO OU VAZIO

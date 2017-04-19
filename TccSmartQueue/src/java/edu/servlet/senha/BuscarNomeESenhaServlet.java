@@ -26,7 +26,7 @@ public class BuscarNomeESenhaServlet extends HttpServlet {
     int senha = senhaDao.getClienteSenha();
     String nome_cliente = senhaDao.getNomeCliente(senha);
     String mensagem = "";
-    
+    System.out.println(senha);
     if (senha > 0){
                 request.setAttribute("senha",senha);
                 request.setAttribute("nome_cliente",nome_cliente);

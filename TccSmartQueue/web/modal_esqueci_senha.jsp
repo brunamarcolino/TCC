@@ -32,7 +32,7 @@
                             <input type="text" name="email" value="${usuario.email_usuario}"/>
                         </li>                                   
                         <li>
-                            <a href="" class="btn-back"><img src="imagens/back.png" />Voltar</a>
+                            <a href="login_adm.jsp" class="btn-back"><img src="imagens/back.png" />Voltar</a>
                             <input type="submit" class="btn btn-outline verde"/>
                         </li>
                     </ul>
