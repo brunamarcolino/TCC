@@ -350,7 +350,7 @@ public String criptoSenha(String senha_cripto){
             }
         }
     }
-    public int chamaProximaSenha(int id_senha) {
+    public int chamaProximaSenha(int id_senha,int id_usuario) {
         Connection conn = null;
                    
 
@@ -360,11 +360,12 @@ public String criptoSenha(String senha_cripto){
             conn.setAutoCommit(false);
             //antes de gerar senha chama metodo cadastro cliente 
             //define SQL para inser��o
-            String sql = "UPDATE tab_senhas set status_atendimento = 'Em Atendimento',data_atendimento_ini=CURRENT_TIMESTAMP WHERE id_senha = ?";    
+            String sql = "UPDATE tab_senhas set status_atendimento = 'Em Atendimento',data_atendimento_ini=CURRENT_TIMESTAMP,id_usuario=? WHERE id_senha = ?";    
             //instance Prepared statement especificando os par�metros do SQL
             PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);            
-            stmt.setInt(1, id_senha);
-
+            stmt.setInt(1, id_usuario);
+            stmt.setInt(2, id_senha);
+            System.out.println(id_usuario);
             //executa a opera��o no banco de dados
             int affectedRows = stmt.executeUpdate();
             //verifica se deu certo. Se sim, obtem a chave id_senha gerada 
@@ -401,7 +402,7 @@ public String criptoSenha(String senha_cripto){
             conn.setAutoCommit(false);
             //antes de gerar senha chama metodo cadastro cliente 
             //define SQL para inser��o
-            String sql = "UPDATE tab_senhas set status_atendimento = 'Ausente',data_atendimento_fim=CURRENT_TIMESTAMP WHERE id_senha = ?";    
+            String sql = "UPDATE tab_senhas set status_atendimento = 'Atendido',data_atendimento_fim=CURRENT_TIMESTAMP WHERE id_senha = ?";    
             //instance Prepared statement especificando os par�metros do SQL
             PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);            
             stmt.setInt(1, id_senha);
@@ -438,7 +439,7 @@ public String criptoSenha(String senha_cripto){
         try {
             conn = getConnection();
 
-            String sql = "SELECT min(id_senha) FROM tab_senhas" + " WHERE status_atendimento ='Ativo' AND data_senha = CURRENT_DATE ";
+            String sql = "SELECT min(id_senha) FROM tab_senhas WHERE status_atendimento ='Ativo' AND data_senha = CURRENT_DATE ";
 
             PreparedStatement stmt = conn.prepareStatement(sql);
             ResultSet result = stmt.executeQuery();

@@ -64,8 +64,8 @@
                     </div>
                     <div class="grid-40 mobile-grid-100 btn-group">
                         <p>O cliente está presente?</p>
-                        <a href="ConfirmarPresencaServlet" class="btn btn-outline verde">Sim</a>
-                        <a href="NaoConfirmarPresencaServlet" class="btn btn-outline vermelho">Não</a>                   
+                        <a href="ConfirmarPresencaServlet?login_usuario=${login.id_usuario}" class="btn btn-outline verde">Sim</a>
+                        <a href="NaoConfirmarPresencaServlet?login_usuario=${login.id_usuario}" class="btn btn-outline vermelho">Não</a>                   
                     </div>
                     
                 </div>
