@@ -37,7 +37,7 @@
                             </select>
                         </li>
                         <li>
-                            <a href="" class="btn-back"><img src="imagens/back.png" />Voltar</a>
+                            <a href="index.jsp" class="btn-back"><img src="imagens/back.png" />Voltar</a>
                             <input type="submit" value="Continuar" class="btn btn-outline azul"/>
                         </li>
                     </ul>

@@ -14,10 +14,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         <title>Smartqueue</title>
-        <link rel="stylesheet" type="text/css" href="estilos/estilo.css" />
-        <link rel="stylesheet" type="text/css" href="estilos/unsemantic-responsive.css" />
-        <script type="text/javascript" src="script/jquery-3.2.0.min.js"></script>
-        <script type="text/javascript" src="script/general.js"></script>
+        <%@include file="WEB-INF/jspf/chamadas.jspf"%>
     </head>
     <body>    
         <%@include file="WEB-INF/jspf/cabecalho.jspf"%>
@@ -28,49 +25,48 @@
 
         </c:if>
         <div class="main">
-            <div class="grid-100 mobile-grid-100">
+            <div class="grid-75 mobile-grid-100">
                 <h1>Parâmetros do sistema</h1>
             </div>
-            <div class="grid-50 mobile-grid-100">
-        <c:choose>
-            <c:when test="${empty parametros}">
-                <p>Nenhum parametro cadastrado!</p>
-            </c:when>
-            <c:otherwise>
+            <div class="grid-75 mobile-grid-100">
+            <c:choose>
+                <c:when test="${empty parametros}">
+                    <p>Nenhum parametro cadastrado!</p>
+                </c:when>
+                <c:otherwise>
                 
-                <table border="0" cellpadding="0" cellspacing="0" width="100%">
-                    <tr>
-                        <th>Descrição</th>
-                        <th>Valor</th>
-                        <th>Ação</th>
-                    </tr>
-
-                    <c:forEach var="parametro" items="${parametros}">   
+                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
                         <tr>
-                            <td>      
-                                ${parametro.desc_parametro}
-                            </td>
-                            <td> 
-                                <c:choose>
-                                    <c:when test="${parametro.parametro_habilitado=='0'}">
-                                        Desabilitado
-                                    </c:when>
-                                    <c:otherwise>                                    
-                                        ${parametro.valor_parametro}    
-                                    </c:otherwise>
-                                </c:choose> 
-                            </td>
-                            <td>  
-                                <a href="ModalEditarParametroServlet?id_parametro=${parametro.id_parametro}">Editar</a> 
-                                <c:if test="${parametro.id_parametro=='7'}">
-                                    <a href="HabilitaParametroServlet?id_parametro=${parametro.id_parametro}&parametro_habilitado=${parametro.parametro_habilitado}">${parametro.parametro_habilitado=='0' ? "Habilitar"  : "Desabilitar"}</a>  
-                                </c:if>    
-                            </td>
-                        </tr>   
-                    </c:forEach>
-                </table>  
-            </c:otherwise>
-        </c:choose>
+                            <th>Descrição</th>
+                            <th>Valor</th>
+                            <th>Ação</th>
+                        </tr>
+                        <c:forEach var="parametro" items="${parametros}">   
+                            <tr>
+                                <td ${parametro.id_parametro=='1' ? "width='65%'"  : ''}>      
+                                    ${parametro.desc_parametro}
+                                </td>
+                                <td> 
+                                    <c:choose>
+                                        <c:when test="${parametro.parametro_habilitado=='0'}">
+                                            Desabilitado
+                                        </c:when>
+                                        <c:otherwise>                                    
+                                            ${parametro.valor_parametro}    
+                                        </c:otherwise>
+                                    </c:choose> 
+                                </td>
+                                <td>  
+                                    <a href="ModalEditarParametroServlet?id_parametro=${parametro.id_parametro}" title="Editar"><img src="imagens/editar.png" /></a> 
+                                    <c:if test="${parametro.id_parametro=='7'}">
+                                        <a href="HabilitaParametroServlet?id_parametro=${parametro.id_parametro}&parametro_habilitado=${parametro.parametro_habilitado}" class="switch ${parametro.parametro_habilitado=='0' ? "verde"  : "vermelho"}">${parametro.parametro_habilitado=='0' ? "Habilitar"  : "Desabilitar"}</a>  
+                                    </c:if>    
+                                </td>
+                            </tr>   
+                        </c:forEach>
+                    </table>  
+                </c:otherwise>
+            </c:choose>
             </div>
         </div>
         <%@include file="WEB-INF/jspf/rodape.jspf"%>

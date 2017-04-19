@@ -14,42 +14,37 @@
         <title>Smartqueue</title>
         <%@include file="WEB-INF/jspf/chamadas.jspf"%>
     </head>
-    <body>    
+    <body>  
+        <%@include file="WEB-INF/jspf/mensagem.jspf" %>
         <div class="main">
-            <div class="grid-100 mobile-grid-100">
-                <h1>Altarar senha</h1>
-            </div>
-            <div class="grid-50 mobile-grid-100">
-              <c:choose>
-            <c:when test="${empty usuario}">
-                <p>Usuário inválido!!</p>                
-            </c:when>
-            <c:otherwise>
-                <h1>Alterar Senha</h1>
-                <p>Olá ${usuario.nm_usuario}!</p>
-                </br>
-                <p>ATUALIZAR SENHA</p>
-                </br>
-                <p>Digite a nova senha</p>
-                </br>
-                    <form id="usuarios" action="EditarSenhaUsuarioServlet" method="post">
-                    <p>
-                        <input type="hidden" name="id" value="${usuario.id_usuario}" readonly="readonly"/>
-                    </p>    
-                    <p>
-                        <label for="Senha">Senha : </label>
-                        <input type="password" name="senha" value="${usuario.senha_usuario}"/>
-                    </p>
-                                   
-                    <p>
-                        <input type="submit"/>
-                    </p>
-                    
-                </form>   
-            </c:otherwise>
-        </c:choose>                               
-        
-               
+            <div class="grid-25 mobile-grid-100">
+                <c:choose>
+                    <c:when test="${empty usuario}">
+                        <p>Usuário inválido!!</p>                
+                    </c:when>
+                    <c:otherwise>
+                        <h1>Alterar Senha</h1>
+                        <h3>
+                            <strong>Olá ${usuario.nm_usuario}!</strong>
+                            <br/>
+                            Digite sua nova senha no campo abaixo, e depois clique em "Confirmar".
+                        </h3>
+                        <form id="usuarios" action="EditarSenhaUsuarioServlet" method="post">
+                            <ul>
+                                <li>
+                                    <input type="hidden" name="id" value="${usuario.id_usuario}" readonly="readonly"/>
+                                </li>    
+                                <li>
+                                    <label for="Senha">Senha : </label>
+                                    <input type="password" name="senha" value="${usuario.senha_usuario}"/>
+                                </li>
+                                <li>
+                                    <input type="submit" class="btn btn-outline verde" value="ATUALIZAR SENHA" style="width: 65%;"/>
+                                </li>
+                            </ul>
+                        </form>   
+                    </c:otherwise>
+                </c:choose>  
             </div>
         </div>
     </body>

@@ -34,7 +34,7 @@
                             <h3>Tem certeza que deseja fechar sua fila?</h3>              
                         </li>
                         <li class="btn-group">
-                            <a href="" class="btn btn-outline vermelho">Não</a>
+                            <a href="javascript:void(0);" onclick="window.history.back();" class="btn btn-outline vermelho">Não</a>
                             <input type="submit" value="Sim" class="btn btn-outline" />
                         </li>
                     </ul>

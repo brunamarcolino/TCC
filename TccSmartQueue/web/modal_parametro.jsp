@@ -95,7 +95,7 @@
                                     </c:choose>
                                 </li>
                                 <li>
-                                    <a href="" class="btn-back"><img src="imagens/back.png" />Voltar</a>
+                                    <a href="javascript:void(0);" onclick="window.history.back();" class="btn-back"><img src="imagens/back.png" />Voltar</a>
                                     <input type="submit" class="btn btn-outline verde" />
                                 </li>
                             </ul>

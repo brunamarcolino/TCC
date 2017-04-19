@@ -41,7 +41,7 @@
                                     <input type="password" name="senha" value="${param.senha}"/>
                                 </li>
                                 <li>
-                                    <a href="" class="btn-back"><img src="imagens/back.png" />Voltar</a>
+                                    <a href="index.jsp" class="btn-back"><img src="imagens/back.png" />Voltar</a>
                                     <input type="submit" value="Login" class="btn btn-outline" />
                                 </li>
                             </ul>
