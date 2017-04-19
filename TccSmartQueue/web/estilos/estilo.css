@@ -72,6 +72,9 @@ textarea{
     background: #FFF;
     color: #999;
 }
+select{
+    -webkit-appearance: none;
+}
 .mensagem.ocultar {
     opacity: 0;
     height: 0;
@@ -308,7 +311,7 @@ footer{
 }
 .section-center p{
     font-size: 1em;
-    max-width: 60%;
+    max-width: 65%;
     margin: 0 auto;
     color: #FFF;
     font-family: 'Lato-Light', sans-serif;
@@ -376,7 +379,7 @@ table + .section-center{
 }
 p.location{
     color: #FFF;
-    width: 40%;
+    width: 45%;
     text-align: left;
     padding: 1em;
     background-color: #45BF3E;
