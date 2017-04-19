@@ -30,6 +30,10 @@
                         <input type="number" name="cpf" id="cpf" value="${param.cpf}"/>
                     </li>
                     <li>
+                        <label for="emailcliente">Email : </label>
+                        <input type="text" name="email" id="email" value="${param.email}"/>
+                    </li>
+                    <li>
                         <label for="senha">Senha :</label>
                         <input type="password" name="senhacliente" value="${param.senhacliente}"/>
                     </li>

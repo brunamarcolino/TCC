@@ -14,8 +14,6 @@ import java.sql.Time;
 public class DadosSenha {
     private String tipo_atendimento;
     private Time tempo_medio;
-    private int ultima_senha_atendida;
-    private int ultima_senha_gerada;
     private Time previsao_atendimento;
     private int quantidade_pessoas;
     private boolean distancia;
@@ -50,22 +48,6 @@ public class DadosSenha {
 
     public void setTempo_medio(Time tempo_medio) {
         this.tempo_medio = tempo_medio;
-    }
-
-    public int getUltima_senha_atendida() {
-        return ultima_senha_atendida;
-    }
-
-    public void setUltima_senha_atendida(int ultima_senha_atendida) {
-        this.ultima_senha_atendida = ultima_senha_atendida;
-    }
-
-    public int getUltima_senha_gerada() {
-        return ultima_senha_gerada;
-    }
-
-    public void setUltima_senha_gerada(int ultima_senha_gerada) {
-        this.ultima_senha_gerada = ultima_senha_gerada;
     }
 
     public Time getPrevisao_atendimento() {

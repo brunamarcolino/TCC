@@ -30,7 +30,7 @@ public class ListaSenhaServlet extends HttpServlet{
         System.out.println("distancia " + distancia + " tipo_atendimento " + tipo_atendimento);
         
         DadosSenhaDao dadosSenhaDao = new DadosSenhaDao();
-        DadosSenha dadosSenha = dadosSenhaDao.getDados(tipo_atendimento);
+        DadosSenha dadosSenha = dadosSenhaDao.getDados(tipo_atendimento, 0);
         dadosSenha.setDistancia(distancia);
         dadosSenha.setTipo_atendimento(tipo_atendimento);
                 

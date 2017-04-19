@@ -41,13 +41,7 @@
                                     </c:otherwise>
                                 </c:choose>
                             </h2>
-                        </div>
-                        <!--<label>Ultima Senha Chamada</label>
-                        <h2>{dadossenha.ultima_senha_atendida}</h2>
-
-                        <label>Ultima Senha Gerada</label>
-                        <h2>{dadossenha.ultima_senha_gerada}</h2>                
-                        -->
+                        </div>                    
                         <div class="grid-100">
                             <p>Quantidade de pessoas na Fila</p>
                             <h2>
@@ -61,6 +55,19 @@
                                 </c:choose>
                             </h2>
                         </div>
+                        <div class="grid-100">
+                            <p>Previsão de atendimento</p>
+                            <h2>
+                                <c:choose>
+                                    <c:when test="${empty dadossenha.previsao_atendimento}">
+                                        --
+                                    </c:when>
+                                    <c:otherwise>
+                                        ${dadossenha.previsao_atendimento}
+                                    </c:otherwise>
+                                </c:choose>
+                            </h2>
+                        </div>                        
                     </div>
                 </c:otherwise>
             </c:choose>
