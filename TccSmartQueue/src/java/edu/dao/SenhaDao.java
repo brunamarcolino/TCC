@@ -96,7 +96,55 @@ public class SenhaDao extends Dao {
             }
         }
     }
-     
+     public int geraSenhaLocal(String cliente,String tipo_atendimento) {
+        
+        Connection conn = null;
+        int id_sequencia = 0;
+        
+            
+            
+                //INSERE NOVA SENHA
+                String sql = "INSERT INTO tab_senhas(id_senha, data_senha,  nm_cliente, status_atendimento, tipo_atendimento) VALUES (? , curdate(), ?,'Ativo',?); ";                    
+                try{
+                    //obtem conexao com o banco de dados
+                         conn = getConnection();
+                         conn.setAutoCommit(false);
+                PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);            
+                stmt.setInt(1, getProximaSenha());
+                stmt.setString(2, cliente); //informar nome digitado pelo usuário                      
+                stmt.setString(3, tipo_atendimento); //informar tipo atendimento informado 
+                int affectedRows = stmt.executeUpdate();
+                
+                //verifica se deu certo. Se sim, obtem a chave id_sequancia gerada 
+                 if (affectedRows > 0) {
+                    ResultSet rs = stmt.getGeneratedKeys();
+                    if (rs.next()){
+                        id_sequencia = rs.getInt(1);                       
+                    }else {
+                        System.out.println("erro"); 
+                    }
+                } else {
+                //cancela as modifica��es no banco de dados
+                    conn.rollback();
+                    return 0;
+                }
+                //confirma as modifica��es no banco de dados
+                conn.commit();
+                return id_sequencia;
+            }                    
+         catch (Exception ex) {
+            ex.printStackTrace();
+            return 0;
+        } finally {
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (Exception closeEx) {
+                    //do nothing
+                }
+            }
+        }
+    }
     public static boolean verificaSenhaForte(String senha)
     {
         boolean isSenhaIdValid = false;

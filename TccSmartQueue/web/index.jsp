@@ -73,6 +73,9 @@
                                         <li>
                                             <a href="fechar_fila.jsp">Fechar Fila</a>
                                         </li>
+                                        <li>
+                                            <a href="gerar_senha_local.jsp">Gerar Senha Local</a>
+                                        </li>
                                     </ul>
                                 </nav>
                             </c:if>   
