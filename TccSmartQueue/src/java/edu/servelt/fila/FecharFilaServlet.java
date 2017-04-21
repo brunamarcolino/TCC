@@ -18,7 +18,6 @@ import javax.servlet.http.HttpServletResponse;
 
 
 import edu.dao.FilaDao;
-import edu.vo.Fila;
 
 
 /**
@@ -44,7 +43,9 @@ public class FecharFilaServlet extends HttpServlet {
             if (fila) {
                 mensagem = "<span>Fila fechada com sucesso</span>";
                 request.setAttribute("mensagemSucesso", mensagem);
-                request.getSession().setAttribute("login_usuario", fila);
+                //request.getSession().setAttribute("login_usuario", fila);
+                int id_fila = filaDao.VerificaFilaAberta(login_usuario);
+                request.getSession().setAttribute("id_fila", id_fila); 
                 getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
             } else {
                 mensagem = "<span>Ops! Ocorreu algum erro, tente novamente ;(</span>";

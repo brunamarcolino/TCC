@@ -8,6 +8,7 @@ VALIDAR SE LOGIN E SENHA ESTÃO CORRETOS!
 */
 package edu.servlet;
 
+import edu.dao.FilaDao;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -43,6 +44,9 @@ public class LoginServlet extends HttpServlet {
             UsuarioDao usuarioDao = new UsuarioDao();
             Usuario usuario = usuarioDao.getUsuario(login, senha);
             if (usuario != null) {
+                FilaDao filadao = new FilaDao();
+                int id_fila = filadao.VerificaFilaAberta(usuario.getId_usuario());
+                request.getSession().setAttribute("id_fila", id_fila);
                 request.getSession().setAttribute("login", usuario);
                 getServletContext().getRequestDispatcher("/login_adm.jsp").forward(request, response);
             } else {

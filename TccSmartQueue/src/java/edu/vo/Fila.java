@@ -2,7 +2,7 @@ package edu.vo;
 
 public class Fila {
     
-    private int id_fila,id_usuario,mesa_usuario;
+    private int id_fila,id_usuario;
     private String status_fila;
 
     public int getId_fila() {
@@ -19,14 +19,6 @@ public class Fila {
 
     public void setId_usuario(int id_usuario) {
         this.id_usuario = id_usuario;
-    }
-
-    public int getMesa_usuario() {
-        return mesa_usuario;
-    }
-
-    public void setMesa_usuario(int mesa_usuario) {
-        this.mesa_usuario = mesa_usuario;
     }
 
     public String getStatus_fila() {

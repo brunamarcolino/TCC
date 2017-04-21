@@ -67,24 +67,25 @@
                             <c:if test="${login.tipo_usuario=='Atendente'}">
                                 <nav>
                                     <ul>
+                                        <c:if test="${id_fila==0}">
+                                            <li>
+                                                <a href="ListaFilasServlet">Abrir Fila</a>
+                                            </li>  
+                                        </c:if>
+                                        <c:if test="${id_fila>0}">
+                                            <li>
+                                                <a href="fechar_fila.jsp">Fechar Fila</a>
+                                            </li>
+                                            <li>
+                                                <a href="chamar_proximo.jsp">Atendimento</a>
+                                            </li>                                            
+                                        </c:if>
                                         <li>
-                                            <a href="abrir_fila.jsp">Abrir Fila</a>
-                                        </li>  
-                                        <li>
-                                            <a href="fechar_fila.jsp">Fechar Fila</a>
+                                            <a href="gerar_senha_local.jsp">Gerar Senha Local</a>
                                         </li>
                                     </ul>
                                 </nav>
-                            </c:if>   
-                            <c:if test="${login.tipo_usuario=='Cliente'}">
-                                <nav>
-                                    <ul>
-                                        <li>
-                                            <a href="localizacao.jsp">Gerar Senha</a>                              
-                                        </li>         
-                                    </ul>
-                                </nav>
-                            </c:if>     
+                            </c:if>                                 
                         </c:if>        
 
                     </div>

@@ -1,7 +1,6 @@
 package edu.dao;
 
 import edu.vo.Fila;
-import edu.vo.Parametro;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,20 +11,19 @@ import java.util.List;
 
 public class FilaDao extends Dao {
 
-    public boolean setFila( int login_usuario, int mesa_usuario, String status_fila) {
+    public boolean setFila(int login_usuario, int id_fila) {
         Connection conn = null;
 
         try {
             conn = getConnection();
             conn.setAutoCommit(false);
             
-            String sql = "UPDATE tab_fila set id_usuario = ? ,mesa_usuario = ?,status_fila = ?";
+            String sql = "UPDATE tab_fila set id_usuario = ?, status_fila = 'Aberta' where id_fila = ?";
 
                          
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setInt(1, login_usuario);
-            stmt.setInt(2, mesa_usuario);
-            stmt.setString(3, status_fila);
+            stmt.setInt(2, id_fila);
 
             int affectedRows = stmt.executeUpdate();
            if (affectedRows > 0) {
@@ -48,6 +46,7 @@ public class FilaDao extends Dao {
             }
         }
     }
+    
     public boolean setFilaOff(int login_usuario) {
         Connection conn = null;
 
@@ -55,7 +54,7 @@ public class FilaDao extends Dao {
             conn = getConnection();
             conn.setAutoCommit(false);
 
-            String sql = "UPDATE tab_fila SET status_fila= 'Fechada' WHERE id_usuario = ?;";
+            String sql = "UPDATE tab_fila SET status_fila= 'Fechada', id_usuario=null WHERE id_usuario = ?;";
 
             
            // PreparedStatement stmt = conn.prepareStatement(sql);
@@ -85,26 +84,26 @@ public class FilaDao extends Dao {
             }
         }
     }
+    
     public List<Fila> getMesas() {
         Connection conn = null;
         List<Fila> mesas = new ArrayList<Fila>();
-        Fila mesa = new Fila();
+        
          try{
             conn = getConnection();
-            String sql = "SELECT id_fila from tab_fila";
+            String sql = "SELECT id_fila from tab_fila where status_fila = 'Fechada'";
+            
             PreparedStatement stmt = conn.prepareStatement(sql);
             ResultSet result = stmt.executeQuery();
-            if(result.next()){
-                while (result.next()) {
-                 mesa.setId_fila(result.getInt("id_fila"));
-                 mesas.add(mesa);
-          
-                 return mesas;
-                }
+            
+            while (result.next()) {
+                Fila mesa = new Fila();
                 
-            }else{
-                 return null;
-             }
+                mesa.setId_fila(result.getInt("id_fila"));
+                mesas.add(mesa);
+                }
+            return mesas;
+         
          }catch (Exception ex) {
             ex.printStackTrace();
             return null;
@@ -116,8 +115,48 @@ public class FilaDao extends Dao {
                     //do nothing
                 }
             }
-       }return mesas; 
+       }
     }
+    
+    public int VerificaFilaAberta(int id_usuario) {
+        
+        Connection conn = null;
+        
+        try {
+            //obtem conexao com o banco de dados
+            conn = getConnection();
+            conn.setAutoCommit(false);
+            
+            //VERIFICA SE ESSE CLIENTE JÁ POSSUI SENHA ATIVA PARA A DATA ATUAL
+            String select_sql = "SELECT id_fila FROM tab_fila WHERE id_usuario = ?";
+            PreparedStatement stmt = conn.prepareStatement(select_sql);
+            stmt.setInt(1, id_usuario);
+            ResultSet result = stmt.executeQuery();
+            
+            //SE SIM
+            if (result.next()) {
+                //RECUPERA AS INFORMAÇÕES DO CLIENTE
+                return result.getInt(1);                
+            }                                
+            
+            //SE NÃO
+            else {  
+                    return 0;
+            }                    
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return 0;
+        } finally {
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (Exception closeEx) {
+                    //do nothing
+                }
+            }
+        }
+    }
+
                 
 }
 /*

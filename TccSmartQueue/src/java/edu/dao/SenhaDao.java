@@ -96,6 +96,7 @@ public class SenhaDao extends Dao {
             }
         }
     }
+
      public int geraSenhaLocal(String cliente,String tipo_atendimento) {
         
         Connection conn = null;

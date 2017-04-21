@@ -18,11 +18,6 @@ import javax.servlet.http.HttpServletResponse;
 
 
 import edu.dao.FilaDao;
-import edu.dao.ParametroDao;
-import edu.vo.Fila;
-import edu.vo.Parametro;
-import java.util.ArrayList;
-import java.util.List;
 
 
 /**
@@ -34,39 +29,28 @@ public class AbrirFilaServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //RECEBE PARAMETROS DA REQUEST
-        FilaDao filaDao = new FilaDao();
-        String status_fila;
-        status_fila = new String("Aberta");
-        String login_usuario_str = request.getParameter("login_usuario");
-        int login_usuario = Integer.parseInt(login_usuario_str);
-        int mesa = Integer.parseInt(request.getParameter("mesa"));
-        List<Fila> qtdMesas = new ArrayList();
         
-        qtdMesas = filaDao.getMesas();
-        qtdMesas.toString();
-        System.out.println(qtdMesas);
-        //System.out.println(qtdMesas);
-        request.setAttribute("qtd_mesas",qtdMesas);
-        //VERIFICA SE É NULO OU VAZIO
-        if (qtdMesas == null) {
-            //em caso de erro, grava mensagem de erro na requisi��o e retorna para p�gina inicial
-            String mensagem = "<span>Não Existem Mesas Disponíveis!</span>";
+//RECEBE PARAMETROS DA REQUEST
+        String login_usuario_str = request.getParameter("login_usuario");
+        int login_usuario = Integer.parseInt(login_usuario_str); 
+        String id_fila_str = request.getParameter("fila");
+        int id_fila = Integer.parseInt(id_fila_str); 
+        
+        String mensagem = "";
+        
+        //Abre a fila
+        FilaDao filaDao = new FilaDao();
+        
+        boolean fila = filaDao.setFila(login_usuario,id_fila);
+        if (fila){
+            mensagem = "<span>Fila aberta com sucesso</span>";
+            request.setAttribute("mensagemSucesso", mensagem);
+            request.getSession().setAttribute("id_fila", id_fila);
+            getServletContext().getRequestDispatcher("/chamar_proximo.jsp").forward(request, response);
+        }else{
+            mensagem = "<span>Ops! Ocorreu algum erro, tente novamente! </span>";
             request.setAttribute("mensagemErro", mensagem);
-            getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
-        } else {
-            boolean fila = filaDao.setFila(login_usuario,mesa,status_fila);
-            String mensagem = "";
-            if (fila) {
-                mensagem = "<span>Fila aberta com sucesso</span>";
-                request.setAttribute("mensagemSucesso", mensagem);
-                request.getSession().setAttribute("mesa", fila);
-                getServletContext().getRequestDispatcher("/chamar_proximo.jsp").forward(request, response);
-            } else {
-                mensagem = "<span>Ops! Ocorreu algum erro, tente novamente ;(</span>";
-                request.setAttribute("mensagemErro", mensagem);
-                getServletContext().getRequestDispatcher("/abrir_fila.jsp").forward(request, response);
-            }
+            getServletContext().getRequestDispatcher("/abrir_fila.jsp").forward(request, response);
         }
     }
 }

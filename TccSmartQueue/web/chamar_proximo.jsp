@@ -38,7 +38,7 @@
                             </li>
                             <li>
                                 <label>Mesa:</label>
-                                <h2>03</h2>
+                                <h2>${id_fila}</h2>
                             </li>
                         </ul>
                     </div>

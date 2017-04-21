@@ -180,7 +180,7 @@ public class ParametroDao extends Dao {
             conn = getConnection();
             conn.setAutoCommit(false);
             
-            String sql = "SELECT max(mesa_usuario) mesa_usuario FROM tab_fila";
+            String sql = "SELECT max(id_fila) id_fila FROM tab_fila";
             
             PreparedStatement stmt = conn.prepareStatement(sql);
             ResultSet result = stmt.executeQuery();
@@ -188,7 +188,7 @@ public class ParametroDao extends Dao {
             System.out.println("1 - " + qtd_mesas);
             
             if (result.next()) {
-                int max_fila = result.getInt("mesa_usuario");
+                int max_fila = result.getInt("id_fila");
                 System.out.println("2 - " + max_fila);
                 int affectedRows = 0;
                 if (qtd_mesas>max_fila)
@@ -196,17 +196,16 @@ public class ParametroDao extends Dao {
                     for(int i=max_fila+1; i<= qtd_mesas; i++)
                     {
                         System.out.println("3 - " + i);
-                        sql = "INSERT INTO tab_fila(id_fila, mesa_usuario, status_fila) VALUES (?,?,'FECHADA')";
+                        sql = "INSERT INTO tab_fila(id_fila, status_fila) VALUES (?,'Fechada')";
                         stmt = conn.prepareStatement(sql);
-                        stmt.setInt(1, i);
-                        stmt.setInt(2, i);  
+                        stmt.setInt(1, i);  
                         //executa a opera��o no banco de dados
                         affectedRows = stmt.executeUpdate();
                     }                    
                 }
                 else
                 {
-                        sql = "SELECT 1 filas_abertas FROM tab_fila WHERE mesa_usuario > ? and status_fila = 'ABERTA'";
+                        sql = "SELECT 1 filas_abertas FROM tab_fila WHERE id_fila > ? and status_fila = 'Aberta'";
                         
                         stmt = conn.prepareStatement(sql);
                         stmt.setInt(1, qtd_mesas);
@@ -218,7 +217,7 @@ public class ParametroDao extends Dao {
                         }
                         else{
                             for(int i=max_fila; i> qtd_mesas; i--){
-                                sql = "DELETE FROM tab_fila WHERE mesa_usuario > ?";
+                                sql = "DELETE FROM tab_fila WHERE id_fila > ?";
                                 stmt = conn.prepareStatement(sql);
                                 stmt.setInt(1, qtd_mesas);
                                 affectedRows = stmt.executeUpdate();

@@ -2,6 +2,7 @@
          pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
+<%@ page import="edu.dao.FilaDao" %>
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
@@ -75,11 +76,21 @@
                             <c:if test="${login.tipo_usuario=='Atendente'}">
                                 <nav>
                                     <ul>
+                                        <c:if test="${id_fila==0}">
+                                            <li>
+                                                <a href="ListaFilasServlet">Abrir Fila</a>
+                                            </li>  
+                                        </c:if>
+                                        <c:if test="${id_fila>0}">
+                                            <li>
+                                                <a href="fechar_fila.jsp">Fechar Fila</a>
+                                            </li>
+                                            <li>
+                                                <a href="chamar_proximo.jsp">Atendimento</a>
+                                            </li>                                            
+                                        </c:if>
                                         <li>
-                                            <a href="abrir_fila.jsp">Abrir Fila</a>
-                                        </li>  
-                                        <li>
-                                            <a href="fechar_fila.jsp">Fechar Fila</a>
+                                            <a href="gerar_senha_local.jsp">Gerar Senha Local</a>
                                         </li>
                                     </ul>
                                 </nav>

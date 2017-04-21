@@ -30,24 +30,37 @@
                     <h3>Inicie suas atividades abrindo a fila!</h3>
                 </div>
                 <form action="AbrirFilaServlet?login_usuario=${login.id_usuario}" method="post">
-                    <ul>
+                    <c:choose>
+                        <c:when test="${empty filas}">
+                            <ul>
+                                <li>
+                                    Todas as mesas disponiveis estçao ocupadas!
+                                </li>
+                                <li>
+                                     <a href="javascript:void(0);" onclick="window.history.back();" class="btn-back"><img src="imagens/back.png" />Voltar</a>
+                                </li>
+                            </ul>    
+                        </c:when>    
+                        <c:otherwise>
+                     <ul>
                         <li>
-                            <label>Insira o número da fila:</label>
-                            <input type="select" name="mesa" value="${param.mesa}"/>
-                            
-                                
-                            
-                            <select>
-                                <c:forEach var="mesa" items="${qtd_mesas}">
-                            <option value="mesa1">${qtd_mesas}</option>
+                            <select name="fila">
+                                <c:forEach var="fila" items="${filas}">
+                                <option value="${fila.id_fila}">
+                                    Mesa ${fila.id_fila}
+                                </option>
                                 </c:forEach>
                             </select>
+                            
                         </li>
                         <li>
                             <a href="javascript:void(0);" onclick="window.history.back();" class="btn-back"><img src="imagens/back.png" />Voltar</a>
                             <input type="submit" value="Abrir Fila" class="btn btn-outline" />
                         </li>
+                                 
                     </ul>
+                     </c:otherwise>
+                      </c:choose>       
                 </form>    
             </div>
         </div>
