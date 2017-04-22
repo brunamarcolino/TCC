@@ -26,7 +26,7 @@ public class CancelarSenhaServlet extends HttpServlet{
         int id_senha = Integer.parseInt(id_senha_str);
         
         SenhaDao senhaDao = new SenhaDao();
-        boolean senha = senhaDao.cancelaSenha(id_senha);
+        boolean senha = senhaDao.alteraStatusSenha(id_senha,"Cancelado", 0);
         
         if (senha) {
             request.setAttribute("mensagem", "Senha Cancelada com sucesso");

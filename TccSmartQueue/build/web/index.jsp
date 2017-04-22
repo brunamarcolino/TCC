@@ -77,7 +77,7 @@
                                                 <a href="fechar_fila.jsp">Fechar Fila</a>
                                             </li>
                                             <li>
-                                                <a href="chamar_proximo.jsp">Atendimento</a>
+                                                <a href="chamar_proximo.jsp?habilitado=1">Atendimento</a>
                                             </li>                                            
                                         </c:if>
                                         <li>

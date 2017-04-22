@@ -19,6 +19,7 @@ public class Senha {
     private String nome_cliente;
     private String senha_cliente;
     private String status_atendimento;
+    private String tipo_atendimento;
     private Date data_atendimento_ini;
     private Date data_atendimento_fim;
     private int id_usuario_atendente;
@@ -77,6 +78,14 @@ public class Senha {
 
     public void setStatus_atendimento(String status_atendimento) {
         this.status_atendimento = status_atendimento;
+    }
+    
+    public String getTipo_atendimento() {
+        return tipo_atendimento;
+    }
+
+    public void setTipo_atendimento(String tipo_atendimento) {
+        this.tipo_atendimento = tipo_atendimento;
     }
 
     public Date getData_atendimento_ini() {

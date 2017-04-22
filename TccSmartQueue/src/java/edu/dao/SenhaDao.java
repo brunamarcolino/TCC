@@ -23,6 +23,14 @@ import sun.misc.BASE64Encoder;
  */
 public class SenhaDao extends Dao {
   
+    /*
+    Nome: geraSenha
+    Ação: Botão gerar senha perfil cliente
+    O que faz? 
+    Verifica se cliente já pussui senha
+    Se sim, mostra senha
+    Se não, gera uma nova senha
+    */
      public int geraSenha(String cliente, String cpf, String senha, String tipo_atendimento) {
         
         Connection conn = null;
@@ -252,6 +260,8 @@ public String criptoSenha(String senha_cripto){
             }             
 }
 
+ 
+
     public int getProximaSenha() {
         Connection conn = null;
 
@@ -290,7 +300,7 @@ public String criptoSenha(String senha_cripto){
         try {
             conn = getConnection();
 
-            String sql = "SELECT id_sequencia, id_senha, data_senha, cpf_cliente, nm_cliente, senha_cliente, status_atendimento, data_atendimento_ini, data_atendimento_fim, id_usuario FROM tab_senhas WHERE id_sequencia = ?";
+            String sql = "SELECT id_sequencia, id_senha, data_senha, cpf_cliente, nm_cliente, senha_cliente, status_atendimento, data_atendimento_ini, data_atendimento_fim, id_usuario, tipo_atendimento FROM tab_senhas WHERE id_sequencia = ?";
             
             
             PreparedStatement stmt = conn.prepareStatement(sql);
@@ -308,6 +318,7 @@ public String criptoSenha(String senha_cripto){
                 senha.setData_atendimento_ini(result.getDate(8));
                 senha.setData_atendimento_fim(result.getDate(9));
                 senha.setId_usuario_atendente(result.getInt(10));
+                senha.setTipo_atendimento(result.getString(11));
                 return senha;
             } else {
                 return null;
@@ -326,21 +337,39 @@ public String criptoSenha(String senha_cripto){
         }
     }
     
-    public boolean cancelaSenha(int id_senha) {
+    public boolean alteraStatusSenha(int id_senha, String status, int id_usuario) {
         Connection conn = null;
         
         try {
             //obtem conexao com o banco de dados
             conn = getConnection();
             conn.setAutoCommit(false);
-            //antes de gerar senha chama metodo cadastro cliente 
-            //define SQL para inser��o
-            String sql = "UPDATE tab_senhas set status_atendimento = 'Cancelado' WHERE id_senha = ? and data_senha = CURDATE();";    
-            //instance Prepared statement especificando os par�metros do SQL
-            PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);            
-            stmt.setInt(1, id_senha);
+            PreparedStatement stmt;
             
-            //executa a opera��o no banco de dados
+            if (status.equals("Chamando")){
+                String sql = "UPDATE tab_senhas set status_atendimento = ?, id_usuario = ? WHERE id_senha = ? and data_senha = CURDATE();";    
+                stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);            
+                stmt.setString(1, status);
+                stmt.setInt(2, id_usuario);
+                stmt.setInt(3, id_senha);
+            } else if (status.equals("Em Atendimento")){
+                String sql = "UPDATE tab_senhas set status_atendimento = ?, data_atendimento_ini = CURRENT_TIMESTAMP WHERE id_senha = ? and data_senha = CURDATE();";    
+                stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);            
+                stmt.setString(1, status);
+                stmt.setInt(2, id_senha);                
+            } else if (status.equals("Atendido")){
+                String sql = "UPDATE tab_senhas set status_atendimento = ?, data_atendimento_fim = CURRENT_TIMESTAMP WHERE id_senha = ? and data_senha = CURDATE();";    
+                stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);            
+                stmt.setString(1, status);
+                stmt.setInt(2, id_senha);                 
+            } else {
+                String sql = "UPDATE tab_senhas set status_atendimento = ? WHERE id_senha = ? and data_senha = CURDATE();";    
+                stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);            
+                stmt.setString(1, status);
+                stmt.setInt(2, id_senha);  
+            }
+            
+           
             int affectedRows = stmt.executeUpdate();
             //verifica se deu certo. Se sim, obtem a chave id_senha gerada 
             if (affectedRows > 0) {
@@ -365,7 +394,8 @@ public String criptoSenha(String senha_cripto){
             }
         }
     }
-    public int chamaProximaSenha(int id_senha,int id_usuario) {
+    
+    public boolean AtualizaTipoAtendimento(String tipo_atendimento) {
         Connection conn = null;
                    
 
@@ -375,69 +405,27 @@ public String criptoSenha(String senha_cripto){
             conn.setAutoCommit(false);
             //antes de gerar senha chama metodo cadastro cliente 
             //define SQL para inser��o
-            String sql = "UPDATE tab_senhas set status_atendimento = 'Em Atendimento',data_atendimento_ini=CURRENT_TIMESTAMP,id_usuario=? WHERE id_senha = ?";    
+            String sql = "UPDATE tab_ultimo_tipo_atendimento set tipo_atendimento = ?";    
             //instance Prepared statement especificando os par�metros do SQL
             PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);            
-            stmt.setInt(1, id_usuario);
-            stmt.setInt(2, id_senha);
-            System.out.println(id_usuario);
-            //executa a opera��o no banco de dados
-            int affectedRows = stmt.executeUpdate();
-            //verifica se deu certo. Se sim, obtem a chave id_senha gerada 
-            if (affectedRows > 0) {
-                conn.commit();
-                return id_senha;
-            } else {
-                //cancela as modifica��es no banco de dados
-                
-                conn.rollback();
-                return 0;
-            }
-
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            return 0;
-        } finally {
-            if (conn != null) {
-                try {
-                    conn.close();
-                } catch (Exception closeEx) {
-                    //do nothing
-                }
-            }
-        }
-    }
-    public int finalizaAtendimento(int id_senha) {
-        Connection conn = null;
-                   
-
-        try {
-            //obtem conexao com o banco de dados
-            conn = getConnection();
-            conn.setAutoCommit(false);
-            //antes de gerar senha chama metodo cadastro cliente 
-            //define SQL para inser��o
-            String sql = "UPDATE tab_senhas set status_atendimento = 'Atendido',data_atendimento_fim=CURRENT_TIMESTAMP WHERE id_senha = ?";    
-            //instance Prepared statement especificando os par�metros do SQL
-            PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);            
-            stmt.setInt(1, id_senha);
+            stmt.setString(1, tipo_atendimento);
 
             //executa a opera��o no banco de dados
             int affectedRows = stmt.executeUpdate();
             //verifica se deu certo. Se sim, obtem a chave id_senha gerada 
             if (affectedRows > 0) {
                 conn.commit();
-                return id_senha;
+                return true;
             } else {
                 //cancela as modifica��es no banco de dados
                 
                 conn.rollback();
-                return 0;
+                return false;
             }
 
         } catch (Exception ex) {
             ex.printStackTrace();
-            return 0;
+            return false;
         } finally {
             if (conn != null) {
                 try {
@@ -447,61 +435,43 @@ public String criptoSenha(String senha_cripto){
                 }
             }
         }
-    }
-        public int getClienteSenha() {
+    }    
+    
+   
+        public Senha getProximoClientePreferencial() {
         Connection conn = null;
+        Senha senha = new Senha();
 
         try {
             conn = getConnection();
 
-            String sql = "SELECT min(id_senha) FROM tab_senhas WHERE status_atendimento ='Ativo' AND data_senha = CURRENT_DATE ";
+            String sql = "SELECT min(id_senha), id_sequencia, nm_cliente, status_atendimento, tipo_atendimento FROM tab_senhas WHERE status_atendimento ='Ativo' AND data_senha = CURRENT_DATE and tipo_atendimento = 'Preferencial'";
 
             PreparedStatement stmt = conn.prepareStatement(sql);
             ResultSet result = stmt.executeQuery();
-            if (result.next()) {
-                 
-                int id_senha = result.getInt("min(id_senha)");
-               System.out.println(id_senha);
-
-                return id_senha;
-            } else {
-                return 0;
-            }
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            return 0;
-        } finally {
-            if (conn != null) {
-                try {
-                    conn.close();
-                } catch (Exception closeEx) {
-                    //do nothing
+            
+            if (result.next()) {                
+                senha.setId_senha(result.getInt(1));
+                senha.setId_sequencia(result.getInt(2));
+                senha.setNome_cliente(result.getString(3));
+                senha.setStatus_atendimento(result.getString(4));
+                senha.setTipo_atendimento(result.getString(5));
+                
+                if (senha.getNome_cliente() == null){
+                    senha = getProximoClienteNormal();
+                    return senha;
+                }else{ 
+                    boolean sucesso = AtualizaTipoAtendimento("Preferencial");
+                    System.out.println(sucesso);
+                    return senha;               
                 }
-            }
-        }
-    }
-    public int getClienteSenhaEmAtendimento() {
-        Connection conn = null;
-
-        try {
-            conn = getConnection();
-
-            String sql = "SELECT min(id_senha) FROM tab_senhas" + " WHERE status_atendimento ='Em Atendimento' AND data_senha = CURRENT_DATE ";
-
-            PreparedStatement stmt = conn.prepareStatement(sql);
-            ResultSet result = stmt.executeQuery();
-            if (result.next()) {
-                 
-                int id_senha = result.getInt("min(id_senha)");
-               System.out.println(id_senha);
-
-                return id_senha;
             } else {
-                return 0;
+                senha = getProximoClienteNormal();
+                return senha;
             }
         } catch (Exception ex) {
             ex.printStackTrace();
-            return 0;
+            return null;
         } finally {
             if (conn != null) {
                 try {
@@ -513,22 +483,125 @@ public String criptoSenha(String senha_cripto){
         }
     }
     
-    
-    public String getNomeCliente(int id_senha) {
+        
+   public Senha getProximoClienteNormal() {
         Connection conn = null;
+        Senha senha = new Senha();
+        
+        
+        try {
+            conn = getConnection();
+
+            String sql = "SELECT min(id_senha), id_sequencia, nm_cliente, status_atendimento, tipo_atendimento FROM tab_senhas WHERE status_atendimento ='Ativo' AND data_senha = CURRENT_DATE and tipo_atendimento = 'Normal'";
+
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            ResultSet result = stmt.executeQuery();
+            
+            if (result.next()) { 
+                senha.setId_senha(result.getInt(1));
+                senha.setId_sequencia(result.getInt(2));
+                senha.setNome_cliente(result.getString(3));
+                senha.setStatus_atendimento(result.getString(4));
+                senha.setTipo_atendimento(result.getString(5));
+                
+                if (senha.getNome_cliente() == null){
+                    senha = getProximoClienteGeral();
+                    return senha;
+                }else{ 
+                    boolean sucesso = AtualizaTipoAtendimento("Normal");
+                    System.out.println(sucesso);
+                    return senha;
+                }
+            } else {
+                senha = getProximoClienteGeral();
+                return senha;
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return null;
+        } finally {
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (Exception closeEx) {
+                    //do nothing
+                }
+            }
+        }
+   }
+   
+   public Senha getProximoClienteChance() {
+        Connection conn = null;
+        Senha senha = new Senha();
+        
+        
+        try {
+            conn = getConnection();
+
+            String sql = "SELECT min(id_senha), id_sequencia, nm_cliente, status_atendimento, tipo_atendimento FROM tab_senhas WHERE data_senha = CURRENT_DATE and status_atendimento = 'Segunda Chance'";
+
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            ResultSet result = stmt.executeQuery();
+            
+            if (result.next()) {   
+                senha.setId_senha(result.getInt(1));
+                senha.setId_sequencia(result.getInt(2));
+                senha.setNome_cliente(result.getString(3));
+                senha.setStatus_atendimento(result.getString(4));
+                senha.setTipo_atendimento(result.getString(5));
+                
+                if (senha.getNome_cliente() == null){
+                    senha = getProximoClientePreferencial();
+                    return senha;
+                }else{
+                    boolean sucesso = AtualizaTipoAtendimento("Segunda Chance");
+                    System.out.println(sucesso);                    
+                    return senha;
+                }
+            } else {
+                senha = getProximoClientePreferencial();
+                return senha;
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return null;
+        } finally {
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (Exception closeEx) {
+                    //do nothing
+                }
+            }
+        }
+   }
+
+   public Senha getProximoClienteGeral() {
+        Connection conn = null;
+        Senha senha = new Senha();
 
         try {
             conn = getConnection();
 
-            String sql = "SELECT nm_cliente FROM tab_senhas WHERE id_senha =? AND data_senha = CURRENT_DATE";
+            String sql = "SELECT min(id_senha), id_sequencia, nm_cliente, status_atendimento, tipo_atendimento FROM tab_senhas WHERE status_atendimento ='Ativo' AND data_senha = CURRENT_DATE";
 
             PreparedStatement stmt = conn.prepareStatement(sql);
-            stmt.setInt(1, id_senha);
             ResultSet result = stmt.executeQuery();
-
-            if (result.next()) {
-                String nm_cliente = result.getString("nm_cliente");
-                return nm_cliente;
+            
+            if (result.next()) {                
+                senha.setId_senha(result.getInt(1));
+                senha.setId_sequencia(result.getInt(2));
+                senha.setNome_cliente(result.getString(3));
+                senha.setStatus_atendimento(result.getString(4));
+                senha.setTipo_atendimento(result.getString(5));
+                
+                if (senha.getNome_cliente() == null){
+                    return null;
+                }else{
+                    boolean sucesso = AtualizaTipoAtendimento(senha.getTipo_atendimento());
+                    System.out.println(sucesso);
+                    return senha;
+                }
             } else {
                 return null;
             }
@@ -544,5 +617,72 @@ public String criptoSenha(String senha_cripto){
                 }
             }
         }
+   }   
+   
+   public Senha verificaClientesChamados(int id_usuario) {
+        Connection conn = null;
+        Senha senha = new Senha();
+
+        try {
+            conn = getConnection();
+
+            String sql = "SELECT id_sequencia, id_senha, nm_cliente, status_atendimento, tipo_atendimento FROM tab_senhas WHERE status_atendimento in ('Chamando', 'Em Atendimento') AND data_senha = CURRENT_DATE and id_usuario = ?";
+
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, id_usuario);
+            ResultSet result = stmt.executeQuery();
+            
+            if (result.next()) {    
+                senha.setId_sequencia(result.getInt(1));
+                senha.setId_senha(result.getInt(2));
+                senha.setNome_cliente(result.getString(3));
+                senha.setStatus_atendimento(result.getString(4));
+                senha.setTipo_atendimento(result.getString(5));
+                return senha;
+            } else {                
+                return null;
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return null;
+        } finally {
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (Exception closeEx) {
+                    //do nothing
+                }
+            }
+        }
+   }      
+   
+   public String UltimoTipoAtendimento(){
+       Connection conn = null;
+
+        try {
+            conn = getConnection();
+
+            String sql = "SELECT tipo_atendimento FROM tab_ultimo_tipo_atendimento";
+
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            ResultSet result = stmt.executeQuery();
+
+            if (result.next()) {
+                return result.getString("tipo_atendimento");                
+            } else {
+                return null;
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return null;
+        } finally {
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (Exception closeEx) {
+                    //do nothing
+                }
+            } 
     }
+    }     
 }
