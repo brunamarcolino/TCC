@@ -362,7 +362,14 @@ public String criptoSenha(String senha_cripto){
                 stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);            
                 stmt.setString(1, status);
                 stmt.setInt(2, id_senha);                 
-            } else {
+            } else if (status.equals("Segunda Chance")){
+                //atualiza status
+                String sql = "UPDATE tab_senhas set status_atendimento = ?, id_senha = ? WHERE id_senha = ? and data_senha = CURDATE();";    
+                stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);            
+                stmt.setString(1, status);
+                stmt.setInt(2, getProximaSenha());
+                stmt.setInt(3, id_senha);   
+            }else {
                 String sql = "UPDATE tab_senhas set status_atendimento = ? WHERE id_senha = ? and data_senha = CURDATE();";    
                 stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);            
                 stmt.setString(1, status);
@@ -445,7 +452,7 @@ public String criptoSenha(String senha_cripto){
         try {
             conn = getConnection();
 
-            String sql = "SELECT min(id_senha), id_sequencia, nm_cliente, status_atendimento, tipo_atendimento FROM tab_senhas WHERE status_atendimento ='Ativo' AND data_senha = CURRENT_DATE and tipo_atendimento = 'Preferencial'";
+            String sql = "SELECT min(id_senha), id_sequencia, nm_cliente, status_atendimento, tipo_atendimento FROM tab_senhas WHERE status_atendimento in ('Ativo', 'Segunda Chance') AND data_senha = CURRENT_DATE and tipo_atendimento = 'Preferencial'";
 
             PreparedStatement stmt = conn.prepareStatement(sql);
             ResultSet result = stmt.executeQuery();
@@ -492,7 +499,7 @@ public String criptoSenha(String senha_cripto){
         try {
             conn = getConnection();
 
-            String sql = "SELECT min(id_senha), id_sequencia, nm_cliente, status_atendimento, tipo_atendimento FROM tab_senhas WHERE status_atendimento ='Ativo' AND data_senha = CURRENT_DATE and tipo_atendimento = 'Normal'";
+            String sql = "SELECT min(id_senha), id_sequencia, nm_cliente, status_atendimento, tipo_atendimento FROM tab_senhas WHERE status_atendimento in ('Ativo', 'Segunda Chance') AND data_senha = CURRENT_DATE and tipo_atendimento = 'Normal'";
 
             PreparedStatement stmt = conn.prepareStatement(sql);
             ResultSet result = stmt.executeQuery();
@@ -529,52 +536,6 @@ public String criptoSenha(String senha_cripto){
             }
         }
    }
-   
-   public Senha getProximoClienteChance() {
-        Connection conn = null;
-        Senha senha = new Senha();
-        
-        
-        try {
-            conn = getConnection();
-
-            String sql = "SELECT min(id_senha), id_sequencia, nm_cliente, status_atendimento, tipo_atendimento FROM tab_senhas WHERE data_senha = CURRENT_DATE and status_atendimento = 'Segunda Chance'";
-
-            PreparedStatement stmt = conn.prepareStatement(sql);
-            ResultSet result = stmt.executeQuery();
-            
-            if (result.next()) {   
-                senha.setId_senha(result.getInt(1));
-                senha.setId_sequencia(result.getInt(2));
-                senha.setNome_cliente(result.getString(3));
-                senha.setStatus_atendimento(result.getString(4));
-                senha.setTipo_atendimento(result.getString(5));
-                
-                if (senha.getNome_cliente() == null){
-                    senha = getProximoClientePreferencial();
-                    return senha;
-                }else{
-                    boolean sucesso = AtualizaTipoAtendimento("Segunda Chance");
-                    System.out.println(sucesso);                    
-                    return senha;
-                }
-            } else {
-                senha = getProximoClientePreferencial();
-                return senha;
-            }
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            return null;
-        } finally {
-            if (conn != null) {
-                try {
-                    conn.close();
-                } catch (Exception closeEx) {
-                    //do nothing
-                }
-            }
-        }
-   }
 
    public Senha getProximoClienteGeral() {
         Connection conn = null;
@@ -583,7 +544,7 @@ public String criptoSenha(String senha_cripto){
         try {
             conn = getConnection();
 
-            String sql = "SELECT min(id_senha), id_sequencia, nm_cliente, status_atendimento, tipo_atendimento FROM tab_senhas WHERE status_atendimento ='Ativo' AND data_senha = CURRENT_DATE";
+            String sql = "SELECT min(id_senha), id_sequencia, nm_cliente, status_atendimento, tipo_atendimento FROM tab_senhas WHERE status_atendimento in ('Ativo', 'Segunda Chance') AND data_senha = CURRENT_DATE";
 
             PreparedStatement stmt = conn.prepareStatement(sql);
             ResultSet result = stmt.executeQuery();

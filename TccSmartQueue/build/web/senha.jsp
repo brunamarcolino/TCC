@@ -9,7 +9,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-    <head>
+    <head onload="getUserId()">
+        <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async='async'></script>
+        <script type="text/javascript" src="script/notificacao.js"></script>
         <meta charset="UTF-8">
         <meta name="description" content="Gerenciador de filas">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,8 +20,8 @@
         <%@include file="WEB-INF/jspf/chamadas.jspf"%>
     </head>
     <body>
-        <%@include file="WEB-INF/jspf/cabecalho.jspf"%>
         
+        <%@include file="WEB-INF/jspf/cabecalho.jspf"%>
         <div class="main">
             <div class="grid-75 gera-senha">
             <c:choose>  
@@ -89,6 +91,7 @@
             </div>
             </div>
         </div>
+        <script type="text/javascript" src="script/localizacao.js"></script>
        <%@include file="WEB-INF/jspf/rodape.jspf"%>
     </body>
 </html>

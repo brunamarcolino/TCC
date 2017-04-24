@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 17-Abr-2017 às 02:03
+-- Generation Time: 24-Abr-2017 às 14:29
 -- Versão do servidor: 10.1.19-MariaDB
 -- PHP Version: 7.0.13
 
@@ -29,7 +29,6 @@ SET time_zone = "+00:00";
 CREATE TABLE `tab_fila` (
   `id_fila` int(11) NOT NULL,
   `id_usuario` int(11) DEFAULT NULL,
-  `mesa_usuario` int(11) DEFAULT NULL,
   `status_fila` varchar(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -37,13 +36,14 @@ CREATE TABLE `tab_fila` (
 -- Extraindo dados da tabela `tab_fila`
 --
 
-INSERT INTO `tab_fila` (`id_fila`, `id_usuario`, `mesa_usuario`, `status_fila`) VALUES
-(1, 0, 1, 'FECHADA'),
-(2, NULL, 2, 'ABERTA'),
-(3, NULL, 3, 'FECHADA'),
-(4, NULL, 4, 'FECHADA'),
-(5, 402, 10, 'Aberta'),
-(6, 402, 20, 'Aberta');
+INSERT INTO `tab_fila` (`id_fila`, `id_usuario`, `status_fila`) VALUES
+(1, NULL, 'Fechada'),
+(2, NULL, 'Fechada'),
+(3, NULL, 'Fechada'),
+(4, 402, 'Aberta'),
+(5, NULL, 'Fechada'),
+(6, NULL, 'Fechada'),
+(7, NULL, 'Fechada');
 
 -- --------------------------------------------------------
 
@@ -71,7 +71,7 @@ INSERT INTO `tab_parametros` (`id_parametro`, `desc_parametro`, `valor_parametro
 (4, 'Horario de encerramento da fila', '20:00', 1, 0, '2017-04-02'),
 (5, 'Aceita segunda chance ?', 'SIM', 1, 0, '2017-04-02'),
 (6, 'Numero de Mesas', '4', 1, 0, '2017-04-02'),
-(7, 'Distancia permitida (KM)', '15', 1, 0, '2017-04-02'),
+(7, 'Distancia permitida (KM)', '20', 1, 0, '2017-04-02'),
 (8, 'Localização do atendimento', 'Metrocamp', 1, 0, '2017-04-09');
 
 -- --------------------------------------------------------
@@ -84,9 +84,10 @@ CREATE TABLE `tab_senhas` (
   `id_sequencia` int(11) NOT NULL,
   `id_senha` int(4) NOT NULL COMMENT 'Senha ',
   `data_senha` date NOT NULL COMMENT 'Data de geração ',
-  `cpf_cliente` varchar(15) NOT NULL COMMENT 'CPF do cliente ',
-  `nm_cliente` varchar(50) NOT NULL COMMENT 'Nome do Cliente ',
-  `senha_cliente` varchar(60) NOT NULL COMMENT 'Senha do Cliente ',
+  `cpf_cliente` varchar(15) DEFAULT NULL COMMENT 'CPF do cliente ',
+  `email_cliente` varchar(60) DEFAULT NULL,
+  `nm_cliente` varchar(50) DEFAULT NULL COMMENT 'Nome do Cliente ',
+  `senha_cliente` varchar(60) DEFAULT NULL COMMENT 'Senha do Cliente ',
   `status_atendimento` varchar(15) NOT NULL COMMENT 'Status: Ativo | Em atendimento | Cancelado | Atendido | Chamando | Não compareceu | Segunda Chance ',
   `tipo_atendimento` varchar(12) DEFAULT 'Normal' COMMENT 'Normal / Preferencial',
   `data_atendimento_ini` datetime DEFAULT NULL COMMENT 'Data do início do atendimento ',
@@ -98,42 +99,48 @@ CREATE TABLE `tab_senhas` (
 -- Extraindo dados da tabela `tab_senhas`
 --
 
-INSERT INTO `tab_senhas` (`id_sequencia`, `id_senha`, `data_senha`, `cpf_cliente`, `nm_cliente`, `senha_cliente`, `status_atendimento`, `tipo_atendimento`, `data_atendimento_ini`, `data_atendimento_fim`, `id_usuario`) VALUES
-(164, 1, '2017-04-14', '40341728861', 'BRUNA', '1', 'Ativo', 'Normal', NULL, NULL, NULL),
-(167, 2, '2017-04-14', '2', '2', '2', 'Encerrado', 'Normal', '2017-04-14 20:52:53', '2017-04-14 20:56:59', NULL),
-(168, 3, '2017-04-14', '3', '3', '3', 'Encerrado', 'Normal', '2017-04-14 20:52:53', '2017-04-14 20:56:59', NULL),
-(169, 4, '2017-04-14', '4', '4', '4', 'Encerrado', 'Normal', '2017-04-14 20:52:53', '2017-04-14 20:56:59', NULL),
-(170, 5, '2017-04-14', '5', '5', '5', 'Encerrado', 'Normal', '2017-04-14 20:52:53', '2017-04-14 20:56:59', NULL),
-(171, 6, '2017-04-14', '6', '6', '6', 'Encerrado', 'Normal', '2017-04-14 20:52:53', '2017-04-14 20:56:59', NULL),
-(172, 7, '2017-04-14', '7', '7', '7', 'Encerrado', 'Normal', '2017-04-14 20:52:53', '2017-04-14 20:56:59', NULL),
-(173, 8, '2017-04-14', '8', '8', '8', 'Encerrado', 'Normal', '2017-04-14 20:52:53', '2017-04-14 20:56:59', NULL),
-(174, 9, '2017-04-14', '9', '9', '9', 'Encerrado', 'Normal', '2017-04-14 20:52:53', '2017-04-14 20:56:59', NULL),
-(175, 10, '2017-04-14', '10', '10', '10', 'Encerrado', 'Normal', '2017-04-14 20:52:53', '2017-04-14 20:56:59', NULL),
-(176, 11, '2017-04-14', '11', '11', '11', 'Encerrado', 'Normal', '2017-04-14 20:52:53', '2017-04-14 20:56:59', NULL),
-(177, 12, '2017-04-14', '12', '12', '12', 'Ativo', 'Normal', NULL, NULL, NULL),
-(178, 13, '2017-04-14', '13', '13', '13', 'Ativo', 'Normal', NULL, NULL, NULL),
-(179, 14, '2017-04-14', '14', '14', '14', 'Ativo', 'Normal', NULL, NULL, NULL),
-(180, 15, '2017-04-14', '15', '15', '15', 'Ativo', 'Normal', NULL, NULL, NULL),
-(181, 16, '2017-04-14', '16', '16', '16', 'Ativo', 'Normal', NULL, NULL, NULL),
-(182, 17, '2017-04-14', '17', '17', '17', 'Ativo', 'Normal', NULL, NULL, NULL),
-(183, 18, '2017-04-14', '18', '18', '18', 'Ativo', 'Normal', NULL, NULL, NULL),
-(184, 19, '2017-04-14', '19', '19', '19', 'Encerrado', 'Preferencial', '2017-04-14 20:52:53', '2017-04-14 20:56:59', NULL),
-(185, 20, '2017-04-14', '20', '20', '20', 'Encerrado', 'Preferencial', '2017-04-14 20:52:53', '2017-04-14 20:56:59', NULL),
-(186, 21, '2017-04-14', '21', '21', '21', 'Encerrado', 'Preferencial', '2017-04-14 20:52:53', '2017-04-14 20:56:59', NULL),
-(187, 22, '2017-04-14', '22', '22', '22', 'Ativo', 'Preferencial', NULL, NULL, NULL),
-(188, 23, '2017-04-14', '23', '23', '23', 'Ativo', 'Preferencial', NULL, NULL, NULL),
-(189, 24, '2017-04-14', '24', '24', '24', 'Ativo', 'Preferencial', NULL, NULL, NULL),
-(190, 25, '2017-04-14', '35009321858', 'Bruna', '1', 'Ativo', 'Normal', NULL, NULL, NULL),
-(191, 26, '2017-04-14', '08576714809', 'Bruna', '1', 'Ativo', 'Normal', NULL, NULL, NULL),
-(192, 27, '2017-04-14', '97731861805', 'bruna', '1', 'Ativo', 'Normal', NULL, NULL, NULL),
-(193, 28, '2017-04-14', '11151761451', 'teste1', '1', 'Ativo', 'Normal', NULL, NULL, NULL),
-(194, 29, '2017-04-14', '57522499372', 'jkfbfak', '1', 'Ativo', 'Normal', NULL, NULL, NULL),
-(195, 30, '2017-04-14', '29406944782', 'bruna', '1', 'Ativo', 'Preferencial', NULL, NULL, NULL),
-(196, 31, '2017-04-14', '27393287706', 'bruna', '2jmj7l5rSw0yVb/vlWAYkK/YBwk=', 'Ativo', 'Normal', NULL, NULL, NULL),
-(197, 1, '2017-04-16', '40341728861', 'bru', '2jmj7l5rSw0yVb/vlWAYkK/YBwk=', 'Cancelado', 'Normal', NULL, NULL, NULL),
-(198, 2, '2017-04-16', '35009321858', 's', '2jmj7l5rSw0yVb/vlWAYkK/YBwk=', 'Ativo', 'Normal', NULL, NULL, NULL),
-(199, 3, '2017-04-16', '08576714809', 'VINICIUS', '2jmj7l5rSw0yVb/vlWAYkK/YBwk=', 'Ativo', 'Normal', NULL, NULL, NULL),
-(200, 4, '2017-04-16', '123', 'A', '2jmj7l5rSw0yVb/vlWAYkK/YBwk=', 'Ativo', 'Normal', NULL, NULL, NULL);
+INSERT INTO `tab_senhas` (`id_sequencia`, `id_senha`, `data_senha`, `cpf_cliente`, `email_cliente`, `nm_cliente`, `senha_cliente`, `status_atendimento`, `tipo_atendimento`, `data_atendimento_ini`, `data_atendimento_fim`, `id_usuario`) VALUES
+(257, 2, '2017-04-23', '2', NULL, 'Nome do Cliente 2', '2', 'Atendido', 'Normal', '2017-04-23 00:01:00', '2017-04-23 00:06:30', NULL),
+(258, 3, '2017-04-23', '3', NULL, 'Nome do Cliente 3', '3', 'Atendido', 'Normal', '2017-04-23 00:01:00', '2017-04-23 00:06:30', NULL),
+(259, 4, '2017-04-23', '4', NULL, 'Nome do Cliente 4', '4', 'Atendido', 'Normal', '2017-04-23 00:01:00', '2017-04-23 00:06:30', NULL),
+(260, 5, '2017-04-23', '5', NULL, 'Nome do Cliente 5', '5', 'Atendido', 'Normal', '2017-04-23 00:01:00', '2017-04-23 00:06:30', NULL),
+(261, 6, '2017-04-23', '6', NULL, 'Nome do Cliente 6', '6', 'Atendido', 'Normal', '2017-04-23 00:01:00', '2017-04-23 00:06:30', NULL),
+(262, 7, '2017-04-23', '7', NULL, 'Nome do Cliente 7', '7', 'Atendido', 'Normal', '2017-04-23 00:01:00', '2017-04-23 00:06:30', NULL),
+(263, 8, '2017-04-23', '8', NULL, 'Nome do Cliente 8', '8', 'Atendido', 'Normal', '2017-04-23 00:01:00', '2017-04-23 00:06:30', NULL),
+(264, 9, '2017-04-23', '9', NULL, 'Nome do Cliente 9', '9', 'Atendido', 'Normal', '2017-04-23 00:01:00', '2017-04-23 00:06:30', NULL),
+(265, 10, '2017-04-23', '10', NULL, 'Nome do Cliente 10', '10', 'Atendido', 'Normal', '2017-04-23 00:01:00', '2017-04-23 00:06:30', NULL),
+(266, 11, '2017-04-23', '11', NULL, 'Nome do Cliente 11', '11', 'Atendido', 'Normal', '2017-04-23 00:01:00', '2017-04-23 00:06:30', NULL),
+(267, 12, '2017-04-23', '12', NULL, 'Nome do Cliente 12', '12', 'Atendido', 'Normal', '2017-04-23 17:20:27', '2017-04-23 17:20:32', 402),
+(268, 13, '2017-04-23', '13', NULL, 'Nome do Cliente 13', '13', 'Atendido', 'Normal', '2017-04-23 17:20:45', '2017-04-23 17:20:47', 402),
+(269, 14, '2017-04-23', '14', NULL, 'Nome do Cliente 14', '14', 'Atendido', 'Normal', '2017-04-23 17:20:56', '2017-04-23 17:20:57', 402),
+(270, 26, '2017-04-23', '15', NULL, 'Nome do Cliente 15', '15', 'Não Compareceu', 'Normal', NULL, NULL, 402),
+(271, 16, '2017-04-23', '16', NULL, 'Nome do Cliente 16', '16', 'Atendido', 'Normal', '2017-04-23 17:21:07', '2017-04-23 17:21:08', 402),
+(272, 17, '2017-04-23', '17', NULL, 'Nome do Cliente 17', '17', 'Atendido', 'Normal', '2017-04-23 17:21:13', '2017-04-23 17:21:14', 402),
+(273, 27, '2017-04-23', '18', NULL, 'Nome do Cliente 18', '18', 'Não Compareceu', 'Normal', NULL, NULL, 402),
+(274, 19, '2017-04-23', '19', NULL, 'Nome do Cliente 19', '19', 'Atendido', 'Preferencial', '2017-04-23 00:01:00', '2017-04-23 00:06:30', NULL),
+(275, 20, '2017-04-23', '20', NULL, 'Nome do Cliente 20', '20', 'Atendido', 'Preferencial', '2017-04-23 00:01:00', '2017-04-23 00:06:30', NULL),
+(276, 21, '2017-04-23', '21', NULL, 'Nome do Cliente 21', '21', 'Atendido', 'Preferencial', '2017-04-23 00:01:00', '2017-04-23 00:06:30', NULL),
+(277, 22, '2017-04-23', '22', NULL, 'Nome do Cliente 22', '22', 'Atendido', 'Preferencial', '2017-04-23 17:09:40', '2017-04-23 17:09:48', 402),
+(278, 25, '2017-04-23', '23', NULL, 'Nome do Cliente 23', '23', 'Atendido', 'Preferencial', '2017-04-23 17:37:38', '2017-04-23 17:37:40', 402),
+(279, 24, '2017-04-23', '24', NULL, 'Nome do Cliente 24', '24', 'Ativo', 'Preferencial', '2017-04-23 17:20:51', '2017-04-23 17:20:54', 402),
+(280, 28, '2017-04-23', '40341728861', NULL, 'bruna', '2jmj7l5rSw0yVb/vlWAYkK/YBwk=', 'Ativo', 'Normal', NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `tab_ultimo_tipo_atendimento`
+--
+
+CREATE TABLE `tab_ultimo_tipo_atendimento` (
+  `tipo_atendimento` varchar(12) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `tab_ultimo_tipo_atendimento`
+--
+
+INSERT INTO `tab_ultimo_tipo_atendimento` (`tipo_atendimento`) VALUES
+('Preferencial');
 
 -- --------------------------------------------------------
 
@@ -167,8 +174,8 @@ INSERT INTO `tab_usuarios` (`id_usuario`, `nm_usuario`, `email_usuario`, `cpf_us
 (611, 'user2', 'bruna@bruna.com', '08576714809', '356a192b7913b04c54574d18c28d46e6395428ab', 'Atendente', 'Inativo', NULL),
 (612, 'user3', 'bruna@bruna.com', '93516061472', '356a192b7913b04c54574d18c28d46e6395428ab', 'Atendente', 'Ativo', NULL),
 (613, 'Vinicius', 'bruna@bruna.com', '42149443805', '356a192b7913b04c54574d18c28d46e6395428ab', 'Atendente', 'Ativo', NULL),
-(614, '63405271754', 'bruna1marcolino@gmail.com', '63405271754', 'Novasenha1', 'Atendente', 'Inativo', NULL),
-(615, '17582188276', 'bruna1marcolino@gmail.com', '17582188276', '592a63eb9662eeccece211458fb45019ebba0b4e', 'Atendente', 'Inativo', 'f6c3d2bf97c9108f2fc352cb7794ffa'),
+(614, '63405271754', 'bruna1marcolino@gmail.com', '63405271754', 'Novasenha1', 'Atendente', 'Inativo', '21ce87310c6d972285657cd5016116c5'),
+(615, '17582188276', 'bruna1marcolino@gmail.com', '17582188276', 'e9ea4460acba997166ae132591998ef9ab181d09', 'Atendente', 'Inativo', NULL),
 (616, '72154729738', '72154729738@a.com', '72154729738', 'ec4c8836db96b8aca8381c7c64bb095ba46d5e28', 'Administrador', 'Ativo', NULL);
 
 --
@@ -214,7 +221,7 @@ ALTER TABLE `tab_usuarios`
 -- AUTO_INCREMENT for table `tab_fila`
 --
 ALTER TABLE `tab_fila`
-  MODIFY `id_fila` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_fila` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `tab_parametros`
 --
@@ -224,20 +231,12 @@ ALTER TABLE `tab_parametros`
 -- AUTO_INCREMENT for table `tab_senhas`
 --
 ALTER TABLE `tab_senhas`
-  MODIFY `id_sequencia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=201;
+  MODIFY `id_sequencia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=281;
 --
 -- AUTO_INCREMENT for table `tab_usuarios`
 --
 ALTER TABLE `tab_usuarios`
   MODIFY `id_usuario` int(4) NOT NULL AUTO_INCREMENT COMMENT 'Código do usuário ', AUTO_INCREMENT=617;
---
--- Constraints for dumped tables
---
-
---
--- Limitadores para a tabela `tab_senhas`
---
-
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

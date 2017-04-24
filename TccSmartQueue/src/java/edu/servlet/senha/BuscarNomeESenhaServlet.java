@@ -22,40 +22,41 @@ import javax.servlet.http.HttpServletResponse;
 public class BuscarNomeESenhaServlet extends HttpServlet {
     
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    
+         
         //Declara Variaveis
         Senha senha = new Senha();
         SenhaDao senhaDao = new SenhaDao();
         String mensagem = "";
-        
+        boolean s = false;
         //Verifica se não há clientes em atendimento ou chamados
         String id_usuario_str = request.getParameter("id_usuario");
         int id_usuario = Integer.parseInt(id_usuario_str);
         System.out.println(id_usuario);
         senha = senhaDao.verificaClientesChamados(id_usuario);
-        
         //Se não
         if(senha == null){
-
+            s = true;
             //Verifica ultimo tipo de atendimento 
             String tipo_atendimento = senhaDao.UltimoTipoAtendimento();
             System.out.println(tipo_atendimento);
-        
-            boolean sucesso = senhaDao.alteraStatusSenha(senha.getId_senha(), "Chamando", id_usuario);
-            System.out.println(sucesso);
-                
+            
             //Chama próximo cliente de acordo com o ultimo atendido
             if (tipo_atendimento.equals("Preferencial")){
                 senha = senhaDao.getProximoClienteNormal();
-            } else if (tipo_atendimento.equals("Normal")){
-                senha = senhaDao.getProximoClienteChance();
             } else {
                 senha = senhaDao.getProximoClientePreferencial();
-            }
+            }            
+            
         }
-        
             //SE FOR NULL É QUE NÃO TEM MAIS CLIENTE NA FILA, SE NÃO APRESENTE CLIENTE NA TELA
             if (senha != null){
+                if (!s){
+                    //atuliza
+                    boolean sucesso = senhaDao.alteraStatusSenha(senha.getId_senha(), "Chamando", id_usuario);
+                    senha.setStatus_atendimento("Chamando");
+                    System.out.println(sucesso);
+                }
+                
                 request.setAttribute("senha",senha);
                 mensagem = "Próximo Cliente Chamado";
                 request.setAttribute("mensagemSucesso", mensagem);
