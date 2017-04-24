@@ -79,7 +79,7 @@
                         <c:when test="${dadossenha.distancia}">
                             <p class="location location-ok"><img src="imagens/success.png"/>Você está dentro da distancia permitida</p>
                             <p>Clique abaixo para gerar a sua senha:</p>
-                            <input type="button" value="Gerar Senha" onClick="window.location.href='login_cliente.jsp?tipo_atendimento=${dadossenha.tipo_atendimento}'">                            
+                            <input type="button" value="Gerar Senha" class="btn btn-outline azul" onClick="window.location.href='login_cliente.jsp?tipo_atendimento=${dadossenha.tipo_atendimento}'">                            
                         </c:when>
                         <c:otherwise>
                             <p class="location location-wrong"><img src="imagens/error.png"/>Você está FORA da distancia permitida</p>
@@ -91,7 +91,6 @@
             </div>
             </div>
         </div>
-        <script type="text/javascript" src="script/localizacao.js"></script>
        <%@include file="WEB-INF/jspf/rodape.jspf"%>
     </body>
 </html>
