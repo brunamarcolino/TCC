@@ -157,13 +157,17 @@ select{
     border-color: #84bd00;
     color: #84bd00;
 }
-h1.title-home{
+h1.title-home,
+h3.title-home{
     font-size: 4em;
     margin-bottom: 0;
     font-family: 'Lato-Hairline', sans-serif;
     font-weight: 500;
     color: #FFF;
     letter-spacing: -4px;
+}
+h3.title-home{
+    font-size: 1.5em;
 }
 h2.subtitle-home{
     margin-top: 0 !important;
@@ -420,7 +424,6 @@ p.alert{
 }
 .gera-senha input[type="button"]{
     background-color: transparent;
-    opacity: .5;
 }
 div.box-atendente,
 div.box-cliente{

@@ -9,3 +9,5 @@ RA: 1510016735
 <script type="text/javascript" src="${pageContext.request.contextPath}/script/jquery-3.2.0.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/script/general.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/script/localizacao.js"></script>
+
+<script type="text/javascript" src="${pageContext.request.contextPath}/script/chart.min.js"></script>

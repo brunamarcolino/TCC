@@ -12,12 +12,13 @@ $(document).ready(function(){
         //$('.mensagem').hide();
     }, 2000);
 
-    $('.main').css('min-height', height-70);
+    $('.main').css('min-height', height-50);
     //$('#cpf').mask('000.000.000-00', {reverse: true});
 });
 
 $(window).resize(function(){
-    $('.main').css('min-height', height-70);    
+    height = $(window).height();
+    $('.main').css('min-height', height-50);    
 });
 
 function confirma() {
