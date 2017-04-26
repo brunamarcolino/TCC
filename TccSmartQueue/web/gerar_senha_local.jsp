@@ -27,23 +27,26 @@
         <div class="main">
             <div class="grid-25 mobile-grid-100 center">
                 <div class="box">
-                    <h1>Gerar Proxima Senha</h1>
-                    <h3></h3>
+                    <h1>Gerar Próxima Senha</h1>
+                    <h3>Caso precise, gere manualmente a próxima senha por aqui.</h3>
                 </div>
                 <form action="GerarSenhaLocalServlet" method="post">
                     <ul>
                         <li>
-                            <label>Informe o Nome do cliente</label>
+                            <label>Informe o nome do cliente</label>
                             <input type="text" name="nome_cliente" value="${param.nome_cliente}"/>
-                            <label>Informe o Tipo de Atendimento</label>
+                        </li>
+                        <li>
+                            <label>Selecione o tipo de atendimento</label>
                             <select name="tipo_atendimento">
-                                <option></option>
-                                <option value="Normal">Atendimento Normal</option>
-                                <option value="Preferencial">Atendimento Preferencial</option>
+                                <option>Selecione o tipo</option>
+                                <option value="Normal">Normal</option>
+                                <option value="Preferencial">Preferencial</option>
                             </select> 
+                        </li>
                         <li>
                             <a href="" class="btn-back"><img src="imagens/back.png" />Voltar</a>
-                            <input type="submit" value="Gerar Senha" class="btn btn-outline" />
+                            <input type="submit" value="Gerar Senha" class="btn btn-outline azul" />
                         </li>
                     </ul>
                 </form>    
