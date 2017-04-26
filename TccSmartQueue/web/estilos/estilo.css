@@ -45,9 +45,15 @@ a{
     text-decoration: none;
     vertical-align: top;
 }
-form li,
-div.box-atendente li{
+form li{
     margin-bottom: 1.5em;
+}
+div.box-atendente li,
+div.box-cliente li{
+    width: 50%;
+    float: left;
+    box-sizing: border-box;
+    margin-bottom: 1em;
 }
 label{
     margin-bottom: .5em;
@@ -104,7 +110,7 @@ select{
     position: absolute;
     left: 0;
     right: 0;
-    top: 20%;
+    top: 15%;
     bottom: 0;
     margin: auto;
 }
@@ -167,7 +173,10 @@ h3.title-home{
     letter-spacing: -4px;
 }
 h3.title-home{
-    font-size: 1.5em;
+    font-size: 1em;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    font-family: 'Lato-Light', sans-serif;
 }
 h2.subtitle-home{
     margin-top: 0 !important;
@@ -274,7 +283,7 @@ nav li a:hover{
     padding: 1em .5em;
 }
 footer{
-    position: relative;
+    position: absolute;
     bottom: 0;
     width: 100%;
     padding: 1em 2em;

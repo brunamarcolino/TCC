@@ -1,11 +1,10 @@
-<%-- 
+<!-- 
     Document   : chart-example
     Created on : Apr 25, 2017, 8:34:51 AM
     Author     : thiago.quintanilha
---%>
+-->
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="fusioncharts.FusionCharts" %>
 <!DOCTYPE html>
 <html>
     <head>
