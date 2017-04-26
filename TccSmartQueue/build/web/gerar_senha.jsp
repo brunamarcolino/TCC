@@ -55,7 +55,6 @@
                                 </c:choose>
                             </h2>
                         </div>
-                    </div>
                         <div class="grid-100">
                             <p>Previsao Atendimento</p>
                             <h2>
@@ -69,16 +68,18 @@
                                 </c:choose>
                             </h2>
                         </div>
-                    </div>                    
+                    </div>
+                   
                     <div class="grid-parent grid-50">
                         <p>Sua Senha é: </p>
                         <h1>${senha.id_senha}</h1>
-                        <input type="button" value="Cancelar Senha" class="cancelar" onClick="window.location.href='CancelarSenhaServlet?id_senha=${senha.id_senha}'">
+                        <input type="button" value="Cancelar Senha" class="btn btn-outline vermelho" onClick="window.location.href='CancelarSenhaServlet?id_senha=${senha.id_senha}'">
                     </div>                                    
                 </c:otherwise>
             </c:choose>
             </div>
         </div>
+
        <%@include file="WEB-INF/jspf/rodape.jspf"%>
     </body>
 </html>

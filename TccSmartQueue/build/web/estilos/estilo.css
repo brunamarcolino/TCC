@@ -157,13 +157,17 @@ select{
     border-color: #84bd00;
     color: #84bd00;
 }
-h1.title-home{
+h1.title-home,
+h3.title-home{
     font-size: 4em;
     margin-bottom: 0;
     font-family: 'Lato-Hairline', sans-serif;
     font-weight: 500;
     color: #FFF;
     letter-spacing: -4px;
+}
+h3.title-home{
+    font-size: 1.5em;
 }
 h2.subtitle-home{
     margin-top: 0 !important;
@@ -198,6 +202,17 @@ input[type="button"]{
 input[type="submit"]:hover,
 input[type="button"]:hover{
     opacity: 1;
+}
+.btn[readonly="readonly"],
+.btn[disabled]{
+    border-color: #777;
+    color: #777;
+    opacity: .2;
+    cursor: default;
+}
+.btn[readonly="readonly"]:hover,
+.btn[disabled]:hover{
+    opacity: .2;
 }
 .image{
     width: 100%;
@@ -325,6 +340,8 @@ footer{
     font-size: 5.5em;
     font-weight: bolder;
     color: #3EB27D;
+    margin-top: 0;
+    text-align: center;
 }
 table{
     border: solid 1px #DDD;
@@ -407,13 +424,6 @@ p.alert{
 }
 .gera-senha input[type="button"]{
     background-color: transparent;
-    border-color: dodgerblue;
-    color: dodgerblue;
-    opacity: .5;
-}
-.gera-senha input[type="button"].cancelar{
-    border-color: #FF4C4C;
-    color: #FF4C4C;
 }
 div.box-atendente,
 div.box-cliente{
@@ -423,8 +433,7 @@ div.box-cliente{
 }
 div.box-atendente .btn{
     float: right !important;
-    color: dodgerblue;
-    border-color: dodgerblue;
+    width: 70%;
 }
 div.box-cliente{
     padding-bottom: 0;

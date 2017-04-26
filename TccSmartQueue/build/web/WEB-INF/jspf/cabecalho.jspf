@@ -11,7 +11,7 @@ RA: 1510027287
 
 <header class="grid-100 mobile-grid-100">
     <div class="grid-10 mobile-grid-50">
-         <h3>Smartqueue</h3>
+         <h3 class="title-home">Smartqueue</h3>
     </div>
     <div class="grid-75 pull-left hide-on-mobile">
         <c:if test="${not empty login}">
