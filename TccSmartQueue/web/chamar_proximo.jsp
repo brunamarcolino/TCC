@@ -29,7 +29,7 @@
         <div class="main">
             <div class="grid-parent grid-50 mobile-grid-100 center">
                 <div class="grid-parent grid-100 box-atendente">
-                    <div class="grid-30 mobile-grid-100">
+                    <div class="grid-60 mobile-grid-100">
                          
                         <ul>
                             <li>
@@ -42,13 +42,13 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="grid-70 mobile-grid-100">
+                    <div class="grid-40 mobile-grid-100">
                         <c:choose>
                             <c:when test="${param.habilitado==1}">
                                 <a href="BuscarNomeESenhaServlet?id_usuario=${login.id_usuario}" class="btn btn-outline azul">Chamar próximo cliente</a>
                             </c:when>
                             <c:otherwise>
-                                <input type="button" class="btn btn-outline" value="Chamar próximo cliente" readonly="readonly"/>
+                                <input type="button" class="btn btn-outline" value="Chamar próximo" readonly="readonly"/>
                             </c:otherwise>   
                         </c:choose>        
                     </div>

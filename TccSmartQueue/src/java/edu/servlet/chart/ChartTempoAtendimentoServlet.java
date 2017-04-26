@@ -6,7 +6,11 @@ package edu.servlet.chart;
 
 
 import edu.dao.ChartDao;
+import edu.dao.UsuarioDao;
+import edu.vo.Chart;
+import edu.vo.Usuario;
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -25,18 +29,30 @@ public class ChartTempoAtendimentoServlet extends HttpServlet{
         ChartDao dadosChartDao = new ChartDao();
         String data_inicio = request.getParameter("data_inicio");
         String data_fim = request.getParameter("data_fim");
-        String atendente = request.getParameter("atendente");
+        String atendente = request.getParameter("atendentes");
+        
         String mensagem = "";
         
-        if(data_inicio != "" && data_fim != ""){
+        if(!data_inicio.isEmpty() && !data_fim.isEmpty()){
             dadosChartDao.relatorio_tempoMedio(data_inicio, data_fim, atendente);
-        }else if(data_inicio == "" || data_fim == ""){
-            if(data_inicio == ""){
+        }else if(data_inicio.isEmpty() || data_fim.isEmpty()){
+            if(data_inicio.isEmpty()){
                 mensagem = mensagem + "<span>Preencha a data início! </span>";
-            }else if(data_fim == ""){
+            }
+            if(data_fim.isEmpty()){
                 mensagem = mensagem + "<span>Preencha a data final! </span>";
             }
         }
+        
+        UsuarioDao usuarioDao = new UsuarioDao();
+        List<Usuario> atendentes = usuarioDao.getAtendentes();
+        
+        System.out.println("Obtidos " + atendentes.size() + " atendentes.");
+        
+        if (atendentes.size() > 0){
+            request.setAttribute("atendentes", atendentes);
+        }
+        System.out.println(atendentes);
         request.setAttribute("mensagemErro", mensagem);
         getServletContext().getRequestDispatcher("/relatorio_tempo.jsp").forward(request, response);
     }

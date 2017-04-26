@@ -684,6 +684,37 @@ public class UsuarioDao extends Dao {
         }
         return isSenhaIdValid;
         
-    }       
-
+    }
+    
+    public List<Usuario> getAtendentes() {
+        Connection conn = null;
+        List<Usuario> atendentes = new ArrayList<Usuario>();
+        
+         try{
+            conn = getConnection();
+            String sql = "SELECT id_usuario, nm_usuario from tab_usuarios where tipo_usuario = 'Atendente' and status_usuario = 'Ativo'";
+            
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            ResultSet result = stmt.executeQuery();
+            
+            while (result.next()) {
+                Usuario atendente = new Usuario();  
+                atendente.setAtendente(result.getInt("id_usuario")+" - "+result.getString("nm_usuario"));
+                atendentes.add(atendente);
+            }
+            return atendentes;
+         
+         }catch (Exception ex) {
+            ex.printStackTrace();
+            return null;
+        }finally {
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (Exception closeEx) {
+                    //do nothing
+                }
+            }
+       }
+    }
 }

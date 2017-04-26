@@ -10,21 +10,29 @@ package edu.vo;
  * @author thiago.quintanilha
  */
 public class Chart {
-    private String valor_labels, valor_dados;
+    private String valor_x, valor_y, valor_tooltip;
     
-    public String getValor_labels() {
-        return valor_labels;
+    public String getValor_x() {
+        return valor_x;
     }
 
-    public void setValor_labels(String valor_labels) {
-        this.valor_labels = valor_labels;
+    public void setValor_x(String valor_x) {
+        this.valor_x = valor_x;
     }
     
-    public String getValor_dados() {
-        return valor_dados;
+    public String getValor_y() {
+        return valor_y;
     }
 
-    public void setValor_dados(String valor_dados) {
-        this.valor_dados = valor_dados;
+    public void setValor_y(String valor_y) {
+        this.valor_y = valor_y;
+    }
+    
+    public String getValor_tooltip() {
+        return valor_tooltip;
+    }
+
+    public void setValor_tooltip(String valor_tooltip) {
+        this.valor_tooltip = valor_tooltip;
     }
 }
