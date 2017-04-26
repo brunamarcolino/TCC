@@ -91,6 +91,39 @@ public class UsuarioDao extends Dao {
         }
     }
     
+        public String getUsuario(int id_usuario) {
+        Connection conn = null;
+
+        try {
+            conn = getConnection();
+
+            String sql = "SELECT nm_usuario FROM tab_usuarios " + "where id_usuario=?";
+
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, id_usuario);
+            ResultSet result = stmt.executeQuery();
+
+            if (result.next()) {
+                String usuario;
+                usuario = result.getString("nm_usuario");
+                return usuario;
+            } else {
+                return null;
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return null;
+        } finally {
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (Exception closeEx) {
+                    //do nothing
+                }
+            }
+        }
+    }
+    
     public Usuario getUsuarioToken(String token) {
         Connection conn = null;
 

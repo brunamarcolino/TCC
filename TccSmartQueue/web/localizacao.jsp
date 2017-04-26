@@ -30,7 +30,7 @@
                 <form id="local" action="MapsServlet" method="get">
                     <ul>
                         <li>
-                            <input type="hidden" name="localizacao" id="field1" value="teste"/>
+                            <input type="hidden" name="localizacao" id="field1" value=""/>
                             <select name="tipo_atendimento">
                                 <option value="Normal">Normal</option>
                                 <option value="Preferencial">Preferencial</option>

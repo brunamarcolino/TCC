@@ -22,7 +22,7 @@ RA: 1510027287
                             <a href="ListaUsuarioServlet">Gerenciar atendentes</a>
                         </li>
                         <li>
-                            <a href="">Gerar Relatórios</a>
+                            <a href="NotificacaoServlet">Gerar Relatórios</a>
                         </li>
                         <li>
                             <a href="ListaParametrosServlet">Parametros do Sistemas</a>

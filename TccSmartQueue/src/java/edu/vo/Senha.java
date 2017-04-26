@@ -23,6 +23,15 @@ public class Senha {
     private Date data_atendimento_ini;
     private Date data_atendimento_fim;
     private int id_usuario_atendente;
+    private String id_player;
+
+    public String getId_player() {
+        return id_player;
+    }
+
+    public void setId_player(String id_player) {
+        this.id_player = id_player;
+    }
 
      public int getId_sequencia() {
         return id_sequencia;

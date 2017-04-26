@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
     
     var OneSignal = window.OneSignal || [];
     OneSignal.push(["init", {
@@ -20,7 +19,9 @@
           enable: true /* Set to false to hide */
       }
     }]);
-OneSignal.push(function() {
+
+var y=document.getElementById("field2");
+  OneSignal.push(function() {
   /* These examples are all valid */
   OneSignal.getUserId(function(userId) {
     console.log("OneSignal User ID:", userId);
@@ -30,7 +31,7 @@ OneSignal.push(function() {
                
   OneSignal.getUserId().then(function(userId) {
     console.log("OneSignal User ID:", userId);
-    return userId;
+    document.gerasenha.notifica.value= userId; 
     // (Output) OneSignal User ID: 270a35cd-4dda-4b3f-b04e-41d7463a2316    
   });
 });

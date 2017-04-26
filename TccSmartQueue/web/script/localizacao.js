@@ -27,13 +27,13 @@ function showError(error)
   switch(error.code)
     {
     case error.PERMISSION_DENIED:
-      x.value="Usuário rejeitou a solicitação de Geolocalização.";
+      x.value="Usuario rejeitou a solicitacao de Geolocalizacao.";
       break;
     case error.POSITION_UNAVAILABLE:
-      x.value="Localização indisponível.";
+      x.value="Localizacao indisponivel.";
       break;
     case error.TIMEOUT:
-      x.value="A requisição expirou.";
+      x.value="A requisicao expirou.";
       break;
     case error.UNKNOWN_ERROR:
       x.value="Algum erro desconhecido aconteceu.";

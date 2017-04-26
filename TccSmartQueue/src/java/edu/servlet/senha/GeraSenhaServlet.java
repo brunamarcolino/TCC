@@ -31,7 +31,10 @@ public class GeraSenhaServlet extends HttpServlet{
         String cpfcliente = request.getParameter("cpf");   
         String emailcliente = request.getParameter("email");   
         String tipo_atendimento = request.getParameter("tipo_atendimento");   
+        String id_player = request.getParameter("notifica");
         String mensagem = "";
+        
+        
         
         
         //VERIFICA AUSENCIA DE PREENCHIMENTO DOS CAMPOS 
@@ -75,7 +78,7 @@ public class GeraSenhaServlet extends HttpServlet{
             }
             
             //voltar aqui
-            int id_sequencia = senhaDao.geraSenha(logincliente,cpfcliente,senhacliente,tipo_atendimento);
+            int id_sequencia = senhaDao.geraSenha(logincliente,cpfcliente,senhacliente,tipo_atendimento, id_player);
             
             //SENHA GERADA COM SUCESSO
             if (id_sequencia > 0){        

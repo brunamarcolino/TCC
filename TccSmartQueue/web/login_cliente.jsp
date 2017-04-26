@@ -10,7 +10,10 @@
         
         <%@include file="WEB-INF/jspf/chamadas.jspf"%>
     </head>
-    <body>  
+    <body>
+        <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async='async'></script>
+        <script type="text/javascript" src="script/notificacao.js"></script>
+        
         <%@include file="WEB-INF/jspf/cabecalho.jspf" %>
 
         <%@include file="WEB-INF/jspf/mensagem.jspf" %>
@@ -19,7 +22,8 @@
                 <h1>Login Cliente</h1>
                 <p>Para que possamos garantir a segurança da sua senha, por favor preencha o formulário abaixo:</p>
             </div>
-            <form action="GeraSenhaServlet?tipo_atendimento=${param.tipo_atendimento}" method="post">
+            <form name="gerasenha" action="GeraSenhaServlet?tipo_atendimento=${param.tipo_atendimento}" method="post">                
+                <input type="hidden"  name="notifica">
                 <ul>
                     <li>
                         <label for="nomecliente">Nome : </label>
