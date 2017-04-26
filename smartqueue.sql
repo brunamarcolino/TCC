@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 24-Abr-2017 às 14:29
+-- Generation Time: 26-Abr-2017 às 17:00
 -- Versão do servidor: 10.1.19-MariaDB
 -- PHP Version: 7.0.13
 
@@ -40,10 +40,10 @@ INSERT INTO `tab_fila` (`id_fila`, `id_usuario`, `status_fila`) VALUES
 (1, NULL, 'Fechada'),
 (2, NULL, 'Fechada'),
 (3, NULL, 'Fechada'),
-(4, 402, 'Aberta'),
+(4, NULL, 'Fechada'),
 (5, NULL, 'Fechada'),
 (6, NULL, 'Fechada'),
-(7, NULL, 'Fechada');
+(7, 402, 'Aberta');
 
 -- --------------------------------------------------------
 
@@ -92,38 +92,45 @@ CREATE TABLE `tab_senhas` (
   `tipo_atendimento` varchar(12) DEFAULT 'Normal' COMMENT 'Normal / Preferencial',
   `data_atendimento_ini` datetime DEFAULT NULL COMMENT 'Data do início do atendimento ',
   `data_atendimento_fim` datetime DEFAULT NULL COMMENT 'Data do final do atendimento ',
-  `id_usuario` int(4) DEFAULT NULL COMMENT 'Código do atendente '
+  `id_usuario` int(4) DEFAULT NULL COMMENT 'Código do atendente ',
+  `id_player` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Tabela de senhas (senha que manda pros clientes + cadastro)';
 
 --
 -- Extraindo dados da tabela `tab_senhas`
 --
 
-INSERT INTO `tab_senhas` (`id_sequencia`, `id_senha`, `data_senha`, `cpf_cliente`, `email_cliente`, `nm_cliente`, `senha_cliente`, `status_atendimento`, `tipo_atendimento`, `data_atendimento_ini`, `data_atendimento_fim`, `id_usuario`) VALUES
-(257, 2, '2017-04-23', '2', NULL, 'Nome do Cliente 2', '2', 'Atendido', 'Normal', '2017-04-23 00:01:00', '2017-04-23 00:06:30', NULL),
-(258, 3, '2017-04-23', '3', NULL, 'Nome do Cliente 3', '3', 'Atendido', 'Normal', '2017-04-23 00:01:00', '2017-04-23 00:06:30', NULL),
-(259, 4, '2017-04-23', '4', NULL, 'Nome do Cliente 4', '4', 'Atendido', 'Normal', '2017-04-23 00:01:00', '2017-04-23 00:06:30', NULL),
-(260, 5, '2017-04-23', '5', NULL, 'Nome do Cliente 5', '5', 'Atendido', 'Normal', '2017-04-23 00:01:00', '2017-04-23 00:06:30', NULL),
-(261, 6, '2017-04-23', '6', NULL, 'Nome do Cliente 6', '6', 'Atendido', 'Normal', '2017-04-23 00:01:00', '2017-04-23 00:06:30', NULL),
-(262, 7, '2017-04-23', '7', NULL, 'Nome do Cliente 7', '7', 'Atendido', 'Normal', '2017-04-23 00:01:00', '2017-04-23 00:06:30', NULL),
-(263, 8, '2017-04-23', '8', NULL, 'Nome do Cliente 8', '8', 'Atendido', 'Normal', '2017-04-23 00:01:00', '2017-04-23 00:06:30', NULL),
-(264, 9, '2017-04-23', '9', NULL, 'Nome do Cliente 9', '9', 'Atendido', 'Normal', '2017-04-23 00:01:00', '2017-04-23 00:06:30', NULL),
-(265, 10, '2017-04-23', '10', NULL, 'Nome do Cliente 10', '10', 'Atendido', 'Normal', '2017-04-23 00:01:00', '2017-04-23 00:06:30', NULL),
-(266, 11, '2017-04-23', '11', NULL, 'Nome do Cliente 11', '11', 'Atendido', 'Normal', '2017-04-23 00:01:00', '2017-04-23 00:06:30', NULL),
-(267, 12, '2017-04-23', '12', NULL, 'Nome do Cliente 12', '12', 'Atendido', 'Normal', '2017-04-23 17:20:27', '2017-04-23 17:20:32', 402),
-(268, 13, '2017-04-23', '13', NULL, 'Nome do Cliente 13', '13', 'Atendido', 'Normal', '2017-04-23 17:20:45', '2017-04-23 17:20:47', 402),
-(269, 14, '2017-04-23', '14', NULL, 'Nome do Cliente 14', '14', 'Atendido', 'Normal', '2017-04-23 17:20:56', '2017-04-23 17:20:57', 402),
-(270, 26, '2017-04-23', '15', NULL, 'Nome do Cliente 15', '15', 'Não Compareceu', 'Normal', NULL, NULL, 402),
-(271, 16, '2017-04-23', '16', NULL, 'Nome do Cliente 16', '16', 'Atendido', 'Normal', '2017-04-23 17:21:07', '2017-04-23 17:21:08', 402),
-(272, 17, '2017-04-23', '17', NULL, 'Nome do Cliente 17', '17', 'Atendido', 'Normal', '2017-04-23 17:21:13', '2017-04-23 17:21:14', 402),
-(273, 27, '2017-04-23', '18', NULL, 'Nome do Cliente 18', '18', 'Não Compareceu', 'Normal', NULL, NULL, 402),
-(274, 19, '2017-04-23', '19', NULL, 'Nome do Cliente 19', '19', 'Atendido', 'Preferencial', '2017-04-23 00:01:00', '2017-04-23 00:06:30', NULL),
-(275, 20, '2017-04-23', '20', NULL, 'Nome do Cliente 20', '20', 'Atendido', 'Preferencial', '2017-04-23 00:01:00', '2017-04-23 00:06:30', NULL),
-(276, 21, '2017-04-23', '21', NULL, 'Nome do Cliente 21', '21', 'Atendido', 'Preferencial', '2017-04-23 00:01:00', '2017-04-23 00:06:30', NULL),
-(277, 22, '2017-04-23', '22', NULL, 'Nome do Cliente 22', '22', 'Atendido', 'Preferencial', '2017-04-23 17:09:40', '2017-04-23 17:09:48', 402),
-(278, 25, '2017-04-23', '23', NULL, 'Nome do Cliente 23', '23', 'Atendido', 'Preferencial', '2017-04-23 17:37:38', '2017-04-23 17:37:40', 402),
-(279, 24, '2017-04-23', '24', NULL, 'Nome do Cliente 24', '24', 'Ativo', 'Preferencial', '2017-04-23 17:20:51', '2017-04-23 17:20:54', 402),
-(280, 28, '2017-04-23', '40341728861', NULL, 'bruna', '2jmj7l5rSw0yVb/vlWAYkK/YBwk=', 'Ativo', 'Normal', NULL, NULL, NULL);
+INSERT INTO `tab_senhas` (`id_sequencia`, `id_senha`, `data_senha`, `cpf_cliente`, `email_cliente`, `nm_cliente`, `senha_cliente`, `status_atendimento`, `tipo_atendimento`, `data_atendimento_ini`, `data_atendimento_fim`, `id_usuario`, `id_player`) VALUES
+(257, 2, '2017-04-23', '2', NULL, 'Nome do Cliente 2', '2', 'Atendido', 'Normal', '2017-04-23 00:01:00', '2017-04-23 00:06:30', NULL, NULL),
+(258, 3, '2017-04-23', '3', NULL, 'Nome do Cliente 3', '3', 'Atendido', 'Normal', '2017-04-23 00:01:00', '2017-04-23 00:06:30', NULL, NULL),
+(259, 4, '2017-04-23', '4', NULL, 'Nome do Cliente 4', '4', 'Atendido', 'Normal', '2017-04-23 00:01:00', '2017-04-23 00:06:30', NULL, NULL),
+(260, 5, '2017-04-23', '5', NULL, 'Nome do Cliente 5', '5', 'Atendido', 'Normal', '2017-04-23 00:01:00', '2017-04-23 00:06:30', NULL, NULL),
+(261, 6, '2017-04-23', '6', NULL, 'Nome do Cliente 6', '6', 'Atendido', 'Normal', '2017-04-23 00:01:00', '2017-04-23 00:06:30', NULL, NULL),
+(262, 7, '2017-04-23', '7', NULL, 'Nome do Cliente 7', '7', 'Atendido', 'Normal', '2017-04-23 00:01:00', '2017-04-23 00:06:30', NULL, NULL),
+(263, 8, '2017-04-23', '8', NULL, 'Nome do Cliente 8', '8', 'Atendido', 'Normal', '2017-04-23 00:01:00', '2017-04-23 00:06:30', NULL, NULL),
+(264, 9, '2017-04-23', '9', NULL, 'Nome do Cliente 9', '9', 'Atendido', 'Normal', '2017-04-23 00:01:00', '2017-04-23 00:06:30', NULL, NULL),
+(265, 10, '2017-04-23', '10', NULL, 'Nome do Cliente 10', '10', 'Atendido', 'Normal', '2017-04-23 00:01:00', '2017-04-23 00:06:30', NULL, NULL),
+(266, 11, '2017-04-23', '11', NULL, 'Nome do Cliente 11', '11', 'Atendido', 'Normal', '2017-04-23 00:01:00', '2017-04-23 00:06:30', NULL, NULL),
+(267, 12, '2017-04-23', '12', NULL, 'Nome do Cliente 12', '12', 'Atendido', 'Normal', '2017-04-23 17:20:27', '2017-04-23 17:20:32', 402, NULL),
+(268, 13, '2017-04-23', '13', NULL, 'Nome do Cliente 13', '13', 'Atendido', 'Normal', '2017-04-23 17:20:45', '2017-04-23 17:20:47', 402, NULL),
+(269, 14, '2017-04-23', '14', NULL, 'Nome do Cliente 14', '14', 'Atendido', 'Normal', '2017-04-23 17:20:56', '2017-04-23 17:20:57', 402, NULL),
+(270, 26, '2017-04-23', '15', NULL, 'Nome do Cliente 15', '15', 'Não Compareceu', 'Normal', NULL, NULL, 402, NULL),
+(271, 16, '2017-04-23', '16', NULL, 'Nome do Cliente 16', '16', 'Atendido', 'Normal', '2017-04-23 17:21:07', '2017-04-23 17:21:08', 402, NULL),
+(272, 17, '2017-04-23', '17', NULL, 'Nome do Cliente 17', '17', 'Atendido', 'Normal', '2017-04-23 17:21:13', '2017-04-23 17:21:14', 402, NULL),
+(273, 27, '2017-04-23', '18', NULL, 'Nome do Cliente 18', '18', 'Não Compareceu', 'Normal', NULL, NULL, 402, NULL),
+(274, 19, '2017-04-23', '19', NULL, 'Nome do Cliente 19', '19', 'Atendido', 'Preferencial', '2017-04-23 00:01:00', '2017-04-23 00:06:30', NULL, NULL),
+(275, 20, '2017-04-23', '20', NULL, 'Nome do Cliente 20', '20', 'Atendido', 'Preferencial', '2017-04-23 00:01:00', '2017-04-23 00:06:30', NULL, NULL),
+(276, 21, '2017-04-23', '21', NULL, 'Nome do Cliente 21', '21', 'Atendido', 'Preferencial', '2017-04-23 00:01:00', '2017-04-23 00:06:30', NULL, NULL),
+(277, 22, '2017-04-23', '22', NULL, 'Nome do Cliente 22', '22', 'Atendido', 'Preferencial', '2017-04-23 17:09:40', '2017-04-23 17:09:48', 402, NULL),
+(278, 25, '2017-04-23', '23', NULL, 'Nome do Cliente 23', '23', 'Atendido', 'Preferencial', '2017-04-23 17:37:38', '2017-04-23 17:37:40', 402, NULL),
+(279, 24, '2017-04-23', '24', NULL, 'Nome do Cliente 24', '24', 'Ativo', 'Preferencial', '2017-04-23 17:20:51', '2017-04-23 17:20:54', 402, NULL),
+(280, 28, '2017-04-23', '40341728861', NULL, 'bruna', '2jmj7l5rSw0yVb/vlWAYkK/YBwk=', 'Ativo', 'Normal', NULL, NULL, NULL, NULL),
+(281, 1, '2017-04-24', '40341728861', NULL, 'BRUNA', '2jmj7l5rSw0yVb/vlWAYkK/YBwk=', 'Atendido', 'Normal', '2017-04-24 20:39:26', '2017-04-24 20:39:28', NULL, NULL),
+(282, 1, '2017-04-25', '40341728861', NULL, 'bruna', '2jmj7l5rSw0yVb/vlWAYkK/YBwk=', 'x', 'Normal', NULL, NULL, 402, NULL),
+(283, 2, '2017-04-25', '08576714809', NULL, 'joao', '2jmj7l5rSw0yVb/vlWAYkK/YBwk=', 'x', 'Normal', NULL, NULL, NULL, NULL),
+(284, 3, '2017-04-25', '40586497200', NULL, 'teste', '2jmj7l5rSw0yVb/vlWAYkK/YBwk=', 'x', 'Normal', NULL, NULL, NULL, NULL),
+(285, 4, '2017-04-25', '01427457905', NULL, '01427457905', '2jmj7l5rSw0yVb/vlWAYkK/YBwk=', 'x', 'Normal', NULL, NULL, NULL, NULL),
+(286, 5, '2017-04-25', '85621823540', NULL, '85621823540', '2jmj7l5rSw0yVb/vlWAYkK/YBwk=', 'Chamando', 'Normal', '2017-04-25 22:06:31', '2017-04-25 22:06:33', 402, '3ad096a9-ffd5-4a5c-8b5d-20537fb22e29');
 
 -- --------------------------------------------------------
 
@@ -140,7 +147,7 @@ CREATE TABLE `tab_ultimo_tipo_atendimento` (
 --
 
 INSERT INTO `tab_ultimo_tipo_atendimento` (`tipo_atendimento`) VALUES
-('Preferencial');
+('Normal');
 
 -- --------------------------------------------------------
 
@@ -231,7 +238,7 @@ ALTER TABLE `tab_parametros`
 -- AUTO_INCREMENT for table `tab_senhas`
 --
 ALTER TABLE `tab_senhas`
-  MODIFY `id_sequencia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=281;
+  MODIFY `id_sequencia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=287;
 --
 -- AUTO_INCREMENT for table `tab_usuarios`
 --
