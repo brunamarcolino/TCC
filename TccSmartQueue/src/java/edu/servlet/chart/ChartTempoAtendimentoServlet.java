@@ -25,7 +25,7 @@ public class ChartTempoAtendimentoServlet extends HttpServlet{
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
       
-        
+        /*
         ChartDao dadosChartDao = new ChartDao();
         String data_inicio = request.getParameter("data_inicio");
         String data_fim = request.getParameter("data_fim");
@@ -42,7 +42,7 @@ public class ChartTempoAtendimentoServlet extends HttpServlet{
             if(data_fim.isEmpty()){
                 mensagem = mensagem + "<span>Preencha a data final! </span>";
             }
-        }
+        }*/
         
         UsuarioDao usuarioDao = new UsuarioDao();
         List<Usuario> atendentes = usuarioDao.getAtendentes();
@@ -53,7 +53,7 @@ public class ChartTempoAtendimentoServlet extends HttpServlet{
             request.setAttribute("atendentes", atendentes);
         }
         System.out.println(atendentes);
-        request.setAttribute("mensagemErro", mensagem);
+        //request.setAttribute("mensagemErro", "Erro");
         getServletContext().getRequestDispatcher("/relatorio_tempo.jsp").forward(request, response);
     }
 

@@ -45,9 +45,19 @@ a{
     text-decoration: none;
     vertical-align: top;
 }
-form li,
-div.box-atendente li{
+form li{
     margin-bottom: 1.5em;
+}
+div.box-atendente li,
+div.box-cliente li{
+    width: 50%;
+    float: left;
+    box-sizing: border-box;
+    margin: 1em 0;
+}
+div.box-cliente li:nth-child(1),
+div.box-cliente li:nth-child(2){
+    margin-top: 0;
 }
 label{
     margin-bottom: .5em;
@@ -59,6 +69,7 @@ input[type="text"],
 input[type="email"],
 input[type="password"],
 input[type="number"],
+input[type="date"],
 select,
 textarea{
     border: solid 1px #ccc;
@@ -91,6 +102,14 @@ select{
     font-family: 'Lato-Bold', sans-serif;
     transition: all .3s ease-out;
 }
+.mensagem span{
+    display: block;
+    margin-bottom: .5em;
+}
+.mensagem span:last-child{
+    margin: 0;
+}
+
 .mensagemErro{
     background-color: #FF4C4C;
 }
@@ -104,7 +123,7 @@ select{
     position: absolute;
     left: 0;
     right: 0;
-    top: 20%;
+    top: 15%;
     bottom: 0;
     margin: auto;
 }
@@ -119,7 +138,8 @@ select{
 }
 .login h1,
 .center h1,
-.main h1{
+.main h1,
+.main h1 span{
     text-transform: uppercase;
     font-family: 'Lato-Thin', sans-serif;
     color: #FF8500;
@@ -130,6 +150,9 @@ select{
 }
 .main h1{
     margin:1em 0 .5em;
+}
+.main h1 span{
+    color: #CCC;   
 }
 .box h1{
     margin-bottom: 0;
@@ -167,7 +190,10 @@ h3.title-home{
     letter-spacing: -4px;
 }
 h3.title-home{
-    font-size: 1.5em;
+    font-size: 1em;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    font-family: 'Lato-Light', sans-serif;
 }
 h2.subtitle-home{
     margin-top: 0 !important;
@@ -193,7 +219,7 @@ input[type="button"]{
     display: block;
     text-align: center;
     font-size: 1em;
-    width: 50%;
+    width: 47.5%;
     color: #777;
     opacity: .5;
     transition: all .2s ease-out;
@@ -271,10 +297,10 @@ nav li a:hover{
     opacity: 1;
 }
 .main{
-    padding: 1em .5em;
+    padding: 4em .5em 0;
 }
 footer{
-    position: relative;
+    position: initial;
     bottom: 0;
     width: 100%;
     padding: 1em 2em;
@@ -394,6 +420,9 @@ table + .section-center{
     font-weight: bold;
     color: #777;
 }
+.filtro label{
+    text-align: left;
+}
 p.location{
     color: #FFF;
     width: 45%;
@@ -420,7 +449,7 @@ p.alert{
     margin: 0 0 2em 0;
 }
 .info > div h2{
-    font-size: 3em;
+    font-size: 2.5em;
 }
 .gera-senha input[type="button"]{
     background-color: transparent;
@@ -429,11 +458,15 @@ div.box-atendente,
 div.box-cliente{
     margin-bottom: 2em;
     padding: 1em 1em 2em;
-    border-bottom: solid 1px #DDD;
+    border-bottom: solid 1px #EEE;
 }
 div.box-atendente .btn{
     float: right !important;
-    width: 70%;
+    width: 100%;
+}
+div.box-atendente h2,
+div.box-cliente h2{
+    font-size: 1.2em
 }
 div.box-cliente{
     padding-bottom: 0;

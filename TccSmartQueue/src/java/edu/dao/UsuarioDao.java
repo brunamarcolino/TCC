@@ -699,7 +699,8 @@ public class UsuarioDao extends Dao {
             
             while (result.next()) {
                 Usuario atendente = new Usuario();  
-                atendente.setAtendente(result.getInt("id_usuario")+" - "+result.getString("nm_usuario"));
+                atendente.setId_usuario(result.getInt("id_usuario"));
+                atendente.setNm_usuario(result.getString("nm_usuario"));
                 atendentes.add(atendente);
             }
             return atendentes;

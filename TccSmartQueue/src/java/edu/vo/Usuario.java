@@ -3,7 +3,7 @@ package edu.vo;
 public class Usuario {
     
     private int id_usuario;
-    private String nm_usuario, email_usuario, cpf_usuario, senha_usuario, tipo_usuario, status_usuario, atendente;
+    private String nm_usuario, email_usuario, cpf_usuario, senha_usuario, tipo_usuario, status_usuario;
 
     public int getId_usuario() {
         return id_usuario;
@@ -60,12 +60,4 @@ public class Usuario {
     public void setStatus_usuario(String status_usuario) {
         this.status_usuario = status_usuario;
     }
-	
-    public String getAtendente(){
-        return atendente;
-    }
-    
-    public void setAtendente(String atendente){
-        this.atendente = atendente;
-    } 
 }
