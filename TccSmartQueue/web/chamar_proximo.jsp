@@ -28,7 +28,7 @@
         <%@include file="WEB-INF/jspf/mensagem.jspf" %>
         <div class="main">
             <div class="grid-parent grid-50 mobile-grid-100 center">
-                <div class="grid-parent grid-100 box-atendente">
+                <div class="grid-parent grid-100 mobile-grid-90 box-atendente">
                     <div class="grid-60 mobile-grid-100">
                          
                         <ul>
@@ -53,7 +53,7 @@
                         </c:choose>        
                     </div>
                 </div>
-                <div class="grid-parent grid-100 box-cliente">
+                <div class="grid-parent grid-100 mobile-grid-90 box-cliente">
                     <div class="grid-60 mobile-grid-100">
                         <c:choose>
                             <c:when test="${empty senha}">

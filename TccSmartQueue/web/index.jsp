@@ -21,18 +21,19 @@
          <c:choose>
             <c:when test="${empty login}">
                 <div class="image"></div> 
-                <section class="grid-75 mobile-grid-100 section-center">
+                <section class="grid-75 grid-parent mobile-grid-90 section-center">
                     <div class="grid-100 mobile-grid-100">
                         <h1 class="title-home">SMARTQUEUE</h1>
                         <h2 class="subtitle-home">Seja bem-vindo!</h2>
                     </div>
                 </section>
-                <section class="grid-75 mobile-grid-100 section-center">
+                <section class="grid-75 grid-parent mobile-grid-90 section-center">
                     <div class="grid-50 mobile-grid-100 border">
                         <img src="imagens/cliente.png" />
                         <h2>Sou cliente</h2>
                         <p>Clique abaixo para escolher a sua senha e entrar na fila o quanto antes!</p>
                         <a href="localizacao.jsp" class="btn btn-outline branco">Quero tirar minha senha</a>
+                        <hr class="hide-on-desktop"/>
                     </div>
                     <div class="grid-50 mobile-grid-100">
                         <img src="imagens/admin.png" />
