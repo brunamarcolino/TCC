@@ -537,7 +537,7 @@ div.box-cliente p{
         margin: 2em 0 0;
     }
     .btn-back img{
-        width: 25%;
+        width: 25% !important;
     }
     .section-center{
         margin-bottom: 1em;
