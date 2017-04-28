@@ -25,7 +25,7 @@
 
         <c:choose>
             <c:when test="${empty login}">
-                <section class="grid-25 mobile-grid-100 login">
+                <section class="grid-25 mobile-grid-90 login">
                     <div class="grid-100 mobile-grid-100">
                         <h1>LOGIN</h1>
                         <h3>Entre com suas credenciais</h3>
@@ -52,67 +52,10 @@
                 </section>
             </c:when>
             <c:otherwise>
-                <header class="grid-100 mobile-grid-100">
-                    <div class="grid-10 mobile-grid-50">
-                         <h3>Smartqueue</h3>
-                    </div>
-                    <div class="grid-80 pull-left hide-on-mobile">
-                        <c:if test="${not empty login}">  
-                            <c:if test="${login.tipo_usuario=='Administrador'}">
-                                <nav>
-                                    <ul>
-                                        <li>
-                                            <a href="ListaUsuarioServlet">Gerenciar atendentes</a>
-                                        </li>
-                                        <li>
-                                            <a href="ChartTempoAtendimentoServlet">Gerar Relatórios</a>
-                                        </li>
-                                        <li>
-                                            <a href="ListaParametrosServlet">Parametros do Sistemas</a>
-                                        </li>
-                                    </ul>
-                                </nav>
-                            </c:if>        
-                            <c:if test="${login.tipo_usuario=='Atendente'}">
-                                <nav>
-                                    <ul>
-                                        <c:if test="${id_fila==0}">
-                                            <li>
-                                                <a href="ListaFilasServlet">Abrir Fila</a>
-                                            </li>  
-                                        </c:if>
-                                        <c:if test="${id_fila>0}">
-                                            <li>
-                                                <a href="fechar_fila.jsp">Fechar Fila</a>
-                                            </li>
-                                            <li>
-                                                <a href="chamar_proximo.jsp?habilitado=1">Atendimento</a>
-                                            </li>                                            
-                                        </c:if>
-                                        <li>
-                                            <a href="gerar_senha_local.jsp">Gerar Senha Local</a>
-                                        </li>
-                                    </ul>
-                                </nav>
-                            </c:if>   
-                            <c:if test="${login.tipo_usuario=='Cliente'}">
-                                <nav>
-                                    <ul>
-                                        <li>
-                                            <a href="localizacao.jsp">Gerar Senha</a>                              
-                                        </li>         
-                                    </ul>
-                                </nav>
-                            </c:if>     
-                        </c:if>        
-
-                    </div>
-                    <div class="grid-10 pull-right perfil">
-                        <span>Olá, <strong>${login.nm_usuario}</strong></span>
-                        <a href="LogoutServlet"><strong>(sair)</strong></a>                       
-                    </div>   
-
-                </header>
+                <%@include file="WEB-INF/jspf/cabecalho.jspf" %>
+                <div class="main">
+                </div>
+                <%@include file="WEB-INF/jspf/rodape.jspf" %>
             </c:otherwise>        
         </c:choose>
     </body>

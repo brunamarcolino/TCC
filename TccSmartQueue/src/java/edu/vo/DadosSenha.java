@@ -17,6 +17,17 @@ public class DadosSenha {
     private Time previsao_atendimento;
     private int quantidade_pessoas;
     private boolean distancia;
+    private boolean horario_comercial;
+
+    public boolean isHorario_comercial() {
+        return horario_comercial;
+    }
+
+    public void setHorario_comercial(boolean horario_comercial) {
+        this.horario_comercial = horario_comercial;
+    }
+    
+    
 
     public boolean isDistancia() {
         return distancia;
