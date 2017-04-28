@@ -14,7 +14,7 @@
         <title>Smartqueue</title>
         <%@include file="WEB-INF/jspf/chamadas.jspf"%>
     </head>
-    <body>    
+    <body>   
         <div class="main">
             <div class="grid-30 mobile-grid-90">
                 <h1>Esqueci minha senha</h1>

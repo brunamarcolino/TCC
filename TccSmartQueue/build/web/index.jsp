@@ -54,7 +54,7 @@
                                 <nav>
                                     <ul>
                                         <li>
-                                            <a href="ListaUsuarioServlet">Gerenciar atendentes</a>
+                                            <a href="ListaUsuarioServlet">Gerenciar funcionários</a>
                                         </li>
                                         <li>
                                             <a href="ChartTempoAtendimentoServlet">Gerar Relatórios</a>

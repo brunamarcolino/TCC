@@ -26,7 +26,7 @@
             <div class="grid-30 mobile-grid-90">
                 <c:choose>
                     <c:when test="${empty usuario}">
-                        <h1>INCLUIR USUÁRIO</h1>
+                        <h1>INCLUIR FUNCIONÁRIO</h1>
                         <form id="iusuario" action="IncluirUsuarioServlet" method="get">
                             <ul>
                                 <li>

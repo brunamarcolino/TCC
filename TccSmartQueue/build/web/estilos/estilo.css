@@ -1,31 +1,49 @@
 @font-face {
   font-family: 'Lato-Hairline';
-  src: url('../fontes/Lato-Hairline.ttf') format('truetype');
+  src: url('../fontes/Lato-Hairline.eot');
+  src: url('../fontes/Lato-Hairline.eot?#iefix') format('embedded-opentype'),
+       url('../fontes/Lato-Hairline.woff2') format('woff2'),
+       url('../fontes/Lato-Hairline.woff') format('woff'),
+       url('../fontes/Lato-Hairline.ttf')  format('truetype'),
+       url('../fontes/Lato-Hairline.svg#svgFontName') format('svg');
 }
 @font-face {
   font-family: 'Lato-Thin';
-  src: url('../fontes/Lato-Thin.ttf') format('truetype');
+  src: url('../fontes/Lato-Thin.eot');
+  src: url('../fontes/Lato-Thin.eot?#iefix') format('embedded-opentype'),
+       url('../fontes/Lato-Thin.woff2') format('woff2'),
+       url('../fontes/Lato-Thin.woff') format('woff'),
+       url('../fontes/Lato-Thin.ttf')  format('truetype'),
+       url('../fontes/Lato-Thin.svg#svgFontName') format('svg');
 }
 @font-face {
   font-family: 'Lato-Regular';
-  src: url('../fontes/Lato-Regular.ttf') format('truetype');
+  src: url('../fontes/Lato-Regular.eot');
+  src: url('../fontes/Lato-Regular.eot?#iefix') format('embedded-opentype'),
+       url('../fontes/Lato-Regular.woff2') format('woff2'),
+       url('../fontes/Lato-Regular.woff') format('woff'),
+       url('../fontes/Lato-Regular.ttf')  format('truetype'),
+       url('../fontes/Lato-Regular.svg#svgFontName') format('svg');
 }
 @font-face {
   font-family: 'Lato-Light';
-  src: url('../fontes/Lato-Light.ttf') format('truetype');
+  src: url('../fontes/Lato-Light.eot');
+  src: url('../fontes/Lato-Light.eot?#iefix') format('embedded-opentype'),
+       url('../fontes/Lato-Light.woff2') format('woff2'),
+       url('../fontes/Lato-Light.woff') format('woff'),
+       url('../fontes/Lato-Light.ttf')  format('truetype'),
+       url('../fontes/Lato-Light.svg#svgFontName') format('svg');
 }
 @font-face {
   font-family: 'Lato-Bold';
-  src: url('../fontes/Lato-Bold.ttf') format('truetype');
+  src: url('../fontes/Lato-Bold.eot');
+  src: url('../fontes/Lato-Bold.eot?#iefix') format('embedded-opentype'),
+       url('../fontes/Lato-Bold.woff2') format('woff2'),
+       url('../fontes/Lato-Bold.woff') format('woff'),
+       url('../fontes/Lato-Bold.ttf')  format('truetype'),
+       url('../fontes/Lato-Bold.svg#svgFontName') format('svg');
 }
-@font-face {
-  font-family: 'Lato-Black';
-  src: url('../fontes/Lato-Black.ttf') format('truetype');
-}
-@font-face {
-  font-family: 'Lato-Semibold';
-  src: url('../fontes/Lato-Semibold.ttf') format('truetype');
-}
+
 *,
 html,
 body{
@@ -47,6 +65,9 @@ a{
 }
 form li{
     margin-bottom: 1.5em;
+}
+form li label{
+    text-align: left;
 }
 div.box-atendente li,
 div.box-cliente li{
@@ -116,28 +137,17 @@ select{
 .mensagemSucesso{
     background-color: #3EB27D;
 }
-
-.login,
-.center{
-    display: block;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 15%;
-    bottom: 0;
-    margin: auto;
+input[readonly="readonly"] {
+    opacity: .5;
 }
-.login img{
-    margin-bottom: 1.5em;
-}
-.center p,
-.section-center p{
-    color: #888;
+.section-center .box p{
+    color: #AAA;
     font-size: 1em;
-    margin-bottom: 1em;
+    margin: 0 0 1em 0;
+    text-align: left;
+    max-width: 100%;
 }
-.login h1,
-.center h1,
+.section-center h1,
 .main h1,
 .main h1 span{
     text-transform: uppercase;
@@ -155,9 +165,9 @@ select{
     color: #CCC;   
 }
 .box h1{
-    margin-bottom: 0;
+    margin: 0;
 }
-.center h1{
+.section-center h1.left{
     text-align: left;
 }
 .login h1 strong{
@@ -166,7 +176,7 @@ select{
     font-weight: bold;
 }
 .login h3,
-.center h3,
+.section-center h3,
 .main h3{
     margin-bottom: 1.5em;
     font-family: 'Lato-Thin', sans-serif;
@@ -175,11 +185,7 @@ select{
     text-align: left;
     font-size: 1.05em;
 }
-.login input[type="submit"],
-.center input[type="submit"]{
-    border-color: #84bd00;
-    color: #84bd00;
-}
+
 h1.title-home,
 h3.title-home{
     font-size: 4em;
@@ -188,6 +194,7 @@ h3.title-home{
     font-weight: 500;
     color: #FFF;
     letter-spacing: -4px;
+    text-align: center;
 }
 h3.title-home{
     font-size: 1.1em;
@@ -223,6 +230,7 @@ input[type="button"]{
     color: #777;
     opacity: .5;
     transition: all .2s ease-out;
+    line-height: 1em;
 }
 .btn:hover,
 input[type="submit"]:hover,
@@ -297,7 +305,7 @@ nav li a:hover{
     opacity: 1;
 }
 .main{
-    padding: 4em .5em 0;
+    padding: 3em .5em 0;
 }
 footer{
     position: initial;
@@ -359,7 +367,7 @@ footer{
     font-weight: lighter;
 }
 .main .gera-senha{
-    margin-top: 10%;
+    margin-top: 5%;
     text-align: center;
 }
 .main .gera-senha h1{
@@ -473,6 +481,15 @@ div.box-cliente{
     margin-bottom: 2em;
     border-bottom: none;
 }
+div.box-atendente li,
+div.box-cliente li{
+    text-align: left;
+}
+div.box-cliente p{
+    color: #777;
+    width: 100%;
+    margin-bottom: 1.5em;
+}
 .btn.verde,
 .switch.verde{
     border-color: #84bd00;
@@ -512,9 +529,6 @@ div.box-cliente{
     }
     h2{
         font-size: 1.5em;
-    }
-    .login, .center{
-        top: 10%;
     }
     .section-center{
         margin-bottom: 1em;
@@ -564,6 +578,11 @@ div.box-cliente{
         float: none;
         margin: 1em auto 0;
         clear: both;
+    }
+    .btn,
+    input[type="submit"],
+    input[type="button"]{
+        padding: .65em 1em .5em; 
     }
     .info > div h2{
         font-size: 1.5em;
