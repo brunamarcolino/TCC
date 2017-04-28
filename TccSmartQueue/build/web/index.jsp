@@ -56,7 +56,7 @@
                                             <a href="ListaUsuarioServlet">Gerenciar atendentes</a>
                                         </li>
                                         <li>
-                                            <a href="NotificacaoServlet">Gerar Relatórios</a>
+                                            <a href="ChartTempoAtendimentoServlet">Gerar Relatórios</a>
                                         </li>
                                         <li>
                                             <a href="ListaParametrosServlet">Parametros do Sistemas</a>

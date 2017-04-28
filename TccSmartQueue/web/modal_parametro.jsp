@@ -23,7 +23,7 @@
             <jsp:forward page="index.jsp"/>
         </c:if>
         <div class="main">
-            <div class="grid-25 mobile-grid-100">
+            <div class="grid-25 mobile-grid-90">
                 <c:choose>
                     <c:when test="${empty parametro}">
                    

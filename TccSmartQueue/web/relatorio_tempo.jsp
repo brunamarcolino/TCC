@@ -36,7 +36,7 @@
                     </li>
                     <li class="grid-20">
                         <label>Atendente</label>
-                        <select name="atendentes">
+                        <select name="atendente">
                             <option>TODOS</option>
                             <c:forEach var="atendente" items="${atendentes}">
                                 <option value="${atendente.id_usuario}">
@@ -47,7 +47,7 @@
                         </select>
                     </li>
                     <li class="grid-30">
-                        <input type="submit" class="btn btn-outline azul" />
+                        <input type="submit" class="btn btn-outline azul" value="Gerar"/>
                     </li>
                 </ul>
             </form>

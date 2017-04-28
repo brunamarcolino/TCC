@@ -11,7 +11,7 @@ RA: 1510027287
 
 <header class="grid-100 mobile-grid-100">
     <div class="grid-10 mobile-grid-50">
-         <h3 class="title-home">Smartqueue</h3>
+        <a href="index.jsp" title="Smartqueue"><h3 class="title-home">Smartqueue</h3></a>
     </div>
     <div class="grid-75 pull-left hide-on-mobile">
         <c:if test="${not empty login}">
@@ -22,7 +22,7 @@ RA: 1510027287
                             <a href="ListaUsuarioServlet">Gerenciar atendentes</a>
                         </li>
                         <li>
-                            <a href="NotificacaoServlet">Gerar Relatórios</a>
+                            <a href="ChartTempoAtendimentoServlet">Gerar Relatórios</a>
                         </li>
                         <li>
                             <a href="ListaParametrosServlet">Parametros do Sistemas</a>
@@ -44,7 +44,7 @@ RA: 1510027287
                             </li>
                             <li>
                                 <a href="chamar_proximo.jsp?habilitado=1">Atendimento</a>
-                            </li>
+                            </li>                                            
                         </c:if>
                         <li>
                             <a href="gerar_senha_local.jsp">Gerar Senha Local</a>

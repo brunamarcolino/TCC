@@ -26,9 +26,9 @@
                     <p>Nenhum dado!</p>
                 </c:when>
                 <c:otherwise>
-                    <div class="grid-parent grid-50 info">
-                        <div class="grid-100">
-                            <p id="demo"></p>
+                    <div class="grid-parent grid-50 mobile-grid-100 info">
+                        <div class="grid-100 mobile-grid-50">
+                            <!--<p id="demo"></p> -->
                             <p>Tempo médio de atendimento</p>
                             <h2>
                                 <c:choose>
@@ -41,7 +41,7 @@
                                 </c:choose>
                             </h2>
                         </div>                    
-                        <div class="grid-100">
+                        <div class="grid-100 mobile-grid-50">
                             <p>Quantidade de pessoas na Fila</p>
                             <h2>
                                 <c:choose>
@@ -54,7 +54,7 @@
                                 </c:choose>
                             </h2>
                         </div>
-                        <div class="grid-100">
+                        <div class="grid-100 mobile-grid-70">
                             <p>Previsão de atendimento</p>
                             <h2>
                                 <c:choose>
@@ -88,6 +88,5 @@
             </div>
             </div>
         </div>
-       <%@include file="WEB-INF/jspf/rodape.jspf"%>
     </body>
 </html>

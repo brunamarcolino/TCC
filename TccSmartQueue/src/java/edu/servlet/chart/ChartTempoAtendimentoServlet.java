@@ -25,7 +25,6 @@ public class ChartTempoAtendimentoServlet extends HttpServlet{
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
       
-        
         ChartDao dadosChartDao = new ChartDao();
         String data_inicio = request.getParameter("data_inicio");
         String data_fim = request.getParameter("data_fim");
@@ -33,27 +32,27 @@ public class ChartTempoAtendimentoServlet extends HttpServlet{
         
         String mensagem = "";
         
-        if(!data_inicio.isEmpty() && !data_fim.isEmpty()){
-            dadosChartDao.relatorio_tempoMedio(data_inicio, data_fim, atendente);
-        }else if(data_inicio.isEmpty() || data_fim.isEmpty()){
+        if(data_inicio.isEmpty() || data_fim.isEmpty()){
             if(data_inicio.isEmpty()){
                 mensagem = mensagem + "<span>Preencha a data início! </span>";
             }
             if(data_fim.isEmpty()){
                 mensagem = mensagem + "<span>Preencha a data final! </span>";
             }
+            request.setAttribute("mensagemErro", mensagem);
+        } else {
+            List<Chart> charts = dadosChartDao.relatorio_tempoMedio(data_inicio, data_fim, atendente); 
+            Chart chart = new Chart();
+            String[] valor_x=null, valor_y=null, valor_tooltip=null;
+            for (int i=0;i<charts.size();i++){
+                chart = charts.get(i);
+                valor_x[i] = chart.getValor_x();
+                valor_y[i] = chart.getValor_y();
+                valor_tooltip[i] = chart.getValor_tooltip();
+            }
+        
         }
         
-        UsuarioDao usuarioDao = new UsuarioDao();
-        List<Usuario> atendentes = usuarioDao.getAtendentes();
-        
-        System.out.println("Obtidos " + atendentes.size() + " atendentes.");
-        
-        if (atendentes.size() > 0){
-            request.setAttribute("atendentes", atendentes);
-        }
-        System.out.println(atendentes);
-        request.setAttribute("mensagemErro", mensagem);
         getServletContext().getRequestDispatcher("/relatorio_tempo.jsp").forward(request, response);
     }
 
