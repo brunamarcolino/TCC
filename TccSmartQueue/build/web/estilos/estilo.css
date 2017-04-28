@@ -190,7 +190,7 @@ h3.title-home{
     letter-spacing: -4px;
 }
 h3.title-home{
-    font-size: 1em;
+    font-size: 1.1em;
     text-transform: uppercase;
     letter-spacing: -1px;
     font-family: 'Lato-Light', sans-serif;
@@ -219,7 +219,7 @@ input[type="button"]{
     display: block;
     text-align: center;
     font-size: 1em;
-    width: 47.5%;
+    width: 50%;
     color: #777;
     opacity: .5;
     transition: all .2s ease-out;
@@ -507,10 +507,116 @@ div.box-cliente{
 }
 
 @media (max-width: 450px) {
+    body{
+        font-size: .95em;
+    }
+    h2{
+        font-size: 1.5em;
+    }
+    .login, .center{
+        top: 10%;
+    }
+    .section-center{
+        margin-bottom: 1em;
+        margin-top: 3em;
+    }
+    .section-center:nth-child(3){
+        margin-top: 0;
+        margin-bottom: 3em;
+    }
+    .section-center h2{
+        margin-top: 0;
+    }
+    .section-center p{
+        max-width: 100%;
+    }
+    .section-center .border{
+        border: none;
+    }
+    .section-center img{
+        width: 35%;
+    }
+    .section-center hr{
+        margin: 0 auto 2em;
+        border: none;
+        border-bottom: solid 1px rgba(255,255,255,.1);
+        padding-bottom: 2em;
+        width: 80%;
+    }
+    .btn-back + .btn {
+        width: 45%;
+    }
+    .main{
+        padding: 3em 0;
+    }
+    .main .gera-senha{
+        margin-top: 0;
+    }
+    p.location{
+        width: 70%;
+    }
+    .info > div:nth-child(1){
+        border-right: solid 1px #EEE;
+    }
+    .info > div:last-child{
+        padding: 1em;
+        border: solid 1px #ccc;
+        float: none;
+        margin: 1em auto 0;
+        clear: both;
+    }
+    .info > div h2{
+        font-size: 1.5em;
+    }
+    .info p, .gera-senha p{
+        font-size: .75em;
+    }
+    h1.title-home{
+        font-size: 3em;
+    }
+    .box h1 {
+        margin: 0 0 .15em;
+    }
+    .center p, .section-center p {
+        font-size: .9em;
+        margin-bottom: 1.5em;
+    }
     .info{
         border: none;
     }
     .info > div{
-        margin: 0 0 1em 0;
+        margin: 0 0 2em 0;
+    }
+    div.box-atendente, div.box-cliente{
+        float: none;
+        margin: 0 auto 1em; 
+    }
+    div.box-atendente .btn{
+        float: none !important;
+        width: auto;
+    }
+    div.box-cliente .btn-group{
+        margin: 1em 0;
+        padding: 2em 0;
+        border-top: solid 1px #EEE;
+        border-bottom: solid 1px #EEE;
+    }
+    div.box-cliente .btn-group p{
+        text-align: center;
+        margin-bottom: 0;
+    }
+    div.box-cliente .btn-group .btn{
+        width: 46%;
+    }
+}
+@media (min-width: 321px) and (max-width: 450px) {
+    .btn, input[type="submit"], input[type="button"]{
+        width: 70%;
+        margin-top: 1.5em !important;
+    }
+}
+@media (max-width: 320px) {
+    .btn, input[type="submit"], input[type="button"]{
+        width: 80%;
     }
 }

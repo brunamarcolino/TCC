@@ -87,9 +87,9 @@ public class ParametroDao extends Dao {
             }
             
             if (param1 && param7){
-                sql = "SELECT id_parametro, desc_parametro, valor_parametro, parametro_habilitado, usuario_alteracao FROM tab_parametros WHERE id_parametro not in (2,3,4,8)";
+                sql = "SELECT id_parametro, desc_parametro, valor_parametro, parametro_habilitado, usuario_alteracao FROM tab_parametros WHERE id_parametro not in (3,4,8)";
             }else if (param1){
-                sql = "SELECT id_parametro, desc_parametro, valor_parametro, parametro_habilitado, usuario_alteracao FROM tab_parametros WHERE id_parametro not in (2,3,4)";
+                sql = "SELECT id_parametro, desc_parametro, valor_parametro, parametro_habilitado, usuario_alteracao FROM tab_parametros WHERE id_parametro not in (3,4)";
             }else if (param7){
                 sql = "SELECT id_parametro, desc_parametro, valor_parametro, parametro_habilitado, usuario_alteracao FROM tab_parametros WHERE id_parametro not in (8)";
             } else{
