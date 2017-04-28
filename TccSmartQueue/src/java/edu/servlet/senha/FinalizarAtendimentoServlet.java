@@ -46,7 +46,7 @@ public class FinalizarAtendimentoServlet extends HttpServlet {
         request.setAttribute("mensagemSucesso", mensagem);
         getServletContext().getRequestDispatcher("/chamar_proximo.jsp?habilitado=1").forward(request, response);
     }else{
-        mensagem = "Erro ao Finalizar atendimento!";
+        mensagem = "<span>Erro ao Finalizar atendimento!</span>";
         request.setAttribute("mensagemErro", mensagem);
         getServletContext().getRequestDispatcher("/chamar_proximo.jsp?habilitado=3").forward(request, response);
     }

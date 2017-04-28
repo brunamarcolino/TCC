@@ -59,7 +59,7 @@ public class BuscarNomeESenhaServlet extends HttpServlet {
             if (senha > 0){
                 getServletContext().getRequestDispatcher("/NotificacaoServlet?id_senha="+senha+"&id_fila="+id_fila).forward(request, response);             
             }else {
-                mensagem = "Não há clientes na fila";
+                mensagem = "<span>Não há clientes na fila!</span>";
                 request.setAttribute("mensagemErro", mensagem);
                 getServletContext().getRequestDispatcher("/chamar_proximo.jsp?habilitado=1").forward(request, response);
         }
