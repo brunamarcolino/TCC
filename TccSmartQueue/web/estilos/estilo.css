@@ -108,10 +108,11 @@ textarea{
     background: #FFF;
     color: #999;
     outline: none;
-    -webkit-appearance: none; 
+    -webkit-appearance: none;
 }
 select{
     -webkit-appearance: none;
+    background: url("../imagens/bg-select.png") no-repeat 95% center;
 }
 .mensagem.ocultar {
     opacity: 0;
