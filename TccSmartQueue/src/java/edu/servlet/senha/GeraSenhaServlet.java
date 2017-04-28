@@ -60,20 +60,20 @@ public class GeraSenhaServlet extends HttpServlet{
             SenhaDao senhaDao = new SenhaDao();
             boolean valida_senha = senhaDao.verificaSenhaForte(senhacliente);
             if (!valida_senha){
-                request.setAttribute("mensagemErro", "Senha fora da politica de segurança");
+                request.setAttribute("mensagemErro", "<span>Senha fora da politica de segurança</span>");
                 getServletContext().getRequestDispatcher("/login_cliente.jsp").forward(request, response); 
             }
             
             
             boolean valida_cpf = senhaDao.isCPF(cpfcliente);
             if (!valida_cpf){
-                request.setAttribute("mensagemErro", "CPF invalido");
+                request.setAttribute("mensagemErro", "<span>CPF inválido</span>");
                 getServletContext().getRequestDispatcher("/login_cliente.jsp").forward(request, response); 
             }
             
             boolean valida_email = senhaDao.verificaEmailUsuario(emailcliente);
             if (!valida_email){
-                request.setAttribute("mensagemErro", "Email invalido");
+                request.setAttribute("mensagemErro", "<span>Email inválido</span>");
                 getServletContext().getRequestDispatcher("/login_cliente.jsp").forward(request, response); 
             }
             
