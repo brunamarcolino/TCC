@@ -1,7 +1,7 @@
 @font-face {
   font-family: 'Lato-Hairline';
   font-style: normal;
-  font-weight: lighter;
+  font-weight: normal;
   src: url('../fontes/Lato-Hairline.eot');
   src: url('../fontes/Lato-Hairline.eot?#iefix') format('embedded-opentype'),
        url('../fontes/Lato-Hairline.woff2') format('woff2'),
@@ -11,7 +11,7 @@
 @font-face {
   font-family: 'Lato-Thin';
   font-style: normal;
-  font-weight: lighter;
+  font-weight: normal;
   src: url('../fontes/Lato-Thin.eot');
   src: url('../fontes/Lato-Thin.eot?#iefix') format('embedded-opentype'),
        url('../fontes/Lato-Thin.woff2') format('woff2'),
@@ -31,7 +31,7 @@
 @font-face {
   font-family: 'Lato-Light';
   font-style: normal;
-  font-weight: lighter;
+  font-weight: normal;
   src: url('../fontes/Lato-Light.eot');
   src: url('../fontes/Lato-Light.eot?#iefix') format('embedded-opentype'),
        url('../fontes/Lato-Light.woff2') format('woff2'),
@@ -108,6 +108,8 @@ textarea{
     box-sizing: border-box;
     background: #FFF;
     color: #999;
+    outline: none;
+    -webkit-appearance: none; 
 }
 select{
     -webkit-appearance: none;
