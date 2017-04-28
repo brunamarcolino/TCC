@@ -165,7 +165,7 @@ input[readonly="readonly"] {
     margin: 0;
 }
 .main h1{
-    margin:1em 0 .5em;
+    margin:1em 0 .15em;
 }
 .main h1 span{
     color: #CCC;   
