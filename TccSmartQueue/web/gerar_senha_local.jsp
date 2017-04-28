@@ -44,7 +44,7 @@
                                 <option value="Preferencial">Preferencial</option>
                             </select> <br>
                             <h2><label> A senha do cliente é: ${senha}</label></h2>
-                        </li>
+                        </li> 
                         <li>
                             <a href="" class="btn-back"><img src="imagens/back.png" />Voltar</a>
                             <input type="submit" value="Gerar Senha" class="btn btn-outline azul" />
