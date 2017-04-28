@@ -31,6 +31,9 @@ public class BuscarNomeESenhaServlet extends HttpServlet {
         //Verifica se não há clientes em atendimento ou chamados
         String id_usuario_str = request.getParameter("id_usuario");
         int id_usuario = Integer.parseInt(id_usuario_str);
+        String id_fila_str = request.getParameter("id_fila");
+        int id_fila = Integer.parseInt(id_fila_str);
+        
         System.out.println(id_usuario);
         senha = senhaDao.verificaClientesChamados(id_usuario);
         
@@ -54,7 +57,7 @@ public class BuscarNomeESenhaServlet extends HttpServlet {
         }
             //SE FOR 0 É QUE NÃO TEM MAIS CLIENTE NA FILA, SE NÃO APRESENTE CLIENTE NA TELA
             if (senha > 0){
-                getServletContext().getRequestDispatcher("/NotificacaoServlet?id_senha="+senha+"&id_fila=1").forward(request, response);             
+                getServletContext().getRequestDispatcher("/NotificacaoServlet?id_senha="+senha+"&id_fila="+id_fila).forward(request, response);             
             }else {
                 mensagem = "Não há clientes na fila";
                 request.setAttribute("mensagemErro", mensagem);

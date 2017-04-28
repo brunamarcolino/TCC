@@ -18,7 +18,7 @@
        
     </head>
     <body onload="getLocation()">    
-        
+        <script type="text/javascript" src="script/localizacao.js"></script>
         <%@include file="WEB-INF/jspf/mensagem.jspf"%>
 
         <div class="main">
@@ -27,10 +27,10 @@
                     <h1>COMO QUER SER ATENDIDO?</h1>
                     <h3>Escolha o seu tipo de atendimento:</h3>
                 </div>
-                <form id="local" action="MapsServlet" method="get">
+                <form name="tipo" id="local" action="MapsServlet" method="get">
                     <ul>
                         <li>
-                            <input type="hidden" name="localizacao" id="field1" value=""/>
+                            <input type="hidden" name="localiza"/>
                             <select name="tipo_atendimento">
                                 <option value="Normal">Normal</option>
                                 <option value="Preferencial">Preferencial</option>
@@ -44,7 +44,7 @@
                 </form>
             </div>
         </div>
-        <script type="text/javascript" src="script/localizacao.js"></script>
+        
         <%@include file="WEB-INF/jspf/rodape.jspf"%>
     </body>
     

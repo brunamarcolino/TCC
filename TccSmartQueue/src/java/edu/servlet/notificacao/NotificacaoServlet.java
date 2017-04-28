@@ -69,7 +69,8 @@ public class NotificacaoServlet extends HttpServlet {
                       +   "\"app_id\": \"d65a5424-a984-45c5-ae6a-1b29fd9795a0\","
                       +   "\"include_player_ids\": [\""+senha.getId_player()+"\"],"
                       +   "\"data\": {\"foo\": \"bar\"},"
-                      +   "\"contents\": {\"en\": \"Olá "+senha.getNome_cliente()+"! Favor dirigir-se ao balcão de atendimento. Seu atendimento será realizado pelo " + nome_usuario + " na mesa " + id_fila +"."+"\"}"
+                      +   "\"headings\": {\"en\": \"Chegou sua Vez\"},"
+                      +   "\"contents\": {\"en\": \"Olá "+senha.getNome_cliente()+"! Seu atendimento será realizado pelo(a) "+ nome_usuario + ". Favor dirigir-se para a mesa " + id_fila +"."+"\"}"
                       + "}";
          
    

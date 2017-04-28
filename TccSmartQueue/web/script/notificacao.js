@@ -20,7 +20,7 @@
       }
     }]);
 
-var y=document.getElementById("field2");
+
   OneSignal.push(function() {
   /* These examples are all valid */
   OneSignal.getUserId(function(userId) {

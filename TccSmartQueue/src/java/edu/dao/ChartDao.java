@@ -17,12 +17,12 @@ import java.util.List;
  */
 public class ChartDao extends Dao{
     
-    public Chart relatorio_tempoMedio(String parametro_data_ini, String parametro_data_fim, String parametro_atendente) {
+    public List<Chart> relatorio_tempoMedio(String parametro_data_ini, String parametro_data_fim, String parametro_atendente) {
         Connection conn = null;
 
         try {
             conn = getConnection();
-            conn.setAutoCommit(false);
+            List<Chart> charts = new ArrayList<Chart>();
             
             String sql = "SELECT u.nm_usuario, s.data_senha, TIME_FORMAT(AVG(TIMEDIFF(s.data_atendimento_fim,s.data_atendimento_ini)),'%T') tempo_medio FROM tab_senhas S inner join tab_usuarios u on u.id_usuario = s.id_usuario WHERE s.data_senha between STR_TO_DATE(?, '%Y-%m-%d') and STR_TO_DATE(?, '%Y-%m-%d') and (? = 'TODOS' or s.id_usuario = ?) and s.data_atendimento_fim is not null GROUP by  u.nm_usuario, s.data_senha";
 
@@ -40,9 +40,10 @@ public class ChartDao extends Dao{
                chart.setValor_x(result.getString("data_senha"));
                chart.setValor_y(result.getString("nm_usuario"));
                chart.setValor_tooltip(result.getString("tempo_medio"));
+               
+               charts.add(chart);
             }
-            System.out.println(chart);
-            return chart;
+            return charts;
         } catch (Exception ex) {
             ex.printStackTrace();
             return null;

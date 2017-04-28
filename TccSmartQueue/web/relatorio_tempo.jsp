@@ -47,7 +47,7 @@
                         </select>
                     </li>
                     <li class="grid-30">
-                        <input type="submit" class="btn btn-outline azul" />
+                        <input type="submit" class="btn btn-outline azul" value="Gerar"/>
                     </li>
                 </ul>
             </form>

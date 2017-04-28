@@ -5,7 +5,7 @@
  */
 
 
-var x=document.getElementById("field1");
+
 function getLocation()
   {
       
@@ -18,7 +18,7 @@ function getLocation()
   
   function showPosition(position)
   {
-  x.value=position.coords.latitude +
+  document.tipo.localiza.value = position.coords.latitude +
   "," + position.coords.longitude; 
   }
   
@@ -27,16 +27,16 @@ function showError(error)
   switch(error.code)
     {
     case error.PERMISSION_DENIED:
-      x.value="Usuario rejeitou a solicitacao de Geolocalizacao.";
+      document.tipo.localiza.value="Usuario rejeitou a solicitacao de Geolocalizacao.";
       break;
     case error.POSITION_UNAVAILABLE:
-      x.value="Localizacao indisponivel.";
+      document.tipo.localiza.value="Localizacao indisponivel.";
       break;
     case error.TIMEOUT:
-      x.value="A requisicao expirou.";
+      document.tipo.localiza.value="A requisicao expirou.";
       break;
     case error.UNKNOWN_ERROR:
-      x.value="Algum erro desconhecido aconteceu.";
+      document.tipo.localiza.value="Algum erro desconhecido aconteceu.";
       break;
     }
   }

@@ -45,7 +45,7 @@
                     <div class="grid-40 mobile-grid-100">
                         <c:choose>
                             <c:when test="${param.habilitado==1}">
-                                <a href="BuscarNomeESenhaServlet?id_usuario=${login.id_usuario}" class="btn btn-outline azul">Chamar próximo cliente</a>
+                                <a href="BuscarNomeESenhaServlet?id_usuario=${login.id_usuario}&id_fila=${id_fila}" class="btn btn-outline azul">Chamar próximo cliente</a>
                             </c:when>
                             <c:otherwise>
                                 <input type="button" class="btn btn-outline" value="Chamar próximo" readonly="readonly"/>
