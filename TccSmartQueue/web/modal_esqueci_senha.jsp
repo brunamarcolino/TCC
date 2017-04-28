@@ -16,11 +16,11 @@
     </head>
     <body>    
         <div class="main">
-            <div class="grid-30 mobile-grid-100">
+            <div class="grid-30 mobile-grid-90">
                 <h1>Esqueci minha senha</h1>
                 <h3>Informe os dados abaixo</h3>
             </div>
-            <div class="grid-30 mobile-grid-100">
+            <div class="grid-30 mobile-grid-90">
                 <form id="usuarios" action="EsqueciSenhaServlet" method="post">
                     <ul>
                         <li>
@@ -33,7 +33,7 @@
                         </li>                                   
                         <li>
                             <a href="login_adm.jsp" class="btn-back"><img src="imagens/back.png" />Voltar</a>
-                            <input type="submit" class="btn btn-outline verde"/>
+                            <input type="submit" class="btn btn-outline verde" value="Enviar"/>
                         </li>
                     </ul>
                 </form>       
