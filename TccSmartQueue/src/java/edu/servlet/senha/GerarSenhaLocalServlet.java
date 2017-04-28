@@ -53,7 +53,7 @@ public class GerarSenhaLocalServlet extends HttpServlet {
                 Senha senha = senhaDao.retornaSenha(id_sequencia);
                 mensagem = "<span>Sua senha foi gerada com sucesso!</span>";
                 request.setAttribute("mensagemSucesso", mensagem);
-                request.setAttribute("senha", senha);
+                request.setAttribute("senha", senha.getId_senha());
                 getServletContext().getRequestDispatcher("/gerar_senha_local.jsp").forward(request, response);
             } 
             else {

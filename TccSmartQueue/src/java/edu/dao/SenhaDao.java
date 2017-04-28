@@ -128,8 +128,9 @@ public class SenhaDao extends Dao {
                 //verifica se deu certo. Se sim, obtem a chave id_sequancia gerada 
                  if (affectedRows > 0) {
                     ResultSet rs = stmt.getGeneratedKeys();
+                    
                     if (rs.next()){
-                        id_sequencia = rs.getInt(1);                       
+                        id_sequencia = rs.getInt(1);  
                     }else {
                         System.out.println("erro"); 
                     }
@@ -139,6 +140,7 @@ public class SenhaDao extends Dao {
                     return 0;
                 }
                 //confirma as modifica��es no banco de dados
+                 
                 conn.commit();
                 return id_sequencia;
             }                    
