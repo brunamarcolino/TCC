@@ -34,7 +34,7 @@
                         <c:when test="${empty filas}">
                             <ul>
                                 <li>
-                                    Todas as mesas disponiveis estçao ocupadas!
+                                    Todas as mesas disponiveis estão ocupadas!
                                 </li>
                                 <li>
                                      <a href="javascript:void(0);" onclick="window.history.back();" class="btn-back"><img src="imagens/back.png" />Voltar</a>
