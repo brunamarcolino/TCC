@@ -98,7 +98,7 @@ input[type="date"],
 select,
 textarea{
     border: solid 1px #ccc;
-    padding: .5em 1em;
+    padding: .75em 1em;
     border-radius: 40px;
     float: none !important;
     display: block;
