@@ -8,7 +8,7 @@
         <meta charset="UTF-8">
         <meta name="description" content="Gerenciador de filas">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Smartqueue - Login</title>
+        <title>Smartqueue - Cadastro</title>
         
         <%@include file="WEB-INF/jspf/chamadas.jspf"%>
     </head>
@@ -22,7 +22,7 @@
         <div class="main">
             <div class="grid-25 mobile-grid-90 section-center">
                 <div class="box">
-                    <h1>Login Cliente</h1>
+                    <h1>Cadastro Cliente</h1>
                     <p>Para que possamos garantir a segurança da sua senha, por favor preencha o formulário abaixo:</p>
                 </div>
                 <form name="gerasenha" action="GeraSenhaServlet?tipo_atendimento=${param.tipo_atendimento}" method="post">                

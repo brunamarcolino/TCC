@@ -1,7 +1,7 @@
 @font-face {
   font-family: 'Lato-Hairline';
   font-style: normal;
-  font-weight: lighter;
+  font-weight: bold;
   src: url('../fontes/Lato-Hairline.eot');
   src: url('../fontes/Lato-Hairline.eot?#iefix') format('embedded-opentype'),
        url('../fontes/Lato-Hairline.woff2') format('woff2'),
@@ -11,7 +11,7 @@
 @font-face {
   font-family: 'Lato-Thin';
   font-style: normal;
-  font-weight: lighter;
+  font-weight: bold;
   src: url('../fontes/Lato-Thin.eot');
   src: url('../fontes/Lato-Thin.eot?#iefix') format('embedded-opentype'),
        url('../fontes/Lato-Thin.woff2') format('woff2'),
@@ -21,7 +21,7 @@
 @font-face {
   font-family: 'Lato-Regular';
   font-style: normal;
-  font-weight: normal;
+  font-weight: bold;
   src: url('../fontes/Lato-Regular.eot');
   src: url('../fontes/Lato-Regular.eot?#iefix') format('embedded-opentype'),
        url('../fontes/Lato-Regular.woff2') format('woff2'),
@@ -31,7 +31,7 @@
 @font-face {
   font-family: 'Lato-Light';
   font-style: normal;
-  font-weight: lighter;
+  font-weight: bold;
   src: url('../fontes/Lato-Light.eot');
   src: url('../fontes/Lato-Light.eot?#iefix') format('embedded-opentype'),
        url('../fontes/Lato-Light.woff2') format('woff2'),
@@ -55,7 +55,6 @@ body{
     font-family: 'Lato-Regular', sans-serif;
     padding: 0;
     margin: 0;
-    
 }
 *:focus{
     outline: none;
@@ -108,6 +107,8 @@ textarea{
     box-sizing: border-box;
     background: #FFF;
     color: #999;
+    outline: none;
+    -webkit-appearance: none; 
 }
 select{
     -webkit-appearance: none;
@@ -155,7 +156,7 @@ input[readonly="readonly"] {
 .main h1,
 .main h1 span{
     text-transform: uppercase;
-    font-family: 'Lato-Thin', sans-serif;
+    font-family: 'Lato-Light', sans-serif;
     color: #FF8500;
     font-weight: bold;
     line-height: 1.2em;
@@ -182,7 +183,7 @@ input[readonly="readonly"] {
 .section-center h3,
 .main h3{
     margin-bottom: 1.5em;
-    font-family: 'Lato-Thin', sans-serif;
+    font-family: 'Lato-Light', sans-serif;
     font-weight: bold;
     color: #888;
     text-align: left;
@@ -207,7 +208,7 @@ h3.title-home{
 }
 h2.subtitle-home{
     margin-top: 0 !important;
-    font-family: 'Lato-Thin', sans-serif !important;
+    font-family: 'Lato-Light', sans-serif !important;
     font-weight: bold !important;
 }
 h1{
@@ -395,7 +396,7 @@ table tr:nth-child(even){
 }
 table td{
     padding: 1em;
-    font-family: 'Lato-Light', sans-serif;
+    font-family: 'Lato-Regular', sans-serif;
     color: #AAA;
     border-bottom: solid 1px #DDD;
 }
@@ -481,12 +482,25 @@ div.box-cliente{
     border-bottom: none;
 }
 div.box-atendente li,
+div.box-atendente li h2,
 div.box-cliente li{
     text-align: left;
+    color: #777;
+}
+div.box-atendente li h2,
+div.box-cliente li h2{
+    margin-top: .5em;
+    font-size: 1.2em;
+    color: #000;
+    font-family: 'Lato-Bold', sans-serif;
+}
+div.box-atendente li label,
+div.box-cliente li label{
+    color: #444;
 }
 div.box-cliente p{
     color: #777;
-    width: 100%;
+    max-width: 100%;
     margin-bottom: 1.5em;
 }
 .btn.verde,
@@ -524,9 +538,9 @@ div.box-cliente p{
 
 @media (max-width: 450px) {
     body{
-        font-size: .95em;
+        font-size: 1em;
         letter-spacing: -1px;
-        font-family: 'Lato-Regular', Arial, sans-serif;
+        font-family: 'Lato-Regular', Arial, sans-serif !important;
     }
     h2{
         font-size: 1.5em;
@@ -535,7 +549,7 @@ div.box-cliente p{
         margin: 2em 0 0;
     }
     .btn-back img{
-        width: 25%;
+        width: 25% !important;
     }
     .section-center{
         margin-bottom: 1em;
@@ -614,6 +628,10 @@ div.box-cliente p{
     .info{
         border: none;
     }
+    div.box-atendente li label,
+    div.box-atendente li h2{
+        text-align: center
+    }
     .info > div{
         margin: 0 0 2em 0;
     }
@@ -636,7 +654,7 @@ div.box-cliente p{
         margin-bottom: 0;
     }
     div.box-cliente .btn-group .btn{
-        width: 46%;
+        width: 45%;
     }
 }
 @media (min-width: 321px) and (max-width: 450px) {

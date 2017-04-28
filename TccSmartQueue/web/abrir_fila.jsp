@@ -20,6 +20,8 @@
         <%@include file="WEB-INF/jspf/chamadas.jspf"%>
     </head>
     <body>
+        <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async='async'></script>
+        <script type="text/javascript" src="script/notificacao.js"></script>
         <%@include file="WEB-INF/jspf/cabecalho.jspf" %>
 
         <%@include file="WEB-INF/jspf/mensagem.jspf" %>

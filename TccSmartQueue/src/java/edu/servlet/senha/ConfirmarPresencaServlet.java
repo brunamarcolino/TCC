@@ -42,7 +42,7 @@ public class ConfirmarPresencaServlet extends HttpServlet {
         request.setAttribute("mensagemSucesso", mensagem);
         getServletContext().getRequestDispatcher("/chamar_proximo.jsp?habilitado=3").forward(request, response);
     }else{
-        mensagem = "Nenhum cliente foi chamado 2 !";
+        mensagem = "<span>Nenhum cliente foi chamado 2 !</span>";
         request.setAttribute("mensagemErro", mensagem);
         getServletContext().getRequestDispatcher("/chamar_proximo.jsp?habilitado=2").forward(request, response);
     }

@@ -65,7 +65,7 @@ public class NaoConfirmarPresencaServlet extends HttpServlet {
         request.setAttribute("mensagemErro", mensagem);
         getServletContext().getRequestDispatcher("/chamar_proximo.jsp?habilitado=1").forward(request, response);
     }else{
-        mensagem = "Nenhum cliente foi chamado!";
+        mensagem = "<span>Nenhum cliente foi chamado!</span>";
         request.setAttribute("mensagemErro", mensagem);
         getServletContext().getRequestDispatcher("/chamar_proximo.jsp?habilitado=2").forward(request, response);
     }

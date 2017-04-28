@@ -38,10 +38,17 @@ public class ListaSenhaServlet extends HttpServlet{
             boolean distancia = Boolean.parseBoolean(distancia_str);
             String tipo_atendimento = request.getParameter("tipo_atendimento");
             System.out.println("distancia " + distancia + " tipo_atendimento " + tipo_atendimento);
+            
+            DadosSenhaDao dadosSenhaDao = new DadosSenhaDao();
+            DadosSenha dadosSenha = new DadosSenha();
         
             ParametroDao parametroDao = new ParametroDao();
             Parametro parametro = new Parametro();
             boolean horario_comercial = false;
+            
+            
+            
+        
         
             //verifica horário de atendimento
             parametro = parametroDao.getParametro(1);
@@ -63,25 +70,35 @@ public class ListaSenhaServlet extends HttpServlet{
                 //horário atual dentro do período de atendimento
                 if (hora_atual >= hora_inicio && hora_atual <= hora_fim){
                    System.out.println("horário atual dentro do período de atendimento");
-                    horario_comercial = true; 
+                    horario_comercial = true;
+                    dadosSenha = dadosSenhaDao.getDados(tipo_atendimento, 0);
+                    dadosSenha.setDistancia(distancia);
+                    dadosSenha.setTipo_atendimento(tipo_atendimento);
+                    dadosSenha.setHorario_comercial(horario_comercial);  
                 }
                 //horário atual FORA do período de atendimento
                 else {
                     System.out.println("horário atual FORA do período de atendimento");
                     horario_comercial = false;
+                    dadosSenha.setPrevisao_atendimento(null);
+                    dadosSenha.setQuantidade_pessoas(0);
+                    dadosSenha.setTempo_medio(null);
+                    dadosSenha.setHorario_comercial(horario_comercial);
+                    dadosSenha.setDistancia(distancia);
+                    dadosSenha.setTipo_atendimento(tipo_atendimento);
                 }
             //Estabelecimento 24H
             } else {
                 System.out.println("Estabelecimento 24H");
                 horario_comercial = true;
+                dadosSenha = dadosSenhaDao.getDados(tipo_atendimento, 0);
+                dadosSenha.setDistancia(distancia);
+                dadosSenha.setTipo_atendimento(tipo_atendimento);
+                dadosSenha.setHorario_comercial(horario_comercial);  
             }
         
-        DadosSenhaDao dadosSenhaDao = new DadosSenhaDao();
-        DadosSenha dadosSenha = dadosSenhaDao.getDados(tipo_atendimento, 0);
-        dadosSenha.setDistancia(distancia);
-        dadosSenha.setTipo_atendimento(tipo_atendimento);
-        dadosSenha.setHorario_comercial(horario_comercial);
-                
+        
+              
         request.setAttribute("dadossenha", dadosSenha);
         
         getServletContext().getRequestDispatcher("/senha.jsp").forward(request, response);
