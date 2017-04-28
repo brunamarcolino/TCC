@@ -55,7 +55,6 @@ body{
     font-family: 'Lato-Regular', sans-serif;
     padding: 0;
     margin: 0;
-    
 }
 *:focus{
     outline: none;
@@ -539,7 +538,7 @@ div.box-cliente p{
 
 @media (max-width: 450px) {
     body{
-        font-size: .95em;
+        font-size: 1em;
         letter-spacing: -1px;
         font-family: 'Lato-Regular', Arial, sans-serif !important;
     }
@@ -629,6 +628,10 @@ div.box-cliente p{
     .info{
         border: none;
     }
+    div.box-atendente li label,
+    div.box-atendente li h2{
+        text-align: center
+    }
     .info > div{
         margin: 0 0 2em 0;
     }
@@ -651,7 +654,7 @@ div.box-cliente p{
         margin-bottom: 0;
     }
     div.box-cliente .btn-group .btn{
-        width: 46%;
+        width: 45%;
     }
 }
 @media (min-width: 321px) and (max-width: 450px) {
