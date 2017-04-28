@@ -26,12 +26,12 @@
         </c:if>
         <div class="main">
             <div class="grid-75 mobile-grid-100">
-                <h1>Manter Usuarios</h1>
+                <h1>Manter Funcionários</h1>
             </div>
             <div class="grid-75 mobile-grid-100">
             <c:choose>
                 <c:when test="${empty usuarios}">
-                    <p>Nenhum usuario cadastrado!</p>
+                    <p>Nenhum funcionário cadastrado!</p>
                 </c:when>
                 <c:otherwise>
                 <table border="0" cellpadding="0" cellspacing="0" width="100%">
@@ -64,7 +64,7 @@
                     </c:forEach>
                 </table>
                 <div class="grid-50 mobile-grid-100 section-center">
-                    <a href="ModalEditarUsuarioServlet?id_usuario=0" class="btn btn-outline azul">Incluir novo usuario</a> 
+                    <a href="ModalEditarUsuarioServlet?id_usuario=0" class="btn btn-outline azul">Incluir novo</a> 
                 </div>
             </c:otherwise>
         </c:choose>                             
