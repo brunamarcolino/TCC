@@ -24,7 +24,7 @@
 
         <%@include file="WEB-INF/jspf/mensagem.jspf" %>
         <div class="main">
-            <div class="grid-25 mobile-grid-100 center">
+            <div class="grid-25 mobile-grid-100 section-center">
                 <div class="box">
                     <h1>Abrir fila</h1>
                     <h3>Inicie suas atividades abrindo a fila!</h3>
