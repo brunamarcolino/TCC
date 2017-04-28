@@ -27,7 +27,7 @@
 
         <%@include file="WEB-INF/jspf/mensagem.jspf" %>
         <div class="main">
-            <div class="grid-parent grid-50 mobile-grid-100 center">
+            <div class="grid-parent grid-50 mobile-grid-100 section-center">
                 <div class="grid-parent grid-100 mobile-grid-90 box-atendente">
                     <div class="grid-60 mobile-grid-100">
                          

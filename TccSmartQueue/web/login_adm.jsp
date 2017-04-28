@@ -25,7 +25,7 @@
 
         <c:choose>
             <c:when test="${empty login}">
-                <section class="grid-25 mobile-grid-90 login">
+                <section class="grid-25 mobile-grid-90 section-center">
                     <div class="grid-100 mobile-grid-100">
                         <h1>LOGIN</h1>
                         <h3>Entre com suas credenciais</h3>
@@ -43,7 +43,7 @@
                                 </li>
                                 <li>
                                     <a href="index.jsp" class="btn-back"><img src="imagens/back.png" />Voltar</a>
-                                    <input type="submit" value="Login" class="btn btn-outline" />
+                                    <input type="submit" value="Login" class="btn btn-outline verde" />
                                 </li>
                             </ul>
                         </form>

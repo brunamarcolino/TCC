@@ -22,7 +22,7 @@
         <%@include file="WEB-INF/jspf/mensagem.jspf"%>
 
         <div class="main">
-            <div class="grid-25 grid-parent mobile-grid-85 center">
+            <div class="grid-25 grid-parent mobile-grid-85 section-center">
                 <div class="grid-100 mobile-grid-100">
                     <h1>COMO QUER SER ATENDIDO?</h1>
                     <h3>Escolha o seu tipo de atendimento:</h3>

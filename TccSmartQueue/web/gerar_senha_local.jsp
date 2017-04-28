@@ -25,7 +25,7 @@
 
         <%@include file="WEB-INF/jspf/mensagem.jspf" %>
         <div class="main">
-            <div class="grid-25 mobile-grid-100 center">
+            <div class="grid-25 mobile-grid-100 section-center">
                 <div class="box">
                     <h1>Gerar Próxima Senha</h1>
                     <h3>Caso precise, gere manualmente a próxima senha por aqui.</h3>
@@ -42,7 +42,8 @@
                                 <option>Selecione o tipo</option>
                                 <option value="Normal">Normal</option>
                                 <option value="Preferencial">Preferencial</option>
-                            </select> 
+                            </select> <br>
+                            <h2><label> A senha do cliente é: ${senha}</label></h2>
                         </li>
                         <li>
                             <a href="" class="btn-back"><img src="imagens/back.png" />Voltar</a>

@@ -20,7 +20,7 @@
 
         <%@include file="WEB-INF/jspf/mensagem.jspf" %>
         <div class="main">
-            <div class="grid-25 mobile-grid-90 center">
+            <div class="grid-25 mobile-grid-90 section-center">
                 <div class="box">
                     <h1>Login Cliente</h1>
                     <p>Para que possamos garantir a segurança da sua senha, por favor preencha o formulário abaixo:</p>
@@ -46,7 +46,7 @@
                         </li>
                         <li>
                             <a href="" class="btn-back"><img src="imagens/back.png" />Voltar</a>
-                            <input type="submit" value="Entrar" class="btn btn-outline" />
+                            <input type="submit" value="Entrar" class="btn btn-outline verde" />
                         </li>
                     </ul>
                 </form>

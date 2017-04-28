@@ -24,7 +24,7 @@
 
         <%@include file="WEB-INF/jspf/mensagem.jspf" %>
         <div class="main">
-            <div class="grid-25 mobile-grid-100 center">
+            <div class="grid-25 mobile-grid-100 section-center">
                 <div class="box">
                     <h1>Abrir fila</h1>
                     <h3>Inicie suas atividades abrindo a fila!</h3>
@@ -34,7 +34,7 @@
                         <c:when test="${empty filas}">
                             <ul>
                                 <li>
-                                    Todas as mesas disponiveis estçao ocupadas!
+                                    Todas as mesas disponiveis estão ocupadas!
                                 </li>
                                 <li>
                                      <a href="javascript:void(0);" onclick="window.history.back();" class="btn-back"><img src="imagens/back.png" />Voltar</a>

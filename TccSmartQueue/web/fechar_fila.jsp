@@ -24,7 +24,7 @@
 
         <%@include file="WEB-INF/jspf/mensagem.jspf" %>
         <div class="main">
-            <div class="grid-25 mobile-grid-100 center">
+            <div class="grid-25 mobile-grid-100 section-center">
                 <div class="box">
                     <h1>Fechar fila</h1>
                 </div>
@@ -35,7 +35,7 @@
                         </li>
                         <li class="btn-group">
                             <a href="javascript:void(0);" onclick="window.history.back();" class="btn btn-outline vermelho">Não</a>
-                            <input type="submit" value="Sim" class="btn btn-outline" />
+                            <input type="submit" value="Sim" class="btn btn-outline verde" />
                         </li>
                     </ul>
                 </form>
