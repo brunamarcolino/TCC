@@ -66,6 +66,7 @@ public class ListaSenhaServlet extends HttpServlet{
                 
                 Date ha=new Date();    
                 int hora_atual = Integer.parseInt(sdf.format(ha));
+                System.out.println("ha "+ hora_atual);
                 
                 //horário atual dentro do período de atendimento
                 if (hora_atual >= hora_inicio && hora_atual <= hora_fim){

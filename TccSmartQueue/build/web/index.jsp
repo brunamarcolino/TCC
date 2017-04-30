@@ -57,7 +57,7 @@
                                             <a href="ListaUsuarioServlet">Gerenciar funcionários</a>
                                         </li>
                                         <li>
-                                            <a href="ChartTempoAtendimentoServlet">Gerar Relatórios</a>
+                                            <a href="ListaChartServlet">Gerar Relatórios</a>
                                         </li>
                                         <li>
                                             <a href="ListaParametrosServlet">Parametros do Sistemas</a>

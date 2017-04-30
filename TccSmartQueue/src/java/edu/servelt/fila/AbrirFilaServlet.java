@@ -46,7 +46,7 @@ public class AbrirFilaServlet extends HttpServlet {
             mensagem = "<span>Fila aberta com sucesso</span>";
             request.setAttribute("mensagemSucesso", mensagem);
             request.getSession().setAttribute("id_fila", id_fila);
-            getServletContext().getRequestDispatcher("/chamar_proximo.jsp").forward(request, response);
+            getServletContext().getRequestDispatcher("/chamar_proximo.jsp?habilitado=1").forward(request, response);
         }else{
             mensagem = "<span>Ops! Ocorreu algum erro, tente novamente! </span>";
             request.setAttribute("mensagemErro", mensagem);

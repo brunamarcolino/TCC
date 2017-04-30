@@ -13,7 +13,7 @@
         <title>JSP Page</title>
         <%@include file="WEB-INF/jspf/chamadas.jspf"%>
     </head>
-    <body>
+    <body onload="generateChart()">
         <%@include file="WEB-INF/jspf/cabecalho.jspf"%>
         
         <%@include file="WEB-INF/jspf/mensagem.jspf"%>
