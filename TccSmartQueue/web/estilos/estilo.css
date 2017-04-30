@@ -98,7 +98,7 @@ input[type="date"],
 select,
 textarea{
     border: solid 1px #ccc;
-    padding: .5em 1em;
+    padding: .75em 1em;
     border-radius: 40px;
     float: none !important;
     display: block;
@@ -108,10 +108,11 @@ textarea{
     background: #FFF;
     color: #999;
     outline: none;
-    -webkit-appearance: none; 
+    -webkit-appearance: none;
 }
 select{
     -webkit-appearance: none;
+    background: url("../imagens/bg-select.png") no-repeat 95% center;
 }
 .mensagem.ocultar {
     opacity: 0;
@@ -164,7 +165,7 @@ input[readonly="readonly"] {
     margin: 0;
 }
 .main h1{
-    margin:1em 0 .5em;
+    margin:1em 0 .15em;
 }
 .main h1 span{
     color: #CCC;   
@@ -205,6 +206,7 @@ h3.title-home{
     text-transform: uppercase;
     letter-spacing: -1px;
     font-family: 'Lato-Light', sans-serif;
+    text-align: left;
 }
 h2.subtitle-home{
     margin-top: 0 !important;
@@ -629,7 +631,8 @@ div.box-cliente p{
         border: none;
     }
     div.box-atendente li label,
-    div.box-atendente li h2{
+    div.box-atendente li h2,
+    div.box-cliente li{
         text-align: center
     }
     .info > div{
