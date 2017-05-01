@@ -8,8 +8,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.apache.commons.mail.DefaultAuthenticator;
-import org.apache.commons.mail.HtmlEmail;
+/*import org.apache.commons.mail.DefaultAuthenticator;
+import org.apache.commons.mail.HtmlEmail;*/
 
 
 
@@ -30,7 +30,7 @@ public class EnviaEmailServlet extends HttpServlet {
         protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
         try {
-            String destinatario = request.getParameter("destinatario");
+         /*   String destinatario = request.getParameter("destinatario");
             String assunto = request.getParameter("assunto");
             String corpo = request.getParameter("corpo");
             System.out.println("destinatario" + destinatario + " assunto "+assunto+" corpo " + corpo);
@@ -71,7 +71,7 @@ public class EnviaEmailServlet extends HttpServlet {
             email.setTextMsg("Seu servidor de e-mail não suporta mensagem HTML");
  
             // envia o e-mail
-            email.send();
+            email.send();*/
             
             request.setAttribute("mensagem", "<span>Você receberá um email com as instruções para alteração de senha</span>");
             getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);

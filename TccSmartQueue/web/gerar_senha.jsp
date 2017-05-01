@@ -3,7 +3,7 @@
     Created on : 17/03/2017, 17:44:23
     Author     : Thiago Quintanilha
 --%>
-
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
@@ -16,11 +16,13 @@
         
         <title>Smartqueue</title>
         <%@include file="WEB-INF/jspf/chamadas.jspf"%>
+        
     </head>
     <body>
         <%@include file="WEB-INF/jspf/cabecalho.jspf"%>
         <%@include file="WEB-INF/jspf/mensagem.jspf"%>
-         
+        
+        
         <div class="main">
             <div class="grid-75 gera-senha">
             <c:choose>  
@@ -63,7 +65,7 @@
                                         --
                                     </c:when>
                                     <c:otherwise>
-                                        ${dadossenha.previsao_atendimento}
+                                        <fmt:formatDate value="${dadossenha.previsao_atendimento}" type="time" pattern="HH:mm" dateStyle="full"/>
                                     </c:otherwise>
                                 </c:choose>
                             </h2>

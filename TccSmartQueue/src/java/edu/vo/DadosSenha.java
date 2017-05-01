@@ -16,8 +16,16 @@ public class DadosSenha {
     private Time tempo_medio;
     private Time previsao_atendimento;
     private int quantidade_pessoas;
-    private boolean distancia;
+    private int distancia;
     private boolean horario_comercial;
+
+    public int getDistancia() {
+        return distancia;
+    }
+
+    public void setDistancia(int distancia) {
+        this.distancia = distancia;
+    }
 
     public boolean isHorario_comercial() {
         return horario_comercial;
@@ -25,16 +33,6 @@ public class DadosSenha {
 
     public void setHorario_comercial(boolean horario_comercial) {
         this.horario_comercial = horario_comercial;
-    }
-    
-    
-
-    public boolean isDistancia() {
-        return distancia;
-    }
-
-    public void setDistancia(boolean distancia) {
-        this.distancia = distancia;
     }
 
     public int getQuantidade_pessoas() {

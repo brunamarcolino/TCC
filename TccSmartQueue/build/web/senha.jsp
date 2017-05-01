@@ -3,7 +3,7 @@
     Created on : 03/03/2017, 19:20:03
     Author     : brunacm
 --%>
-
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
@@ -62,7 +62,7 @@
                                         --
                                     </c:when>
                                     <c:otherwise>
-                                        ${dadossenha.previsao_atendimento}
+                                        <fmt:formatDate value="${dadossenha.previsao_atendimento}" type="time" pattern="HH:mm" dateStyle="full"/>
                                     </c:otherwise>
                                 </c:choose>
                             </h2>
@@ -75,14 +75,18 @@
                     <c:choose>
                         <c:when test="${dadossenha.horario_comercial}">
                             <c:choose>
-                                <c:when test="${dadossenha.distancia}">
+                                <c:when test="${dadossenha.distancia=='1'}">
                                     <p class="location location-ok"><img src="imagens/success.png"/>Você está dentro da distancia permitida</p>
                                     <p>Clique abaixo para gerar a sua senha:</p>
                                     <input type="button" value="Gerar Senha" class="btn btn-outline azul" onClick="window.location.href='login_cliente.jsp?tipo_atendimento=${dadossenha.tipo_atendimento}'">                            
                                 </c:when>
-                                <c:otherwise>
-                                    <p class="location location-wrong"><img src="imagens/error.png"/>Você está FORA da distancia permitida</p>
+                                <c:when test="${dadossenha.distancia=='2'}">
+                                   <p class="location location-wrong"><img src="imagens/error.png"/>Você está FORA da distancia permitida</p>
                                     <p class="alert"><i>Para que o botão GERAR SENHA fique disponível, é necessário se aproximar mais do local de atendimento</i></p>                            
+                                </c:when>
+                                <c:otherwise>
+                                    <p>Clique abaixo para gerar a sua senha:</p>
+                                    <input type="button" value="Gerar Senha" class="btn btn-outline azul" onClick="window.location.href='login_cliente.jsp?tipo_atendimento=${dadossenha.tipo_atendimento}'">                            
                                 </c:otherwise>
                             </c:choose>        
                         </c:when>

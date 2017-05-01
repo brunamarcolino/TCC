@@ -89,7 +89,7 @@ public class GeraSenhaServlet extends HttpServlet{
                 
                 DadosSenhaDao dadosSenhaDao = new DadosSenhaDao();
                 DadosSenha dadosSenha = dadosSenhaDao.getDados(tipo_atendimento, id_sequencia);
-                dadosSenha.setDistancia(true);
+                dadosSenha.setDistancia(1);
                 dadosSenha.setTipo_atendimento(tipo_atendimento);
                 request.setAttribute("dadossenha", dadosSenha); 
                 

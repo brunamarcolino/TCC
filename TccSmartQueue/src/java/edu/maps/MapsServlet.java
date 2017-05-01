@@ -117,23 +117,23 @@ public class MapsServlet extends HttpServlet {
                     System.out.println("distancia " + distancia +" tempo "+ tempo+ " raio " + raio_permitido);
                     if (distancia > raio_permitido){
                         //redireciona para erro
-                        getServletContext().getRequestDispatcher("/ListaSenhaServlet?distancia=false").forward(request, response);
+                        getServletContext().getRequestDispatcher("/ListaSenhaServlet?distancia=2").forward(request, response);
                     }
                     else{
                         //redireciona para sucesso
                         
-                        getServletContext().getRequestDispatcher("/ListaSenhaServlet?distancia=true&tipo_atendimento="+tipo_atendimento).forward(request, response);
+                        getServletContext().getRequestDispatcher("/ListaSenhaServlet?distancia=1&tipo_atendimento="+tipo_atendimento).forward(request, response);
                     }   
                 } else {
                     request.setAttribute("mensagemErro", "Erro ao retornar JSON.");
-                    getServletContext().getRequestDispatcher("/ListaSenhaServlet?distancia=false").forward(request, response);
+                    getServletContext().getRequestDispatcher("/ListaSenhaServlet?distancia=2").forward(request, response);
                 }
                 
             }
             //se não redireciona para gerar senha
             else
             {
-                getServletContext().getRequestDispatcher("/ListaSenhaServlet?distancia=true&tipo_atendimento="+tipo_atendimento).forward(request, response);
+                getServletContext().getRequestDispatcher("/ListaSenhaServlet?distancia=3&tipo_atendimento="+tipo_atendimento).forward(request, response);
             }        
             //getServletContext().getRequestDispatcher("/json.jsp").forward(request, response);
         } catch (Exception ex) {

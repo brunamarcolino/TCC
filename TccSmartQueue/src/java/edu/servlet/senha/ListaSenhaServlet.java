@@ -35,7 +35,7 @@ public class ListaSenhaServlet extends HttpServlet{
             
             //DECLARAÇÃO DE VARIAVEIS
             String distancia_str = request.getParameter("distancia");
-            boolean distancia = Boolean.parseBoolean(distancia_str);
+            int distancia = Integer.parseInt(distancia_str);
             String tipo_atendimento = request.getParameter("tipo_atendimento");
             System.out.println("distancia " + distancia + " tipo_atendimento " + tipo_atendimento);
             
