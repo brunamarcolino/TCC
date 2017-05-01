@@ -46,7 +46,7 @@ public class MapsServlet extends HttpServlet {
         
         try {
             //BUSCA PARAMETROS DO JSP
-            String localizacao = request.getParameter("localizacao");
+            String localizacao = request.getParameter("localiza");
             String tipo_atendimento = request.getParameter("tipo_atendimento");
             
             System.out.println("localizacao " + localizacao);
@@ -94,6 +94,7 @@ public class MapsServlet extends HttpServlet {
             
                 //transforma em Json    
                 JSONObject json = new JSONObject(builder.toString());
+                System.out.println(json);
                 String status = json.getString("status");
                 
                 //Verifica se jason foi retornado com sucesso

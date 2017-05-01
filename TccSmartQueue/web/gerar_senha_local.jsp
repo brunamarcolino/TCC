@@ -39,7 +39,6 @@
                         <li>
                             <label>Selecione o tipo de atendimento</label>
                             <select name="tipo_atendimento">
-                                <option>Selecione o tipo</option>
                                 <option value="Normal">Normal</option>
                                 <option value="Preferencial">Preferencial</option>
                             </select> <br>
