@@ -55,7 +55,6 @@
                 <%@include file="WEB-INF/jspf/cabecalho.jspf" %>
                 <div class="main">
                 </div>
-                <%@include file="WEB-INF/jspf/rodape.jspf" %>
             </c:otherwise>        
         </c:choose>
     </body>

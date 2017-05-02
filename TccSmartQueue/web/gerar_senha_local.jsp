@@ -41,7 +41,7 @@
                             <select name="tipo_atendimento">
                                 <option value="Normal">Normal</option>
                                 <option value="Preferencial">Preferencial</option>
-                            </select> <br>
+                            </select>
                             <div class="senha-local">
                                 <label>A senha do cliente é:</label>
                                 <h2>${senha}</h2>
@@ -55,7 +55,5 @@
                 </form>    
             </div>
         </div>
-                        
-        <%@include file="WEB-INF/jspf/rodape.jspf" %>
     </body>
 </html>

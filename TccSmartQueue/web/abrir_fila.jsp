@@ -66,8 +66,6 @@
                 </form>    
             </div>
         </div>
-                        
-        <%@include file="WEB-INF/jspf/rodape.jspf" %>
     </body>
 </html>
 

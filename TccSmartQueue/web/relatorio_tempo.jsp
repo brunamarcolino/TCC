@@ -84,6 +84,5 @@
              }
              </script>
         </div>
-        <%@include file="WEB-INF/jspf/rodape.jspf"%>
     </body>
 </html>
