@@ -29,8 +29,8 @@ public class GerarSenhaLocalServlet extends HttpServlet {
         String nomecliente = request.getParameter("nome_cliente");
         String tipo_atendimento = request.getParameter("tipo_atendimento");   
         String mensagem = "";
-        System.out.println(tipo_atendimento);
-        
+        String id_usuario_str = request.getParameter("id_usuario");
+        int id_usuario = Integer.parseInt(id_usuario_str);
         //VERIFICA AUSENCIA DE PREENCHIMENTO DOS CAMPOS 
         if(nomecliente.isEmpty()){
             mensagem = mensagem + "<span>Por favor insira um nome! </span>";
@@ -46,7 +46,7 @@ public class GerarSenhaLocalServlet extends HttpServlet {
             //TODOS OS CAMPOS FORAM PREENCHIDOS
             SenhaDao senhaDao = new SenhaDao();
 
-            int id_sequencia = senhaDao.geraSenhaLocal(nomecliente,tipo_atendimento);
+            int id_sequencia = senhaDao.geraSenhaLocal(nomecliente,tipo_atendimento,id_usuario);
             
             //SENHA GERADA COM SUCESSO
             if (id_sequencia > 0){        

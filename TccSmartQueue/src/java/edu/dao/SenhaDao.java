@@ -106,7 +106,7 @@ public class SenhaDao extends Dao {
         }
     }
 
-     public int geraSenhaLocal(String cliente,String tipo_atendimento) {
+     public int geraSenhaLocal(String cliente,String tipo_atendimento,int id_usuario) {
         
         Connection conn = null;
         int id_sequencia = 0;
@@ -114,7 +114,7 @@ public class SenhaDao extends Dao {
             
             
                 //INSERE NOVA SENHA
-                String sql = "INSERT INTO tab_senhas(id_senha, data_senha,  nm_cliente, status_atendimento, tipo_atendimento) VALUES (? , curdate(), ?,'Ativo',?); ";                    
+                String sql = "INSERT INTO tab_senhas(id_senha, data_senha,  nm_cliente, status_atendimento, tipo_atendimento,id_usuario) VALUES (? , curdate(), ?,'Ativo',?,?); ";                    
                 try{
                     //obtem conexao com o banco de dados
                          conn = getConnection();
@@ -123,6 +123,7 @@ public class SenhaDao extends Dao {
                 stmt.setInt(1, getProximaSenha());
                 stmt.setString(2, cliente); //informar nome digitado pelo usuário                      
                 stmt.setString(3, tipo_atendimento); //informar tipo atendimento informado 
+                stmt.setInt(4,id_usuario); // usuario que gerou a senha
                 int affectedRows = stmt.executeUpdate();
                 
                 //verifica se deu certo. Se sim, obtem a chave id_sequancia gerada 
@@ -629,6 +630,37 @@ public String criptoSenha(String senha_cripto){
 
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setInt(1, id_usuario);
+            ResultSet result = stmt.executeQuery();
+            
+            if (result.next()) {    
+                senha = result.getInt(1);
+                return senha;
+            } else {                
+                return 0;
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return 0;
+        } finally {
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (Exception closeEx) {
+                    //do nothing
+                }
+            }
+        }
+   }      
+   public int verificaClientesAtivos(int id_usuario) {
+        Connection conn = null;
+        int senha;
+
+        try {
+            conn = getConnection();
+
+            String sql = "SELECT min(id_senha) FROM tab_senhas WHERE status_atendimento in ('Chamando', 'Em Atendimento','Ativo') AND data_senha = CURRENT_DATE";
+
+            PreparedStatement stmt = conn.prepareStatement(sql);
             ResultSet result = stmt.executeQuery();
             
             if (result.next()) {    

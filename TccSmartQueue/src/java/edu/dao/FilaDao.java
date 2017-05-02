@@ -156,7 +156,43 @@ public class FilaDao extends Dao {
             }
         }
     }
-
+ public int VerificaTodasFilasAbertas() {
+        
+        Connection conn = null;
+        
+        try {
+            //obtem conexao com o banco de dados
+            conn = getConnection();
+            conn.setAutoCommit(false);
+            
+            //VERIFICA SE ESSE CLIENTE JÁ POSSUI SENHA ATIVA PARA A DATA ATUAL
+            String select_sql = "SELECT COUNT(id_fila) FROM tab_fila where status_fila = 'aberta'";
+            PreparedStatement stmt = conn.prepareStatement(select_sql);
+            ResultSet result = stmt.executeQuery();
+            
+            //SE SIM
+            if (result.next()) {
+                //RECUPERA AS INFORMAÇÕES DO CLIENTE
+                return result.getInt(1);                
+            }                                
+            
+            //SE NÃO
+            else {  
+                    return 0;
+            }                    
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return 0;
+        } finally {
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (Exception closeEx) {
+                    //do nothing
+                }
+            }
+        }
+    }
                 
 }
 /*

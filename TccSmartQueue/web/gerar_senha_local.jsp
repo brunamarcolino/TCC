@@ -30,7 +30,7 @@
                     <h1>Gerar Próxima Senha</h1>
                     <h3>Caso precise, gere manualmente a próxima senha por aqui.</h3>
                 </div>
-                <form action="GerarSenhaLocalServlet" method="post">
+                <form action="GerarSenhaLocalServlet?id_usuario=${login.id_usuario}" method="post">
                     <ul>
                         <li>
                             <label>Informe o nome do cliente</label>
