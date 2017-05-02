@@ -42,7 +42,10 @@
                                 <option value="Normal">Normal</option>
                                 <option value="Preferencial">Preferencial</option>
                             </select> <br>
-                            <h2><label> A senha do cliente é: ${senha}</label></h2>
+                            <div class="senha-local">
+                                <label>A senha do cliente é:</label>
+                                <h2>${senha}</h2>
+                            </div>
                         </li> 
                         <li>
                             <a href="" class="btn-back"><img src="imagens/back.png" />Voltar</a>
