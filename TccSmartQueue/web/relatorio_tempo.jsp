@@ -49,40 +49,14 @@
                     <li class="grid-30">
                         <input type="submit" class="btn btn-outline azul" value="Gerar"/>
                     </li>
+                    <li>
+                        <input type="text" name="valor_x" />
+                        <input type="text" name="valor_y" />
+                        <input type="text" name="valor_tooltip" />
+                    </li>
                 </ul>
             </form>
             </div>
-        
-            <canvas id="myChart" width="400" height="400"></canvas> 
-            <script type="text/javascript">
-             var ctx = document.getElementById("myChart");
-
-             function generateChart(){
-                 var dataInicio = new Date(document.getElementById("dataInicio"));
-                 var dataFim = new Date(document.getElementById("dataFim");
-
-
-                 var myChart = new Chart(ctx, {
-                     type: 'bar',
-                     data: {
-                         labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-                         datasets: [{
-                             label: '# of Votes',
-                             data: [dataInicio, dataFim, 3, 5, 2, 3]
-                         }]
-                     },
-                     options: {
-                         scales: {
-                             yAxes: [{
-                                 ticks: {
-                                     beginAtZero:true
-                                 }
-                             }]
-                         }
-                     }
-                 });
-             }
-             </script>
         </div>
     </body>
 </html>

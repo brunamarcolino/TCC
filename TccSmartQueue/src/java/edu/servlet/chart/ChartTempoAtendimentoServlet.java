@@ -31,6 +31,9 @@ public class ChartTempoAtendimentoServlet extends HttpServlet{
         String atendente = request.getParameter("atendentes");
         
         String mensagem = "";
+        String[] valor_x = null, 
+                 valor_y = null, 
+                 valor_tooltip = null;
         
         if(data_inicio.isEmpty() || data_fim.isEmpty()){
             if(data_inicio.isEmpty()){
@@ -45,17 +48,19 @@ public class ChartTempoAtendimentoServlet extends HttpServlet{
             System.out.println(charts);
             request.setAttribute("charts", charts);
             
-            /*Chart chart = new Chart();
-            String[] valor_x=null, valor_y=null, valor_tooltip=null;
+            Chart chart = new Chart();
+            
             for (int i=0;i<charts.size();i++){
                 chart = charts.get(i);
                 valor_x[i] = chart.getValor_x();
                 valor_y[i] = chart.getValor_y();
                 valor_tooltip[i] = chart.getValor_tooltip();
-            }*/
-        
+            }            
         }
         
+        request.setAttribute("valor_x", valor_x);
+        request.setAttribute("valor_y", valor_y);
+        request.setAttribute("valor_tooltip", valor_tooltip);
         getServletContext().getRequestDispatcher("/relatorio_tempo.jsp").forward(request, response);
     }
 
