@@ -10,7 +10,7 @@ $(document).ready(function(){
     setTimeout(function(){
         $('.mensagem').addClass('ocultar');
         //$('.mensagem').hide();
-    }, 2000);
+    }, 5000);
     
     $('.image').css('height', height);
     $('.main').css('min-height', height-50);

@@ -45,17 +45,21 @@ public class ChartTempoAtendimentoServlet extends HttpServlet{
             request.setAttribute("mensagemErro", mensagem);
         } else {
             List<Chart> charts = dadosChartDao.relatorio_tempoMedio(data_inicio, data_fim, atendente); 
-            System.out.println("aqui " + charts);
+            
             request.setAttribute("charts", charts);
             
             Chart chart = new Chart();
             
-            for (int i=0;i<charts.size();i++){
+            for (int i=0;i<charts.size()-1;i++){
                 chart = charts.get(i);
+                System.out.println(chart);
                 valor_x[i] = chart.getValor_x();
                 valor_y[i] = chart.getValor_y();
                 valor_tooltip[i] = chart.getValor_tooltip();
             }            
+            System.out.println(chart.getValor_x());
+            System.out.println(chart.getValor_y());
+            System.out.println(chart.getValor_tooltip());
         }
         
         request.setAttribute("valor_x", valor_x);
