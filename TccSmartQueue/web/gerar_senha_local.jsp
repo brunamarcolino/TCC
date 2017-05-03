@@ -30,7 +30,7 @@
                     <h1>Gerar Próxima Senha</h1>
                     <h3>Caso precise, gere manualmente a próxima senha por aqui.</h3>
                 </div>
-                <form action="GerarSenhaLocalServlet" method="post">
+                <form action="GerarSenhaLocalServlet?id_usuario=${login.id_usuario}" method="post">
                     <ul>
                         <li>
                             <label>Informe o nome do cliente</label>
@@ -41,8 +41,11 @@
                             <select name="tipo_atendimento">
                                 <option value="Normal">Normal</option>
                                 <option value="Preferencial">Preferencial</option>
-                            </select> <br>
-                            <h2><label> A senha do cliente é: ${senha}</label></h2>
+                            </select>
+                            <div class="senha-local">
+                                <label>A senha do cliente é:</label>
+                                <h2>${senha}</h2>
+                            </div>
                         </li> 
                         <li>
                             <a href="" class="btn-back"><img src="imagens/back.png" />Voltar</a>
@@ -52,7 +55,5 @@
                 </form>    
             </div>
         </div>
-                        
-        <%@include file="WEB-INF/jspf/rodape.jspf" %>
     </body>
 </html>
