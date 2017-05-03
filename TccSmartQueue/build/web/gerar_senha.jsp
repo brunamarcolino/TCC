@@ -57,6 +57,19 @@
                                 </c:choose>
                             </h2>
                         </div>
+                        <div class="grid-100 mobile-grid-50">
+                            <p>Quantidade de Atendentes</p>
+                            <h2>
+                                <c:choose>
+                                    <c:when test="${empty dadossenha.atendentes_ativos}">
+                                        --
+                                    </c:when>
+                                    <c:otherwise>
+                                        ${dadossenha.atendentes_ativos}
+                                    </c:otherwise>
+                                </c:choose>
+                            </h2>
+                        </div>                        
                         <div class="grid-100 mobile-grid-70">
                             <p>Previsao Atendimento</p>
                             <h2>

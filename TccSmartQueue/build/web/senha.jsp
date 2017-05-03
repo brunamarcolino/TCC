@@ -54,6 +54,19 @@
                                 </c:choose>
                             </h2>
                         </div>
+                        <div class="grid-100 mobile-grid-50">
+                            <p>Quantidade de Atendentes</p>
+                            <h2>
+                                <c:choose>
+                                    <c:when test="${empty dadossenha.atendentes_ativos}">
+                                        --
+                                    </c:when>
+                                    <c:otherwise>
+                                        ${dadossenha.atendentes_ativos}
+                                    </c:otherwise>
+                                </c:choose>
+                            </h2>
+                        </div>                        
                         <div class="grid-100 mobile-grid-70">
                             <p>Previsão de atendimento</p>
                             <h2>
@@ -70,33 +83,32 @@
                     </div>
                 </c:otherwise>
             </c:choose>
-            <div class="grid-parent grid-50">
-                <div class="grid-100">
-                    <c:choose>
-                        <c:when test="${dadossenha.horario_comercial}">
-                            <c:choose>
-                                <c:when test="${dadossenha.distancia=='1'}">
-                                    <p class="location location-ok"><img src="imagens/success.png"/>Você está dentro da distancia permitida</p>
-                                    <p>Clique abaixo para gerar a sua senha:</p>
-                                    <input type="button" value="Gerar Senha" class="btn btn-outline azul" onClick="window.location.href='login_cliente.jsp?tipo_atendimento=${dadossenha.tipo_atendimento}'">                            
-                                </c:when>
-                                <c:when test="${dadossenha.distancia=='2'}">
-                                   <p class="location location-wrong"><img src="imagens/error.png"/>Você está FORA da distancia permitida</p>
-                                    <p class="alert"><i>Para que o botão GERAR SENHA fique disponível, é necessário se aproximar mais do local de atendimento</i></p>                            
-                                </c:when>
-                                <c:otherwise>
-                                    <p>Clique abaixo para gerar a sua senha:</p>
-                                    <input type="button" value="Gerar Senha" class="btn btn-outline azul" onClick="window.location.href='login_cliente.jsp?tipo_atendimento=${dadossenha.tipo_atendimento}'">                            
-                                </c:otherwise>
-                            </c:choose>        
-                        </c:when>
-                        <c:otherwise>
-                            <p>Esse estabelecimento encontra-se fechado no momento</p>
-                        </c:otherwise>    
-                    </c:choose> 
-                            
+                <div class="grid-parent grid-50">
+                    <div class="grid-100">
+                        <c:choose>
+                            <c:when test="${dadossenha.horario_comercial}">
+                                <c:choose>
+                                    <c:when test="${dadossenha.distancia=='1'}">
+                                        <p class="location location-ok"><img src="imagens/success.png"/>Você está dentro da distancia permitida</p>
+                                        <p>Clique abaixo para gerar a sua senha:</p>
+                                        <input type="button" value="Gerar Senha" class="btn btn-outline azul" onClick="window.location.href='login_cliente.jsp?tipo_atendimento=${dadossenha.tipo_atendimento}'">                            
+                                    </c:when>
+                                    <c:when test="${dadossenha.distancia=='2'}">
+                                       <p class="location location-wrong"><img src="imagens/error.png"/>Você está FORA da distancia permitida</p>
+                                        <p class="alert"><i>Para que o botão GERAR SENHA fique disponível, é necessário se aproximar mais do local de atendimento</i></p>                            
+                                    </c:when>
+                                    <c:otherwise>
+                                        <p>Clique abaixo para gerar a sua senha:</p>
+                                        <input type="button" value="Gerar Senha" class="btn btn-outline azul" onClick="window.location.href='login_cliente.jsp?tipo_atendimento=${dadossenha.tipo_atendimento}'">                            
+                                    </c:otherwise>
+                                </c:choose>        
+                            </c:when>
+                            <c:otherwise>
+                                <p>Esse estabelecimento encontra-se fechado no momento</p>
+                            </c:otherwise>    
+                        </c:choose>            
+                    </div>
                 </div>
-            </div>
             </div>
         </div>
     </body>

@@ -18,6 +18,17 @@ public class DadosSenha {
     private int quantidade_pessoas;
     private int distancia;
     private boolean horario_comercial;
+    private int atendentes_ativos;
+
+    public int getAtendentes_ativos() {
+        return atendentes_ativos;
+    }
+
+    public void setAtendentes_ativos(int atendentes_ativos) {
+        this.atendentes_ativos = atendentes_ativos;
+    }
+    
+    
 
     public int getDistancia() {
         return distancia;
