@@ -28,7 +28,7 @@ public class ChartTempoAtendimentoServlet extends HttpServlet{
         ChartDao dadosChartDao = new ChartDao();
         String data_inicio = request.getParameter("data_inicio");
         String data_fim = request.getParameter("data_fim");
-        String atendente = request.getParameter("atendentes");
+        String atendente = request.getParameter("atendente");
         
         String mensagem = "";
         String[] valor_x = null, 
@@ -45,7 +45,7 @@ public class ChartTempoAtendimentoServlet extends HttpServlet{
             request.setAttribute("mensagemErro", mensagem);
         } else {
             List<Chart> charts = dadosChartDao.relatorio_tempoMedio(data_inicio, data_fim, atendente); 
-            System.out.println(charts);
+            System.out.println("aqui " + charts);
             request.setAttribute("charts", charts);
             
             Chart chart = new Chart();
