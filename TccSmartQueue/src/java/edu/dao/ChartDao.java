@@ -19,7 +19,6 @@ public class ChartDao extends Dao{
     
     public List<Chart> relatorio_tempoMedio(String parametro_data_ini, String parametro_data_fim, String parametro_atendente) {
         Connection conn = null;
-        System.out.println(parametro_data_ini + parametro_data_fim + parametro_atendente);
 
         try {
             conn = getConnection();
@@ -40,10 +39,9 @@ public class ChartDao extends Dao{
                chart.setValor_x(result.getString("data_senha"));
                chart.setValor_y(result.getString("nm_usuario"));
                chart.setValor_tooltip(result.getString("tm"));
-                System.out.println(" xx " + chart.getValor_x() + chart.getValor_tooltip() + chart.getValor_y());
+               System.out.println("Retorno: " + chart.getValor_x() + chart.getValor_tooltip() + chart.getValor_y());
                charts.add(chart);
             }
-            System.out.println(" xxx ");
             return charts;
         } catch (Exception ex) {
             ex.printStackTrace();

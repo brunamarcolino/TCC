@@ -50,9 +50,9 @@
                         <input type="submit" class="btn btn-outline azul" value="Gerar"/>
                     </li>
                     <li>
-                        <input type="text" name="valor_x" />
-                        <input type="text" name="valor_y" />
-                        <input type="text" name="valor_tooltip" />
+                        <input type="text" name="valor_x" value="${valor_x[1]}" />
+                        <input type="text" name="valor_y" value="${valor_y[1]}" />
+                        <input type="text" name="valor_tooltip" value="${valor_tooltip[1]}" />
                     </li>
                 </ul>
             </form>
