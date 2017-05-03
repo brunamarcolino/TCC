@@ -19,13 +19,13 @@ RA: 1510027287
                 <nav>
                     <ul>
                         <li>
-                            <a href="ListaUsuarioServlet">Gerenciar funcionários</a>
+                            <a href="ListaUsuarioServlet">Gerenciar Funcionários</a>
                         </li>
                         <li>
                             <a href="ListaChartServlet">Gerar Relatórios</a>
                         </li>
                         <li>
-                            <a href="ListaParametrosServlet">Parametros do Sistemas</a>
+                            <a href="ListaParametrosServlet">Parâmetros do Sistemas</a>
                         </li>
                     </ul>
                 </nav>

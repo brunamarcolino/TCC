@@ -35,9 +35,10 @@ public class PainelServlet extends HttpServlet {
                 PainelDao painelDao = new PainelDao();
                 
                 //Retorna mesas e senhas em atendimento
-                List<painel_ant> ant = painelDao.lista_senhas_chamadas();
-                System.out.println("Obtidos " + ant.size() + " mesas.");
-                request.setAttribute("ants", ant);
+                List<painel_ant> ants = painelDao.lista_senhas_chamadas();
+                System.out.println("Obtidos " + ants.size() + " mesas.");
+                request.setAttribute("ants", ants);
+                
                 
                 //pega senha atual e tempo medio
                 painel_atu atu = painelDao.lista_senhas_anteriores();

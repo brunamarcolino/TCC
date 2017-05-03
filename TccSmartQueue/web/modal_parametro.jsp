@@ -29,7 +29,7 @@
                    
                     </c:when>
                     <c:otherwise>
-                        <h1>EDITAR PARAMETROS</h1>
+                        <h1>EDITAR PARÂMETROS</h1>
                         <form id="parametros" action="EditarParametroServlet" method="get">
                             <ul>
                                 <li>

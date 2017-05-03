@@ -57,7 +57,7 @@
                         </form>   
                     </c:when>
                     <c:otherwise>
-                    <h1>EDITAR USUÁRIO</h1>
+                    <h1>EDITAR FUNCIONÁRIO</h1>
                         <form id="usuarios" action="EditarUsuarioServlet" method="get">
                             <ul>
                                 <li>
