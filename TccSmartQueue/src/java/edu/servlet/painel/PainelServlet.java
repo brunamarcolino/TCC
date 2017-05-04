@@ -4,7 +4,6 @@ import edu.dao.PainelDao;
 import edu.vo.painel_ant;
 import edu.vo.painel_atu;
 import java.io.IOException;
-import java.sql.Time;
 import java.util.List;
 
 import javax.servlet.ServletException;

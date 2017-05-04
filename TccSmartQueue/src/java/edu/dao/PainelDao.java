@@ -10,7 +10,6 @@ import edu.vo.painel_atu;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,9 +31,11 @@ public class PainelDao extends Dao{
             PreparedStatement stmt = conn.prepareStatement(sql);
             ResultSet result = stmt.executeQuery();
             
-            painel_ant ant = new painel_ant();
+            
             
             while (result.next()){
+               painel_ant ant = new painel_ant();
+                
                ant.setFila(result.getInt("fila"));
                ant.setSenha(result.getInt("senha"));
                

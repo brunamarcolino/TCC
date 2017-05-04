@@ -34,14 +34,18 @@ public class ChartDao extends Dao{
 
             ResultSet result = stmt.executeQuery();
             
-            Chart chart = new Chart(); 
+            
             while (result.next()){
+               Chart chart = new Chart(); 
+               
                chart.setValor_x(result.getString("data_senha"));
                chart.setValor_y(result.getString("nm_usuario"));
                chart.setValor_tooltip(result.getString("tm"));
                System.out.println("Retorno: " + chart.getValor_x() + chart.getValor_tooltip() + chart.getValor_y());
+               
                charts.add(chart);
             }
+            System.out.println("DAO " + charts);
             return charts;
         } catch (Exception ex) {
             ex.printStackTrace();

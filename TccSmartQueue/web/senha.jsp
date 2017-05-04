@@ -36,7 +36,7 @@
                                         --
                                     </c:when>
                                     <c:otherwise>
-                                        ${dadossenha.tempo_medio}
+                                        <fmt:formatDate value="${dadossenha.tempo_medio}" type="time" pattern="HH:mm" dateStyle="full"/>
                                     </c:otherwise>
                                 </c:choose>
                             </h2>

@@ -33,7 +33,6 @@ public class ChartTempoAtendimentoServlet extends HttpServlet{
         String mensagem = "";
         String valor_x = "", valor_y = "", valor_tooltip = ""; 
         
-        
         if(data_inicio.isEmpty() || data_fim.isEmpty()){
             if(data_inicio.isEmpty()){
                 mensagem = mensagem + "<span>Preencha a data início! </span>";
@@ -49,18 +48,23 @@ public class ChartTempoAtendimentoServlet extends HttpServlet{
             Chart chart = new Chart();
             
             for (int i=0;i<tam;i++){
+                System.out.println(i);
                 chart = charts.get(i);                
                 if (i!=0){
                     valor_x = valor_x + ",";
                     valor_y = valor_y + ",";
                     valor_tooltip = valor_tooltip + ",";
                 }
-                valor_x = valor_x + chart.getValor_x();
-                valor_y = valor_y + chart.getValor_y();
-                valor_tooltip = valor_tooltip + chart.getValor_tooltip();
-            }            
+                valor_x = valor_x + "&quot;" + chart.getValor_x() + "&quot;";
+                valor_y = valor_y +"&quot;" + chart.getValor_y() + "&quot;";
+                valor_tooltip = valor_tooltip + "&quot;" + chart.getValor_tooltip() + "&quot;";
+            }  
+        System.out.println("SERVLET " + charts);
         }
         
+        System.out.println(valor_x);
+        System.out.println(valor_y);
+        System.out.println(valor_tooltip);
         request.setAttribute("valor_x", valor_x);
         request.setAttribute("valor_y", valor_y);
         request.setAttribute("valor_tooltip", valor_tooltip);
