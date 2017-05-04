@@ -29,11 +29,10 @@ public class ChartTempoAtendimentoServlet extends HttpServlet{
         String data_inicio = request.getParameter("data_inicio");
         String data_fim = request.getParameter("data_fim");
         String atendente = request.getParameter("atendente");
-        
+        //String valor_x = "";
         String mensagem = "";
-        String[] valor_x = null, 
-                 valor_y = null, 
-                 valor_tooltip = null;
+        String[] valor_x = null, valor_y = null, valor_tooltip = null; 
+        
         
         if(data_inicio.isEmpty() || data_fim.isEmpty()){
             if(data_inicio.isEmpty()){
@@ -44,24 +43,26 @@ public class ChartTempoAtendimentoServlet extends HttpServlet{
             }
             request.setAttribute("mensagemErro", mensagem);
         } else {
-            List<Chart> charts = dadosChartDao.relatorio_tempoMedio(data_inicio, data_fim, atendente); 
+            List<Chart> charts = dadosChartDao.relatorio_tempoMedio(data_inicio, data_fim, atendente);
+            int tam = charts.size();
+            valor_x = new String[tam]; 
+            valor_y = new String[tam];
+            valor_tooltip = new String[tam];
             
-            request.setAttribute("charts", charts);
+            
+
             
             Chart chart = new Chart();
             
-            for (int i=0;i<charts.size()-1;i++){
+            for (int i=0;i<tam;i++){
                 chart = charts.get(i);
                 System.out.println(chart);
                 valor_x[i] = chart.getValor_x();
                 valor_y[i] = chart.getValor_y();
                 valor_tooltip[i] = chart.getValor_tooltip();
             }            
-            System.out.println(chart.getValor_x());
-            System.out.println(chart.getValor_y());
-            System.out.println(chart.getValor_tooltip());
         }
-        
+        System.out.println("valor_x " + valor_x);
         request.setAttribute("valor_x", valor_x);
         request.setAttribute("valor_y", valor_y);
         request.setAttribute("valor_tooltip", valor_tooltip);

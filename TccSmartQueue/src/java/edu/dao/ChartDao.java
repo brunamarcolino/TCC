@@ -35,7 +35,7 @@ public class ChartDao extends Dao{
             ResultSet result = stmt.executeQuery();
             
             Chart chart = new Chart(); 
-            if (result.next()){
+            while (result.next()){
                chart.setValor_x(result.getString("data_senha"));
                chart.setValor_y(result.getString("nm_usuario"));
                chart.setValor_tooltip(result.getString("tm"));
