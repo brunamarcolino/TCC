@@ -26,6 +26,19 @@ $(document).ready(function(){
        }
     });
     
+    if($(".tooltip").length){
+        $(".tooltip").qtip({
+            content: {
+                text: $('.tooltiptext')
+            },
+            position: {
+                my: 'center left',  // Position my top left...
+                at: 'center right', // at the bottom right of...
+                target: $('.tooltip') // my target
+            }
+        });
+    }
+    
     if($("#cpf").length){
         $("#cpf").mask('000.000.000-00', {reverse: true});
     }

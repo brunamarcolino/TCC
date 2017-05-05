@@ -32,11 +32,11 @@
                          
                         <ul>
                             <li>
-                                <label>Atendente:</label>
+                                <label>Atendente</label>
                                 <h2>${login.nm_usuario}</h2>
                             </li>
                             <li>
-                                <label>Mesa:</label>
+                                <label>Mesa</label>
                                 <h2>${id_fila}</h2>
                             </li>
                         </ul>
@@ -58,19 +58,19 @@
                             <c:when test="${empty senha}">
                                 <ul>
                                     <li>
-                                        <label>Senha :</label>
+                                        <label>Senha</label>
                                             --
                                     </li>
                                     <li>
-                                        <label>Nome :</label>
+                                        <label>Nome</label>
                                             --
                                     </li>
                                     <li>
-                                        <label>Tipo :</label>
+                                        <label>Tipo</label>
                                             --
                                     </li>           
                                     <li>
-                                        <label>Status :</label>
+                                        <label>Status</label>
                                             --
                                     </li>                                    
                                 </ul>                                
@@ -78,19 +78,19 @@
                             <c:otherwise>
                                 <ul>
                                     <li>
-                                        <label>Senha :</label>
+                                        <label>Senha</label>
                                         <h2>${senha.id_senha}</h2>
                                     </li>
                                     <li>
-                                        <label>Nome :</label>
+                                        <label>Nome</label>
                                         <h2>${senha.nome_cliente}</h2>
                                     </li>
                                     <li>
-                                        <label>Tipo :</label>
+                                        <label>Tipo</label>
                                         <h2>${senha.tipo_atendimento}</h2>
                                     </li>           
                                     <li>
-                                        <label>Status :</label>
+                                        <label>Status</label>
                                         <h2>${senha.status_atendimento}</h2>
                                     </li> 
                                 </ul>                                   

@@ -43,7 +43,7 @@
                                 <option value="Preferencial">Preferencial</option>
                             </select>
                             <div class="senha-local">
-                                <label>A senha do cliente é:</label>
+                                <label>A senha do cliente é</label>
                                 <h2>${senha}</h2>
                             </div>
                         </li> 

@@ -36,11 +36,11 @@
                                     <input type="hidden" name="id" value="${parametro.id_parametro}" readonly="readonly"/>
                                 </li>    
                                 <li>
-                                    <label for="Descricao">Descricao : </label>
+                                    <label for="Descricao">Descrição</label>
                                     <input type="text" name="descricao" value="${parametro.desc_parametro}" readonly="readonly"/>
                                 </li>
                                 <li>
-                                    <label for="Valor">Valor : </label>
+                                    <label for="Valor">Valor</label>
                                     <c:choose>
                                         <c:when test="${parametro.id_parametro=='1'}">
                                             <select name="valor_1">

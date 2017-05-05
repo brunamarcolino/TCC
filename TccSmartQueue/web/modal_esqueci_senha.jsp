@@ -24,11 +24,11 @@
                 <form id="usuarios" action="EsqueciSenhaServlet" method="post">
                     <ul>
                         <li>
-                            <label for="Login">Login : </label>
+                            <label for="Login">Login</label>
                             <input type="text" name="login" value="${usuario.nm_usuario}"/>
                         </li>
                         <li>
-                            <label for="Email">Email cadastrado: </label>
+                            <label for="Email">Email cadastrado</label>
                             <input type="text" name="email" value="${usuario.email_usuario}"/>
                         </li>                                   
                         <li>

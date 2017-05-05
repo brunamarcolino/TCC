@@ -30,20 +30,20 @@
                         <form id="iusuario" action="IncluirUsuarioServlet" method="get">
                             <ul>
                                 <li>
-                                    <label for="Nome">Nome : </label>
+                                    <label for="Nome">Nome</label>
                                     <input type="text" name="inome" value="${param.nm_usuario}"/>
                                 </li>
                                 <li>
-                                    <label for="Email">Email : </label>
+                                    <label for="Email">Email</label>
                                     <input type="text" name="iemail" value="${param.email_usuario}"/>
                                 </li>
                                 <li class="grid-parent grid-50">
-                                    <label for="CPF">CPF : </label>
+                                    <label for="CPF">CPF</label>
                                     <input type="text" name="icpf" value="${param.cpf_usuario}"/>
                                 </li>
 
                                 <li class="grid-50">
-                                    <label for="Tipo">Tipo : </label>
+                                    <label for="Tipo">Tipo</label>
                                     <select name="itipo">
                                         <option value="Atendente">Atendente</option>
                                         <option value="Administrador">Administrador</option>
@@ -64,19 +64,19 @@
                                     <input type="hidden" name="id" value="${usuario.id_usuario}" readonly="readonly"/>
                                 </li>                
                                 <li>
-                                    <label for="Nome">Nome : </label>
+                                    <label for="Nome">Nome</label>
                                     <input type="text" name="nome" value="${usuario.nm_usuario}"/>
                                 </li>                
                                 <li>
-                                    <label for="Email">Email : </label>
+                                    <label for="Email">Email</label>
                                     <input type="text" name="email" value="${usuario.email_usuario}"/>
                                 </li>                
                                 <li class="grid-parent grid-50">
-                                    <label for="CPF">CPF : </label>
+                                    <label for="CPF">CPF</label>
                                     <input type="number" name="cpf" value="${usuario.cpf_usuario}"/>
                                 </li>                
                                 <li class="grid-50">
-                                    <label for="Tipo">Tipo : </label>
+                                    <label for="Tipo">Tipo</label>
                                     <select name="tipo">
                                         <option value="Atendente">Atendente</option>
                                         <option value="Administrador">Administrador</option>

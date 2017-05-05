@@ -400,6 +400,22 @@ div.senha-local h2{
     margin-top: 0;
     text-align: center;
 }
+.tooltip{
+    position: absolute;
+    margin-left: .75em;
+    margin-top: -.25em;
+}
+.tooltiptext{
+    display: none;
+}
+.qtip-default{
+    border-color: #DDD !important;
+    background-color: #FFF !important;
+    font-size: .8em !important;
+    font-family: 'Lato-Light', sans-serif !important;
+    padding: 1em .5em !important;
+    max-width: 200px !important;
+}
 table{
     border: solid 1px #DDD;
     border-bottom: none;
@@ -578,20 +594,31 @@ div.box-cliente p{
     margin: 1em 0 1.5em 0;
     border-top: solid 1px #EEE;
 }
-.preferencial h4{
+.preferencial h4,
+.tooltiptext h4{
     font-weight: bold;
     color: #FF4C4C;
     padding-top: 1.5em;
 }
-.preferencial h4 strong{
+.tooltiptext h4{
+    padding-top: 0;
+    margin-bottom: 1em;
+}
+.preferencial h4 strong,
+.tooltiptext h4{
     font-family: 'Lato-Bold', sans-serif;
 }
-.preferencial ul{
+.preferencial ul,
+.tooltiptext ul{
     margin-left: .75em;
     margin-top: 1em;
     padding-bottom: 1em;
 }
-.preferencial ul li {
+.tooltiptext ul{
+    padding-bottom: 0;
+}
+.preferencial ul li,
+.tooltiptext ul li{
     list-style-type: disc;
     list-style-position: inside;
     margin-bottom: .5em;

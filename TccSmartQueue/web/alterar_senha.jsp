@@ -35,7 +35,16 @@
                                     <input type="hidden" name="id" value="${usuario.id_usuario}" readonly="readonly"/>
                                 </li>    
                                 <li>
-                                    <label for="Senha">Senha : </label>
+                                    <label for="Senha">Senha<img src="imagens/icon.png" class="tooltip" />
+                                        <div class="tooltiptext">
+                                            <h4>Políticas de segurança:</h4>
+                                            <span>A senha deve conter no mínimo 6 caractares sendo eles:</span>
+                                            <ul>
+                                                <li>Letras (a-z)</li>
+                                                <li>Números (0-9)</li>
+                                            </ul>
+                                        </div>
+                                    </label>
                                     <input type="password" name="senha" value="${usuario.senha_usuario}"/>
                                 </li>
                                 <li>
