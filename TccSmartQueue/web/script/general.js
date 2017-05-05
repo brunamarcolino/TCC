@@ -25,6 +25,10 @@ $(document).ready(function(){
            $('.preferencial').removeClass('aberto');
        }
     });
+    
+    if($("#cpf").length){
+        $("#cpf").mask('000.000.000-00', {reverse: true});
+    }
 });
 
 $(window).resize(function(){

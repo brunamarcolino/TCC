@@ -22,7 +22,7 @@
         <div class="main">
             <div class="grid-25 mobile-grid-90 section-center">
                 <div class="box">
-                    <h1>Login Cliente</h1>
+                    <h1>Cadastro Cliente</h1>
                     <p>Para recuperar sua senha gerada ou gerar uma nova senha, por favor preencha o formulário abaixo:</p>
                 </div>
                 <form name="gerasenha" action="GeraSenhaServlet?tipo_atendimento=${param.tipo_atendimento}" method="post">                
@@ -34,7 +34,7 @@
                         </li>
                         <li>
                             <label for="cpfcliente">CPF : </label>
-                            <input type="number" name="cpf" id="cpf" value="${param.cpf}"/>
+                            <input type="text" name="cpf" id="cpf" value="${param.cpf}"/>
                         </li>
                         <li>
                             <label for="emailcliente">Email : </label>
