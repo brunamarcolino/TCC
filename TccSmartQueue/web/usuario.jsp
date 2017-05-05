@@ -13,7 +13,7 @@
         <meta name="description" content="Gerenciador de filas">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
-        <title>Smartqueue</title>
+        <title>Smartqueue - Funcionários</title>
         <%@include file="WEB-INF/jspf/chamadas.jspf"%>
     </head>
     <body>    
@@ -26,7 +26,7 @@
         </c:if>
         <div class="main">
             <div class="grid-75 mobile-grid-100">
-                <h1>Manter Funcionários</h1>
+                <h1>Funcionários</h1>
             </div>
             <div class="grid-75 mobile-grid-100">
             <c:choose>
@@ -37,7 +37,7 @@
                 <table border="0" cellpadding="0" cellspacing="0" width="100%">
                     <tr>
                         <th>Nome</th>
-                        <th>Email</th>
+                        <th>E-mail</th>
                         <th>CPF</th>
                         <th>Tipo</th>
                         <th>Ações</th>

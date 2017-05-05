@@ -400,6 +400,22 @@ div.senha-local h2{
     margin-top: 0;
     text-align: center;
 }
+.tooltip{
+    position: absolute;
+    margin-left: .75em;
+    margin-top: -.25em;
+}
+.tooltiptext{
+    display: none;
+}
+.qtip-default{
+    border-color: #DDD !important;
+    background-color: #FFF !important;
+    font-size: .8em !important;
+    font-family: 'Lato-Light', sans-serif !important;
+    padding: 1em .5em !important;
+    max-width: 200px !important;
+}
 table{
     border: solid 1px #DDD;
     border-bottom: none;
@@ -524,6 +540,89 @@ div.box-cliente p{
     color: #777;
     max-width: 100%;
     margin-bottom: 1.5em;
+}
+.painel .info > div h2,
+.painel table td{
+    color: dodgerblue;
+}
+.painel table,
+.painel table td{
+    border: none;
+    margin: 0 auto;
+}
+.painel table th{
+    background-color: transparent;
+}
+.painel table td{
+    font-size: 1.2em;
+    padding: .75em;
+    font-family: 'Lato-Bold', sans-serif;
+}
+.painel table tr td:nth-child(1){
+    font-family: 'Lato-Light', sans-serif;
+}
+.painel table th{
+    text-align: center;
+    padding-top: 0;
+    font-size: .85em;
+    margin-bottom: .5em;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #777;
+    vertical-align: top;
+}
+.painel > div{
+    border-right: none;
+}
+.painel .info h2{
+    font-size: 2em;
+}
+.painel .info h2.senha{
+    font-size: 4em;
+}
+.preferencial{
+    overflow: hidden;
+    max-height: 0;
+    margin: 0;
+    transition: all .3s ease-out;
+    text-align: left;
+    font-size: .9em;
+    padding: 0 1em;
+}
+.preferencial.aberto{
+    max-height: 300px;
+    margin: 1em 0 1.5em 0;
+    border-top: solid 1px #EEE;
+}
+.preferencial h4,
+.tooltiptext h4{
+    font-weight: bold;
+    color: #FF4C4C;
+    padding-top: 1.5em;
+}
+.tooltiptext h4{
+    padding-top: 0;
+    margin-bottom: 1em;
+}
+.preferencial h4 strong,
+.tooltiptext h4{
+    font-family: 'Lato-Bold', sans-serif;
+}
+.preferencial ul,
+.tooltiptext ul{
+    margin-left: .75em;
+    margin-top: 1em;
+    padding-bottom: 1em;
+}
+.tooltiptext ul{
+    padding-bottom: 0;
+}
+.preferencial ul li,
+.tooltiptext ul li{
+    list-style-type: disc;
+    list-style-position: inside;
+    margin-bottom: .5em;
+    color: #777
 }
 .btn.verde,
 .switch.verde{

@@ -11,7 +11,7 @@
         <meta name="description" content="Gerenciador de filas">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
-        <title>Smartqueue</title>
+        <title>Smartqueue - Esqueci minha senha</title>
         <%@include file="WEB-INF/jspf/chamadas.jspf"%>
     </head>
     <body>   
@@ -24,11 +24,11 @@
                 <form id="usuarios" action="EsqueciSenhaServlet" method="post">
                     <ul>
                         <li>
-                            <label for="Login">Login : </label>
+                            <label for="Login">Login</label>
                             <input type="text" name="login" value="${usuario.nm_usuario}"/>
                         </li>
                         <li>
-                            <label for="Email">Email cadastrado: </label>
+                            <label for="Email">E-mail cadastrado</label>
                             <input type="text" name="email" value="${usuario.email_usuario}"/>
                         </li>                                   
                         <li>

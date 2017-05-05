@@ -22,26 +22,35 @@
         <div class="main">
             <div class="grid-25 mobile-grid-90 section-center">
                 <div class="box">
-                    <h1>Login Cliente</h1>
+                    <h1>Cadastro Cliente</h1>
                     <p>Para recuperar sua senha gerada ou gerar uma nova senha, por favor preencha o formulário abaixo:</p>
                 </div>
                 <form name="gerasenha" action="GeraSenhaServlet?tipo_atendimento=${param.tipo_atendimento}" method="post">                
                     <input type="hidden"  name="notifica">
                     <ul>
                         <li>
-                            <label for="nomecliente">Nome : </label>
+                            <label for="nomecliente">Nome</label>
                             <input type="text" name="cliente" value="${param.cliente}"/>
                         </li>
                         <li>
-                            <label for="cpfcliente">CPF : </label>
-                            <input type="number" name="cpf" id="cpf" value="${param.cpf}"/>
+                            <label for="cpfcliente">CPF</label>
+                            <input type="text" name="cpf" id="cpf" value="${param.cpf}"/>
                         </li>
                         <li>
-                            <label for="emailcliente">Email : </label>
+                            <label for="emailcliente">E-mail </label>
                             <input type="text" name="email" id="email" value="${param.email}"/>
                         </li>
                         <li>
-                            <label for="senha">Senha :</label>
+                            <label for="senha">Senha <img src="imagens/icon.png" class="tooltip" />
+                                <div class="tooltiptext">
+                                    <h4>Políticas de segurança:</h4>
+                                    <span>A senha deve conter no mínimo 6 caractares sendo eles:</span>
+                                    <ul>
+                                        <li>Letras (a-z)</li>
+                                        <li>Números (0-9)</li>
+                                    </ul>
+                                </div>
+                           </label>
                             <input type="password" name="senhacliente" value="${param.senhacliente}"/>
                         </li>
                         <li>

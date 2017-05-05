@@ -13,7 +13,7 @@
         <meta name="description" content="Gerenciador de filas">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
-        <title>Smartqueue</title>
+        <title>Smartqueue - Tipo de atendimento</title>
         <%@include file="WEB-INF/jspf/chamadas.jspf"%>
        
     </head>
@@ -25,16 +25,26 @@
             <div class="grid-25 grid-parent mobile-grid-85 section-center">
                 <div class="grid-100 mobile-grid-100">
                     <h1>COMO QUER SER ATENDIDO?</h1>
-                    <h3>Escolha o seu tipo de atendimento:</h3>
+                    <h3>Escolha o tipo de atendimento</h3>
                 </div>
                 <form name="tipo" id="local" action="MapsServlet" method="post">
                     <ul>
                         <li>
                             <input type="hidden" name="localiza"/>
-                            <select name="tipo_atendimento">
+                            <select name="tipo_atendimento" id="tipo_atendimento">
                                 <option value="Normal">Normal</option>
                                 <option value="Preferencial">Preferencial</option>
                             </select>
+                        </li>
+                        <li class="preferencial">
+                            <h4><strong>ATENÇÃO!</strong><br/> Serão atendidas como <strong>PREFERENCIAL</strong> às pessoas:</h4>
+                            <ul>
+                                <li>Pessoas portadoras de deficiência;</li>
+                                <li>Idosos (idade igual ou superior a 60 anos);</li>
+                                <li>Gestantes;</li>
+                                <li>Lactantes;</li>
+                                <li>Pessoas com crianças de colo.</li>
+                            </ul>
                         </li>
                         <li>
                             <a href="index.jsp" class="btn-back"><img src="imagens/back.png" />Voltar</a>

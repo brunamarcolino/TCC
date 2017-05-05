@@ -14,7 +14,7 @@
         <meta name="description" content="Gerenciador de filas">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
-        <title>Smartqueue</title>
+        <title>Smartqueue - Gerar senha</title>
         <%@include file="WEB-INF/jspf/chamadas.jspf"%>
         
     </head>
@@ -71,7 +71,7 @@
                             </h2>
                         </div>                        
                         <div class="grid-100 mobile-grid-70">
-                            <p>Previsao Atendimento</p>
+                            <p>Previsão Atendimento</p>
                             <h2>
                                 <c:choose>
                                     <c:when test="${empty dadossenha.previsao_atendimento}">
@@ -85,7 +85,7 @@
                         </div>
                     </div>
                     <div class="grid-parent grid-50">
-                        <p>Sua Senha é: </p>
+                        <p>Sua Senha é </p>
                         <h1>${senha.id_senha}</h1>
                         <input type="button" value="Cancelar Senha" class="btn btn-outline vermelho" onClick="window.location.href='CancelarSenhaServlet?id_senha=${senha.id_senha}'">
                     </div>                                    

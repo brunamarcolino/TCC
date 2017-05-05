@@ -14,19 +14,19 @@
         <meta name="description" content="Gerenciador de filas">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
-        <title>Smartqueue</title>
+        <title>Smartqueue - Painel de senhas</title>
         <%@include file="WEB-INF/jspf/chamadas.jspf"%>
     </head>
     <body>
         <%@include file="WEB-INF/jspf/cabecalho.jspf"%>
         <div class="main">
-            <div class="grid-75 gera-senha">
+            <div class="grid-75 painel gera-senha">
             <c:choose>  
                 <c:when test="${empty atu}">
                     <p>Nenhum dado!</p>
                 </c:when>
                 <c:otherwise>
-                    <div class="grid-parent grid-50 mobile-grid-100 info">
+                    <div class="grid-parent grid-40 mobile-grid-100 info">
                         <div class="grid-100 mobile-grid-50">
                             <!--<p id="demo"></p> -->
                             <p>Tempo médio de atendimento</p>
@@ -43,7 +43,7 @@
                         </div>                    
                         <div class="grid-100 mobile-grid-50">
                             <p>Senha Atual</p>
-                            <h2>
+                            <h2 class="senha">
                                 <c:choose>
                                     <c:when test="${empty atu.senha_atual}">
                                         --
@@ -55,7 +55,7 @@
                             </h2>
                         </div>
                         <div class="grid-100 mobile-grid-50">
-                            <p>Status Senha Atual</p>
+                            <p>Status da Senha Atual</p>
                             <h2>
                                 <c:choose>
                                     <c:when test="${empty atu.status_atendimento}">
@@ -71,21 +71,21 @@
             </c:choose>
             </div>
                         
-            <div class="grid-parent grid-50">
+            <div class="grid-parent grid-60">
                 <div class="grid-100">
                     <c:choose>
                         <c:when test="${empty ants}">
                             <p>Nenhum dado!</p>
                         </c:when>
                         <c:otherwise>
-                            <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                            <table border="0" cellpadding="0" cellspacing="0" width="80%">
                                 <tr>
                                     <th>Mesa</th>
-                                    <th>Senha</th>
+                                    <th>Senha sendo atendida</th>
                                 </tr>
                                 <c:forEach var="ant" items="${ants}">    
                                 <tr>
-                                    <td>      
+                                    <td width="50%">      
                                         ${ant.fila}
                                     </td>
                                     <td>      

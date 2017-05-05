@@ -17,7 +17,7 @@
         <meta name="description" content="Gerenciador de filas">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
-        <title>Smartqueue</title>
+        <title>Smartqueue - Gerar senha local</title>
         <%@include file="WEB-INF/jspf/chamadas.jspf"%>
     </head>
     <body>
@@ -28,7 +28,7 @@
             <div class="grid-25 mobile-grid-100 section-center">
                 <div class="box">
                     <h1>Gerar Senha</h1>
-                    <h3>Caso precise, gere manualmente a próxima senha por aqui.</h3>
+                    <h3>Caso precise, gere manualmente a próxima senha por aqui</h3>
                 </div>
                 <form action="GerarSenhaLocalServlet?id_usuario=${login.id_usuario}" method="post">
                     <ul>
@@ -43,7 +43,7 @@
                                 <option value="Preferencial">Preferencial</option>
                             </select>
                             <div class="senha-local">
-                                <label>A senha do cliente é:</label>
+                                <label>A senha do cliente é</label>
                                 <h2>${senha}</h2>
                             </div>
                         </li> 

@@ -6,7 +6,10 @@ RA: 1510016735
 
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/estilos/estilo.css" />
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/estilos/unsemantic-responsive.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/estilos/jquery.qtip.min.css" />
 <script type="text/javascript" src="${pageContext.request.contextPath}/script/jquery-3.2.0.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/script/jquery.mask.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/script/jquery.qtip.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/script/general.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/script/localizacao.js"></script>
 

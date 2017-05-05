@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Alterar Parametro</title>
+        <title>Smartqueue - Alterar parâmetros</title>
     </head>
     <body>
         <form id="parametro" action="ParametroServlet?id_parametro=+${param.id_parametro}" method="get">
