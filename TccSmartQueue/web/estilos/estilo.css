@@ -525,6 +525,45 @@ div.box-cliente p{
     max-width: 100%;
     margin-bottom: 1.5em;
 }
+.painel .info > div h2,
+.painel table td{
+    color: dodgerblue;
+}
+.painel table,
+.painel table td{
+    border: none;
+    margin: 0 auto;
+}
+.painel table th{
+    background-color: transparent;
+}
+.painel table td{
+    font-size: 1.2em;
+    padding: .75em;
+    font-family: 'Lato-Bold', sans-serif;
+}
+.painel table tr td:nth-child(1){
+    font-family: 'Lato-Light', sans-serif;
+}
+.painel table th{
+    text-align: center;
+    padding-top: 0;
+    font-size: .85em;
+    margin-bottom: .5em;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #777;
+    vertical-align: top;
+}
+.painel > div{
+    border-right: none;
+}
+.painel .info h2{
+    font-size: 2em;
+}
+.painel .info h2.senha{
+    font-size: 4em;
+}
 .btn.verde,
 .switch.verde{
     border-color: #84bd00;
