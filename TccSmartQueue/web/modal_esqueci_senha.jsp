@@ -16,11 +16,11 @@
     </head>
     <body>   
         <div class="main">
-            <div class="grid-30 mobile-grid-90">
+            <div class="grid-25 mobile-grid-90">
                 <h1>Esqueci minha senha</h1>
                 <h3>Informe os dados abaixo</h3>
             </div>
-            <div class="grid-30 mobile-grid-90">
+            <div class="grid-25 mobile-grid-90">
                 <form id="usuarios" action="EsqueciSenhaServlet" method="post">
                     <ul>
                         <li>

@@ -27,7 +27,7 @@
                         <h3>
                             <strong>Olá ${usuario.nm_usuario}!</strong>
                             <br/>
-                            Digite sua nova senha no campo abaixo, e depois clique em "Confirmar".
+                            Digite sua nova senha no campo abaixo, e depois clique em "Confirmar"
                         </h3>
                         <form id="usuarios" action="EditarSenhaUsuarioServlet" method="post">
                             <ul>

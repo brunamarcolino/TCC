@@ -8,8 +8,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-/*import org.apache.commons.mail.DefaultAuthenticator;
-import org.apache.commons.mail.HtmlEmail;*/
+import org.apache.commons.mail.DefaultAuthenticator;
+import org.apache.commons.mail.HtmlEmail;
 
 
 
@@ -30,7 +30,7 @@ public class EnviaEmailServlet extends HttpServlet {
         protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
         try {
-         /*   String destinatario = request.getParameter("destinatario");
+         String destinatario = request.getParameter("destinatario");
             String assunto = request.getParameter("assunto");
             String corpo = request.getParameter("corpo");
             System.out.println("destinatario" + destinatario + " assunto "+assunto+" corpo " + corpo);
@@ -60,20 +60,24 @@ public class EnviaEmailServlet extends HttpServlet {
  
             // configura a mensagem para o formato HTML
             email.setHtmlMsg("<html>"
+                    + "<head>"
+                    + "</head>"
+                    + "<body>"
                     + "<img src=\"cid:"+cid+"\">"
                     + corpo        
-                    + "<p>Esta é uma mensagem automática. Por favor, não responda a esta mensagem. </p>"
-                    + "<p>Muito obrigado.</p>"
-                    + "<p>Equipe SmartQueue</p>"        
+                    + "<p style='font-family: Arial, sans-serif'>Esta é uma mensagem automática. Por favor, não responda a esta mensagem. </p>"
+                    + "<p style='font-family: Arial, sans-serif'>Muito obrigado.</p>"
+                    + "<p style='font-family: Arial, sans-serif'>Equipe SmartQueue</p>"
+                    + "</body>"
                     + "</html>");
  
             // configure uma mensagem alternativa caso o servidor não suporte HTML
             email.setTextMsg("Seu servidor de e-mail não suporta mensagem HTML");
  
             // envia o e-mail
-            email.send();*/
+            email.send();
             
-            request.setAttribute("mensagem", "<span>Você receberá um email com as instruções para alteração de senha</span>");
+            request.setAttribute("mensagemSucesso", "<span>Você receberá um email com as instruções para alteração de senha</span>");
             getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
         }catch (Exception e) {
             System.out.println("Erro " + e);
