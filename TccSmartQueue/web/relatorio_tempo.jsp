@@ -21,7 +21,7 @@
         <div class="main">
             <div class="grid-75 mobile-grid-100 filtro section-center">
                 <div class="grid-100">
-                    <h1><span>Relatório /</span> Tempo de atendimento</h1>
+                    <h1><span>Relatório /</span> Produtividade </h1>
                     <br/>
                 </div>
                 <form action="ChartTempoAtendimentoServlet" method="post">
@@ -57,8 +57,8 @@
                 </ul>
             </form>
                     
-                    
-            <canvas id="myChart" width="400" height="400"></canvas>
+                  
+            <canvas id="myChart"></canvas>
             <script type="text/javascript">
             $(document).ready(function(){
                 var valor_x = $('input#valor_x').val();
@@ -75,8 +75,8 @@
                         data: {
                             labels: ["LUCIANA","PEDRO","CAMILA","ANTONIO"],
                             datasets: [{
-                                label: 'Tempo médio',
-                                data: ["1.0","1.3","0.9","1.2"],
+                                label: 'produtividade',
+                                data: ["48","37","53","40"],
                                 backgroundColor: [
                                     'rgba(255, 99, 132, 0.2)',
                                     'rgba(54, 162, 235, 0.2)',

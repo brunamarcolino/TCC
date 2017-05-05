@@ -3,22 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/brunacm/Documents/GITTCC/TCC/TccSmartQueue/src/java/edu/servlet/Parametro/EditarParametroServlet.java</file>
-            <file>file:/C:/Users/brunacm/Documents/GITTCC/TCC/TccSmartQueue/src/java/edu/dao/ParametroDao.java</file>
-            <file>file:/C:/Users/brunacm/Documents/GITTCC/TCC/TccSmartQueue/web/usuario.jsp</file>
-            <file>file:/C:/Users/brunacm/Documents/GITTCC/TCC/TccSmartQueue/src/java/edu/servlet/Parametro/ModalEditarParametroServlet.java</file>
-            <file>file:/C:/Users/brunacm/Documents/GITTCC/TCC/TccSmartQueue/src/java/edu/servlet/usuario/IncluirUsuarioServlet.java</file>
-            <file>file:/C:/Users/brunacm/Documents/GITTCC/TCC/TccSmartQueue/src/java/edu/vo/Usuario.java</file>
-            <file>file:/C:/Users/brunacm/Documents/GITTCC/TCC/TccSmartQueue/web/script/general.js</file>
-            <file>file:/C:/Users/brunacm/Documents/GITTCC/TCC/TccSmartQueue/web/modal_parametro.jsp</file>
-            <file>file:/C:/Users/brunacm/Documents/GITTCC/TCC/TccSmartQueue/src/java/edu/dao/SenhaDao.java</file>
-            <file>file:/C:/Users/brunacm/Documents/GITTCC/TCC/TccSmartQueue/src/java/edu/vo/Parametro.java</file>
-            <file>file:/C:/Users/brunacm/Documents/GITTCC/TCC/TccSmartQueue/src/java/edu/vo/Senha.java</file>
-            <file>file:/C:/Users/brunacm/Documents/GITTCC/TCC/TccSmartQueue/web/modal_usuario.jsp</file>
-            <file>file:/C:/Users/brunacm/Documents/GITTCC/TCC/TccSmartQueue/src/java/edu/dao/UsuarioDao.java</file>
-            <file>file:/C:/Users/brunacm/Documents/GITTCC/TCC/TccSmartQueue/src/java/edu/servlet/usuario/ExcluirUsuarioServlet.java</file>
-            <file>file:/C:/Users/brunacm/Documents/GITTCC/TCC/TccSmartQueue/src/java/edu/servlet/senha/GeraSenhaServlet.java</file>
-            <file>file:/C:/Users/brunacm/Documents/GITTCC/TCC/TccSmartQueue/web/parametros.jsp</file>
+            <file>file:/C:/Users/brunacm/Documents/GITTCC/TCC/TccSmartQueue/web/relatorio_tempo.jsp</file>
+            <file>file:/C:/Users/brunacm/Documents/GITTCC/TCC/TccSmartQueue/src/java/config.properties</file>
+            <file>file:/C:/Users/brunacm/Documents/GITTCC/TCC/TccSmartQueue/src/java/edu/dao/ChartDao.java</file>
+            <file>file:/C:/Users/brunacm/Documents/GITTCC/TCC/TccSmartQueue/src/java/edu/servlet/chart/ChartTempoAtendimentoServlet.java</file>
         </group>
     </open-files>
 </project-private>
