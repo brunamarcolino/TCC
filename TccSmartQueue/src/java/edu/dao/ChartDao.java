@@ -25,7 +25,7 @@ public class ChartDao extends Dao{
             List<Chart> charts = new ArrayList<Chart>();
             
             //String sql = "SELECT u.nm_usuario , s.data_senha, ifnull(TIME_FORMAT(AVG(TIMEDIFF(s.data_atendimento_fim,s.data_atendimento_ini)),'%T'),0) tm FROM tab_senhas s inner join tab_usuarios u on u.id_usuario = s.id_usuario WHERE s.data_atendimento_fim is not null group by u.nm_usuario, s.data_senha";
-            String sql = "SELECT u.nm_usuario , s.data_senha, TIME_FORMAT(AVG(TIMEDIFF(s.data_atendimento_fim,s.data_atendimento_ini)),'%T') tm FROM tab_senhas s inner join tab_usuarios u on u.id_usuario = s.id_usuario WHERE  s.data_senha between STR_TO_DATE(?, '%Y-%m-%d') and STR_TO_DATE(?, '%Y-%m-%d') and (? = 'TODOS' or s.id_usuario = ?) and s.data_atendimento_fim is not null group by u.nm_usuario, s.data_senha";  
+            String sql = "SELECT u.nm_usuario , s.data_senha, TIME_FORMAT(AVG(TIMEDIFF(s.data_atendimento_fim,s.data_atendimento_ini)),'%i') tm FROM tab_senhas s inner join tab_usuarios u on u.id_usuario = s.id_usuario WHERE  s.data_senha between STR_TO_DATE(?, '%Y-%m-%d') and STR_TO_DATE(?, '%Y-%m-%d') and (? = 'TODOS' or s.id_usuario = ?) and s.data_atendimento_fim is not null group by u.nm_usuario, s.data_senha";  
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setString(1, parametro_data_ini);
             stmt.setString(2, parametro_data_fim);

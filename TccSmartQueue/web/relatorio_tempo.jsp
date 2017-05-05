@@ -13,7 +13,7 @@
         <title>JSP Page</title>
         <%@include file="WEB-INF/jspf/chamadas.jspf"%>
     </head>
-    <body onload="generateChart()">
+    <body>
         <%@include file="WEB-INF/jspf/cabecalho.jspf"%>
         
         <%@include file="WEB-INF/jspf/mensagem.jspf"%>
@@ -50,31 +50,33 @@
                         <input type="submit" class="btn btn-outline azul" value="Gerar"/>
                     </li>
                     <li>
-                        <input type="text" name="valor_x" id="valor_x" value="${valor_x}" />
-                        <input type="text" name="valor_y" id="valor_y" value="${valor_y}" />
-                        <input type="text" name="valor_tooltip" id="valor_tooltip" value="${valor_tooltip}" />
+                        <input type="hidden" name="valor_x" id="valor_x" value="${valor_x}" />
+                        <input type="hidden" name="valor_y" id="valor_y" value="${valor_y}" />
+                        <input type="hidden" name="valor_tooltip" id="valor_tooltip" value="${valor_tooltip}" />
                     </li>
                 </ul>
             </form>
                     
                     
-            <canvas id="myChart" style="display:none;" width="400" height="400"></canvas>
+            <canvas id="myChart" width="400" height="400"></canvas>
             <script type="text/javascript">
             $(document).ready(function(){
-                var valor_x = $('input#input_x');
-                var valor_y = $('input#input_y');
-                var valor_tooltip = $('input#input_tooltip');
-                
+                var valor_x = $('input#valor_x').val();
+                var valor_y = $('input#valor_y').val();
+                var valor_tooltip = $('input#valor_tooltip').val();
+                console.log(valor_x)
+                console.log(valor_y)
+                console.log(valor_tooltip)
                 if(valor_x != "" && valor_y != "" && valor_tooltip != ""){
                     $("myChart").show();
                     var ctx = $("#myChart");
                     var myChart = new Chart(ctx, {
                         type: 'bar',
                         data: {
-                            labels: [valor_y],
+                            labels: ["LUCIANA","PEDRO","CAMILA","ANTONIO"],
                             datasets: [{
-                                label: '# of Votes',
-                                data: [valor_x],
+                                label: 'Tempo médio',
+                                data: ["1.0","1.3","0.9","1.2"],
                                 backgroundColor: [
                                     'rgba(255, 99, 132, 0.2)',
                                     'rgba(54, 162, 235, 0.2)',

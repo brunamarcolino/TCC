@@ -35,4 +35,6 @@ public class Chart {
     public void setValor_tooltip(String valor_tooltip) {
         this.valor_tooltip = valor_tooltip;
     }
+    
+    
 }

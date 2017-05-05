@@ -55,7 +55,7 @@ public class ChartTempoAtendimentoServlet extends HttpServlet{
                     valor_y = valor_y + ",";
                     valor_tooltip = valor_tooltip + ",";
                 }
-                valor_x = valor_x + "&quot;" + chart.getValor_x() + "&quot;";
+                valor_x = valor_x + chart.getValor_x();
                 valor_y = valor_y +"&quot;" + chart.getValor_y() + "&quot;";
                 valor_tooltip = valor_tooltip + "&quot;" + chart.getValor_tooltip() + "&quot;";
             }  
