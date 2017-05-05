@@ -31,10 +31,20 @@
                     <ul>
                         <li>
                             <input type="hidden" name="localiza"/>
-                            <select name="tipo_atendimento">
+                            <select name="tipo_atendimento" id="tipo_atendimento">
                                 <option value="Normal">Normal</option>
                                 <option value="Preferencial">Preferencial</option>
                             </select>
+                        </li>
+                        <li class="preferencial">
+                            <h4><strong>ATENÇÃO!</strong><br/> Serão atendidas como <strong>PREFERENCIAL</strong> às pessoas:</h4>
+                            <ul>
+                                <li>Pessoas portadoras de deficiência;</li>
+                                <li>Idosos (idade igual ou superior a 60 anos);</li>
+                                <li>Gestantes;</li>
+                                <li>Lactantes;</li>
+                                <li>Pessoas com crianças de colo.</li>
+                            </ul>
                         </li>
                         <li>
                             <a href="index.jsp" class="btn-back"><img src="imagens/back.png" />Voltar</a>

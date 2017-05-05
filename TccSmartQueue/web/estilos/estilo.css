@@ -564,6 +564,39 @@ div.box-cliente p{
 .painel .info h2.senha{
     font-size: 4em;
 }
+.preferencial{
+    overflow: hidden;
+    max-height: 0;
+    margin: 0;
+    transition: all .3s ease-out;
+    text-align: left;
+    font-size: .9em;
+    padding: 0 1em;
+}
+.preferencial.aberto{
+    max-height: 300px;
+    margin: 1em 0 1.5em 0;
+    border-top: solid 1px #EEE;
+}
+.preferencial h4{
+    font-weight: bold;
+    color: #FF4C4C;
+    padding-top: 1.5em;
+}
+.preferencial h4 strong{
+    font-family: 'Lato-Bold', sans-serif;
+}
+.preferencial ul{
+    margin-left: .75em;
+    margin-top: 1em;
+    padding-bottom: 1em;
+}
+.preferencial ul li {
+    list-style-type: disc;
+    list-style-position: inside;
+    margin-bottom: .5em;
+    color: #777
+}
 .btn.verde,
 .switch.verde{
     border-color: #84bd00;

@@ -15,6 +15,16 @@ $(document).ready(function(){
     $('.image').css('height', height);
     $('.main').css('min-height', height-50);
     //$('#cpf').mask('000.000.000-00', {reverse: true});
+    
+    $('select#tipo_atendimento').change(function(){
+       var texto = $('select#tipo_atendimento option:selected').text();
+       
+       if(texto == 'Preferencial'){
+           $('.preferencial').addClass('aberto');
+       }else{
+           $('.preferencial').removeClass('aberto');
+       }
+    });
 });
 
 $(window).resize(function(){
