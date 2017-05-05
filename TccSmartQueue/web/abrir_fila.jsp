@@ -16,7 +16,7 @@
         <meta name="description" content="Gerenciador de filas">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
-        <title>Smartqueue</title>
+        <title>Smartqueue - Abrir fila</title>
         <%@include file="WEB-INF/jspf/chamadas.jspf"%>
     </head>
     <body>
@@ -29,14 +29,14 @@
             <div class="grid-25 mobile-grid-100 section-center">
                 <div class="box">
                     <h1>Abrir fila</h1>
-                    <h3>Inicie suas atividades abrindo a fila!</h3>
+                    <h3>Inicie suas atividades abrindo a fila</h3>
                 </div>
                 <form action="AbrirFilaServlet?login_usuario=${login.id_usuario}" method="post">
                     <c:choose>
                         <c:when test="${empty filas}">
                             <ul>
                                 <li>
-                                    Todas as mesas disponiveis estão ocupadas!
+                                    Todas as mesas estão ocupadas!
                                 </li>
                                 <li>
                                      <a href="javascript:void(0);" onclick="window.history.back();" class="btn-back"><img src="imagens/back.png" />Voltar</a>

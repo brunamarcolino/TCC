@@ -14,7 +14,7 @@
         <meta name="description" content="Gerenciador de filas">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
-        <title>Smartqueue</title>
+        <title>Smartqueue - Painel de senhas</title>
         <%@include file="WEB-INF/jspf/chamadas.jspf"%>
     </head>
     <body>
@@ -55,7 +55,7 @@
                             </h2>
                         </div>
                         <div class="grid-100 mobile-grid-50">
-                            <p>Status Senha Atual</p>
+                            <p>Status da Senha Atual</p>
                             <h2>
                                 <c:choose>
                                     <c:when test="${empty atu.status_atendimento}">

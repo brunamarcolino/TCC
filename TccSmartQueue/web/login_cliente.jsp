@@ -37,7 +37,7 @@
                             <input type="text" name="cpf" id="cpf" value="${param.cpf}"/>
                         </li>
                         <li>
-                            <label for="emailcliente">Email </label>
+                            <label for="emailcliente">E-mail </label>
                             <input type="text" name="email" id="email" value="${param.email}"/>
                         </li>
                         <li>

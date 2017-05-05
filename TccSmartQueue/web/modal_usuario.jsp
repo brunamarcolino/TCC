@@ -13,7 +13,7 @@
         <meta name="description" content="Gerenciador de filas">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
-        <title>Smartqueue</title>
+        <title>Smartqueue - Gerenciar funcionários</title>
         <%@include file="WEB-INF/jspf/chamadas.jspf"%>
     </head>
     <body>    
@@ -26,7 +26,7 @@
             <div class="grid-30 mobile-grid-90">
                 <c:choose>
                     <c:when test="${empty usuario}">
-                        <h1>INCLUIR FUNCIONÁRIO</h1>
+                        <h1>INCLUIR Funcionário</h1>
                         <form id="iusuario" action="IncluirUsuarioServlet" method="get">
                             <ul>
                                 <li>
@@ -34,7 +34,7 @@
                                     <input type="text" name="inome" value="${param.nm_usuario}"/>
                                 </li>
                                 <li>
-                                    <label for="Email">Email</label>
+                                    <label for="Email">E-mail</label>
                                     <input type="text" name="iemail" value="${param.email_usuario}"/>
                                 </li>
                                 <li class="grid-parent grid-50">
@@ -57,7 +57,7 @@
                         </form>   
                     </c:when>
                     <c:otherwise>
-                    <h1>EDITAR FUNCIONÁRIO</h1>
+                    <h1>EDITAR Funcionário</h1>
                         <form id="usuarios" action="EditarUsuarioServlet" method="get">
                             <ul>
                                 <li>
@@ -68,7 +68,7 @@
                                     <input type="text" name="nome" value="${usuario.nm_usuario}"/>
                                 </li>                
                                 <li>
-                                    <label for="Email">Email</label>
+                                    <label for="Email">E-mail</label>
                                     <input type="text" name="email" value="${usuario.email_usuario}"/>
                                 </li>                
                                 <li class="grid-parent grid-50">

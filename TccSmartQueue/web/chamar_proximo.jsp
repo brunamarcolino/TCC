@@ -18,7 +18,7 @@
         <meta name="description" content="Gerenciador de filas">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
-        <title>Smartqueue</title>
+        <title>Smartqueue - Atendimento</title>
         <%@include file="WEB-INF/jspf/chamadas.jspf"%>
     </head>
     <body>

@@ -16,7 +16,7 @@
         <meta name="description" content="Gerenciador de filas">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <title>Smartqueue - Entrar Adminstrador/ Atendente</title>
+        <title>Smartqueue - Login</title>
         
         <%@include file="WEB-INF/jspf/chamadas.jspf"%>
     </head>
@@ -28,13 +28,13 @@
                 <section class="grid-25 mobile-grid-90 section-center">
                     <div class="grid-100 mobile-grid-100">
                         <h1>Entrar</h1>
-                        <h3>Entre com suas credenciais</h3>
+                        <h3>Digite suas credenciais</h3>
                     </div>
                     <div class="grid-100 mobile-grid-100">
                         <form action="LoginServlet" method="post">
                             <ul>
                                 <li>
-                                    <label for="login">Nome do usuário</label>
+                                    <label for="login">Login</label>
                                     <input type="text" name="login" value="${param.login}"/>
                                 </li>
                                 <li>

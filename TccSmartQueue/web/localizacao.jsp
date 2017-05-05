@@ -13,7 +13,7 @@
         <meta name="description" content="Gerenciador de filas">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
-        <title>Smartqueue</title>
+        <title>Smartqueue - Tipo de atendimento</title>
         <%@include file="WEB-INF/jspf/chamadas.jspf"%>
        
     </head>
@@ -25,7 +25,7 @@
             <div class="grid-25 grid-parent mobile-grid-85 section-center">
                 <div class="grid-100 mobile-grid-100">
                     <h1>COMO QUER SER ATENDIDO?</h1>
-                    <h3>Escolha o seu tipo de atendimento</h3>
+                    <h3>Escolha o tipo de atendimento</h3>
                 </div>
                 <form name="tipo" id="local" action="MapsServlet" method="post">
                     <ul>
