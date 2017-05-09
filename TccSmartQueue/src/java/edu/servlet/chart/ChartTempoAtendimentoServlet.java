@@ -53,21 +53,21 @@ public class ChartTempoAtendimentoServlet extends HttpServlet{
                 if (i!=0){
                     valor_x = valor_x + ",";
                     valor_y = valor_y + ",";
-                    valor_tooltip = valor_tooltip + ",";
+                    //valor_tooltip = valor_tooltip + ",";
                 }
                 valor_x = valor_x + chart.getValor_x();
                 valor_y = valor_y +"&quot;" + chart.getValor_y() + "&quot;";
-                valor_tooltip = valor_tooltip + "&quot;" + chart.getValor_tooltip() + "&quot;";
+                //valor_tooltip = valor_tooltip + "&quot;" + chart.getValor_tooltip() + "&quot;";
             }  
         System.out.println("SERVLET " + charts);
         }
         
         System.out.println(valor_x);
         System.out.println(valor_y);
-        System.out.println(valor_tooltip);
+        //System.out.println(valor_tooltip);
         request.setAttribute("valor_x", valor_x);
         request.setAttribute("valor_y", valor_y);
-        request.setAttribute("valor_tooltip", valor_tooltip);
+        //request.setAttribute("valor_tooltip", valor_tooltip);
         
         getServletContext().getRequestDispatcher("/relatorio_tempo.jsp").forward(request, response);
     }
