@@ -45,20 +45,25 @@ public class ChartTempoAtendimentoServlet extends HttpServlet{
             List<Chart> charts = dadosChartDao.relatorio_tempoMedio(data_inicio, data_fim, atendente);
             int tam = charts.size();
             
-            Chart chart = new Chart();
-            
-            for (int i=0;i<tam;i++){
-                System.out.println(i);
-                chart = charts.get(i);                
-                if (i!=0){
-                    valor_x = valor_x + ",";
-                    valor_y = valor_y + ",";
-                    valor_tooltip = valor_tooltip + ",";
+            if(tam > 0){
+                Chart chart = new Chart();
+
+                for (int i=0;i<tam;i++){
+                    System.out.println(i);
+                    chart = charts.get(i);                
+                    if (i!=0){
+                        valor_x = valor_x + ",";
+                        valor_y = valor_y + ",";
+                        valor_tooltip = valor_tooltip + ",";
+                    }
+                    valor_x = valor_x + chart.getValor_x();
+                    valor_y = valor_y +"&quot;" + chart.getValor_y() + "&quot;";
+                    valor_tooltip = valor_tooltip + "&quot;" + chart.getValor_tooltip() + "&quot;";
                 }
-                valor_x = valor_x + chart.getValor_x();
-                valor_y = valor_y +"&quot;" + chart.getValor_y() + "&quot;";
-                valor_tooltip = valor_tooltip + "&quot;" + chart.getValor_tooltip() + "&quot;";
-            }  
+            }else{
+               mensagem = mensagem + "<span>Nenhum dado encontrado! </span>";
+               request.setAttribute("mensagemErro", mensagem);
+            }
         System.out.println("SERVLET " + charts);
         }
         

@@ -221,7 +221,7 @@ h1{
 input[type="submit"],
 input[type="button"]{
     border: solid 2px #777;
-    padding: .5em 1em;
+    padding: .75em 1em;
     text-transform: uppercase;
     border-radius: 40px;
     font-family: 'Lato-Bold', sans-serif;
