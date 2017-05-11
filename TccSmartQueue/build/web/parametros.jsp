@@ -13,7 +13,7 @@
         <meta name="description" content="Gerenciador de filas">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
-        <title>Smartqueue</title>
+        <title>Smartqueue - Parâmetros do sistema</title>
         <%@include file="WEB-INF/jspf/chamadas.jspf"%>
     </head>
     <body>    
@@ -31,7 +31,7 @@
             <div class="grid-75 mobile-grid-100">
             <c:choose>
                 <c:when test="${empty parametros}">
-                    <p>Nenhum parametro cadastrado!</p>
+                    <p>Nenhum parâmetro cadastrado!</p>
                 </c:when>
                 <c:otherwise>
                 

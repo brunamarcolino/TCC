@@ -14,7 +14,7 @@
         <meta name="description" content="Gerenciador de filas">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
-        <title>Smartqueue</title>
+        <title>Smartqueue - Aguardando atendimento</title>
         <%@include file="WEB-INF/jspf/chamadas.jspf"%>
     </head>
     <body>
@@ -42,7 +42,7 @@
                             </h2>
                         </div>                    
                         <div class="grid-100 mobile-grid-50">
-                            <p>Quantidade de pessoas na Fila</p>
+                            <p>Quantidade de pessoas na fila</p>
                             <h2>
                                 <c:choose>
                                     <c:when test="${empty dadossenha.quantidade_pessoas}">
@@ -89,12 +89,12 @@
                             <c:when test="${dadossenha.horario_comercial}">
                                 <c:choose>
                                     <c:when test="${dadossenha.distancia=='1'}">
-                                        <p class="location location-ok"><img src="imagens/success.png"/>Você está dentro da distancia permitida</p>
+                                        <p class="location location-ok"><img src="imagens/success.png"/>Você está dentro da distância permitida</p>
                                         <p>Clique abaixo para gerar a sua senha:</p>
                                         <input type="button" value="Gerar Senha" class="btn btn-outline azul" onClick="window.location.href='login_cliente.jsp?tipo_atendimento=${dadossenha.tipo_atendimento}'">                            
                                     </c:when>
                                     <c:when test="${dadossenha.distancia=='2'}">
-                                       <p class="location location-wrong"><img src="imagens/error.png"/>Você está FORA da distancia permitida</p>
+                                       <p class="location location-wrong"><img src="imagens/error.png"/>Você está FORA da distância permitida</p>
                                         <p class="alert"><i>Para que o botão GERAR SENHA fique disponível, é necessário se aproximar mais do local de atendimento</i></p>                            
                                     </c:when>
                                     <c:otherwise>
@@ -104,7 +104,7 @@
                                 </c:choose>        
                             </c:when>
                             <c:otherwise>
-                                <p>Esse estabelecimento encontra-se fechado no momento</p>
+                                <p>Esse estabelecimento encontra-se fechado no momento.</p>
                             </c:otherwise>    
                         </c:choose>            
                     </div>

@@ -30,10 +30,10 @@ public class EnviaEmailServlet extends HttpServlet {
         protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
         try {
-         String destinatario = request.getParameter("destinatario");
+            String destinatario = request.getParameter("destinatario");
             String assunto = request.getParameter("assunto");
             String corpo = request.getParameter("corpo");
-            System.out.println("destinatario" + destinatario + " assunto "+assunto+" corpo " + corpo);
+            System.out.println("destinatario " + destinatario + " assunto "+assunto+" corpo " + corpo);
             
             // Cria o e-mail
             HtmlEmail email = new HtmlEmail();
@@ -45,8 +45,9 @@ public class EnviaEmailServlet extends HttpServlet {
             email.setSmtpPort(587);
             
             //email.setSSL(false);
-            //email.setTLS(false);
-            email.setStartTLSEnabled(true);            
+            //email.setTLS(false); 
+            //email.setStartTLSEnabled(true);   
+            email.setSSLOnConnect(true);
             
             email.setAuthenticator(new DefaultAuthenticator(authuser, authpwd));
 
@@ -59,7 +60,8 @@ public class EnviaEmailServlet extends HttpServlet {
             String cid = email.embed(url, "SmartQueue logo");
  
             // configura a mensagem para o formato HTML
-            email.setHtmlMsg("<html>"
+            //email.setHtmlMsg("<html>oi</html>");
+            /*email.setHtmlMsg("<html>"
                     + "<head>"
                     + "</head>"
                     + "<body>"
@@ -69,7 +71,7 @@ public class EnviaEmailServlet extends HttpServlet {
                     + "<p style='font-family: Arial, sans-serif'>Muito obrigado.</p>"
                     + "<p style='font-family: Arial, sans-serif'>Equipe SmartQueue</p>"
                     + "</body>"
-                    + "</html>");
+                    + "</html>");*/
  
             // configure uma mensagem alternativa caso o servidor não suporte HTML
             email.setTextMsg("Seu servidor de e-mail não suporta mensagem HTML");
