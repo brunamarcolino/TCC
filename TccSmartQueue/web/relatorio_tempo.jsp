@@ -10,7 +10,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         
-        <title>JSP Page</title>
+        <title>SmartQueue - Relatório/ Tempo de atendimento</title>
         <%@include file="WEB-INF/jspf/chamadas.jspf"%>
     </head>
     <body>
@@ -84,7 +84,7 @@
                     
                     if(tipo_grafico == 'Barras'){
                         var myChart = new Chart(ctx, {
-                            type: 'line',
+                            type: 'bar',
                             data: {
                                 labels: array_y,
                                 datasets: [{
