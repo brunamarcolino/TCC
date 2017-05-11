@@ -36,11 +36,11 @@
                     </li>
                     <li class="grid-25">
                         <label>Atendente</label>
-                        <select name="atendente">
-                            <option selected="selected">${ate}</option>
+                        <select name="atendente">                           
                            <option>TODOS</option>
                             <c:forEach var="atendente" items="${atendentes}">
-                                <option value="${atendente.id_usuario}">
+                                <c:if test="${atendente.nm_usuario}='TODOS'"><option>passou</option></c:if>
+                                <option value="${atendente.id_usuario}"  ${atendente.nm_usuario == ate ? 'selected' : ''}>
                                     ${atendente.nm_usuario}
                                 </option>
                             </c:forEach>
@@ -49,11 +49,10 @@
                     <li class="grid-15">
                         <label>Tipo de gráfico</label>
                         <select id="tipo_grafico" name="tipo_grafico">
-                            <option selected="selected">${tipo_grafico}</option>
-                            <option>Barras</option>
-                            <option>Linhas</option>
-                            <option>Pizza</option>
-                           <option>Polar</option>
+                            <option ${tipo_grafico == 'Barras' ? 'selected' : ''}>Barras</option>
+                            <option ${tipo_grafico == 'Linhas' ? 'selected' : ''}>Linhas</option>
+                            <option ${tipo_grafico == 'Pizza' ? 'selected' : ''}>Pizza</option>
+                           <option ${tipo_grafico == 'Polar' ? 'selected' : ''}>Polar</option>
                         </select>
                     </li>
                     <li class="grid-15">

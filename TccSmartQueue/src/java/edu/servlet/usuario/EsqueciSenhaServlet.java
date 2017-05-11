@@ -58,14 +58,9 @@ public class EsqueciSenhaServlet extends HttpServlet {
                     //Envio de email para recuperação de senha
                     String destinatario = email;
                     String assunto = "Redefinição da senha no SmartQueue";
-                    String corpo = ("<p style='font-family: Arial, sans-serif'>Olá,"+login+"  </p>" +
-                                    "<p style='font-family: Arial, sans-serif'>Nós recebemos uma solicitação de mudança de senha da sua conta no Smrtqueue. </p>" +
-                                    "<p style='font-family: Arial, sans-serif'>Você pode redefinir a sua senha <a href=\"http://localhost:8080/TccSmartQueue/RecuperarDadosToken?token="+token+"\">aqui</a>. A sua nova senha deve:</p>" +
-                                    "<h4 style='font-family: Arial, sans-serif'>Ter mais que 6 caracteres, sendo eles:</h4>" +
-                                    "<ul>" +        
-                                    "<li><span style='font-family: Arial, sans-serif; list-style: disc inside'>Letras (a-z);</span></li>" +
-                                    "<li><span style='font-family: Arial, sans-serif; list-style: disc inside'>Números (0-9).</span></li>" +
-                                    "</ul>" +
+                    String corpo = ("Olá,"+login+"  " +
+                                    "Nós recebemos uma solicitação de mudança de senha da sua conta no Smrtqueue. " +
+                                    "Você pode redefinir a sua senha em http://localhost:8080/TccSmartQueue/RecuperarDadosToken?token="+token+
                                     "Ignore este e-mail se você não quiser redefinir a sua senha.");                      
                     getServletContext().getRequestDispatcher("/EnviaEmailServlet?destinatario="+destinatario+"&assunto="+assunto+"&corpo="+corpo).forward(request, response);   
                 }     
