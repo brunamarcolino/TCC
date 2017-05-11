@@ -6,7 +6,9 @@ package edu.servlet.chart;
 
 
 import edu.dao.ChartDao;
+import edu.dao.UsuarioDao;
 import edu.vo.Chart;
+import edu.vo.Usuario;
 import java.io.IOException;
 import java.util.List;
 
@@ -27,6 +29,8 @@ public class ChartTempoAtendimentoServlet extends HttpServlet{
         String data_inicio = request.getParameter("data_inicio");
         String data_fim = request.getParameter("data_fim");
         String atendente = request.getParameter("atendente");
+        String tipo_grafico = request.getParameter("tipo_grafico");
+        System.out.println("tipo_grafico " + tipo_grafico);
         
         String mensagem = "";
         String valor_x = "", valor_y = "", valor_tooltip = ""; 
@@ -68,10 +72,25 @@ public class ChartTempoAtendimentoServlet extends HttpServlet{
         
         System.out.println(valor_x);
         System.out.println(valor_y);
-        //System.out.println(valor_tooltip);
+        
         request.setAttribute("valor_x", valor_x);
         request.setAttribute("valor_y", valor_y);
-        //request.setAttribute("valor_tooltip", valor_tooltip);
+        request.setAttribute("data_inicio", data_inicio);
+        request.setAttribute("data_fim", data_fim);
+        request.setAttribute("tipo_grafico", tipo_grafico);
+        request.setAttribute("ate", atendente);
+        
+        //Retorna atendentes
+        UsuarioDao usuarioDao = new UsuarioDao();
+        List<Usuario> atendentes = usuarioDao.getAtendentes();
+        
+        System.out.println("Obtidos " + atendentes.size() + " atendentes.");
+        
+        if (atendentes.size() > 0){
+            request.setAttribute("atendentes", atendentes);
+        }
+        
+        
         
         getServletContext().getRequestDispatcher("/relatorio_tempo.jsp").forward(request, response);
     }

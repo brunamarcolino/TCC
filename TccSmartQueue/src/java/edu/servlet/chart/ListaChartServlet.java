@@ -29,7 +29,9 @@ public class ListaChartServlet extends HttpServlet{
         
         if (atendentes.size() > 0){
             request.setAttribute("atendentes", atendentes);
-        }
+            request.setAttribute("tipo_grafico", "Linhas");
+            request.setAttribute("ate", "TODOS");
+        }        
         System.out.println(atendentes);
         getServletContext().getRequestDispatcher("/relatorio_tempo.jsp").forward(request, response);
     }

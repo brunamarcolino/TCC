@@ -656,7 +656,12 @@ div.box-cliente p{
 .btn-group .btn:last-child{
     margin: 0;
 }
-
+.relatorio input[type="submit"]{
+    width: 100%;
+}
+.relatorio form{
+    margin-bottom: 2em;
+}
 @media (max-width: 450px) {
     body{
         font-size: 1em;

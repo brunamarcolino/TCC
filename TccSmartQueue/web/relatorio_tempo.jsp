@@ -28,16 +28,17 @@
                 <ul>
                     <li class="grid-20">
                         <label>Data início</label>
-                        <input type="date" name="data_inicio" />
+                        <input type="date" name="data_inicio" value="${data_inicio}"/>
                     </li>
                     <li class="grid-20">
                         <label>Data fim</label>
-                        <input type="date" name="data_fim" />
+                        <input type="date" name="data_fim" value="${data_fim}"/>
                     </li>
                     <li class="grid-25">
                         <label>Atendente</label>
                         <select name="atendente">
-                            <option>TODOS</option>
+                            <option selected="selected">${ate}</option>
+                           <option>TODOS</option>
                             <c:forEach var="atendente" items="${atendentes}">
                                 <option value="${atendente.id_usuario}">
                                     ${atendente.nm_usuario}
@@ -47,11 +48,12 @@
                     </li>
                     <li class="grid-15">
                         <label>Tipo de gráfico</label>
-                        <select id="tipo_grafico">
+                        <select id="tipo_grafico" name="tipo_grafico">
+                            <option selected="selected">${tipo_grafico}</option>
                             <option>Barras</option>
                             <option>Linhas</option>
                             <option>Pizza</option>
-                            <option>Polar</option>
+                           <option>Polar</option>
                         </select>
                     </li>
                     <li class="grid-15">
