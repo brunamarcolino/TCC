@@ -19,22 +19,22 @@
         <%@include file="WEB-INF/jspf/mensagem.jspf"%>
         
         <div class="main">
-            <div class="grid-75 mobile-grid-100 filtro section-center">
+            <div class="grid-75 mobile-grid-100 relatorio filtro section-center">
                 <div class="grid-100">
-                    <h1><span>Relatório /</span> Produtividade </h1>
+                    <h1><span>Relatório /</span> Tempo de atendimento </h1>
                     <br/>
                 </div>
-                <form action="ChartTempoAtendimentoServlet" method="post">
+                <form action="ChartTempoAtendimentoServlet" method="post" class="grid-parent grid-100">
                 <ul>
-                    <li class="grid-25">
+                    <li class="grid-20">
                         <label>Data início</label>
                         <input type="date" name="data_inicio" />
                     </li>
-                    <li class="grid-25">
+                    <li class="grid-20">
                         <label>Data fim</label>
                         <input type="date" name="data_fim" />
                     </li>
-                    <li class="grid-20">
+                    <li class="grid-25">
                         <label>Atendente</label>
                         <select name="atendente">
                             <option>TODOS</option>
@@ -42,17 +42,24 @@
                                 <option value="${atendente.id_usuario}">
                                     ${atendente.nm_usuario}
                                 </option>
-                                </c:forEach>
-                            </select>
+                            </c:forEach>
                         </select>
                     </li>
-                    <li class="grid-30">
+                    <li class="grid-15">
+                        <label>Tipo de gráfico</label>
+                        <select id="tipo_grafico">
+                            <option>Barras</option>
+                            <option>Linhas</option>
+                            <option>Pizza</option>
+                            <option>Polar</option>
+                        </select>
+                    </li>
+                    <li class="grid-15">
                         <input type="submit" class="btn btn-outline azul" value="Gerar"/>
                     </li>
                     <li>
                         <input type="hidden" name="valor_x" id="valor_x" value="${valor_x}" />
                         <input type="hidden" name="valor_y" id="valor_y" value="${valor_y}" />
-                        <input type="hidden" name="valor_tooltip" id="valor_tooltip" value="${valor_tooltip}" />
                     </li>
                 </ul>
             </form>
@@ -62,51 +69,148 @@
             <script type="text/javascript">
             $(document).ready(function(){
                 var valor_x = $('input#valor_x').val();
+                var array_x = $('input#valor_x').val().split(',');
+                
                 var valor_y = $('input#valor_y').val();
-                var valor_tooltip = $('input#valor_tooltip').val();
-                console.log(valor_x)
-                console.log(valor_y)
-                console.log(valor_tooltip)
-                if(valor_x != "" && valor_y != "" && valor_tooltip != ""){
+                var array_y = $('input#valor_y').val().split(',');
+                
+                var tipo_grafico = $('select#tipo_grafico option:selected').text();
+                
+                if(valor_x != "" && valor_y != "" && tipo_grafico != ""){
                     $("myChart").show();
                     var ctx = $("#myChart");
-                    var myChart = new Chart(ctx, {
-                        type: 'bar',
-                        data: {
-                            labels: ["LUCIANA","PEDRO","CAMILA","ANTONIO"],
-                            datasets: [{
-                                label: 'produtividade',
-                                data: ["48","37","53","40"],
-                                backgroundColor: [
-                                    'rgba(255, 99, 132, 0.2)',
-                                    'rgba(54, 162, 235, 0.2)',
-                                    'rgba(255, 206, 86, 0.2)',
-                                    'rgba(75, 192, 192, 0.2)',
-                                    'rgba(153, 102, 255, 0.2)',
-                                    'rgba(255, 159, 64, 0.2)'
-                                ],
-                                borderColor: [
-                                    'rgba(255,99,132,1)',
-                                    'rgba(54, 162, 235, 1)',
-                                    'rgba(255, 206, 86, 1)',
-                                    'rgba(75, 192, 192, 1)',
-                                    'rgba(153, 102, 255, 1)',
-                                    'rgba(255, 159, 64, 1)'
-                                ],
-                                borderWidth: 1
-                            }]
-                        },
-                        options: {
-                            scales: {
-                                yAxes: [{
-                                    ticks: {
-                                        beginAtZero:true
-                                    }
+                    
+                    if(tipo_grafico == 'Barras'){
+                        var myChart = new Chart(ctx, {
+                            type: 'line',
+                            data: {
+                                labels: array_y,
+                                datasets: [{
+                                    label: 'Tempo médio (em minutos)',
+                                    data: array_x,
+                                    backgroundColor: [
+                                        'rgba(255, 99, 132, 0.2)',
+                                        'rgba(54, 162, 235, 0.2)',
+                                        'rgba(255, 206, 86, 0.2)',
+                                        'rgba(75, 192, 192, 0.2)',
+                                        'rgba(153, 102, 255, 0.2)',
+                                        'rgba(255, 159, 64, 0.2)'
+                                    ],
+                                    borderColor: [
+                                        'rgba(255,99,132,1)',
+                                        'rgba(54, 162, 235, 1)',
+                                        'rgba(255, 206, 86, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(153, 102, 255, 1)',
+                                        'rgba(255, 159, 64, 1)'
+                                    ],
+                                    borderWidth: 1
                                 }]
+                            },
+                            options: {
+                                scales: {
+                                    yAxes: [{
+                                        ticks: {
+                                            beginAtZero:true
+                                        }
+                                    }]
+                                }
                             }
-                        }
-                    });
-                
+                        });
+                    }else if(tipo_grafico == 'Polar'){
+                        var myChart = new Chart(ctx, {
+                            type: 'polarArea',
+                            data: {
+                                datasets: [{
+                                    data: array_x,
+                                    backgroundColor: [
+                                        'rgba(255, 99, 132, 0.2)',
+                                        'rgba(54, 162, 235, 0.2)',
+                                        'rgba(255, 206, 86, 0.2)',
+                                        'rgba(75, 192, 192, 0.2)',
+                                        'rgba(153, 102, 255, 0.2)',
+                                        'rgba(255, 159, 64, 0.2)'
+                                    ],
+                                    label: 'Tempo médio (em minutos)' // for legend
+                                }],
+                                labels: array_y
+                            }
+                        })
+                    }else if(tipo_grafico == 'Pizza'){
+                        var myChart = new Chart(ctx, {
+                            type: 'pie',
+                            data: {
+                                labels: array_y,
+                                datasets: [{
+                                    label: 'Tempo médio (em minutos)',
+                                    data: array_x,
+                                    backgroundColor: [
+                                        'rgba(255, 99, 132, 0.2)',
+                                        'rgba(54, 162, 235, 0.2)',
+                                        'rgba(255, 206, 86, 0.2)',
+                                        'rgba(75, 192, 192, 0.2)',
+                                        'rgba(153, 102, 255, 0.2)',
+                                        'rgba(255, 159, 64, 0.2)'
+                                    ],
+                                    borderColor: [
+                                        'rgba(255,99,132,1)',
+                                        'rgba(54, 162, 235, 1)',
+                                        'rgba(255, 206, 86, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(153, 102, 255, 1)',
+                                        'rgba(255, 159, 64, 1)'
+                                    ],
+                                    borderWidth: 1
+                                }]
+                            },
+                            options: {
+                                scales: {
+                                    yAxes: [{
+                                        ticks: {
+                                            beginAtZero:true
+                                        }
+                                    }]
+                                }
+                            }
+                        });
+                    }else if(tipo_grafico == 'Linhas'){
+                        var myChart = new Chart(ctx, {
+                            type: 'line',
+                            data: {
+                                labels: array_y,
+                                datasets: [{
+                                    label: 'Tempo médio (em minutos)',
+                                    data: array_x,
+                                    backgroundColor: [
+                                        'rgba(255, 99, 132, 0.2)',
+                                        'rgba(54, 162, 235, 0.2)',
+                                        'rgba(255, 206, 86, 0.2)',
+                                        'rgba(75, 192, 192, 0.2)',
+                                        'rgba(153, 102, 255, 0.2)',
+                                        'rgba(255, 159, 64, 0.2)'
+                                    ],
+                                    borderColor: [
+                                        'rgba(255,99,132,1)',
+                                        'rgba(54, 162, 235, 1)',
+                                        'rgba(255, 206, 86, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(153, 102, 255, 1)',
+                                        'rgba(255, 159, 64, 1)'
+                                    ],
+                                    borderWidth: 1
+                                }]
+                            },
+                            options: {
+                                scales: {
+                                    yAxes: [{
+                                        ticks: {
+                                            beginAtZero:true
+                                        }
+                                    }]
+                                }
+                            }
+                        });
+                    }
                 }
             
             });
