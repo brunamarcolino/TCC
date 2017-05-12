@@ -293,9 +293,13 @@ nav li{
     display: inline-block;
     padding: 0 1em;
     border-right: solid 1px rgba(255,255,255,.25);
+    position: relative;
 }
 nav li:last-child{
     border: none;
+}
+nav li.submenu{
+    background: url("../imagens/bg-submenu.png") no-repeat right center;
 }
 nav li a{
     color: #FFF;
@@ -304,9 +308,32 @@ nav li a{
     vertical-align: top;
     opacity: .75;
     transition: all .2s ease-out;
+    cursor: pointer;
 }
 nav li a:hover{
     opacity: 1;
+}
+nav li.submenu ul{
+    position: absolute;
+    left: 0;
+    top: 15px;
+    max-height: 0;
+    overflow: hidden;
+    padding-top: 20px;
+    transition: all .3s ease-out;
+}
+nav li.submenu:hover ul{
+    max-height: 300px;
+    width: 175px;
+        
+}
+nav li ul li{
+    padding: 0;
+}
+nav li ul li a{
+    padding: 1em;
+    background-color: #D48D40;
+    min-width: 175px;
 }
 .main{
     padding: 3em .5em 0;

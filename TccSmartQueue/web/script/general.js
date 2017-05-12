@@ -13,7 +13,7 @@ $(document).ready(function(){
     }, 5000);
     
     $('.image').css('height', height);
-    $('.main').css('min-height', height-50);
+    $('.main').css('min-height', height-100);
     //$('#cpf').mask('000.000.000-00', {reverse: true});
     
     $('select#tipo_atendimento').change(function(){
@@ -47,7 +47,7 @@ $(document).ready(function(){
 $(window).resize(function(){
     height = $(document).height();
     $('.image').css('height', height);
-    $('.main').css('min-height', height-50);    
+    $('.main').css('min-height', height-100);    
 });
 
 function confirma() {
