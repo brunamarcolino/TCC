@@ -22,6 +22,9 @@ public class ListaChartServlet extends HttpServlet{
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException { 
         
+        String tipo_str = request.getParameter("tipo");
+        int tipo = Integer.parseInt(tipo_str);
+                
         UsuarioDao usuarioDao = new UsuarioDao();
         List<Usuario> atendentes = usuarioDao.getAtendentes();
         
@@ -33,7 +36,11 @@ public class ListaChartServlet extends HttpServlet{
             request.setAttribute("ate", "TODOS");
         }        
         System.out.println(atendentes);
-        getServletContext().getRequestDispatcher("/relatorio_tempo.jsp").forward(request, response);
+        if (tipo==1){
+            getServletContext().getRequestDispatcher("/relatorio_tempo.jsp").forward(request, response);
+        }else {
+            getServletContext().getRequestDispatcher("/relatorio_produtividade.jsp").forward(request, response);
+        }
     }
 
 }
