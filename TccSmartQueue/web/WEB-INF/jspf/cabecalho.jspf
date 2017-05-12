@@ -19,13 +19,17 @@ RA: 1510027287
                 <nav>
                     <ul>
                         <li>
-                            <a href="ListaUsuarioServlet">Usuários</a>
+                            <a href="ListaUsuarioServlet">Funcionários</a>
                         </li>
                         <li>
                             <a href="ListaParametrosServlet">Parâmetros do Sistemas</a>
                         </li>
-                        <li>
-                            <a href="ListaChartServlet">Gerar Relatórios</a>
+                        <li class="submenu">
+                            <a href="javascript:void(0);">Relatórios</a>
+                            <ul>
+                                <li><a href="ListaChartServlet">Tempo de atendimento</a></li>
+                                <li><a href="ListaChartServlet">Produtividade</a></li>
+                            </ul>
                         </li>
                     </ul>
                 </nav>
