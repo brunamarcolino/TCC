@@ -36,49 +36,12 @@ public class EnviaEmailServlet extends HttpServlet {
             String corpo = request.getParameter("corpo");
             System.out.println("destinatario" + destinatario + " assunto "+assunto+" corpo " + corpo);
             
-            // Cria o e-mail
-            Email email = new SimpleEmail();
-            String authuser = "equipesmartqueue@gmail.com";
-            String authpwd = "Metrocamp@2017";
-            
-            email.setDebug(true);
-            email.setHostName("smtp.gmail.com");
-            email.setSmtpPort(587);
-            
-            //email.setSSL(false);
-            //email.setTLS(false); 
-            //email.setStartTLSEnabled(true);   
-            email.setSSLOnConnect(true);
-            
-            email.setAuthenticator(new DefaultAuthenticator(authuser, authpwd));
-
-            email.setFrom("equipesmartqueue@gmail.com", "Equipe SmartQueue");
-            email.addTo(destinatario, destinatario);
-            email.setSubject(assunto);
- 
-            // adiciona uma imagem ao corpo da mensagem e retorna seu id
-            //URL url = new URL("http://www.dextraining.com.br/wp-content/uploads/2017/03/logo.jpg");
-            //String cid = email.embed(url, "SmartQueue logo");
- 
-            // configura a mensagem para o formato HTML
-            //email.setHtmlMsg("<html>oi</html>");
-            /*email.setHtmlMsg("<html>"
-                    + "<head>"
-                    + "</head>"
-                    + "<body>"
-                    + "<img src=\"cid:"+cid+"\">"
-                    + corpo        
-                    + "<p style='font-family: Arial, sans-serif'>Esta é uma mensagem automática. Por favor, não responda a esta mensagem. </p>"
-                    + "<p style='font-family: Arial, sans-serif'>Muito obrigado.</p>"
-                    + "<p style='font-family: Arial, sans-serif'>Equipe SmartQueue</p>"
-                    + "</body>"
-                    + "</html>");
- */
-            // configure uma mensagem alternativa caso o servidor não suporte HTML
-            //email.setTextMsg("Seu servidor de e-mail não suporta mensagem HTML");
-            email.setMsg(corpo);
-            // envia o e-mail
-            email.send();
+            String to = request.getParameter("destinatario");
+            String subject = request.getParameter("assunto");
+            String message =  request.getParameter("corpo");
+            String user = "equipesmartqueue@gmail.com";
+            String pass = "Metrocamp@2017";
+            SendMail.send(to,subject, message, user, pass);
             
             request.setAttribute("mensagemSucesso", "<span>Você receberá um email com as instruções para alteração de senha</span>");
             getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
