@@ -29,13 +29,13 @@ public class CancelarSenhaServlet extends HttpServlet{
         boolean senha = senhaDao.alteraStatusSenha(id_senha,"Cancelado", 0);
         
         if (senha) {
-            request.setAttribute("mensagem", "<span>Senha Cancelada com sucesso!</span>");
-            getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+            request.setAttribute("mensagemSucesso", "<span>Senha Cancelada com sucesso!</span>");
+            getServletContext().getRequestDispatcher("/gerar_senha.jsp").forward(request, response);
         }
         else
         {
             request.setAttribute("mensagemErro", "<span>Ocorreu um erro ao Cancelar a senha.</span>");
-            getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+            getServletContext().getRequestDispatcher("/gerar_senha.jsp").forward(request, response);
         }
         
     }

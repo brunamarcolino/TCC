@@ -66,7 +66,7 @@ public class EditarSenhaUsuarioServlet extends HttpServlet {
                     //editar usuario
                     sucesso = usuarioDao.updateSenhaUsuario(id,senha);  
                     if (sucesso){
-                        request.setAttribute("mensagem", "<span>Usuário alterado com sucesso</span>");
+                        request.setAttribute("mensagemSucesso", "<span>Usuário alterado com sucesso</span>");
                         getServletContext().getRequestDispatcher("/login_adm.jsp").forward(request, response);
                     } else {
                         request.setAttribute("mensagemErro", "Erro Gernerico");

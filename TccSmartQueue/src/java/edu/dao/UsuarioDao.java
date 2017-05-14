@@ -604,10 +604,13 @@ public class UsuarioDao extends Dao {
 
             //verifica se deu certo. Se sim, atualiza a nota 
             if (affectedRows > 0) {
+                System.out.println("if");
                 //confirma as modifica��es no banco de dados
                 conn.commit();
+                System.out.println("token " + token);
                 return token;
             } else {
+                System.out.println("else");
                 //cancela as modifica��es no banco de dados
                 conn.rollback();
                 return "Erro";

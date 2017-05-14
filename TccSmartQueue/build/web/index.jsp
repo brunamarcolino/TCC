@@ -18,6 +18,7 @@
         <%@include file="WEB-INF/jspf/chamadas.jspf"%>
     </head>
     <body>
+        <%@include file="WEB-INF/jspf/mensagem.jspf" %>
          <c:choose>
             <c:when test="${empty login}">
                 <div class="image"></div> 

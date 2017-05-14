@@ -43,16 +43,19 @@ public class EsqueciSenhaServlet extends HttpServlet {
                 getServletContext().getRequestDispatcher("/modal_esqueci_senha.jsp").forward(request, response);
             }            
             else {            
+                System.out.println("CAMPOS PREENCHIDOS ");
                 //CAMPOS PREENCHIDOS                 
                 UsuarioDao usuarioDao = new UsuarioDao();  
             
                 //VALIDA SENHA
                 String token = usuarioDao.updateEsqueciSenhaUsuario(login, email);
+                System.out.println("Token : " + token);
                 
                 //SENHA INVÁLIDA
                 if (token.equals("Erro")){
+                    System.out.println("Erro");    
                     request.setAttribute("mensagemErro", "Login / Email não encontrado");
-                    getServletContext().getRequestDispatcher("/model_esqueci_senha.jsp").forward(request, response);
+                    getServletContext().getRequestDispatcher("/modal_esqueci_senha.jsp").forward(request, response);
                 }
                 else {
                     //Envio de email para recuperação de senha
