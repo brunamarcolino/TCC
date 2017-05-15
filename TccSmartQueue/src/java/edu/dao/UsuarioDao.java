@@ -525,7 +525,7 @@ public class UsuarioDao extends Dao {
         return isEmailIdValid;
     }     
 
-    public boolean insereUsuario(String nome, String email, String cpf, String tipo) {
+    public String insereUsuario(String nome, String email, String cpf, String tipo) {
         Connection conn = null;
 
         try {
@@ -540,7 +540,7 @@ public class UsuarioDao extends Dao {
             conn.setAutoCommit(false);
             
             //define SQL para atualiza��o
-            String sql = "INSERT INTO tab_usuarios (nm_usuario, email_usuario, cpf_usuario, token_senha, tipo_usuario, status_usuario) VALUES (?, ?, ?, SHA1(?), ?, 'Ativo')";
+            String sql = "INSERT INTO tab_usuarios (nm_usuario, email_usuario, cpf_usuario, token_senha, tipo_usuario, status_usuario) VALUES (?, ?, ?, ?, ?, 'Ativo')";
 
             //instance Prepared statement especificando os par�metros do SQL
             PreparedStatement stmt = conn.prepareStatement(sql);
@@ -557,16 +557,17 @@ public class UsuarioDao extends Dao {
             if (affectedRows > 0) {
                 //confirma as modifica��es no banco de dados
                 conn.commit();
-                return true;
+                System.out.println("token dao "+token);
+                return token;
             } else {
                 //cancela as modifica��es no banco de dados
                 conn.rollback();
-                return false;
+                return "Erro";
             }
 
         } catch (Exception ex) {
             ex.printStackTrace();
-            return false;
+            return "Erro";
         } finally {
             if (conn != null) {
                 try {
@@ -604,13 +605,11 @@ public class UsuarioDao extends Dao {
 
             //verifica se deu certo. Se sim, atualiza a nota 
             if (affectedRows > 0) {
-                System.out.println("if");
                 //confirma as modifica��es no banco de dados
                 conn.commit();
                 System.out.println("token " + token);
                 return token;
             } else {
-                System.out.println("else");
                 //cancela as modifica��es no banco de dados
                 conn.rollback();
                 return "Erro";

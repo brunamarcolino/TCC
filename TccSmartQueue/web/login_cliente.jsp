@@ -58,6 +58,7 @@
                             <input type="submit" value="Entrar" class="btn btn-outline verde" />
                         </li>
                     </ul>
+                    <a href="modal_esqueci_senha_cliente.jsp" class="forgot-pass">Esqueci minha senha</a>
                 </form>
             </div>
         </div>

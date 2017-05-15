@@ -30,7 +30,9 @@ public class EnviaEmailServlet extends HttpServlet {
             String destinatario = request.getParameter("destinatario");
             String assunto = request.getParameter("assunto");
             String corpo = request.getParameter("corpo");
-            System.out.println("destinatario" + destinatario + " assunto "+assunto+" corpo " + corpo);
+            String redirecionar = request.getParameter("redirecionar");
+            String mensagem = request.getParameter("mensagem");
+            System.out.println("destinatario" + destinatario + " assunto "+assunto+" corpo " + corpo + " redirecionar " + redirecionar);
             
             String to = request.getParameter("destinatario");
             String subject = request.getParameter("assunto");
@@ -39,8 +41,8 @@ public class EnviaEmailServlet extends HttpServlet {
             String pass = "Metrocamp@2017";
             SendMail.send(to,subject, message, user, pass);
             
-            request.setAttribute("mensagemSucesso", "<span>Intruções enviadas por email</span>");
-            getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+            request.setAttribute("mensagemSucesso", mensagem);
+            getServletContext().getRequestDispatcher(redirecionar).forward(request, response);
         }catch (Exception e) {
             System.out.println("Erro " + e);
             request.setAttribute("mensagemErro", "Informações inválidas.");

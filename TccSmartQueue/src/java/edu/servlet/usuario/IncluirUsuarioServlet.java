@@ -102,13 +102,28 @@ public class IncluirUsuarioServlet extends HttpServlet {
                         }
                         else {
                             //INSERE USUARIO
-                            boolean sucesso = usuarioDao.insereUsuario(nome, email, cpf, tipo);
-                        
-                            if (sucesso) {
+                            String token = usuarioDao.insereUsuario(nome, email, cpf, tipo);
+                            System.out.println("token servet "+token);
+                            if (!token.equals("Erro")) {
                                 //requisi��o foi bem sucedida, vamos finaliza-la e redirecionar o usuario para outro servlet
-                                mensagem = "<span>Usuário incluido com sucesso</span>";
-                                request.setAttribute("mensagemSucesso", mensagem);
-                                response.sendRedirect(getServletContext().getContextPath() + "/ListaUsuarioServlet");
+                                
+                                //Envia email para criar nova senha
+                                String destinatario = email;
+                                String assunto = "Cadastrar senha no SmartQueue";
+                                String corpo = ("<p style='font-family: Arial, sans-serif'>Olá, "+nome+" </p>" +
+                                    "<p style='font-family: Arial, sans-serif'>Você foi cadastrado como "+tipo+" no Smrtqueue. </p>" +
+                                    "<p style='font-family: Arial, sans-serif'>Para ter acesso ao sistema, você precisa realizar a criação da sua senha <a href=\"https://www.smartqueue.com.br/TccSmartQueue/RecuperarDadosToken?token="+token+"\">aqui</a>. A sua senha deve:</p>" +
+                                    "<h4 style='font-family: Arial, sans-serif'>Ter mais que 6 caracteres, sendo eles:</h4>" +
+                                    "<ul>" +        
+                                    "<li><span style='font-family: Arial, sans-serif; list-style: disc inside'>Letras (a-z);</span></li>" +
+                                    "<li><span style='font-family: Arial, sans-serif; list-style: disc inside'>Números (0-9).</span></li>" +
+                                    "</ul>" +
+                                    "Ignore este e-mail se você não solicitou cadastro no Smartqueue.");  
+                                
+                                mensagem = "<span>Usuário incluido com sucesso! As intruções para definição de senha foram enviadas por email! </span>";
+                                
+                                getServletContext().getRequestDispatcher("/EnviaEmailServlet?destinatario="+destinatario+"&assunto="+assunto+"&corpo="+corpo+"&mensagem="+mensagem+"&redirecionar=/ListaUsuarioServlet").forward(request, response);
+                                
                             } 
                             else {
                                 mensagem = "<span>Erro inesperado</span>";

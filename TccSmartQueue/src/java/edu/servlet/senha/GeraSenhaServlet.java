@@ -78,7 +78,7 @@ public class GeraSenhaServlet extends HttpServlet{
             }
             
             //voltar aqui
-            int id_sequencia = senhaDao.geraSenha(logincliente,cpfcliente,senhacliente,tipo_atendimento, id_player);
+            int id_sequencia = senhaDao.geraSenha(logincliente,cpfcliente,emailcliente,senhacliente,tipo_atendimento, id_player);
             
             //SENHA GERADA COM SUCESSO
             if (id_sequencia > 0){        

@@ -69,8 +69,9 @@ public class EsqueciSenhaServlet extends HttpServlet {
                                     "<li><span style='font-family: Arial, sans-serif; list-style: disc inside'>Letras (a-z);</span></li>" +
                                     "<li><span style='font-family: Arial, sans-serif; list-style: disc inside'>Números (0-9).</span></li>" +
                                     "</ul>" +
-                                    "Ignore este e-mail se você não quiser redefinir a sua senha.");                      
-                    getServletContext().getRequestDispatcher("/EnviaEmailServlet?destinatario="+destinatario+"&assunto="+assunto+"&corpo="+corpo).forward(request, response);   
+                                    "Ignore este e-mail se você não quiser redefinir a sua senha."); 
+                    mensagem = "As instruções para redefinição de senha foram enviadas por email!";                    
+                    getServletContext().getRequestDispatcher("/EnviaEmailServlet?destinatario="+destinatario+"&assunto="+assunto+"&corpo="+corpo+"&mensagem="+mensagem+"&redirecionar=/modal_esqueci_senha.jsp").forward(request, response);
                 }     
             }
       

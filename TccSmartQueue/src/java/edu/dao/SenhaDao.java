@@ -13,6 +13,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.InputMismatchException;
+import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import sun.misc.BASE64Encoder;
@@ -31,7 +32,7 @@ public class SenhaDao extends Dao {
     Se sim, mostra senha
     Se não, gera uma nova senha
     */
-     public int geraSenha(String cliente, String cpf, String senha, String tipo_atendimento, String id_player) {
+     public int geraSenha(String cliente, String cpf, String email, String senha, String tipo_atendimento, String id_player) {
         
         Connection conn = null;
         int id_sequencia = 0;
@@ -42,7 +43,7 @@ public class SenhaDao extends Dao {
             conn.setAutoCommit(false);
             
             //VERIFICA SE ESSE CLIENTE JÁ POSSUI SENHA ATIVA PARA A DATA ATUAL
-            String select_sql = "SELECT id_sequencia, senha_cliente senha FROM tab_senhas WHERE data_senha = curdate() and status_atendimento = 'Ativo' and cpf_cliente = ?";
+            String select_sql = "SELECT id_sequencia, senha_cliente senha FROM tab_senhas WHERE data_senha = curdate() and status_atendimento in ('Ativo','Segunda Chance') and cpf_cliente = ?";
             PreparedStatement stmt = conn.prepareStatement(select_sql);
             stmt.setString(1, cpf);
             ResultSet result = stmt.executeQuery();
@@ -65,14 +66,15 @@ public class SenhaDao extends Dao {
             //SE NÃO
             else {  
                 //INSERE NOVA SENHA
-                String sql = "INSERT INTO tab_senhas(id_senha, data_senha, cpf_cliente, nm_cliente, senha_cliente, status_atendimento, tipo_atendimento, id_player) VALUES (? , curdate(), ?, ?, ?, 'Ativo', ?, ?); ";                    
+                String sql = "INSERT INTO tab_senhas(id_senha, data_senha, cpf_cliente, email_cliente, nm_cliente, senha_cliente, status_atendimento, tipo_atendimento, id_player) VALUES (? , curdate(), ?, ?, ?, ?, 'Ativo', ?, ?); ";                    
                 stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);            
                 stmt.setInt(1, getProximaSenha());
                 stmt.setString(2, cpf); //informar CPF digitado pelo usuário
-                stmt.setString(3, cliente); //informar nome digitado pelo usuário
-                stmt.setString(4, criptoSenha(senha)); //informar senha digitado pelo usuário                                      
-                stmt.setString(5, tipo_atendimento); //informar tipo atendimento informado pelo usuário
-                stmt.setString(6, id_player); //id gerado pelo onesigal para envio de push notifications
+                stmt.setString(3, email);
+                stmt.setString(4, cliente); //informar nome digitado pelo usuário
+                stmt.setString(5, criptoSenha(senha)); //informar senha digitado pelo usuário                                      
+                stmt.setString(6, tipo_atendimento); //informar tipo atendimento informado pelo usuário
+                stmt.setString(7, id_player); //id gerado pelo onesigal para envio de push notifications
                 int affectedRows = stmt.executeUpdate();
                 
                 //verifica se deu certo. Se sim, obtem a chave id_sequancia gerada 
@@ -711,5 +713,66 @@ public String criptoSenha(String senha_cripto){
                 }
             } 
     }
-    }     
+    }    
+   
+       public String updateEsqueciSenhaCliente(String cpf, String email) {
+        Connection conn = null;
+
+        try {
+            String senha = getRandomPass();
+            //obtem conexao com o banco de dados
+            conn = getConnection();
+            conn.setAutoCommit(false);
+
+            //define SQL para atualiza��o
+            String sql = "UPDATE tab_senhas SET senha_cliente = ? WHERE cpf_cliente = ? and email_cliente = ? and status_atendimento in ('Ativo','Segunda Chance')";
+
+            //instance Prepared statement especificando os par�metros do SQL
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setString(1, criptoSenha(senha));
+            stmt.setString(2, cpf);
+            stmt.setString(3, email);
+            
+            //executa a opera��o no banco de dados
+            int affectedRows = stmt.executeUpdate();
+
+            //verifica se deu certo. Se sim, atualiza a nota 
+            if (affectedRows > 0) {
+                //confirma as modifica��es no banco de dados
+                conn.commit();
+                System.out.println("senha " + senha);
+                return senha;
+            } else {
+                //cancela as modifica��es no banco de dados
+                conn.rollback();
+                return "Erro";
+            }
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return "Erro";
+        } finally {
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (Exception closeEx) {
+                    //do nothing
+                }
+            }
+        }
+    }    
+       
+   public String getRandomPass(){
+        char[] chartn ={'0','1','2','3','4','5','6','7','8','9'};
+        char[] chartl ={'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
+        char[] senha= new char[6];
+        int chartLenghtn = chartn.length;
+        int chartLenghtl = chartl.length;
+        Random rdm = new Random();
+        for (int x=0; x<3; x++)
+            senha[x] = chartl[rdm.nextInt(chartLenghtl)];
+        for (int x=3; x<6; x++)
+            senha[x] = chartn[rdm.nextInt(chartLenghtn)];
+        return new String(senha);
+    }
 }
