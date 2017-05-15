@@ -329,6 +329,7 @@ nav li.submenu:hover ul{
 }
 nav li ul li{
     padding: 0;
+    float: left;
 }
 nav li ul li a{
     padding: 1em;
@@ -688,6 +689,17 @@ div.box-cliente p{
 }
 .relatorio form{
     margin-bottom: 2em;
+    border-right: solid 1px #eee;
+    padding-right: 3em;
+}
+.relatorio h1{
+    margin-bottom: 1em;
+}
+.relatorio{
+    margin-bottom: 3em !important;
+}
+.relatorio .grafico{
+    padding: 0 3em !important;
 }
 @media (max-width: 450px) {
     body{
