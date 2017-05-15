@@ -12,6 +12,7 @@
         <title>Smartqueue - Alterar parâmetros</title>
     </head>
     <body>
+        <%@include file="WEB-INF/jspf/mensagem.jspf"%>
         <form id="parametro" action="ParametroServlet?id_parametro=+${param.id_parametro}" method="get">
             <p>
                 <label>desc_parametro</label>

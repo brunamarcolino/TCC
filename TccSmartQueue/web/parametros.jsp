@@ -18,6 +18,7 @@
     </head>
     <body>    
         <%@include file="WEB-INF/jspf/cabecalho.jspf"%>
+        <%@include file="WEB-INF/jspf/mensagem.jspf"%>
 
         <c:if test="${empty login}">
 

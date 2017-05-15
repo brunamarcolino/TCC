@@ -1,16 +1,12 @@
 package edu.servlet.email;
 
 import java.io.IOException;
-import java.net.URL;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.apache.commons.mail.DefaultAuthenticator;
-import org.apache.commons.mail.Email;
-import org.apache.commons.mail.SimpleEmail;
 
 
 
@@ -43,7 +39,7 @@ public class EnviaEmailServlet extends HttpServlet {
             String pass = "Metrocamp@2017";
             SendMail.send(to,subject, message, user, pass);
             
-            request.setAttribute("mensagemSucesso", "<span>Você receberá um email com as instruções para alteração de senha</span>");
+            request.setAttribute("mensagemSucesso", "<span>Intruções enviadas por email</span>");
             getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
         }catch (Exception e) {
             System.out.println("Erro " + e);

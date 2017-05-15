@@ -27,7 +27,7 @@
             <div class="grid-75 gera-senha">
             <c:choose>  
                 <c:when test="${empty senha}">
-                    <p>Nenhuma senha!</p>
+                    <META HTTP-EQUIV="Refresh" CONTENT="5;URL=index.jsp">
                 </c:when>
                 <c:otherwise>
                     <div class="grid-parent grid-50 mobile-grid-100 info">

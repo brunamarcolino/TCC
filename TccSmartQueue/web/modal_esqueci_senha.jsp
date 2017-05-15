@@ -15,6 +15,7 @@
         <%@include file="WEB-INF/jspf/chamadas.jspf"%>
     </head>
     <body>   
+        <%@include file="WEB-INF/jspf/mensagem.jspf" %>
         <div class="main">
             <div class="grid-25 mobile-grid-90">
                 <h1>Esqueci minha senha</h1>
