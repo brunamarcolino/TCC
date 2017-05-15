@@ -91,11 +91,12 @@ public class EditarUsuarioServlet extends HttpServlet {
                             getServletContext().getRequestDispatcher("/modal_usuario.jsp").forward(request, response);
                             }
                             else {
-                                boolean sucesso;
+                                boolean sucesso = false;
                                 if (id == 0){
                                    //incluir usuário 
-                                   sucesso = usuarioDao.insereUsuario(nome, email, cpf, tipo);
+                                   String token = usuarioDao.insereUsuario(nome, email, cpf, tipo);
                                    mensagem = "<span>Usuário incluido com sucesso</span>";
+                                   sucesso = true;
                                 }
                                 else {
                                     //editar usuario
