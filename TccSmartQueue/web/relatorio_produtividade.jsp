@@ -10,7 +10,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         
-        <title>SmartQueue - Relatório/ Tempo de atendimento</title>
+        <title>SmartQueue - Relatório/ Produtividade</title>
         <%@include file="WEB-INF/jspf/chamadas.jspf"%>
     </head>
     <body>
@@ -21,11 +21,11 @@
         <div class="main">
             <div class="grid-90 mobile-grid-100 relatorio filtro section-center">
                 <div class="grid-100">
-                    <h1><span>Relatório /</span> Tempo de atendimento </h1>
+                    <h1><span>Relatório /</span> Produtividade</h1>
                     <br/>
                 </div>
-                <form action="ChartTempoAtendimentoServlet" method="post" class="grid-30">
-                <ul>
+                <form action="ChartProdutividadeServlet" method="post" class="grid-parent grid-30">
+                    <ul>
                     <li class="grid-100">
                         <label>Data início</label>
                         <input type="date" name="data_inicio" value="${data_inicio}"/>
@@ -87,7 +87,7 @@
                                 data: {
                                     labels: array_y,
                                     datasets: [{
-                                        label: 'Tempo médio (em minutos)',
+                                        label: 'Quantidade de atendimentos',
                                         data: array_x,
                                         backgroundColor: [
                                             'rgba(255, 99, 132, 0.2)',
@@ -116,7 +116,7 @@
                                                 beginAtZero:true
                                             }
                                         }]
-                                    }
+                                    },
                                 }
                             });
                         }else if(tipo_grafico == 'Polar'){
@@ -133,7 +133,7 @@
                                             'rgba(153, 102, 255, 0.2)',
                                             'rgba(255, 159, 64, 0.2)'
                                         ],
-                                        label: 'Tempo médio (em minutos)' // for legend
+                                        label: 'Quantidade de atendimentos' // for legend
                                     }],
                                     labels: array_y
                                 },
@@ -147,7 +147,7 @@
                                 data: {
                                     labels: array_y,
                                     datasets: [{
-                                        label: 'Tempo médio (em minutos)',
+                                        label: 'Quantidade de atendimentos',
                                         data: array_x,
                                         backgroundColor: [
                                             'rgba(255, 99, 132, 0.2)',
@@ -178,7 +178,7 @@
                                 data: {
                                     labels: array_y,
                                     datasets: [{
-                                        label: 'Tempo médio (em minutos)',
+                                        label: 'Quantidade de atendimentos',
                                         data: array_x,
                                         backgroundColor: [
                                             'rgba(255, 99, 132, 0.2)',
