@@ -30,7 +30,7 @@
                 <form name="tipo" id="local" action="MapsServlet" method="post">
                     <ul>
                         <li>
-                            <input type="hidden" name="localiza"/>
+                            <input type="hidden" name="localiza" value="Localizacao não disponivel."/>
                             <select name="tipo_atendimento" id="tipo_atendimento">
                                 <option value="Normal">Normal</option>
                                 <option value="Preferencial">Preferencial</option>
@@ -49,6 +49,7 @@
                         <li>
                             <a href="index.jsp" class="btn-back"><img src="imagens/back.png" />Voltar</a>
                             <input type="submit" value="Continuar" class="btn btn-outline azul"/>
+                            
                         </li>
                     </ul>
                 </form>

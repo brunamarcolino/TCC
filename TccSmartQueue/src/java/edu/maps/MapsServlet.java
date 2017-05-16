@@ -44,10 +44,12 @@ public class MapsServlet extends HttpServlet {
      */
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
+        String mensagem = "";
         try {
             //BUSCA PARAMETROS DO JSP
             String localizacao = request.getParameter("localiza");
             String tipo_atendimento = request.getParameter("tipo_atendimento");
+            mensagem = localizacao;
             
             System.out.println("localizacao " + localizacao);
             System.out.println("tipo_atendimento " + tipo_atendimento);
@@ -138,7 +140,7 @@ public class MapsServlet extends HttpServlet {
             //getServletContext().getRequestDispatcher("/json.jsp").forward(request, response);
         } catch (Exception ex) {
             ex.printStackTrace();
-            request.setAttribute("mensagemErro", "Erro na localização.");
+            request.setAttribute("mensagemErro", "Erro : " + mensagem);
             getServletContext().getRequestDispatcher("/localizacao.jsp").forward(request, response);            
 	}
              
