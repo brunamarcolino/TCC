@@ -24,7 +24,7 @@
                     <h1><span>Relatório /</span> Produtividade</h1>
                     <br/>
                 </div>
-                <form action="ChartProdutividadeServlet" method="post" class="grid-parent grid-30">
+                <form action="ChartProdutividadeServlet" method="post" class="grid-parent grid-100">
                     <ul>
                     <li class="grid-20">
                         <label>Data início</label>
