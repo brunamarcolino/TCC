@@ -13,7 +13,7 @@ function getLocation()
     {
     navigator.geolocation.getCurrentPosition(showPosition,showError);
     }
-  else{x.value="Seu browser não suporta Geolocalização.";}
+  else{document.value="Seu browser nao suporta Geolocalizacao.";}
   }
   
   function showPosition(position)
@@ -27,7 +27,7 @@ function showError(error)
   switch(error.code)
     {
     case error.PERMISSION_DENIED:
-      document.tipo.localiza.value="Usuario rejeitou a solicitacao de Geolocalizacao.";
+      document.tipo.localiza.value="Voce rejeitou a solicitacao de Geolocalizacao.";
       break;
     case error.POSITION_UNAVAILABLE:
       document.tipo.localiza.value="Localizacao indisponivel.";
