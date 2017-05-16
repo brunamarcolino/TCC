@@ -433,6 +433,8 @@ div.senha-local h2{
     position: absolute;
     margin-left: .75em;
     margin-top: -.25em;
+    max-width: 16px;
+    max-height: 16px;
 }
 .tooltiptext{
     display: none;

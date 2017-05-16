@@ -67,6 +67,9 @@
                                                 <li><a href="ListaChartServlet?tipo=2">Produtividade</a></li>
                                             </ul>
                                         </li>
+                                        <li>
+                                            <a href="painel.jsp">Painel de senhas</a>
+                                        </li>
                                     </ul>
                                 </nav>
                             </c:if>        
@@ -88,6 +91,9 @@
                                         </c:if>
                                         <li>
                                             <a href="gerar_senha_local.jsp">Gerar Senha Local</a>
+                                        </li>
+                                        <li>
+                                            <a href="painel.jsp">Painel de senhas</a>
                                         </li>
                                     </ul>
                                 </nav>
