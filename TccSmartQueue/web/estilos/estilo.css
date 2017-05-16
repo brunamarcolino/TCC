@@ -321,6 +321,7 @@ nav li.submenu ul{
     overflow: hidden;
     padding-top: 20px;
     transition: all .3s ease-out;
+    z-index: 10;
 }
 nav li.submenu:hover ul{
     max-height: 300px;
@@ -685,21 +686,23 @@ div.box-cliente p{
     margin: 0;
 }
 .relatorio input[type="submit"]{
-    width: 100%;
+    width: 75%;
 }
+
 .relatorio form{
     margin-bottom: 2em;
-    border-right: solid 1px #eee;
-    padding-right: 3em;
-}
-.relatorio h1{
-    margin-bottom: 1em;
 }
 .relatorio{
     margin-bottom: 3em !important;
 }
-.relatorio .grafico{
+.relatorio h1{
+    margin: 0;
+}
+.relatorio .grafico,
+.relatorio .grafico_circular{
     padding: 0 3em !important;
+    float: none !important;
+    margin: 0 auto;
 }
 @media (max-width: 450px) {
     body{

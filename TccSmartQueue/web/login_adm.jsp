@@ -21,10 +21,9 @@
         <%@include file="WEB-INF/jspf/chamadas.jspf"%>
     </head>
     <body>
-        <%@include file="WEB-INF/jspf/mensagem.jspf" %>
-
         <c:choose>
             <c:when test="${empty login}">
+                <%@include file="WEB-INF/jspf/mensagem.jspf" %>
                 <section class="grid-25 mobile-grid-90 section-center">
                     <div class="grid-100 mobile-grid-100">
                         <h1>Entrar</h1>
@@ -53,6 +52,8 @@
             </c:when>
             <c:otherwise>
                 <%@include file="WEB-INF/jspf/cabecalho.jspf" %>
+                
+                <%@include file="WEB-INF/jspf/mensagem.jspf" %>
                 <div class="main">
                 </div>
             </c:otherwise>        

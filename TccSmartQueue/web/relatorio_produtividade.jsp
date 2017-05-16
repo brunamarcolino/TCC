@@ -26,15 +26,15 @@
                 </div>
                 <form action="ChartProdutividadeServlet" method="post" class="grid-parent grid-30">
                     <ul>
-                    <li class="grid-100">
+                    <li class="grid-20">
                         <label>Data início</label>
                         <input type="date" name="data_inicio" value="${data_inicio}"/>
                     </li>
-                    <li class="grid-100">
+                    <li class="grid-20">
                         <label>Data fim</label>
                         <input type="date" name="data_fim" value="${data_fim}"/>
                     </li>
-                    <li class="grid-100">
+                    <li class="grid-20">
                         <label>Atendente</label>
                         <select name="atendente">                           
                            <option>TODOS</option>
@@ -46,16 +46,16 @@
                             </c:forEach>
                         </select>
                     </li>
-                    <li class="grid-100">
+                    <li class="grid-20">
                         <label>Tipo de gráfico</label>
                         <select id="tipo_grafico" name="tipo_grafico">
-                            <option ${tipo_grafico == 'Barras' ? 'selected' : ''}>Barras</option>
                             <option ${tipo_grafico == 'Linhas' ? 'selected' : ''}>Linhas</option>
+                            <option ${tipo_grafico == 'Barras' ? 'selected' : ''}>Barras</option>
                             <option ${tipo_grafico == 'Pizza' ? 'selected' : ''}>Pizza</option>
                            <option ${tipo_grafico == 'Polar' ? 'selected' : ''}>Polar</option>
                         </select>
                     </li>
-                    <li class="grid-100">
+                    <li class="grid-20">
                         <input type="submit" class="btn btn-outline azul" value="Gerar"/>
                     </li>
                     <li>
@@ -64,8 +64,11 @@
                     </li>
                 </ul>
                 </form>
-                <div class="grid-70 grafico">
+                <div class="grid-75 grafico">
                     <canvas id="myChart"></canvas>
+                </div>
+                <div class="grid-50 grafico_circular">
+                    <canvas id="myCircleChart"></canvas>
                 </div>
                 <script type="text/javascript">
                 $(document).ready(function(){
@@ -79,9 +82,11 @@
 
                     if(valor_x != "" && valor_y != "" && tipo_grafico != ""){
                         $("myChart").show();
-                        var ctx = $("#myChart");
+                        var ctx = $('#myChart');
+                        var ctx_2 = $('#myCircleChart');
 
                         if(tipo_grafico == 'Barras'){
+                            $('#myCircleChart').hide();
                             var myChart = new Chart(ctx, {
                                 type: 'bar',
                                 data: {
@@ -120,7 +125,8 @@
                                 }
                             });
                         }else if(tipo_grafico == 'Polar'){
-                            var myChart = new Chart(ctx, {
+                            $('#myChart').hide();
+                            var myChart = new Chart(ctx_2, {
                                 type: 'polarArea',
                                 data: {
                                     datasets: [{
@@ -142,7 +148,8 @@
                                 }
                             })
                         }else if(tipo_grafico == 'Pizza'){
-                            var myChart = new Chart(ctx, {
+                            $('#myChart').hide();
+                            var myChart = new Chart(ctx_2, {
                                 type: 'pie',
                                 data: {
                                     labels: array_y,
@@ -173,6 +180,7 @@
                                 }
                             });
                         }else if(tipo_grafico == 'Linhas'){
+                            $('#myCircleChart').hide();
                             var myChart = new Chart(ctx, {
                                 type: 'line',
                                 data: {
