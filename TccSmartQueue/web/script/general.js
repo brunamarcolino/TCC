@@ -12,7 +12,7 @@ $(document).ready(function(){
         //$('.mensagem').hide();
     }, 5000);
     
-    $('.image').css('height', height+20);
+    $('.image').css('height', height);
     $('.main').css('min-height', height-150);
     //$('#cpf').mask('000.000.000-00', {reverse: true});
     
@@ -51,7 +51,7 @@ $(document).ready(function(){
 
 $(window).resize(function(){
     height = $(document).height();
-    $('.image').css('height', height+20);
+    $('.image').css('height', height);
     $('.main').css('min-height', height-150);    
 });
 

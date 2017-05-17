@@ -22,7 +22,11 @@
         <div class="main">
             <div class="grid-25 mobile-grid-90 section-center">
                 <div class="box">
-                    <h1>Cadastro Cliente</h1>
+                    <h1>Cadastro Cliente  <img src="imagens/icon.png" class="tooltip" />
+                        <div class="tooltiptext">
+                            <span>Você já possui senha gerada? Não se preocupe! Se você digitar os mesmos dados recupera a senha gerada na primeira vez.</span>
+                        </div>
+                   </h1>
                     <p>Para recuperar sua senha gerada ou gerar uma nova senha, por favor preencha o formulário abaixo:</p>
                 </div>
                 <form name="gerasenha" action="GeraSenhaServlet?tipo_atendimento=${param.tipo_atendimento}" method="post">                
