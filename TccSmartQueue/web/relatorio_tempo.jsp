@@ -8,7 +8,9 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta charset="UTF-8">
+        <meta name="description" content="Gerenciador de filas">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         <title>SmartQueue - Relatório/ Tempo de atendimento</title>
         <%@include file="WEB-INF/jspf/chamadas.jspf"%>
@@ -24,17 +26,17 @@
                     <h1><span>Relatório /</span> Tempo de atendimento </h1>
                     <br/>
                 </div>
-                <form action="ChartTempoAtendimentoServlet" method="post" class="grid-100">
+                <form action="ChartTempoAtendimentoServlet" method="post" class="grid-100 mobile-grid-100">
                 <ul>
-                    <li class="grid-20">
+                    <li class="grid-20 mobile-grid-50">
                         <label>Data início</label>
                         <input type="date" name="data_inicio" value="${data_inicio}"/>
                     </li>
-                    <li class="grid-20">
+                    <li class="grid-20 mobile-grid-50">
                         <label>Data fim</label>
                         <input type="date" name="data_fim" value="${data_fim}"/>
                     </li>
-                    <li class="grid-20">
+                    <li class="grid-20 mobile-grid-50">
                         <label>Atendente</label>
                         <select name="atendente">                           
                            <option>TODOS</option>
@@ -46,7 +48,7 @@
                             </c:forEach>
                         </select>
                     </li>
-                    <li class="grid-20">
+                    <li class="grid-20 mobile-grid-50">
                         <label>Tipo de gráfico</label>
                         <select id="tipo_grafico" name="tipo_grafico">
                             <option ${tipo_grafico == 'Linhas' ? 'selected' : ''}>Linhas</option>
@@ -55,7 +57,7 @@
                            <option ${tipo_grafico == 'Polar' ? 'selected' : ''}>Polar</option>
                         </select>
                     </li>
-                    <li class="grid-20">
+                    <li class="grid-20 mobile-grid-100">
                         <input type="submit" class="btn btn-outline azul" value="Gerar"/>
                     </li>
                     <li>
@@ -64,10 +66,10 @@
                     </li>
                 </ul>
                 </form>
-                <div class="grid-75 grafico">
+                <div class="grid-75 mobile-grid-100 grafico">
                     <canvas id="myChart"></canvas>
                 </div>
-                <div class="grid-50 grafico_circular">
+                <div class="grid-50 mobile-grid-100 grafico_circular">
                     <canvas id="myCircleChart"></canvas>
                 </div>
                 <script type="text/javascript">

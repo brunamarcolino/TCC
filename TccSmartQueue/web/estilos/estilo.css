@@ -706,7 +706,7 @@ div.box-cliente p{
     float: none !important;
     margin: 0 auto;
 }
-@media (max-width: 450px) {
+@media (max-width: 1023px) {
     body{
         font-size: 1em;
         letter-spacing: -1px;
@@ -727,7 +727,8 @@ div.box-cliente p{
     }
     .section-center:nth-child(3){
         margin-top: 0;
-        margin-bottom: 3em;
+        margin-bottom: 0;
+        padding-bottom: 2em;
     }
     .section-center h2{
         margin-top: 0;
@@ -906,6 +907,7 @@ div.box-cliente p{
         transition: all .3s ease-out;
         width: 100%;
         border: none;
+        z-index: 99;
     }
     .menu-mobile nav.aberto{
         max-height: 500px;
@@ -915,14 +917,18 @@ div.box-cliente p{
     .menu-mobile li{
         width: 100%;
         display: block;
-        padding: 1em;
         border-bottom: solid 1px #A03F14
     }
     .menu-mobile li a{
         opacity: 1;
+        padding: 1em;
+        display: block;
     }
     .perfil{
         font-size: .85em;
+    }
+    .relatorio .grafico, .relatorio .grafico_circular{
+        padding: 0 10px !important;
     }
 }
 @media (min-width: 321px) and (max-width: 450px) {
