@@ -46,11 +46,21 @@
             </c:when>
             <c:otherwise>
                 <header class="grid-100 mobile-grid-100">
-                    <div class="grid-10 mobile-grid-50">
-                         <a href="index.jsp" title="Smartqueue"><h3 class="title-home">Smartqueue</h3></a>
+                    <div class="grid-10 mobile-grid-100">
+                        <c:if test="${not empty login}">
+                            <a href="javascript:void(0);" class="menu-mobile-icone">
+                                <div id="nav-icon3">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                            </a>
+                        </c:if> 
+                        <a href="index.jsp" title="Smartqueue"><h3 class="title-home">Smartqueue</h3></a>
                     </div>
                     <div class="grid-75 pull-left hide-on-mobile">
-                        <c:if test="${not empty login}">  
+                        <c:if test="${not empty login}">
                             <c:if test="${login.tipo_usuario=='Administrador'}">
                                 <nav>
                                     <ul>
@@ -58,7 +68,7 @@
                                             <a href="ListaUsuarioServlet">Funcionários</a>
                                         </li>
                                         <li>
-                                            <a href="ListaParametrosServlet">Parâmetros do Sistemas</a>
+                                            <a href="ListaParametrosServlet">Parâmetros do sistemas</a>
                                         </li>
                                         <li class="submenu">
                                             <a href="javascript:void(0);">Relatórios</a>
@@ -78,34 +88,97 @@
                                     <ul>
                                         <c:if test="${id_fila==0}">
                                             <li>
-                                                <a href="ListaFilasServlet">Abrir Fila</a>
+                                                <a href="ListaFilasServlet">Abrir fila</a>
                                             </li>  
                                         </c:if>
                                         <c:if test="${id_fila>0}">
                                             <li>
-                                                <a href="fechar_fila.jsp">Fechar Fila</a>
+                                                <a href="fechar_fila.jsp">Fechar fila</a>
                                             </li>
                                             <li>
                                                 <a href="chamar_proximo.jsp?habilitado=1">Atendimento</a>
                                             </li>                                            
                                         </c:if>
                                         <li>
-                                            <a href="gerar_senha_local.jsp">Gerar Senha Local</a>
+                                            <a href="gerar_senha_local.jsp">Gerar senha local</a>
                                         </li>
                                         <li>
                                             <a href="painel.jsp">Painel de senhas</a>
                                         </li>
                                     </ul>
                                 </nav>
-                            </c:if>                                 
-                        </c:if>        
-
+                            </c:if>    
+                        </c:if>
                     </div>
-                    <div class="grid-15 pull-right perfil">
-                        <span>Olá, <strong>${login.nm_usuario}</strong></span>
-                        <a href="LogoutServlet"><strong>(sair)</strong></a>                       
-                    </div>   
+                    <div class="grid-100 hide-on-desktop menu-mobile">
 
+
+                        <c:if test="${not empty login}">
+                            <c:if test="${login.tipo_usuario=='Administrador'}">
+                                <nav>
+                                    <ul>
+                                        <li>
+                                            <a href="ListaUsuarioServlet">Funcionários</a>
+                                        </li>
+                                        <li>
+                                            <a href="ListaParametrosServlet">Parâmetros do sistemas</a>
+                                        </li>
+                                        <li>
+                                            <a href="ListaChartServlet?tipo=1">Relatório / Tempo de atendimento</a>
+                                        </li>
+                                        <li>
+                                            <a href="ListaChartServlet?tipo=2">Relatório / Produtividade</a>
+                                        </li>
+                                        <li>
+                                            <a href="painel.jsp">Painel de senhas</a>
+                                        </li>
+                                        <li>
+                                            <a href="LogoutServlet">Sair</a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </c:if>        
+                            <c:if test="${login.tipo_usuario=='Atendente'}">
+                                <nav>
+                                    <ul>
+                                        <c:if test="${id_fila==0}">
+                                            <li>
+                                                <a href="ListaFilasServlet">Abrir fila</a>
+                                            </li>  
+                                        </c:if>
+                                        <c:if test="${id_fila>0}">
+                                            <li>
+                                                <a href="fechar_fila.jsp">Fechar fila</a>
+                                            </li>
+                                            <li>
+                                                <a href="chamar_proximo.jsp?habilitado=1">Atendimento</a>
+                                            </li>                                            
+                                        </c:if>
+                                        <li>
+                                            <a href="gerar_senha_local.jsp">Gerar senha local</a>
+                                        </li>
+                                        <li>
+                                            <a href="painel.jsp">Painel de senhas</a>
+                                        </li>
+                                        <li>
+                                            <a href="LogoutServlet">Sair</a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </c:if>    
+                        </c:if>
+                    </div>
+                    <div class="grid-15 pull-right perfil hide-on-mobile">
+                        <c:choose>
+                            <c:when test="${empty login.nm_usuario}">
+                                <span>Olá, <strong>Cliente</strong></span>
+                             </c:when>
+                            <c:otherwise>
+                                <span>Olá, <strong>${login.nm_usuario}</strong></span>
+                            </c:otherwise>        
+                        </c:choose>
+                        <a href="LogoutServlet"><strong>(sair)</strong></a>                       
+                    </div>
                 </header>
             </c:otherwise>        
         </c:choose>
