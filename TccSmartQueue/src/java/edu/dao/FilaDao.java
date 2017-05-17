@@ -156,7 +156,7 @@ public class FilaDao extends Dao {
             }
         }
     }
- public int VerificaTodasFilasAbertas() {
+ public boolean VerificaFecharFila() {
         
         Connection conn = null;
         
@@ -166,23 +166,39 @@ public class FilaDao extends Dao {
             conn.setAutoCommit(false);
             
             //VERIFICA SE ESSE CLIENTE JÁ POSSUI SENHA ATIVA PARA A DATA ATUAL
-            String select_sql = "SELECT COUNT(id_fila) FROM tab_fila where status_fila = 'aberta'";
+            String select_sql = "SELECT COUNT(1) FROM tab_fila where status_fila = 'Aberta'";
             PreparedStatement stmt = conn.prepareStatement(select_sql);
             ResultSet result = stmt.executeQuery();
             
             //SE SIM
             if (result.next()) {
-                //RECUPERA AS INFORMAÇÕES DO CLIENTE
-                return result.getInt(1);                
-            }                                
-            
-            //SE NÃO
-            else {  
-                    return 0;
-            }                    
+                System.out.println("Quantidade de filas abertas : " + result.getInt(1));
+                //ultima fila aberta
+                if (result.getInt(1) == 1){
+                    //verifica se há pessoas na fila
+                    select_sql = "SELECT count(1) FROM tab_senhas WHERE status_atendimento in ('Chamando', 'Em Atendimento','Ativo', 'Segunda Chance') AND data_senha = CURRENT_DATE";
+                    stmt = conn.prepareStatement(select_sql);
+                    result = stmt.executeQuery();
+                    if (result.next()) {
+                        //se sim
+                        if (result.getInt(1) > 0){
+                            return false; //não permitir fechamento
+                        }
+                        else{
+                            return true; //permitir fechamento
+                        }
+                    }                    
+                }
+                else
+                {
+                //há mais filas abertas então pode fechar sua fila
+                return true;                
+                }
+            }    
+            return false;
         } catch (Exception ex) {
             ex.printStackTrace();
-            return 0;
+            return false;
         } finally {
             if (conn != null) {
                 try {

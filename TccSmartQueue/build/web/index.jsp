@@ -47,21 +47,28 @@
             <c:otherwise>
                 <header class="grid-100 mobile-grid-100">
                     <div class="grid-10 mobile-grid-50">
-                         <h3>Smartqueue</h3>
+                         <a href="index.jsp" title="Smartqueue"><h3 class="title-home">Smartqueue</h3></a>
                     </div>
-                    <div class="grid-80 pull-left hide-on-mobile">
+                    <div class="grid-75 pull-left hide-on-mobile">
                         <c:if test="${not empty login}">  
                             <c:if test="${login.tipo_usuario=='Administrador'}">
                                 <nav>
                                     <ul>
                                         <li>
-                                            <a href="ListaUsuarioServlet">Gerenciar Funcionários</a>
-                                        </li>
-                                        <li>
-                                            <a href="ListaChartServlet">Gerar Relatórios</a>
+                                            <a href="ListaUsuarioServlet">Funcionários</a>
                                         </li>
                                         <li>
                                             <a href="ListaParametrosServlet">Parâmetros do Sistemas</a>
+                                        </li>
+                                        <li class="submenu">
+                                            <a href="javascript:void(0);">Relatórios</a>
+                                            <ul>
+                                                <li><a href="ListaChartServlet?tipo=1">Tempo de atendimento</a></li>
+                                                <li><a href="ListaChartServlet?tipo=2">Produtividade</a></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a href="painel.jsp">Painel de senhas</a>
                                         </li>
                                     </ul>
                                 </nav>
@@ -85,13 +92,16 @@
                                         <li>
                                             <a href="gerar_senha_local.jsp">Gerar Senha Local</a>
                                         </li>
+                                        <li>
+                                            <a href="painel.jsp">Painel de senhas</a>
+                                        </li>
                                     </ul>
                                 </nav>
                             </c:if>                                 
                         </c:if>        
 
                     </div>
-                    <div class="grid-10 pull-right perfil">
+                    <div class="grid-15 pull-right perfil">
                         <span>Olá, <strong>${login.nm_usuario}</strong></span>
                         <a href="LogoutServlet"><strong>(sair)</strong></a>                       
                     </div>   
