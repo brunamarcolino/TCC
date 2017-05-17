@@ -32,9 +32,9 @@ $(document).ready(function(){
                 text: $('.tooltiptext')
             },
             position: {
-                my: 'center left',  // Position my top left...
-                at: 'center right', // at the bottom right of...
-                target: $('.tooltip') // my target
+                my: 'center left',
+                at: 'center right',
+                target: $('.tooltip')
             }
         });
     }
@@ -42,6 +42,11 @@ $(document).ready(function(){
     if($("#cpf").length){
         $("#cpf").mask('000.000.000-00', {reverse: true});
     }
+    
+    $('.menu-mobile-icone').click(function(){
+        $('.menu-mobile nav').toggleClass('aberto');
+        $('#nav-icon3').toggleClass('aberto');
+    })
 });
 
 $(window).resize(function(){

@@ -28,7 +28,7 @@
                 </c:when>
                 <c:otherwise>
                     <div class="grid-parent grid-50 mobile-grid-100 info">
-                        <div class="grid-100 mobile-grid-50">
+                        <div class="grid-100 mobile-grid-100">
                             <!--<p id="demo"></p> -->
                             <p>Tempo médio de atendimento</p>
                             <h2>
