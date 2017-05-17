@@ -1,7 +1,8 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+Classe: ChartDao
+Tipo: Dao
+Objetivo: 
+Contém as consultas referentes a geração de relatórios realizada pelo administrador
  */
 package edu.dao;
 
@@ -17,6 +18,7 @@ import java.util.List;
  */
 public class ChartDao extends Dao{
     
+    //Relatório de Tempo médio de atendimento
     public List<Chart> relatorio_tempoMedio(String parametro_data_ini, String parametro_data_fim, String parametro_atendente) {
         Connection conn = null;
 
@@ -24,6 +26,7 @@ public class ChartDao extends Dao{
             conn = getConnection();
             List<Chart> charts = new ArrayList<Chart>();
             
+            //Retorna todos os atendentes ativos e seus respectivos tempos medios de atendimento
             String sql = "SELECT u.nm_usuario, IFNULL(TIME_FORMAT(AVG(TIMEDIFF(s.data_atendimento_fim,s.data_atendimento_ini)),'%i'),0) tm FROM tab_senhas s inner join tab_usuarios u on u.id_usuario = s.id_usuario WHERE  s.data_senha between STR_TO_DATE(?, '%Y-%m-%d') and STR_TO_DATE(?, '%Y-%m-%d') and (? = 'TODOS' or s.id_usuario = ?) and s.data_atendimento_fim is not null group by u.nm_usuario";  
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setString(1, parametro_data_ini);
@@ -35,15 +38,12 @@ public class ChartDao extends Dao{
             
             
             while (result.next()){
+               //Adiciona cada resultado retorna para um list de charts 
                Chart chart = new Chart(); 
-               
                chart.setValor_x(result.getString("tm"));
                chart.setValor_y(result.getString("nm_usuario"));
-               System.out.println("Retorno: " + chart.getValor_x() + chart.getValor_tooltip() + chart.getValor_y());
-               
                charts.add(chart);
             }
-            System.out.println("DAO " + charts);
             return charts;
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -59,13 +59,15 @@ public class ChartDao extends Dao{
         }
     }
     
+    //Relatório de Produtividade (quantidade de atendimentos)
     public List<Chart> relatorio_produtividade(String parametro_data_ini, String parametro_data_fim, String parametro_atendente) {
         Connection conn = null;
 
         try {
             conn = getConnection();
             List<Chart> charts = new ArrayList<Chart>();
-            
+                       
+            //Retorna todos os atendentes ativos e a quantidade de clientes atendidos por cada um
             String sql = "SELECT u.nm_usuario, IFNULL(count(1),0) previsao FROM tab_senhas s inner join tab_usuarios u on u.id_usuario = s.id_usuario WHERE  s.data_senha between STR_TO_DATE(?, '%Y-%m-%d') and STR_TO_DATE(?, '%Y-%m-%d') and (? = 'TODOS' or s.id_usuario = ?) and s.data_atendimento_fim is not null group by u.nm_usuario";  
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setString(1, parametro_data_ini);
@@ -77,14 +79,12 @@ public class ChartDao extends Dao{
             
             
             while (result.next()){
+               //Adiciona cada resultado retorna para um list de charts 
                Chart chart = new Chart(); 
                chart.setValor_x(result.getString("previsao"));
                chart.setValor_y(result.getString("nm_usuario"));
-               System.out.println("Retorno: " + chart.getValor_x() + chart.getValor_tooltip() + chart.getValor_y());
-               
                charts.add(chart);
             }
-            System.out.println("DAO " + charts);
             return charts;
         } catch (Exception ex) {
             ex.printStackTrace();

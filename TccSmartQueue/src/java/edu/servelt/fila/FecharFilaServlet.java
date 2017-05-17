@@ -35,32 +35,31 @@ public class FecharFilaServlet extends HttpServlet {
         String mensagem = "";
         String login_usuario_str = request.getParameter("login_usuario");
         int login_usuario = Integer.parseInt(login_usuario_str);
-        int pessoasNaFila;
-        //VERIFICA SE É NULO OU VAZIO
+
        try{
-           SenhaDao senhaDao = new SenhaDao();
            FilaDao filaDao = new FilaDao();
-           pessoasNaFila = senhaDao.verificaClientesAtivos(login_usuario);
-           int ultimoAtendenteAtivo = filaDao.VerificaTodasFilasAbertas();
-           System.out.println(ultimoAtendenteAtivo);
-            if (ultimoAtendenteAtivo>1) {
+           
+           boolean permitir_fechamento = filaDao.VerificaFecharFila();
+           
+            if (permitir_fechamento) {
+                //pode fechar a fila
+                
                 boolean fila = filaDao.setFilaOff(login_usuario);
-                mensagem = "<span>Fila fechada com sucesso</span>";
-                request.setAttribute("mensagemSucesso", mensagem);
-                //request.getSession().setAttribute("login_usuario", fila);
-                int id_fila = filaDao.VerificaFilaAberta(login_usuario);
-                request.getSession().setAttribute("id_fila", id_fila); 
+                
+                if(fila){
+                    mensagem = "<span>Fila fechada com sucesso</span>";
+                    request.setAttribute("mensagemSucesso", mensagem);
+                }
+                else{
+                    mensagem = "<span>FOcorreu um erro durante o fechamento da Fila! Tente novamente mais tarde!</span>";
+                    request.setAttribute("mensagemErro", mensagem);
+                }
+                               
+                request.getSession().setAttribute("id_fila", 0); 
+                
                 getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
-            } else if(ultimoAtendenteAtivo <= 1 && pessoasNaFila > 0) {
+            } else {
                 mensagem = "<span>Ainda existem pessoas na fila e você é o último atendente ativo!</span>";
-                request.setAttribute("mensagemErro", mensagem);
-                getServletContext().getRequestDispatcher("/fechar_fila.jsp").forward(request, response);
-            } else if(ultimoAtendenteAtivo <= 1) {
-                mensagem = "<span>Você é o último atendente ativo!</span>";
-                request.setAttribute("mensagemErro", mensagem);
-                getServletContext().getRequestDispatcher("/fechar_fila.jsp").forward(request, response);
-            }else {
-                mensagem = "<span>Ops! Ocorreu algum erro, tente novamente</span>";
                 request.setAttribute("mensagemErro", mensagem);
                 getServletContext().getRequestDispatcher("/fechar_fila.jsp").forward(request, response);
             }

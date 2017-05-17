@@ -653,38 +653,7 @@ public String criptoSenha(String senha_cripto){
             }
         }
    }      
-   public int verificaClientesAtivos(int id_usuario) {
-        Connection conn = null;
-        int senha;
 
-        try {
-            conn = getConnection();
-
-            String sql = "SELECT min(id_senha) FROM tab_senhas WHERE status_atendimento in ('Chamando', 'Em Atendimento','Ativo') AND data_senha = CURRENT_DATE";
-
-            PreparedStatement stmt = conn.prepareStatement(sql);
-            ResultSet result = stmt.executeQuery();
-            
-            if (result.next()) {    
-                senha = result.getInt(1);
-                return senha;
-            } else {                
-                return 0;
-            }
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            return 0;
-        } finally {
-            if (conn != null) {
-                try {
-                    conn.close();
-                } catch (Exception closeEx) {
-                    //do nothing
-                }
-            }
-        }
-   }      
-   
    public String UltimoTipoAtendimento(){
        Connection conn = null;
 
