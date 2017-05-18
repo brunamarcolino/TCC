@@ -59,12 +59,6 @@ $(document).ready(function(){
     })
 });
 
-$(window).resize(function(){
-    height = $(document).height();
-    $('.image').css('height', height);
-    $('.main').css('min-height', height-150);    
-});
-
 function confirma() {
    confirm("Confirma?");
 };

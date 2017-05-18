@@ -66,6 +66,7 @@ a{
     font-size: .9em;
     text-decoration: none;
     vertical-align: top;
+    cursor: pointer;
 }
 form li{
     margin-bottom: 1.5em;
@@ -299,8 +300,9 @@ nav li{
 nav li:last-child{
     border: none;
 }
-nav li.submenu{
+nav li.submenu a{
     background: url("../imagens/bg-submenu.png") no-repeat right center;
+    padding-right: 1.5em;
 }
 nav li a{
     color: #FFF;
@@ -333,7 +335,7 @@ nav li ul li{
     padding: 0;
     float: left;
 }
-nav li ul li a{
+nav li.submenu ul li a{
     padding: 1em;
     background-color: #D48D40;
     min-width: 175px;
@@ -712,6 +714,58 @@ div.box-cliente p{
     padding: 0 3em !important;
     float: none !important;
     margin: 0 auto;
+
+}
+.menu-home{
+    margin-top: 1.5em !important;
+}
+.menu-home > ul > li{
+    border-right: 1px solid #EEE;
+}
+.menu-home > ul > li:last-child{
+    border-right: none;
+}
+.menu-home > ul > li > a,
+.menu-home > ul > li > div{
+    display: block;
+    padding-top: 1em;
+    opacity: .5;
+    transition: all .2s ease-out;
+    position: relative
+}
+.menu-home > ul > li > a:hover,
+.menu-home > ul > li > div:hover{
+    transform: scale(1.1);
+    opacity: 1;
+}
+.menu-home > ul > li > a:hover h3,
+.menu-home > ul > li > div:hover h3,
+.menu-home li ul li a:hover{
+    color: #FF8500;
+}
+.menu-home div > ul{
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+.menu-home li ul li a{
+    color: #777;
+    margin-bottom: 1em;
+    display: block;
+}
+.menu-home li h3{
+    text-align: center;
+    vertical-align: top;
+    display: block;
+    font-size: 1.2em;
+    transition: all .2s ease-out;
+}
+.menu-home li img{
+    max-width: 75px;
+    max-height: 75px;
+    margin-bottom: 1.2em;
+    
 }
 @media (max-width: 1023px) {
     body{
@@ -835,6 +889,7 @@ div.box-cliente p{
     div.box-cliente .btn-group .btn{
         width: 45%;
     }
+    
     .menu-mobile-icone{
         margin-right: 1.5em;
         float: left;
