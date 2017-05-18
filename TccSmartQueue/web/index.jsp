@@ -66,7 +66,7 @@
                         <div class="grid-100 mobile-grid-100">
                             <h1>Bem-vindo!</h1>
                             <h3>Navegue nas funcionalidades através do menu abaixo:</h3>
-                            <br/>
+                            <br class="hide-on-mobile" />
                         </div>
                         <c:if test="${not empty login}">
                             <c:if test="${login.tipo_usuario=='Administrador'}">

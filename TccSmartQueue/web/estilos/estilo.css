@@ -1006,6 +1006,15 @@ div.box-cliente p{
     .relatorio .grafico, .relatorio .grafico_circular{
         padding: 0 10px !important;
     }
+    .menu-home{
+        margin-top: 0 !important;
+    }
+    .menu-home h1{
+        margin-top: 0;
+    }
+    .menu-home > ul > li:nth-child(even){
+        border: none;
+    }
 }
 @media (min-width: 321px) and (max-width: 450px) {
     .btn, input[type="submit"], input[type="button"]{
