@@ -26,7 +26,7 @@ $(document).ready(function(){
        }
     });
     
-    if($(".tooltip").length){
+    if($(".tooltip").length || $(".tooltip_title").length){
         $(".tooltip").qtip({
             content: {
                 text: $('.tooltiptext')
@@ -35,6 +35,16 @@ $(document).ready(function(){
                 my: 'center left',
                 at: 'center right',
                 target: $('.tooltip')
+            }
+        });
+        $(".tooltip_title").qtip({
+            content: {
+                text: $('.tooltiptext_title')
+            },
+            position: {
+                my: 'center left',
+                at: 'center right',
+                target: $('.tooltip_title')
             }
         });
     }

@@ -73,7 +73,7 @@
                                 </li>                
                                 <li class="grid-parent grid-50">
                                     <label for="CPF">CPF</label>
-                                    <input type="number" name="cpf" value="${usuario.cpf_usuario}"/>
+                                    <input type="number" name="cpf" id="cpf" value="${usuario.cpf_usuario}"/>
                                 </li>                
                                 <li class="grid-50">
                                     <label for="Tipo">Tipo</label>

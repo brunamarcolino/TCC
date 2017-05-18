@@ -22,8 +22,8 @@
         <div class="main">
             <div class="grid-25 mobile-grid-90 section-center">
                 <div class="box">
-                    <h1>Cadastro Cliente  <img src="imagens/icon.png" class="tooltip" />
-                        <div class="tooltiptext">
+                    <h1>Cadastro Cliente  <img src="imagens/icon.png" class="tooltip_title" />
+                        <div class="tooltiptext_title">
                             <span>Você já possui senha gerada? Não se preocupe! Se você digitar os mesmos dados recupera a senha gerada na primeira vez.</span>
                         </div>
                    </h1>

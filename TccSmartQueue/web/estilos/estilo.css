@@ -112,6 +112,7 @@ textarea{
 }
 select{
     -webkit-appearance: none;
+    -moz-appearance: none;
     background: url("../imagens/bg-select.png") no-repeat 95% center;
 }
 .mensagem.ocultar {
@@ -429,14 +430,20 @@ div.senha-local h2{
     margin-top: 0;
     text-align: center;
 }
-.tooltip{
+.tooltip,
+.tooltip_title{
     position: absolute;
     margin-left: .75em;
     margin-top: -.25em;
     max-width: 16px;
     max-height: 16px;
 }
-.tooltiptext{
+.tooltip_title{
+    margin-left: .5em;
+    margin-top: .25em;
+}
+.tooltiptext,
+.tooltiptext_title{
     display: none;
 }
 .qtip-default{
