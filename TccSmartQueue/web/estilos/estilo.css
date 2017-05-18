@@ -167,7 +167,7 @@ input[readonly="readonly"] {
     margin: 0;
 }
 .main h1{
-    margin:1em 0 .15em;
+    margin:1em 0 .5em;
 }
 .main h1 span{
     color: #CCC;   
@@ -433,12 +433,16 @@ div.senha-local h2{
     text-align: center;
 }
 .tooltip,
-.tooltip_title{
+.tooltip_title,
+.tooltip.parametros{
     position: absolute;
     margin-left: .75em;
     margin-top: -.25em;
     max-width: 16px;
     max-height: 16px;
+}
+.tooltip.parametros{
+    margin-top: 0;
 }
 .tooltip_title{
     margin-left: .5em;
@@ -580,6 +584,16 @@ div.box-cliente p{
     color: #777;
     max-width: 100%;
     margin-bottom: 1.5em;
+}
+.painel{
+    padding-top: 1em;
+}
+.painel a.btn-back{
+    margin-top: 0
+}
+.painel .gera-senha h1{
+    font-size: 2em;
+    color: #777;
 }
 .painel .info > div h2,
 .painel table td{

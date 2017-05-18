@@ -47,6 +47,7 @@ $(document).ready(function(){
                 target: $('.tooltip_title')
             }
         });
+        
     }
     
     if($("#cpf").length){

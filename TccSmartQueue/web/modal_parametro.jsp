@@ -37,7 +37,33 @@
                                 </li>    
                                 <li>
                                     <label for="Descricao">Descrição</label>
-                                    <input type="text" name="descricao" value="${parametro.desc_parametro}" readonly="readonly"/>
+                                    <p>${parametro.desc_parametro}  <img src="imagens/icon.png" class="tooltip parametros" />
+                                        <div class="tooltiptext">
+                                            <c:choose>
+                                                <c:when test="${parametro.id_parametro=='1'}">
+                                                    <span>Esse parâmetro você define o horário do seu estabelecimento, se ele é 24 horas ou tem um horário determinado.</span>
+                                                </c:when>
+                                                <c:when test="${parametro.id_parametro=='5'}">
+                                                    <span>Aqui você decide se os cliente terão uma segunda chance ou não. Marcando a opção "sim", caso o usuário perca sua vez, ele será direcionado ao final da fila, e chamado novamente quando chegar a sua vez.</span>
+                                                </c:when>
+                                                <c:when test="${parametro.id_parametro=='6'}">
+                                                    <span>Quantidade de postos de atendimento existentes em seu estabelecimento.</span>
+                                                </c:when>    
+                                                <c:when test="${parametro.id_parametro=='7'}">
+                                                    <span>Esse parâmetro servirá para você definir um raio (em quilômetros) no qual o usuário poderá solicitar uma senha de atendimento.</span>
+                                                </c:when>
+                                                <c:when test="${parametro.id_parametro=='8'}">
+                                                    <span>Adicione o endereço do seu estabelecimento aqui para que possa ser calculado a distância do cliente em relação estabelecimento.</span>
+                                                </c:when> 
+                                                <c:when test="${parametro.id_parametro=='3'}">
+                                                    <span>Horário em que o seu expediente se inicia, ou que o postos de atendimento são abertos.</span>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <span>Horário em que o seu expediente se encerra, ou que o postos de atendimento são fechados.</span>
+                                                </c:otherwise>
+                                            </c:choose>
+                                        </div>
+                                    </p>
                                 </li>
                                 <li>
                                     <label for="Valor">Valor</label>
