@@ -1015,6 +1015,13 @@ div.box-cliente p{
     .menu-home > ul > li:nth-child(even){
         border: none;
     }
+    .menu-home > ul > li{
+        margin-bottom: .75em;
+    }
+    .menu-home > ul > li > a, 
+    .menu-home > ul > li > div{
+        opacity: 1;
+    }
 }
 @media (min-width: 321px) and (max-width: 450px) {
     .btn, input[type="submit"], input[type="button"]{
