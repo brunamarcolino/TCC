@@ -694,7 +694,7 @@ public class UsuarioDao extends Dao {
         
          try{
             conn = getConnection();
-            String sql = "SELECT id_usuario, nm_usuario from tab_usuarios where tipo_usuario = 'Atendente' and status_usuario = 'Ativo'";
+            String sql = "SELECT id_usuario, nm_usuario from tab_usuarios where tipo_usuario = 'Atendente'";
             
             PreparedStatement stmt = conn.prepareStatement(sql);
             ResultSet result = stmt.executeQuery();

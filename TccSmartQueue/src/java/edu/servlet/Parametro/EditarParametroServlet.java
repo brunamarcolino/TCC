@@ -53,7 +53,7 @@ public class EditarParametroServlet extends HttpServlet {
             }
             String mensagem;
                  
-            
+            System.out.println("v " + v);
             if (v==1){
                 //editar usuario
                 boolean sucesso = parametroDao.updateParametro(id, valor);  

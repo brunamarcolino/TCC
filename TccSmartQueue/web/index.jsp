@@ -102,7 +102,7 @@
                                         </div>
                                     </li>    
                                     <li class="grid-25 mobile-grid-50">
-                                        <a href="painel.jsp">
+                                        <a href="PainelServlet">
                                             <img src="imagens/painel.png" />
                                             <h3>Painel de senhas</h3>
                                         </a>
@@ -140,7 +140,7 @@
                                         </a>
                                     </li>
                                     <li class="grid-25 mobile-grid-50">
-                                        <a href="painel.jsp">
+                                        <a href="PainelServlet">
                                             <img src="imagens/painel.png" />
                                             <h3>Painel de senhas</h3>
                                         </a>

@@ -42,7 +42,7 @@ RA: 1510027287
                             </ul>
                         </li>
                         <li>
-                            <a href="painel.jsp">Painel de senhas</a>
+                            <a href="PainelServlet">Painel de senhas</a>
                         </li>
                     </ul>
                 </nav>
@@ -67,7 +67,7 @@ RA: 1510027287
                             <a href="gerar_senha_local.jsp">Gerar senha local</a>
                         </li>
                         <li>
-                            <a href="painel.jsp">Painel de senhas</a>
+                            <a href="PainelServlet">Painel de senhas</a>
                         </li>
                     </ul>
                 </nav>
@@ -94,7 +94,7 @@ RA: 1510027287
                             <a href="ListaChartServlet?tipo=2">Relatório / Produtividade</a>
                         </li>
                         <li>
-                            <a href="painel.jsp">Painel de senhas</a>
+                            <a href="PainelServlet">Painel de senhas</a>
                         </li>
                         <li>
                             <a href="LogoutServlet">Sair</a>
@@ -122,7 +122,7 @@ RA: 1510027287
                             <a href="gerar_senha_local.jsp">Gerar senha local</a>
                         </li>
                         <li>
-                            <a href="painel.jsp">Painel de senhas</a>
+                            <a href="PainelServlet">Painel de senhas</a>
                         </li>
                         <li>
                             <a href="LogoutServlet">Sair</a>

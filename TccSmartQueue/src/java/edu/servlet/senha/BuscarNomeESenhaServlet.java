@@ -24,7 +24,7 @@ public class BuscarNomeESenhaServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
          
         //Declara Variaveis
-        int senha;
+        Senha senha = new Senha();
         SenhaDao senhaDao = new SenhaDao();
         String mensagem = "";
         
@@ -35,29 +35,30 @@ public class BuscarNomeESenhaServlet extends HttpServlet {
         int id_fila = Integer.parseInt(id_fila_str);
         
         System.out.println(id_usuario);
-        senha = senhaDao.verificaClientesChamados(id_usuario);
+        senha.setId_senha(senhaDao.verificaClientesChamados(id_usuario));
         
         //Se não
-        if(senha == 0){
+        if(senha.getId_senha() == 0){
             
             //Verifica ultimo tipo de atendimento 
-            String tipo_atendimento = senhaDao.UltimoTipoAtendimento();
-            System.out.println(tipo_atendimento);
+            senha.setTipo_atendimento(senhaDao.UltimoTipoAtendimento());
+            System.out.println(senha.getTipo_atendimento());
+            
             
             //Chama próximo cliente de acordo com o ultimo atendido
-            if (tipo_atendimento.equals("Preferencial")){
+            if (senha.getTipo_atendimento().equals("Preferencial")){
                 senha = senhaDao.getProximoClienteNormal();
             } else {
                 senha = senhaDao.getProximoClientePreferencial();
             }  
-            
-            boolean sucesso = senhaDao.alteraStatusSenha(senha, "Chamando", id_usuario);            
-            System.out.println(sucesso);
-            
+            if (!senha.getStatus_atendimento().equals("Segunda Chance")){
+                boolean sucesso = senhaDao.alteraStatusSenha(senha.getId_senha(), "Chamando", id_usuario);            
+                System.out.println(sucesso);
+            }
         }
             //SE FOR 0 É QUE NÃO TEM MAIS CLIENTE NA FILA, SE NÃO APRESENTE CLIENTE NA TELA
-            if (senha > 0){
-                getServletContext().getRequestDispatcher("/NotificacaoServlet?id_senha="+senha+"&id_fila="+id_fila).forward(request, response);             
+            if (senha.getId_senha() > 0){
+                getServletContext().getRequestDispatcher("/NotificacaoServlet?id_senha="+senha.getId_senha()+"&id_fila="+id_fila).forward(request, response);             
             }else {
                 mensagem = "<span>Não há clientes na fila!</span>";
                 request.setAttribute("mensagemErro", mensagem);

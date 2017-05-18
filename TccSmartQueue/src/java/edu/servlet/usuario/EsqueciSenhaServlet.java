@@ -63,7 +63,7 @@ public class EsqueciSenhaServlet extends HttpServlet {
                     String assunto = "Redefinição da senha no SmartQueue";
                     String corpo = ("<p style='font-family: Arial, sans-serif'>Olá,"+login+"  </p>" +
                                     "<p style='font-family: Arial, sans-serif'>Nós recebemos uma solicitação de mudança de senha da sua conta no Smrtqueue. </p>" +
-                                    "<p style='font-family: Arial, sans-serif'>Você pode redefinir a sua senha <a href=\"https://www.smartqueue.com.br/TccSmartQueue/RecuperarDadosToken?token="+token+"\">aqui</a>. A sua nova senha deve:</p>" +
+                                    "<p style='font-family: Arial, sans-serif'>Você pode redefinir a sua senha <a href=\"https://smartqueue.com.br/TccSmartQueue/RecuperarDadosToken?token="+token+"\">aqui</a>. A sua nova senha deve:</p>" +
                                     "<h4 style='font-family: Arial, sans-serif'>Ter mais que 6 caracteres, sendo eles:</h4>" +
                                     "<ul>" +        
                                     "<li><span style='font-family: Arial, sans-serif; list-style: disc inside'>Letras (a-z);</span></li>" +

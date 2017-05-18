@@ -46,67 +46,110 @@
             </c:when>
             <c:otherwise>
                 <header class="grid-100 mobile-grid-100">
-                    <div class="grid-10 mobile-grid-50">
-                         <a href="index.jsp" title="Smartqueue"><h3 class="title-home">Smartqueue</h3></a>
+                    <div class="grid-25 mobile-grid-100">
+                        <a href="index.jsp" title="Smartqueue"><h3 class="title-home">Smartqueue</h3></a>
                     </div>
-                    <div class="grid-75 pull-left hide-on-mobile">
-                        <c:if test="${not empty login}">  
+                    <div class="grid-25 pull-right perfil hide-on-mobile">
+                        <c:choose>
+                            <c:when test="${empty login.nm_usuario}">
+                                <span>Olá, <strong>Cliente</strong></span>
+                             </c:when>
+                            <c:otherwise>
+                                <span>Olá, <strong>${login.nm_usuario}</strong></span>
+                            </c:otherwise>        
+                        </c:choose>
+                        <a href="LogoutServlet"><strong>(sair)</strong></a>                       
+                    </div>
+                </header>
+                <div class="main">
+                    <div class="grid-75 mobile-grid-100 section-center menu-home">
+                        <div class="grid-100 mobile-grid-100">
+                            <h1>Bem-vindo!</h1>
+                            <h3>Navegue nas funcionalidades através do menu abaixo:</h3>
+                            <br class="hide-on-mobile" />
+                        </div>
+                        <c:if test="${not empty login}">
                             <c:if test="${login.tipo_usuario=='Administrador'}">
-                                <nav>
-                                    <ul>
-                                        <li>
-                                            <a href="ListaUsuarioServlet">Funcionários</a>
-                                        </li>
-                                        <li>
-                                            <a href="ListaParametrosServlet">Parâmetros do Sistemas</a>
-                                        </li>
-                                        <li class="submenu">
-                                            <a href="javascript:void(0);">Relatórios</a>
-                                            <ul>
-                                                <li><a href="ListaChartServlet?tipo=1">Tempo de atendimento</a></li>
-                                                <li><a href="ListaChartServlet?tipo=2">Produtividade</a></li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <a href="painel.jsp">Painel de senhas</a>
-                                        </li>
-                                    </ul>
-                                </nav>
-                            </c:if>        
-                            <c:if test="${login.tipo_usuario=='Atendente'}">
-                                <nav>
-                                    <ul>
-                                        <c:if test="${id_fila==0}">
+                                <ul>
+                                    <li class="grid-25 mobile-grid-50">
+                                        <a href="ListaUsuarioServlet">
+                                            <img src="imagens/admin.png" />
+                                            <h3>Funcionários</h3>
+                                        </a>
+                                    </li>
+                                    <li class="grid-25 mobile-grid-50">
+                                        <a href="ListaParametrosServlet">
+                                            <img src="imagens/parametros.png" />
+                                            <h3>Parâmetros do sistemas</h3>
+                                        </a>
+                                    </li>
+                                    <li class="grid-25 mobile-grid-50">
+                                        <div>
+                                        <img src="imagens/relatorios.png" />
+                                        <h3>Relatórios</h3>
+                                        <ul>
                                             <li>
-                                                <a href="ListaFilasServlet">Abrir Fila</a>
-                                            </li>  
-                                        </c:if>
-                                        <c:if test="${id_fila>0}">
-                                            <li>
-                                                <a href="fechar_fila.jsp">Fechar Fila</a>
+                                                <a href="ListaChartServlet?tipo=1">
+                                                    Tempo de atendimento
+                                                </a>
                                             </li>
                                             <li>
-                                                <a href="chamar_proximo.jsp?habilitado=1">Atendimento</a>
-                                            </li>                                            
-                                        </c:if>
-                                        <li>
-                                            <a href="gerar_senha_local.jsp">Gerar Senha Local</a>
+                                                <a href="ListaChartServlet?tipo=2">
+                                                    Produtividade
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        </div>
+                                    </li>    
+                                    <li class="grid-25 mobile-grid-50">
+                                        <a href="PainelServlet">
+                                            <img src="imagens/painel.png" />
+                                            <h3>Painel de senhas</h3>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </c:if>        
+                            <c:if test="${login.tipo_usuario=='Atendente'}">
+                                <ul>
+                                    <c:if test="${id_fila==0}">
+                                        <li class="grid-25 mobile-grid-50">
+                                            <a href="ListaFilasServlet">
+                                                <img src="imagens/abrir.png" />
+                                                <h3>Abrir fila</h3>
+                                            </a>
+                                        </li>  
+                                    </c:if>
+                                    <c:if test="${id_fila>0}">
+                                        <li class="grid-25 mobile-grid-50">
+                                            <a href="fechar_fila.jsp">
+                                                <img src="imagens/fechar.png" />
+                                                <h3>Fechar fila</h3>
+                                            </a>
                                         </li>
-                                        <li>
-                                            <a href="painel.jsp">Painel de senhas</a>
-                                        </li>
-                                    </ul>
-                                </nav>
-                            </c:if>                                 
-                        </c:if>        
-
+                                        <li class="grid-25 mobile-grid-50">
+                                            <a href="chamar_proximo.jsp?habilitado=1">
+                                                <img src="imagens/atendimento.png" />
+                                                <h3>Atendimento</h3>
+                                            </a>
+                                        </li>                                            
+                                    </c:if>
+                                    <li class="grid-25 mobile-grid-50">
+                                        <a href="gerar_senha_local.jsp">
+                                            <img src="imagens/gerar-senha.png" />
+                                            <h3>Gerar senha local</h3>
+                                        </a>
+                                    </li>
+                                    <li class="grid-25 mobile-grid-50">
+                                        <a href="PainelServlet">
+                                            <img src="imagens/painel.png" />
+                                            <h3>Painel de senhas</h3>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </c:if>    
+                        </c:if>
                     </div>
-                    <div class="grid-15 pull-right perfil">
-                        <span>Olá, <strong>${login.nm_usuario}</strong></span>
-                        <a href="LogoutServlet"><strong>(sair)</strong></a>                       
-                    </div>   
-
-                </header>
+                </div>
             </c:otherwise>        
         </c:choose>
     </body>

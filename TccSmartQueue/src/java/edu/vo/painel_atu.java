@@ -15,14 +15,14 @@ public class painel_atu {
     
     private int senha_atual;
     private Time tempo_medio;
-    private String status_atendimento;
+    private String tipo_atendimento;
 
-    public String getStatus_atendimento() {
-        return status_atendimento;
+    public String getTipo_atendimento() {
+        return tipo_atendimento;
     }
 
-    public void setStatus_atendimento(String status_atendimento) {
-        this.status_atendimento = status_atendimento;
+    public void setTipo_atendimento(String tipo_atendimento) {
+        this.tipo_atendimento = tipo_atendimento;
     }
 
     public int getSenha_atual() {

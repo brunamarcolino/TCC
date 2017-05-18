@@ -31,7 +31,7 @@
                 </c:when>
                 <c:otherwise>
                     <div class="grid-parent grid-50 mobile-grid-100 info">
-                        <div class="grid-100 mobile-grid-50">
+                        <div class="grid-100 mobile-grid-100">
                             <p>Tempo médio de atendimento</p>
                             <h2>
                                 <c:choose>
@@ -45,7 +45,7 @@
                             </h2>
                         </div>                        
                         <div class="grid-100 mobile-grid-50">
-                            <p>Quantidade de pessoas na Fila</p>
+                            <p>Quantidade de pessoas <br/>na sua frente</p>
                             <h2>
                                 <c:choose>
                                     <c:when test="${empty dadossenha.quantidade_pessoas}">
@@ -71,7 +71,11 @@
                             </h2>
                         </div>                        
                         <div class="grid-100 mobile-grid-70">
-                            <p>Previsão Atendimento</p>
+                            <p>Previsão Atendimento <img src="imagens/icon.png" class="tooltip" />
+                                <div class="tooltiptext">
+                                    <span>É apenas uma previsão, não significa que você será atendido nesse horário.</span>
+                                </div>
+                            </p>
                             <h2>
                                 <c:choose>
                                     <c:when test="${empty dadossenha.previsao_atendimento}">
@@ -87,7 +91,7 @@
                     <div class="grid-parent grid-50">
                         <p>Sua Senha é </p>
                         <h1>${senha.id_senha}</h1>
-                        <input type="button" value="Cancelar Senha" class="btn btn-outline vermelho" onClick="window.location.href='CancelarSenhaServlet?id_senha=${senha.id_senha}'">
+                        <input type="button" value="Cancelar Senha" class="btn btn-outline vermelho" onClick="window.location.href='cancelar_senha.jsp?id_senha=${senha.id_senha}'">
                     </div>                                    
                 </c:otherwise>
             </c:choose>

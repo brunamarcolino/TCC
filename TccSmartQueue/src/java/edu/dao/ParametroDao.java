@@ -216,12 +216,10 @@ public class ParametroDao extends Dao {
                             return 3; //não é possivel excluir filas abetas
                         }
                         else{
-                            for(int i=max_fila; i> qtd_mesas; i--){
                                 sql = "DELETE FROM tab_fila WHERE id_fila > ?";
                                 stmt = conn.prepareStatement(sql);
                                 stmt.setInt(1, qtd_mesas);
                                 affectedRows = stmt.executeUpdate();
-                            }
                         }
                         
                 }              

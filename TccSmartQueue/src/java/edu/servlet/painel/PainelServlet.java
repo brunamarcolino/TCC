@@ -42,6 +42,7 @@ public class PainelServlet extends HttpServlet {
                 //pega senha atual e tempo medio
                 painel_atu atu = painelDao.lista_senhas_anteriores();
                 request.setAttribute("atu", atu);
+                System.out.println("atu " + atu);
                 //System.out.println("tempo : " + tempo_medio + " senha " + senha);
                 
                 getServletContext().getRequestDispatcher("/painel.jsp").forward(request, response);

@@ -28,7 +28,7 @@
                 </c:when>
                 <c:otherwise>
                     <div class="grid-parent grid-50 mobile-grid-100 info">
-                        <div class="grid-100 mobile-grid-50">
+                        <div class="grid-100 mobile-grid-100">
                             <!--<p id="demo"></p> -->
                             <p>Tempo médio de atendimento</p>
                             <h2>
@@ -43,7 +43,7 @@
                             </h2>
                         </div>                    
                         <div class="grid-100 mobile-grid-50">
-                            <p>Quantidade de pessoas na fila</p>
+                            <p>Quantidade de pessoas <br/>na sua frente</p>
                             <h2>
                                 <c:choose>
                                     <c:when test="${empty dadossenha.quantidade_pessoas}">
@@ -69,7 +69,11 @@
                             </h2>
                         </div>                        
                         <div class="grid-100 mobile-grid-70">
-                            <p>Previsão de atendimento</p>
+                            <p>Previsão de atendimento <img src="imagens/icon.png" class="tooltip" />
+                                <div class="tooltiptext">
+                                    <span>É apenas uma previsão, não significa que você será atendido nesse horário.</span>
+                                </div>
+                            </p>
                             <h2>
                                 <c:choose>
                                     <c:when test="${empty dadossenha.previsao_atendimento}">

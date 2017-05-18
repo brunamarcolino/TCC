@@ -58,7 +58,7 @@
                             </td>                                        
                             <td>  
                                 <a href="ModalEditarUsuarioServlet?id_usuario=${usuario.id_usuario}" title="Editar"><img src="imagens/editar.png" /></a> 
-                                <a href="ExcluirUsuarioServlet?id_usuario=${usuario.id_usuario}&login_usuario=${login.id_usuario}" title="Deletar" onclick="confirma()"><img src="imagens/deletar.png" /></a>
+                                <a href="excluir_usuario.jsp?id_usuario=${usuario.id_usuario}&login_usuario=${login.id_usuario}" title="Deletar"><img src="imagens/deletar.png" /></a>
                             </td>
                         </tr>      
                     </c:forEach>

@@ -58,14 +58,14 @@
                             </h2>
                         </div>
                         <div class="grid-100 mobile-grid-50">
-                            <p>Status da Senha Atual</p>
+                            <p>Tipo da Senha Atual</p>
                             <h2>
                                 <c:choose>
-                                    <c:when test="${empty atu.status_atendimento}">
+                                    <c:when test="${empty atu.tipo_atendimento}">
                                         --
                                     </c:when>
                                     <c:otherwise>
-                                        ${atu.status_atendimento}
+                                        ${atu.tipo_atendimento}
                                     </c:otherwise>
                                 </c:choose>
                             </h2>

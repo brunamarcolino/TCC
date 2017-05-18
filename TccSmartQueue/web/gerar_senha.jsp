@@ -91,7 +91,7 @@
                     <div class="grid-parent grid-50">
                         <p>Sua Senha é </p>
                         <h1>${senha.id_senha}</h1>
-                        <input type="button" value="Cancelar Senha" class="btn btn-outline vermelho" onClick="window.location.href='CancelarSenhaServlet?id_senha=${senha.id_senha}'">
+                        <input type="button" value="Cancelar Senha" class="btn btn-outline vermelho" onClick="window.location.href='cancelar_senha.jsp?id_senha=${senha.id_senha}'">
                     </div>                                    
                 </c:otherwise>
             </c:choose>
