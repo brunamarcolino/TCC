@@ -109,7 +109,7 @@
                                 </c:choose>        
                             </c:when>
                             <c:otherwise>
-                                <p>Esse estabelecimento encontra-se fechado no momento.</p>
+                                <p class="location location-wrong"><img src="imagens/error.png"/>Esse estabelecimento encontra-se fechado no momento.</p>
                             </c:otherwise>    
                         </c:choose>            
                     </div>
