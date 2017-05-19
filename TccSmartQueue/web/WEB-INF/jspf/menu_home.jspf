@@ -1,0 +1,98 @@
+<!--
+NOME: Cabeçalho (logado e deslogado)
+
+RA: 1510027287
+    1510016735
+-->
+
+<%-- any content can be specified here e.g.: --%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+<div class="grid-75 mobile-grid-100 section-center menu-home">
+    <div class="grid-100 mobile-grid-100">
+        <h1>Bem-vindo!</h1>
+        <h3>Navegue nas funcionalidades através do menu abaixo:</h3>
+        <br class="hide-on-mobile" />
+    </div>
+    <c:if test="${not empty login}">
+        <c:if test="${login.tipo_usuario=='Administrador'}">
+            <ul>
+                <li class="grid-25 mobile-grid-50">
+                    <a href="ListaUsuarioServlet">
+                        <img src="imagens/admin.png" />
+                        <h3>Funcionários</h3>
+                    </a>
+                </li>
+                <li class="grid-25 mobile-grid-50">
+                    <a href="ListaParametrosServlet">
+                        <img src="imagens/parametros.png" />
+                        <h3>Parâmetros do sistemas</h3>
+                    </a>
+                </li>
+                <li class="grid-25 mobile-grid-50">
+                    <div>
+                    <img src="imagens/relatorios.png" />
+                    <h3>Relatórios</h3>
+                    <ul>
+                        <li>
+                            <a href="ListaChartServlet?tipo=1">
+                                Tempo de atendimento
+                            </a>
+                        </li>
+                        <li>
+                            <a href="ListaChartServlet?tipo=2">
+                                Produtividade
+                            </a>
+                        </li>
+                    </ul>
+                    </div>
+                </li>    
+                <li class="grid-25 mobile-grid-50">
+                    <a href="PainelServlet">
+                        <img src="imagens/painel.png" />
+                        <h3>Painel de senhas</h3>
+                    </a>
+                </li>
+            </ul>
+        </c:if>        
+        <c:if test="${login.tipo_usuario=='Atendente'}">
+            <ul>
+                <c:if test="${id_fila==0}">
+                    <li class="grid-25 mobile-grid-50">
+                        <a href="ListaFilasServlet">
+                            <img src="imagens/abrir.png" />
+                            <h3>Abrir fila</h3>
+                        </a>
+                    </li>  
+                </c:if>
+                <c:if test="${id_fila>0}">
+                    <li class="grid-25 mobile-grid-50">
+                        <a href="fechar_fila.jsp">
+                            <img src="imagens/fechar.png" />
+                            <h3>Fechar fila</h3>
+                        </a>
+                    </li>
+                    <li class="grid-25 mobile-grid-50">
+                        <a href="chamar_proximo.jsp?habilitado=1">
+                            <img src="imagens/atendimento.png" />
+                            <h3>Atendimento</h3>
+                        </a>
+                    </li>                                            
+                </c:if>
+                <li class="grid-25 mobile-grid-50">
+                    <a href="gerar_senha_local.jsp">
+                        <img src="imagens/gerar-senha.png" />
+                        <h3>Gerar senha local</h3>
+                    </a>
+                </li>
+                <li class="grid-25 mobile-grid-50">
+                    <a href="PainelServlet">
+                        <img src="imagens/painel.png" />
+                        <h3>Painel de senhas</h3>
+                    </a>
+                </li>
+            </ul>
+        </c:if>    
+    </c:if>
+</div>

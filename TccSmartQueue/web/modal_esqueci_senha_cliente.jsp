@@ -34,7 +34,7 @@
                         </li>                                   
                         <li>
                             <a href="login_cliente.jsp" class="btn-back"><img src="imagens/back.png" />Voltar</a>
-                            <input type="submit" class="btn btn-outline verde" value="Enviar"/>
+                            <input type="submit" class="btn btn-outline verde" value="Alterar"/>
                         </li>
                     </ul>
                 </form>       

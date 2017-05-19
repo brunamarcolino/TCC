@@ -18,8 +18,7 @@
         <%@include file="WEB-INF/jspf/chamadas.jspf"%>
     </head>
     <body>
-        <%@include file="WEB-INF/jspf/mensagem.jspf" %>
-         <c:choose>
+        <c:choose>
             <c:when test="${empty login}">
                 <div class="image"></div> 
                 <section class="grid-75 grid-parent mobile-grid-90 section-center">
@@ -46,109 +45,30 @@
             </c:when>
             <c:otherwise>
                 <header class="grid-100 mobile-grid-100">
-                    <div class="grid-25 mobile-grid-100">
+                    <div class="grid-70 mobile-grid-85">
                         <a href="index.jsp" title="Smartqueue"><h3 class="title-home">Smartqueue</h3></a>
                     </div>
-                    <div class="grid-25 pull-right perfil hide-on-mobile">
-                        <c:choose>
-                            <c:when test="${empty login.nm_usuario}">
-                                <span>Olá, <strong>Cliente</strong></span>
-                             </c:when>
-                            <c:otherwise>
-                                <span>Olá, <strong>${login.nm_usuario}</strong></span>
-                            </c:otherwise>        
-                        </c:choose>
-                        <a href="LogoutServlet"><strong>(sair)</strong></a>                       
+                    <div class="grid-30 mobile-grid-15 pull-right perfil">
+                        <div class="grid-90 hide-on-mobile">
+                            <c:choose>
+                                <c:when test="${empty login.nm_usuario}">
+                                    <span>Olá, <strong>Cliente</strong></span>
+                                 </c:when>
+                                <c:otherwise>
+                                    <span>Olá, <strong>${login.nm_usuario}</strong></span>
+                                </c:otherwise>        
+                            </c:choose>
+                        </div>
+                        <div class="grid-10">
+                            <a href="LogoutServlet" title="Sair"><strong><img src="imagens/logout.png" /></strong></a> 
+                        </div>
                     </div>
                 </header>
+                
+                <%@include file="WEB-INF/jspf/mensagem.jspf" %>
+                
                 <div class="main">
-                    <div class="grid-75 mobile-grid-100 section-center menu-home">
-                        <div class="grid-100 mobile-grid-100">
-                            <h1>Bem-vindo!</h1>
-                            <h3>Navegue nas funcionalidades através do menu abaixo:</h3>
-                            <br class="hide-on-mobile" />
-                        </div>
-                        <c:if test="${not empty login}">
-                            <c:if test="${login.tipo_usuario=='Administrador'}">
-                                <ul>
-                                    <li class="grid-25 mobile-grid-50">
-                                        <a href="ListaUsuarioServlet">
-                                            <img src="imagens/admin.png" />
-                                            <h3>Funcionários</h3>
-                                        </a>
-                                    </li>
-                                    <li class="grid-25 mobile-grid-50">
-                                        <a href="ListaParametrosServlet">
-                                            <img src="imagens/parametros.png" />
-                                            <h3>Parâmetros do sistemas</h3>
-                                        </a>
-                                    </li>
-                                    <li class="grid-25 mobile-grid-50">
-                                        <div>
-                                        <img src="imagens/relatorios.png" />
-                                        <h3>Relatórios</h3>
-                                        <ul>
-                                            <li>
-                                                <a href="ListaChartServlet?tipo=1">
-                                                    Tempo de atendimento
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="ListaChartServlet?tipo=2">
-                                                    Produtividade
-                                                </a>
-                                            </li>
-                                        </ul>
-                                        </div>
-                                    </li>    
-                                    <li class="grid-25 mobile-grid-50">
-                                        <a href="PainelServlet">
-                                            <img src="imagens/painel.png" />
-                                            <h3>Painel de senhas</h3>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </c:if>        
-                            <c:if test="${login.tipo_usuario=='Atendente'}">
-                                <ul>
-                                    <c:if test="${id_fila==0}">
-                                        <li class="grid-25 mobile-grid-50">
-                                            <a href="ListaFilasServlet">
-                                                <img src="imagens/abrir.png" />
-                                                <h3>Abrir fila</h3>
-                                            </a>
-                                        </li>  
-                                    </c:if>
-                                    <c:if test="${id_fila>0}">
-                                        <li class="grid-25 mobile-grid-50">
-                                            <a href="fechar_fila.jsp">
-                                                <img src="imagens/fechar.png" />
-                                                <h3>Fechar fila</h3>
-                                            </a>
-                                        </li>
-                                        <li class="grid-25 mobile-grid-50">
-                                            <a href="chamar_proximo.jsp?habilitado=1">
-                                                <img src="imagens/atendimento.png" />
-                                                <h3>Atendimento</h3>
-                                            </a>
-                                        </li>                                            
-                                    </c:if>
-                                    <li class="grid-25 mobile-grid-50">
-                                        <a href="gerar_senha_local.jsp">
-                                            <img src="imagens/gerar-senha.png" />
-                                            <h3>Gerar senha local</h3>
-                                        </a>
-                                    </li>
-                                    <li class="grid-25 mobile-grid-50">
-                                        <a href="PainelServlet">
-                                            <img src="imagens/painel.png" />
-                                            <h3>Painel de senhas</h3>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </c:if>    
-                        </c:if>
-                    </div>
+                    <%@include file="WEB-INF/jspf/menu_home.jspf" %>
                 </div>
             </c:otherwise>        
         </c:choose>

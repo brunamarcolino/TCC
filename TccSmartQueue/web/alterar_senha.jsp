@@ -17,7 +17,7 @@
     <body>  
         <%@include file="WEB-INF/jspf/mensagem.jspf" %>
         <div class="main">
-            <div class="grid-25 mobile-grid-100">
+            <div class="grid-25 mobile-grid-90">
                 <c:choose>
                     <c:when test="${empty usuario}">
                         <p>Usuário inválido!!</p>                

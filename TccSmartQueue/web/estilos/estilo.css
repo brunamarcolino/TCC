@@ -833,6 +833,9 @@ div.box-cliente p{
     .main{
         padding: 3em 0;
     }
+    .main h1{
+        margin-top: 0;
+    }
     .main .gera-senha{
         margin-top: 0;
     }
@@ -905,7 +908,7 @@ div.box-cliente p{
     }
     
     .menu-mobile-icone{
-        margin-right: 1.5em;
+        margin-right: 2em;
         float: left;
     }
     .menu-mobile-icone #nav-icon3{

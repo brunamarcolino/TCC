@@ -51,10 +51,30 @@
                 </section>
             </c:when>
             <c:otherwise>
-                <%@include file="WEB-INF/jspf/cabecalho.jspf" %>
+                <header class="grid-100 mobile-grid-100">
+                    <div class="grid-70 mobile-grid-100">
+                        <a href="index.jsp" title="Smartqueue"><h3 class="title-home">Smartqueue</h3></a>
+                    </div>
+                    <div class="grid-30 pull-right perfil">
+                        <div class="grid-90 hide-on-mobile">
+                            <c:choose>
+                                <c:when test="${empty login.nm_usuario}">
+                                    <span>Olá, <strong>Cliente</strong></span>
+                                 </c:when>
+                                <c:otherwise>
+                                    <span>Olá, <strong>${login.nm_usuario}</strong></span>
+                                </c:otherwise>        
+                            </c:choose>
+                        </div>
+                        <div class="grid-10 hide-on-mobile">
+                            <a href="LogoutServlet"><strong>(sair)</strong></a> 
+                        </div>
+                    </div>
+                </header>
                 
                 <%@include file="WEB-INF/jspf/mensagem.jspf" %>
                 <div class="main">
+                    <%@include file="WEB-INF/jspf/menu_home.jspf" %>
                 </div>
             </c:otherwise>        
         </c:choose>

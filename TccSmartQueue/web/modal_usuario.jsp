@@ -51,7 +51,7 @@
                                 </li>                
                                 <li>
                                     <a href="javascript:void(0);" onclick="window.history.back();" class="btn-back"><img src="imagens/back.png" />Voltar</a>
-                                    <input type="submit" class="btn btn-outline verde"/>
+                                    <input type="submit" class="btn btn-outline verde" value="Criar"/>
                                 </li>
                             </ul>
                         </form>   
@@ -84,7 +84,7 @@
                                 </li>                
                                 <li>
                                     <a href="javascript:void(0);" onclick="window.history.back();" class="btn-back"><img src="imagens/back.png" />Voltar</a>
-                                    <input type="submit" class="btn btn-outline verde"/>
+                                    <input type="submit" class="btn btn-outline verde" value="Salvar"/>
                                 </li>
                             </ul>
                         </form>   

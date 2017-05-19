@@ -36,7 +36,7 @@
                         <c:when test="${empty filas}">
                             <ul>
                                 <li>
-                                    Todas as mesas estão ocupadas!
+                                    <h3>Todas as mesas estão ocupadas!</h3>
                                 </li>
                                 <li>
                                      <a href="javascript:void(0);" onclick="window.history.back();" class="btn-back"><img src="imagens/back.png" />Voltar</a>
@@ -57,7 +57,7 @@
                         </li>
                         <li>
                             <a href="javascript:void(0);" onclick="window.history.back();" class="btn-back"><img src="imagens/back.png" />Voltar</a>
-                            <input type="submit" value="Abrir Fila" class="btn btn-outline" />
+                            <input type="submit" value="Abrir Fila" class="btn btn-outline verde" />
                         </li>
                                  
                     </ul>

@@ -26,10 +26,10 @@
 
         </c:if>
         <div class="main">
-            <div class="grid-75 mobile-grid-100">
+            <div class="grid-80 mobile-grid-100">
                 <h1>Parâmetros do sistema</h1>
             </div>
-            <div class="grid-75 mobile-grid-100">
+            <div class="grid-80 mobile-grid-100">
             <c:choose>
                 <c:when test="${empty parametros}">
                     <p>Nenhum parâmetro cadastrado!</p>

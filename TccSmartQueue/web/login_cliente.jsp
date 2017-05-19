@@ -59,7 +59,7 @@
                         </li>
                         <li>
                             <a href="javascript:void(0);" onclick="window.history.back();" class="btn-back"><img src="imagens/back.png" />Voltar</a>
-                            <input type="submit" value="Entrar" class="btn btn-outline verde" />
+                            <input type="submit" value="continuar" class="btn btn-outline verde" />
                         </li>
                     </ul>
                     <a href="modal_esqueci_senha_cliente.jsp" class="forgot-pass">Esqueci minha senha</a>
