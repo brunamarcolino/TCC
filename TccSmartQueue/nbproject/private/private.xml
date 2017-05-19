@@ -3,27 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/brunacm/Documents/GITTCC/TCC/TccSmartQueue/web/senha.jsp</file>
-            <file>file:/C:/Users/brunacm/Documents/GITTCC/TCC/TccSmartQueue/web/modal_esqueci_senha.jsp</file>
-            <file>file:/C:/Users/brunacm/Documents/GITTCC/TCC/TccSmartQueue/src/java/edu/servlet/senha/EsqueciSenhaClienteServlet.java</file>
-            <file>file:/C:/Users/brunacm/Documents/GITTCC/TCC/TccSmartQueue/web/script/localizacao.js</file>
-            <file>file:/C:/Users/brunacm/Documents/GITTCC/TCC/TccSmartQueue/src/java/edu/servlet/usuario/ModalEditarUsuarioServlet.java</file>
-            <file>file:/C:/Users/brunacm/Documents/GITTCC/TCC/TccSmartQueue/src/java/edu/maps/MapsServlet.java</file>
-            <file>file:/C:/Users/brunacm/Documents/GITTCC/TCC/TccSmartQueue/web/modal_esqueci_senha_cliente.jsp</file>
-            <file>file:/C:/Users/brunacm/Documents/GITTCC/TCC/TccSmartQueue/src/java/edu/servlet/usuario/RecuperarDadosToken.java</file>
-            <file>file:/C:/Users/brunacm/Documents/GITTCC/TCC/TccSmartQueue/web/localizacao.jsp</file>
-            <file>file:/C:/Users/brunacm/Documents/GITTCC/TCC/TccSmartQueue/src/java/edu/servlet/usuario/EsqueciSenhaServlet.java</file>
-            <file>file:/C:/Users/brunacm/Documents/GITTCC/TCC/TccSmartQueue/web/login_adm.jsp</file>
-            <file>file:/C:/Users/brunacm/Documents/GITTCC/TCC/TccSmartQueue/web/login_cliente.jsp</file>
-            <file>file:/C:/Users/brunacm/Documents/GITTCC/TCC/TccSmartQueue/src/java/edu/dao/SenhaDao.java</file>
-            <file>file:/C:/Users/brunacm/Documents/GITTCC/TCC/TccSmartQueue/src/java/edu/dao/DadosSenhaDao.java</file>
-            <file>file:/C:/Users/brunacm/Documents/GITTCC/TCC/TccSmartQueue/src/java/edu/servlet/email/EnviaEmailServlet.java</file>
             <file>file:/C:/Users/brunacm/Documents/GITTCC/TCC/TccSmartQueue/web/usuario.jsp</file>
-            <file>file:/C:/Users/brunacm/Documents/GITTCC/TCC/TccSmartQueue/src/java/edu/servlet/usuario/EditarUsuarioServlet.java</file>
+            <file>file:/C:/Users/brunacm/Documents/GITTCC/TCC/TccSmartQueue/src/java/edu/servlet/usuario/ExcluirUsuarioServlet.java</file>
+            <file>file:/C:/Users/brunacm/Documents/GITTCC/TCC/TccSmartQueue/src/java/config.properties</file>
             <file>file:/C:/Users/brunacm/Documents/GITTCC/TCC/TccSmartQueue/src/java/edu/servlet/usuario/IncluirUsuarioServlet.java</file>
-            <file>file:/C:/Users/brunacm/Documents/GITTCC/TCC/TccSmartQueue/web/gerar_senha.jsp</file>
-            <file>file:/C:/Users/brunacm/Documents/GITTCC/TCC/TccSmartQueue/src/java/edu/dao/UsuarioDao.java</file>
-            <file>file:/C:/Users/brunacm/Documents/GITTCC/TCC/TccSmartQueue/src/java/edu/servlet/senha/GeraSenhaServlet.java</file>
+            <file>file:/C:/Users/brunacm/Documents/GITTCC/TCC/TccSmartQueue/src/java/edu/servlet/usuario/EsqueciSenhaServlet.java</file>
+            <file>file:/C:/Users/brunacm/Documents/GITTCC/TCC/TccSmartQueue/web/gerar_senha_local.jsp</file>
+            <file>file:/C:/Users/brunacm/Documents/GITTCC/TCC/TccSmartQueue/src/java/edu/maps/MapsServlet.java</file>
+            <file>file:/C:/Users/brunacm/Documents/GITTCC/TCC/TccSmartQueue/web/excluir_usuario.jsp</file>
+            <file>file:/C:/Users/brunacm/Documents/GITTCC/TCC/TccSmartQueue/web/login_cliente.jsp</file>
+            <file>file:/C:/Users/brunacm/Documents/GITTCC/TCC/TccSmartQueue/web/abrir_fila.jsp</file>
         </group>
     </open-files>
 </project-private>

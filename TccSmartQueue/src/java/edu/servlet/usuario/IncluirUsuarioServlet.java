@@ -112,7 +112,7 @@ public class IncluirUsuarioServlet extends HttpServlet {
                                 String assunto = "Cadastrar senha no SmartQueue";
                                 String corpo = ("<p style='font-family: Arial, sans-serif'>Olá, "+nome+" </p>" +
                                     "<p style='font-family: Arial, sans-serif'>Você foi cadastrado como "+tipo+" no Smrtqueue. </p>" +
-                                    "<p style='font-family: Arial, sans-serif'>Para ter acesso ao sistema, você precisa realizar a criação da sua senha <a href=\"https://smartqueue.com.br/TccSmartQueue/RecuperarDadosToken?token="+token+"\">aqui</a>. A sua senha deve:</p>" +
+                                    "<p style='font-family: Arial, sans-serif'>Para ter acesso ao sistema, você precisa realizar a criação da sua senha <a href=\"https://smartqueue.com.br/RecuperarDadosToken?token="+token+"\">aqui</a>. A sua senha deve:</p>" +
                                     "<h4 style='font-family: Arial, sans-serif'>Ter mais que 6 caracteres, sendo eles:</h4>" +
                                     "<ul>" +        
                                     "<li><span style='font-family: Arial, sans-serif; list-style: disc inside'>Letras (a-z);</span></li>" +

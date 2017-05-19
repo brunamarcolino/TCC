@@ -70,6 +70,7 @@ public class UsuarioDao extends Dao {
                 usuario.setNm_usuario(result.getString("nm_usuario"));
                 usuario.setEmail_usuario(result.getString("email_usuario"));
                 usuario.setCpf_usuario(result.getString("cpf_usuario"));
+                System.out.println(result.getString("cpf_usuario"));
                 usuario.setTipo_usuario(result.getString("tipo_usuario"));
                 usuario.setStatus_usuario(result.getString("status_usuario"));
 

@@ -58,7 +58,7 @@
                             <input type="password" name="senhacliente" value="${param.senhacliente}"/>
                         </li>
                         <li>
-                            <a href="" class="btn-back"><img src="imagens/back.png" />Voltar</a>
+                            <a href="javascript:void(0);" onclick="window.history.back();" class="btn-back"><img src="imagens/back.png" />Voltar</a>
                             <input type="submit" value="Entrar" class="btn btn-outline verde" />
                         </li>
                     </ul>
